@@ -1,0 +1,222 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\begin{center}
+    \textbf{\Huge \scshape Aryan Miriyala} \\ \vspace{2pt}
+    \small +1 419-315-0444 $|$ 
+    \href{mailto:aryanmiriyala@gmail.com}{\underline{aryanmiriyala@gmail.com}} $|$ 
+    \href{https://www.linkedin.com/in/aryan-miriyala-7788a21b6/}{\underline{LinkedIn Profile}} $|$
+    \href{https://github.com/aryanmiriyala}{\underline{GitHub Profile}}
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Bowling Green State University}{Bowling Green, OH}
+    {Master of Science in Computer Science \textbf{GPA: 4.00}}{Aug. 2024 -- May 2026}
+  \resumeSubheading
+    {Bowling Green State University}{Bowling Green, OH}
+    {Bachelor of Science in Computer Science \textbf{GPA: 4.00}}{Jan. 2021 -- Apr. 2024}
+\resumeSubHeadingListEnd
+
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Graduate Research Assistant}{Aug. 2024 -- Present}
+      {Bowling Green State University}{Bowling Green, OH}
+      \resumeItemListStart
+        \resumeItem{Led 10 mentors for a spring camp, increasing cybersecurity awareness for 20+ middle school students.}
+        \resumeItem{Developed key management and cryptography material for OCRI, benefiting undergraduate students.}
+        \resumeItem{Created 10+ labs using Kali Linux and Azure for PKI, key recovery, and penetration testing.}
+        \resumeItem{Implemented cipher and secret sharing modules, boosting student problem-solving by 30\%.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Software Engineering Intern}{May 2023 -- May 2024}
+      {American Association of Insurance Services}{Lisle, IL}
+      \resumeItemListStart
+        \resumeItem{Championed JSON structuring, JavaScript transformation, and AWS data optimization, achieving an 80\% efficiency boost for the openIDL project.}
+        \resumeItem{Used SQL/PostgreSQL and Python for automated data migration, increasing spreadsheet preparation efficiency by 120\%.}
+        \resumeItem{Collaborated with two developers to enhance data accessibility by 50\% through optimized ETL processes.}
+        \resumeItem{Modernized AAISDirect using React, JavaScript, Material UI, and Figma, resulting in 40\% faster transactions and 50\% higher client satisfaction.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Software Engineering Intern}{May 2022 -- Aug. 2022}
+      {Alliance for Paired Kidney Donation}{Toledo, OH}
+      \resumeItemListStart
+        \resumeItem{Enhanced kidney-matching software by resolving 20 bugs and integrating Bootstrap, achieving a 30\% performance boost.}
+        \resumeItem{Redesigned interface elements with Bootstrap and JavaScript, increasing web app engagement by 40\% and user satisfaction.}
+        \resumeItem{Optimized development and deployment using Lucee, PostgreSQL, and Docker on AWS Cloud9, leveraging cloud services effectively.}
+        \resumeItem{Bolstered web app security with anti-CSRF tokens, preventing unauthorized access and ensuring data integrity.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+      % \resumeProjectHeading
+      %     {\textbf{Gitlytics} $|$ \emph{Python, Flask, React, PostgreSQL, Docker}}{June 2020 -- Present}
+      %     \resumeItemListStart
+      %       \resumeItem{Developed a full-stack web application using with Flask serving a REST API with React as the frontend}
+      %       \resumeItem{Implemented GitHub OAuth to get data from user’s repositories}
+      %       \resumeItem{Visualized GitHub data to show collaboration}
+      %       \resumeItem{Used Celery and Redis for asynchronous tasks}
+      %     \resumeItemListEnd
+      % \resumeProjectHeading
+      %     {\textbf{Simple Paintball} $|$ \emph{Spigot API, Java, Maven, TravisCI, Git}}{May 2018 -- May 2020}
+      %     \resumeItemListStart
+      %       \resumeItem{Developed a Minecraft server plugin to entertain kids during free time for a previous job}
+      %       \resumeItem{Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review}
+      %       \resumeItem{Implemented continuous delivery using TravisCI to build the plugin upon new a release}
+      %       \resumeItem{Collaborated with Minecraft server administrators to suggest features and get feedback about the plugin}
+      %     \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{RocketGrades} $|$ \emph{Angular, Node.js, Mistral AI, MongoDB, AWS S3, Auth0, TailwindCSS}}{Mar. 2025}
+          \resumeItemListStart
+            \resumeItem{Developed a web-based LMS with Mistral AI for instant assignment feedback, cutting grading time and enhancing student learning.}
+            \resumeItem{Implemented Auth0 for secure, role-based access control, protecting data privacy for users.}
+            \resumeItem{Integrated AWS S3 and MongoDB Atlas for scalable file storage and seamless data retrieval.}
+            \resumeItem{Automated assignment grading and feedback using LangChain with Mistral AI, reducing professor workload.}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{Reinforcement Learning - Super Mario} $|$ \emph{Python, PPO, DDQN, Tensorflow, PyTorch}}{Jan. 2024 - May 2024}
+          \resumeItemListStart
+            \resumeItem{Developed a reinforcement learning model using PPO and DDQN algorithms, achieving 90\% completion within 200,000 steps.}
+            \resumeItem{Optimized environment and reward functions to accelerate training and enhance performance.}
+            \resumeItem{Visualized training progress and agent behavior using Jupyter Notebook for performance analysis.}
+          \resumeItemListEnd
+
+    \resumeSubHeadingListEnd
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+%   \begin{itemize}[leftmargin=0.15in, label={}]
+%     \small{\item{
+%      \textbf{Languages}{: Java, Python, C/C++, SQL (Postgres), JavaScript, HTML/CSS, R} \\
+%      \textbf{Frameworks}{: React, Node.js, Flask, JUnit, WordPress, Material-UI, FastAPI} \\
+%      \textbf{Developer Tools}{: Git, Docker, TravisCI, Google Cloud Platform, VS Code, Visual Studio, PyCharm, IntelliJ, Eclipse} \\
+%      \textbf{Libraries}{: pandas, NumPy, Matplotlib}
+%     }}
+%  \end{itemize}
+\begin{itemize}[leftmargin=0.15in, label={}]
+  \small{\item{
+    \textbf{Programming Languages}{: C++, C, C\#, JavaScript, PHP, Java, Python, TypeScript, SQL, PostgreSQL, Oracle} \\
+    \textbf{Frameworks \& Libraries}{: React, Angular, React Native, Ionic, Material UI, Daisy UI, Tailwind, Node.js, Flutter, pandas, NumPy, Matplotlib} \\
+    \textbf{Developer Tools \& Platforms}{: Git, Docker, VS Code, Visual Studio, , IntelliJ} \\
+    \textbf{Databases \& Big Data}{: MongoDB, MySQL, PostgreSQL, Oracle, MapReduce, HDFS, Spark, Pig, Hive}
+  }}
+\end{itemize}
+
+%-------------------------------------------
+\end{document}
