@@ -124,16 +124,19 @@
       {American Association of Insurance Services}{Lisle, IL}
       \resumeItemListStart
         % OPTIMIZED: Bullet 1 (Billing) - Locked.
-        \resumeItem{Automated a 100\% manual billing process by engineering an \textbf{AWS Glue} and \textbf{PySpark} job to query a \textbf{20+ TB Impala} database, \textbf{saving 3-5 weekly manual hours} and \textbf{slashing query times from 10+ min to $<$1 min}.}
+        \resumeItem{Automated a 100\% manual SQL billing script by developing a \textbf{PySpark} job and weekly \textbf{AWS Glue Workflow}, processing \textbf{20+ TB} of \textbf{Impala} data to calculate charges for \textbf{700+ member companies}.}
         
-        % OPTIMIZED: Bullet 2 (Analysis) - Locked.
-        \resumeItem{Reduced data solutions team's analysis workload by \textbf{80\%} by \textbf{profiling 158 tables} using \textbf{Python (Pandas)} and \textbf{SQL} to map data relationships, \textbf{defining all consolidation rules for the migration}.}
+        % OPTIMIZED: Bullet 2 (Architecture) - Locked.
+        \resumeItem{Architected the 160+ table migration by profiling \textbf{Oracle/Impala} (via \textbf{JDBC}) with \textbf{Python (Pandas)} and \textbf{SQL} to map \textbf{data similarities} and define a \textbf{single data taxonomy} of \textbf{25 MDM domains}.}
         
-        % OPTIMIZED: Bullet 3 (Migration Build) - Locked.
-        \resumeItem{Replaced \textbf{158 legacy Pentaho jobs with a single AWS Glue (PySpark) pipeline} to migrate and consolidate 158 Impala/Oracle tables into 15 MDM domains, \textbf{enabling a new self-service stakeholder application}.}
+        % OPTIMIZED: Bullet 3 (Implementation) - Locked.
+        \resumeItem{Replaced \textbf{160+ Pentaho jobs} with a daily \textbf{AWS Glue Workflow}, using the new \textbf{MDM domains} to ETL data from legacy systems into \textbf{S3} (partitioned) for \textbf{Semarchy MDM}.}
         
-        % OPTIMIZED: Bullet 4 (Migration Sync) - "freshness" -> "latency".
-        \resumeItem{Orchestrated a daily \textbf{AWS Glue Workflow} for the new pipeline, \textbf{ensuring a 24-hour data latency} for the Semarchy application and \textbf{eliminating all manual data entry} for stakeholders.}
+        % OPTIMIZED: Bullet 4 (Impact) - NEW. Stronger & clearer.
+        \resumeItem{Orchestrated the daily \textbf{AWS Glue Workflows} to \textbf{enable a new self-service application}, which eliminated manual entry and ensured a \textbf{24-hour data latency} for all new MDM domains.}
+        
+        % OPTIMIZED: Bullet 5 (Validation) - NEW. Tighter & stronger.
+        \resumeItem{Built a \textbf{reverse-ETL} pipeline in \textbf{AWS Glue} for the \textbf{MDM data}, enabling \textbf{accurate data integrity checks}.}
       \resumeItemListEnd
 
     \resumeSubheading
@@ -176,7 +179,7 @@
 \section{Projects}
     \resumeSubHeadingListStart
     \resumeProjectHeading
-          {\textbf{Travel Health Advisor} $|$ \emph{React, Node.js (Express), MongoDB, Mistral AI, TailwindCSS}}{[Date of Hackathon]}
+          {\textbf{Travel Health Advisor} $|$ \emph{React, Node.js (Express), MongoDB, Mistral AI, TailwindCSS}}{[Apr. 2025]}
           \resumeItemListStart
             \resumeItem{Developed a full-stack health app using \textbf{React}, \textbf{TailwindCSS}, and \textbf{Express.js} to provide personalized travel health advisories (e.g., disease risk, precautions) based on user health data and destination.}
             \resumeItem{Engineered a \textbf{RAG} pipeline using \textbf{Mistral AI} and \textbf{HuggingFace} models to vectorize and query a massive \textbf{MongoDB} health database via \textbf{cosine similarity search}, powering all personalized insights.}
