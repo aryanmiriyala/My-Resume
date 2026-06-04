@@ -2,7 +2,7 @@
 
 \usepackage{latexsym}
 % OPTIMIZED: Replaced your geometry line with this more aggressive one
-\usepackage[letterpaper, left=0.5in, right=0.5in, top=0.3in, bottom=0.3in]{geometry}
+\usepackage[letterpaper, left=0.35in, right=0.35in, top=0.25in, bottom=0.25in]{geometry}
 \usepackage{titlesec}
 \usepackage{marvosym}
 \usepackage[usenames,dvipsnames]{color}
@@ -38,8 +38,8 @@
 
 % Sections formatting
 \titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+  \vspace{-6pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
 
 % Ensure that generate pdf is machine readable/ATS parsable
 \pdfgentounicode=1
@@ -57,7 +57,7 @@
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
+    \end{tabular*}\vspace{-9pt}
 }
 
 \newcommand{\resumeSubSubheading}[2]{
@@ -81,7 +81,7 @@
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-7pt}}
 
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -107,7 +107,7 @@
   % OPTIMIZED: Combined specialization and GPA onto one line
   \resumeSubheading
     {Bowling Green State University}{Bowling Green, OH}
-    {Master of Science in Computer Science, \textbf{GPA: 4.00/4.00}}{Aug. 2024 -- May 2026}
+    {Master of Science in Computer Science, \textbf{GPA: 4.00/4.00}}{Aug. 2024 -- Aug. 2026}
   % OPTIMIZED: Combined honors and GPA onto one line
   \resumeSubheading
     {Bowling Green State University}{Bowling Green, OH}
@@ -118,6 +118,14 @@
 %-----------EXPERIENCE-----------
 \section{Experience}
   \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Artificial Intelligence \& Computer Science Intern}{May 2026 -- Present}
+      {SmartSolve Industries}{Bowling Green, OH}
+      \resumeItemListStart
+        \resumeItem{Architected a full-stack \textbf{Next.js} onboarding tracker on a \textbf{Postgres}/\textbf{Drizzle ORM} backend, using \textbf{SSO} and \textbf{auth middleware} to protect sensitive new-hire data, cutting HR's manual tracking time and auto-updating the org chart.}
+        \resumeItem{Built a cross-platform \textbf{Docker} devcontainer (\textbf{WSL2}/\textbf{Colima}) isolating \textbf{AI agents} to safeguard \textbf{proprietary data}.}
+      \resumeItemListEnd
 
     \resumeSubheading
       {Data Engineering Intern}{May 2025 -- Aug. 2025}
@@ -161,7 +169,7 @@
       {Alliance for Paired Kidney Donation}{Toledo, OH}
       \resumeItemListStart
         % OPTIMIZED: Bullet 1 (Security) - 1-Line
-        \resumeItem{Ensured \textbf{HIPAA compliance} by implementing site-wide \textbf{anti-CSRF tokens} for user authentication and protection of patient data.}
+        \resumeItem{Ensured \textbf{HIPAA compliance} via site-wide \textbf{anti-CSRF tokens} securing user sessions and patient data.}
         
         % OPTIMIZED: Bullet 2 (New Feature) - 1-Line
         \resumeItem{Built a \textbf{JS/Bootstrap} module to log blood sample data, ensuring data completeness for the matching algorithm.}
@@ -179,7 +187,7 @@
 \section{Projects}
     \resumeSubHeadingListStart
     \resumeProjectHeading
-          {\textbf{Travel Health Advisor} $|$ \emph{React, Node.js (Express), MongoDB, Mistral AI, TailwindCSS}}{[Apr. 2025]}
+          {\textbf{Travel Health Advisor} $|$ \emph{React, Node.js (Express), MongoDB, Mistral AI, TailwindCSS}}{Apr. 2025}
           \resumeItemListStart
             \resumeItem{Developed a full-stack health app using \textbf{React}, \textbf{TailwindCSS}, and \textbf{Express.js} to provide personalized travel health advisories (e.g., disease risk, precautions) based on user health data and destination.}
             \resumeItem{Engineered a \textbf{RAG} pipeline using \textbf{Mistral AI} and \textbf{HuggingFace} models to vectorize and query a massive \textbf{MongoDB} health database via \textbf{cosine similarity search}, powering all personalized insights.}
@@ -205,8 +213,8 @@
     \small{\item{
      \textbf{Languages}{: Python, SQL, JavaScript/TypeScript, C++/C, C\#, PHP} \\
      \textbf{Data Engineering}{: AWS (Glue, S3, Lambda), Spark (PySpark), Impala, Hadoop (HDFS, MapReduce), Semarchy xDM} \\
-     \textbf{Web \& Frameworks}{: React, Angular, Node.js (Express), Pandas, NumPy, LangChain, TensorFlow, PyTorch, TailwindCSS} \\
-     \textbf{Databases \& Tools}{: PostgreSQL, Oracle, MongoDB, MySQL, Git, Docker}
+     \textbf{Web \& Frameworks}{: React, Next.js, Angular, Node.js, Pandas, NumPy, LangChain, TensorFlow, PyTorch, TailwindCSS} \\
+     \textbf{Databases \& Tools}{: PostgreSQL, Oracle, MongoDB, MySQL, Drizzle ORM, Git, Docker, Vercel}
     }}
  \end{itemize}
 

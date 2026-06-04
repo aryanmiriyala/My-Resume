@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.1.19)  20 JAN 2026 00:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.1.19)  3 JUN 2026 21:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -323,15 +323,15 @@ LaTeX Font Info:    ... okay on input line 90.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(36.135pt, 542.02501pt, 36.135pt)
-* v-part:(T,H,B)=(21.68121pt, 751.60756pt, 21.68121pt)
+* h-part:(L,W,R)=(25.29494pt, 563.70512pt, 25.29494pt)
+* v-part:(T,H,B)=(18.06749pt, 758.835pt, 18.06749pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=542.02501pt
-* \textheight=751.60756pt
-* \oddsidemargin=-36.135pt
-* \evensidemargin=-36.135pt
-* \topmargin=-87.58878pt
+* \textwidth=563.70512pt
+* \textheight=758.835pt
+* \oddsidemargin=-46.97505pt
+* \evensidemargin=-46.97505pt
+* \topmargin=-91.2025pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=11.0pt
@@ -416,11 +416,11 @@ Package rerunfilecheck Info: File `resume.out' has not changed.
 Here is how much of TeX's memory you used:
  10071 strings out of 478994
  147507 string characters out of 5858184
- 496167 words of memory out of 5000000
+ 499176 words of memory out of 5000000
  27426 multiletter control sequences out of 15000+600000
  409381 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,11n,74p,318b,342s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 71i,11n,74p,326b,342s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb
@@ -429,7 +429,7 @@ Here is how much of TeX's memory you used:
 /usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
 usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></us
 r/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on resume.pdf (1 page, 120028 bytes).
+Output written on resume.pdf (1 page, 120857 bytes).
 PDF statistics:
  73 PDF objects out of 1000 (max. 8388607)
  53 compressed objects within 1 object stream
