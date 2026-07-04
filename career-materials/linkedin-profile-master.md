@@ -119,7 +119,7 @@ Location: Lisle, Illinois, United States / Remote
 
 Description:
 
-Built production AWS data engineering workflows for AAIS insurance data platforms, replacing manual SQL billing and legacy Pentaho ETL jobs with PySpark, AWS Glue Workflows, S3 partitioned pipelines, IAM-controlled access, reverse ETL, validation workflows, and Semarchy MDM migration architecture. The work processed 20+ TB of golden-table insurance data from Oracle, Impala, PostgreSQL, and related enterprise sources, calculated charges for 700+ member companies, and helped standardize 160+ source tables into 25 MDM domains.
+Built production AWS data engineering workflows for AAIS insurance data platforms, replacing manually executed SQL billing processes and legacy Pentaho ETL jobs with PySpark, AWS Glue Workflows, partitioned S3 pipelines, custom IAM access controls, reverse ETL, validation workflows, and Semarchy MDM migration architecture. The work processed 20+ TB of golden-table insurance data from Oracle, Impala, PostgreSQL, and related enterprise sources, calculated recurring charges for 700+ member companies, and supported the profiling, mapping, and standardization of 160+ source tables into 25 MDM domains.
 
 Data engineering / Tech stack: Python, Pandas, SQL, PySpark, AWS Glue, AWS Glue Workflows, AWS S3, AWS IAM, Impala, Oracle, PostgreSQL, JDBC, Semarchy MDM / Semarchy xDM, Pentaho, golden tables, reverse ETL, data validation.
 
@@ -139,9 +139,9 @@ Location: Lisle, Illinois, United States / Remote
 
 Description:
 
-Built production insurance data-standardization and application modernization workflows at AAIS, including openIDL/openIDS-aligned data-model generation, Python/JSON-driven SQL schema creation, React/Node.js access-control modernization, and AWS Lambda automation for PII-tokenized data movement into S3. The work generated 1,000+ production SQL tables across Oracle/PostgreSQL and 10+ insurance lines, used Pandas/multiprocessing/fuzzy matching for large CSV processing, and introduced RBAC/JWT patterns to replace broad employee-wide access with role-specific controls for about 110 users.
+Built production insurance data-standardization and application modernization workflows at AAIS, including openIDL/openIDS-aligned data-model generation, Python/JSON-driven SQL schema creation, React/Node.js access-control modernization, and AWS Lambda automation for PII-tokenized data movement into S3. The work generated 1,000+ production SQL tables across Oracle/PostgreSQL and 10+ insurance lines, used Pandas, multiprocessing, fuzzy matching, and hashing for large CSV processing, and introduced RBAC/JWT patterns to replace broad employee-wide access with role-specific controls for about 110 users.
 
-Software engineering / Data standardization / Tech stack: Python, JSON, Pandas, multiprocessing, SQL, Oracle, PostgreSQL, React, Node.js, JWT, RBAC, AWS Lambda, AWS S3, boto3, hashlib, insurance taxonomies, openIDL / openIDS context, fuzzy matching, PII tokenization.
+Software engineering / Data standardization / Tech stack: Python, JSON, Pandas, multiprocessing, SQL, Oracle, PostgreSQL, React, Node.js, JWT, RBAC, AWS Lambda, AWS S3, boto3, hashlib, insurance taxonomies, openIDL / openIDS context, large CSV processing, fuzzy matching, PII tokenization.
 
 Highlights:
 
@@ -211,9 +211,9 @@ Location: Toledo, Ohio, United States / Remote
 
 Description:
 
-Improved Kidney Match, an AWS-hosted Lucee/CFML healthcare platform for kidney-paired donation workflows, by implementing global anti-CSRF form protection, IP-aware audit logging, protected access-denied/404 routing, HTML5 date/time picker modernization, JavaScript fallbacks, themed CSS, reusable modal/tab UI patterns, clinical logistics defaults, Matchgrid import ordering, MFI file-location fixes, and duplicate-antigen MFI crash handling for internal transplant operations.
+Improved Kidney Match, an AWS-hosted Lucee/CFML healthcare platform for kidney-paired donation workflows, by strengthening form security, auditability, data-entry reliability, and internal clinical workflow usability. Work included global anti-CSRF form protection, IP-aware audit logging, protected access-denied/404 routing, HTML5 date/time picker modernization, JavaScript fallbacks, themed CSS, cfform/cfinput compatibility updates, reusable modal/tab UI patterns, clinical logistics defaults, Matchgrid import ordering, MFI file-location fixes, and duplicate-antigen MFI crash handling for internal transplant operations.
 
-Healthcare software / Tech stack: Lucee, CFML / ColdFusion, AWS, HTML5, JavaScript, CSS, Bootstrap, cfform / cfinput migration, anti-CSRF tokens, audit logging, access control workflows, HTML5 date/time pickers, JavaScript fallbacks, modal/tab UI patterns, icons and tooltips, Matchgrid import workflows, MFI recipient workflows, clinical logistics workflows.
+Healthcare software / Tech stack: Lucee, CFML / ColdFusion, AWS, HTML5, JavaScript, CSS, Bootstrap, cfform / cfinput migration considerations, anti-CSRF tokens, audit logging, access control workflows, HTML5 date/time pickers, JavaScript fallbacks, modal/tab UI patterns, icons and tooltips, Matchgrid import workflows, MFI recipient workflows, clinical logistics workflows.
 
 Highlights:
 
