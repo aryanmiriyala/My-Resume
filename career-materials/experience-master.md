@@ -390,7 +390,7 @@ Dates: May 2022 - Aug. 2022
 
 ### Platform-Ready Description
 
-Improved Kidney Match, an AWS-hosted Lucee/CFML healthcare platform for kidney-paired donation workflows, by strengthening form security, auditability, data-entry reliability, and internal clinical workflow usability. Work included global anti-CSRF form protection, IP-aware audit logging, protected access-denied/404 routing, HTML5 date/time picker modernization, JavaScript fallbacks, themed CSS, cfform/cfinput compatibility updates, reusable modal/tab UI patterns, clinical logistics defaults, Matchgrid import ordering, MFI file-location fixes, and duplicate-antigen MFI crash handling. The role focused on modernizing a legacy healthcare workflow application while preserving graceful degradation and improving reliability for internal transplant operations.
+Improved an AWS-hosted Lucee/CFML healthcare workflow platform for kidney-paired donation operations by strengthening form security, auditability, data-entry reliability, and internal clinical workflow usability. Work included global anti-CSRF form protection, IP-aware audit logging, protected access-denied/404 routing, HTML5 date/time picker modernization, JavaScript fallbacks, themed CSS, cfform/cfinput compatibility updates, reusable modal/tab UI patterns, clinical logistics defaults, Matchgrid import ordering, MFI file-location fixes, and duplicate-antigen MFI crash handling. The role focused on modernizing a legacy healthcare workflow application while preserving graceful degradation and improving reliability for internal transplant operations.
 
 ### Tech Stack
 
@@ -398,7 +398,7 @@ Healthcare software / Tech stack: Lucee, CFML / ColdFusion, AWS, HTML5, JavaScri
 
 ### Business / Problem Context
 
-Alliance for Paired Kidney Donation works in kidney-paired donation, where internal software supports sensitive donor/recipient workflows, transplant logistics, matching operations, audit trails, and administrative coordination. The relevant platform context is Kidney Match, a healthcare/clinical workflow system where reliability, secure data entry, access control, and operational usability matter because small workflow failures can disrupt transplant-support processes.
+Alliance for Paired Kidney Donation works in kidney-paired donation, where internal software supports sensitive donor/recipient workflows, transplant logistics, matching operations, audit trails, and administrative coordination. The relevant platform context is a healthcare/clinical workflow system where reliability, secure data entry, access control, and operational usability matter because small workflow failures can disrupt transplant-support processes.
 
 ### Problem / Company Impact Context
 
@@ -410,7 +410,7 @@ Alliance for Paired Kidney Donation works in kidney-paired donation, where inter
 
 ### Work Performed
 
-- Worked on Kidney Match, an AWS-hosted Lucee/CFML/ColdFusion healthcare workflow platform.
+- Worked on an AWS-hosted Lucee/CFML/ColdFusion healthcare workflow platform.
 - Added anti-CSRF tokens to all forms globally.
 - Added user IP address capture to audit-trail logging.
 - Added access-denied behavior so unauthorized access routed to a protected page instead of ending user sessions.
@@ -441,7 +441,7 @@ Alliance for Paired Kidney Donation works in kidney-paired donation, where inter
 
 ### Reusable Bullet Options
 
-- Secured an AWS-hosted Lucee/CFML Kidney Match platform by implementing global anti-CSRF form protection, IP-aware audit logging, and protected 404/access-denied workflows.
+- Secured an AWS-hosted Lucee/CFML healthcare workflow platform by implementing global anti-CSRF form protection, IP-aware audit logging, and protected 404/access-denied workflows.
 - Modernized legacy ColdFusion forms with HTML5 date/time pickers, themed CSS, JavaScript fallbacks, and cfform script updates to improve standards compliance, data entry, and graceful degradation.
 - Improved internal transplant logistics by adding center-level blood-tube defaults, logistics-sheet population, Matchgrid upload ordering, MFI file-location fixes, and duplicate-antigen MFI crash handling.
 - Refactored MatchRun, registration, offer, and combination interfaces into reusable modal/tab components with icons and tooltips to improve usability and maintainability for internal operations.

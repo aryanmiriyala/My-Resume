@@ -211,7 +211,7 @@ Location: Toledo, Ohio, United States / Remote
 
 Description:
 
-Improved Kidney Match, an AWS-hosted Lucee/CFML healthcare platform for kidney-paired donation workflows, by strengthening form security, auditability, data-entry reliability, and internal clinical workflow usability. Work included global anti-CSRF form protection, IP-aware audit logging, protected access-denied/404 routing, HTML5 date/time picker modernization, JavaScript fallbacks, themed CSS, cfform/cfinput compatibility updates, reusable modal/tab UI patterns, clinical logistics defaults, Matchgrid import ordering, MFI file-location fixes, and duplicate-antigen MFI crash handling for internal transplant operations.
+Improved an AWS-hosted Lucee/CFML healthcare workflow platform for kidney-paired donation operations by strengthening form security, auditability, data-entry reliability, and internal clinical workflow usability. Work included global anti-CSRF form protection, IP-aware audit logging, protected access-denied/404 routing, HTML5 date/time picker modernization, JavaScript fallbacks, themed CSS, cfform/cfinput compatibility updates, reusable modal/tab UI patterns, clinical logistics defaults, Matchgrid import ordering, MFI file-location fixes, and duplicate-antigen MFI crash handling for internal transplant operations.
 
 Healthcare software / Tech stack: Lucee, CFML / ColdFusion, AWS, HTML5, JavaScript, CSS, Bootstrap, cfform / cfinput migration considerations, anti-CSRF tokens, audit logging, access control workflows, HTML5 date/time pickers, JavaScript fallbacks, modal/tab UI patterns, icons and tooltips, Matchgrid import workflows, MFI recipient workflows, clinical logistics workflows.
 
