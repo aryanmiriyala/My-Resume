@@ -57,6 +57,8 @@ Do not commit binary/generated artifacts unless Aryan explicitly asks. This incl
 - Preserve the existing LaTeX style unless Aryan asks for a redesign.
 - When adding new skills, confirm they are supported by experience, projects, or explicit user input.
 - Keep bullets concise enough to fit the one-page layout.
+- Do not enforce an arbitrary maximum number of bullets per role or projects per resume. Use as many as the one-page layout can support when the content is relevant, truthful, and materially improves fit.
+- Do not leave a tailored resume looking sparse. If there is usable space, add high-signal experience bullets, a relevant project, or stronger technical detail before considering the resume complete.
 - The resume must be readable by a human reviewer. Do not solve length problems by making the document feel cramped or shrinking text into unreadable sizes.
 - Prefer margin/border and spacing adjustments before cutting meaningful experience, changing the Education structure, or reducing font size.
 - Use a professional summary only when it improves immediate role alignment. It must be 2-3 lines maximum, tailored to the job, grounded in verified experience, and written as what Aryan brings, not what Aryan wants.

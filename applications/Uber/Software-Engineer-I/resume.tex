@@ -32,7 +32,7 @@
 
 \newcommand{\resumeItem}[1]{
   \item\small{
-    {#1 \vspace{-1pt}}
+    {#1 \vspace{-2pt}}
   }
 }
 
@@ -49,7 +49,7 @@
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.16in, itemsep=0pt, topsep=0pt, parsep=0pt]}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
 \begin{document}
 
@@ -63,7 +63,7 @@
 \vspace{-18pt}
 
 \section{Professional Summary}
-\small{Software engineer with backend, full-stack, and systems experience across \textbf{Python}, \textbf{C++}, \textbf{C\#}, \textbf{SQL}, \textbf{TypeScript}, \textbf{Node.js}, \textbf{REST APIs}, \textbf{Docker}, and production reliability work. Built secure internal tools, backend automation, role-based access controls, AWS workflows, and C++/OpenMP systems projects with focus on scalable architecture, debugging, and engineering productivity.}
+\small{Software engineer with backend, full-stack, and systems experience across \textbf{Python}, \textbf{C++}, \textbf{C\#}, \textbf{SQL}, \textbf{TypeScript}, \textbf{Node.js}, \textbf{REST APIs}, \textbf{Docker}, and production reliability. Built secure tools, backend automation, RBAC/JWT controls, AWS workflows, and C++/OpenMP systems projects for scalable architecture, debugging, and engineering productivity.}
 \vspace{-5pt}
 
 \section{Education}
@@ -83,17 +83,9 @@
       {Artificial Intelligence \& Computer Science Intern}{May 2026 -- Present}
       {SmartSolve Industries}{Bowling Green, OH}
       \resumeItemListStart
-        \resumeItem{Built secure internal software with \textbf{Next.js}, \textbf{TypeScript}, \textbf{PostgreSQL}, \textbf{Drizzle ORM}, \textbf{SSO}, and auth middleware, designing a maintainable application stack for onboarding and org-chart workflows around sensitive employee data.}
+        \resumeItem{Built secure internal software with \textbf{Next.js}, \textbf{TypeScript}, \textbf{PostgreSQL}, \textbf{Drizzle ORM}, \textbf{SSO}, and auth middleware for onboarding and org-chart workflows around sensitive employee data.}
         \resumeItem{Created a cross-platform \textbf{Docker} devcontainer for \textbf{WSL2}/\textbf{Colima}, reducing setup friction and standardizing a reproducible environment for AI-assisted software development and code review.}
-      \resumeItemListEnd
-
-    \resumeSubheading
-      {Software Engineering Intern}{May 2023 -- May 2024}
-      {American Association of Insurance Services}{Lisle, IL}
-      \resumeItemListStart
-        \resumeItem{Engineered \textbf{Python}/JSON backend automation that generated \textbf{1,000+} production \textbf{SQL} tables across \textbf{Oracle}/\textbf{PostgreSQL}, supporting standardized data models across \textbf{10+} insurance lines.}
-        \resumeItem{Contributed to a \textbf{React}/\textbf{Node.js} modernization by implementing \textbf{RBAC} and \textbf{JWT} patterns, replacing broad employee-wide access with role-specific controls for roughly \textbf{110} internal users.}
-        \resumeItem{Automated database validation with \textbf{AWS Lambda} triggers that tokenized PII using \textbf{hashlib}/\textbf{boto3} and ingested structured JSON into \textbf{S3} for downstream workflows.}
+        \resumeItem{Applied \textbf{Codex} and \textbf{Claude Code} to implementation planning, debugging, and self-review workflows, improving engineering productivity while keeping proprietary-code isolation and human review central.}
       \resumeItemListEnd
 
     \resumeSubheading
@@ -105,19 +97,31 @@
       \resumeItemListEnd
 
     \resumeSubheading
+      {Software Engineering Intern}{May 2023 -- May 2024}
+      {American Association of Insurance Services}{Lisle, IL}
+      \resumeItemListStart
+        \resumeItem{Engineered \textbf{Python}/JSON backend automation that generated \textbf{1,000+} production \textbf{SQL} tables across \textbf{Oracle}/\textbf{PostgreSQL}, supporting standardized data models across \textbf{10+} insurance lines.}
+        \resumeItem{Built \textbf{Python}/\textbf{Pandas} workflows with multiprocessing, fuzzy matching, and hashing to clean large CSV datasets for production data-standardization pipelines.}
+        \resumeItem{Contributed to a \textbf{React}/\textbf{Node.js} modernization by implementing \textbf{RBAC} and \textbf{JWT} patterns, replacing broad employee-wide access with role-specific controls for roughly \textbf{110} internal users.}
+        \resumeItem{Automated database validation with \textbf{AWS Lambda} triggers that tokenized PII using \textbf{hashlib}/\textbf{boto3} and ingested structured JSON into \textbf{S3} for downstream workflows.}
+      \resumeItemListEnd
+
+    \resumeSubheading
       {Software Engineering Intern}{May 2022 -- Aug. 2022}
       {Alliance for Paired Kidney Donation}{Toledo, OH}
       \resumeItemListStart
         \resumeItem{Secured an \textbf{AWS-hosted} \textbf{Lucee}/\textbf{CFML} workflow platform with global \textbf{anti-CSRF} protection, IP-aware audit logging, and access-denied/404 routing across form-heavy internal workflows.}
+        \resumeItem{Modernized legacy form workflows with \textbf{HTML5} inputs, JavaScript fallbacks, themed CSS, and \textbf{CFML} updates to improve data-entry reliability.}
         \resumeItem{Debugged and triaged \textbf{4} classes of reliability issues across import ordering, MFI upload paths, duplicate-antigen page crashes, and reusable modal/tab screens to stabilize internal operations workflows.}
       \resumeItemListEnd
 
   \resumeSubHeadingListEnd
 
 \section{Projects}
-\begin{itemize}[leftmargin=0.15in, label={}, itemsep=-1pt, topsep=0pt, parsep=0pt]
-  \item\small{\textbf{RocketGrader} $|$ \emph{Angular, TypeScript, Express, MongoDB, Auth0, AWS S3}: Built a full-stack AI education platform with teacher/student dashboards, \textbf{REST APIs}, MongoDB/Mongoose models, role-based auth, file upload/storage, and structured AI feedback workflows.}
-  \item\small{\textbf{Self-Adaptive Parallelism} $|$ \emph{C++, OpenMP, Python, Docker, Linux}: Built a C++/OpenMP runtime research system using per-epoch telemetry, scheduling algorithms, UCB optimization, and performance benchmarks across Mandelbrot, heat diffusion, and reduction workloads.}
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=-2pt, topsep=0pt, parsep=0pt]
+  \item\small{\textbf{RocketGrader} $|$ \emph{Angular, TypeScript, Express, MongoDB, Auth0, AWS S3}: Built a full-stack platform with teacher/student dashboards, \textbf{REST APIs}, role-based auth, file upload/storage, and AI feedback workflows.}
+  \item\small{\textbf{Self-Adaptive Parallelism} $|$ \emph{C++, OpenMP, Python, Docker, Linux}: Built a C++/OpenMP runtime system using telemetry, scheduling algorithms, UCB optimization, and performance benchmarks.}
+  \item\small{\textbf{Diff-Grounded PR Description Generation} $|$ \emph{Python, GitHub API, OpenAI API}: Built an engineering-productivity pipeline generating PR descriptions from commits, diffs, linked issues, and repository metadata.}
 \end{itemize}\vspace{-7pt}
 
 \section{Technical Skills}

@@ -97,6 +97,7 @@ Recommended story:
 
 - Created `applications/Uber/Software-Engineer-I/resume.tex` from the one-page application resume pattern.
 - Tailored summary, skills, experience bullets, and projects toward backend/software engineering, APIs, Docker, production reliability, scalable systems, and algorithms/systems work.
+- Expanded the resume after review so it did not look sparse: added a SmartSolve engineering-productivity bullet, an AAIS Python/Pandas processing bullet, an APKD legacy-form modernization bullet, and the Diff-Grounded PR Description Generation project.
 - Generated `resume.pdf` after verifying it is exactly one readable page.
 
 ## Cover Letter Changes
@@ -106,7 +107,7 @@ Recommended story:
 
 ## Resume Alignment / ATS-Style Score
 
-ATS-style score: 84/100
+ATS-style score: 87/100
 
 ### Strong Matches
 
@@ -116,7 +117,7 @@ ATS-style score: 84/100
 - DevOps/systems alignment: Docker, Docker Compose, devcontainers, Git, Linux, Make, AWS Lambda, S3, IAM, AWS Glue, deployment-aware workflows.
 - Reliability/debugging evidence: APKD reliability fixes, access-denied/404 routing, audit logging, duplicate-antigen page crashes, import ordering, file path debugging, and SmartSolve reproducible development environments.
 - Scale and impact evidence: 1,000+ SQL tables, 10+ insurance lines, 110 internal users, 20+ TB production data, 700+ member companies, 4 classes of reliability issues.
-- Project fit: RocketGrader for REST APIs/auth/cloud storage and Self-Adaptive Parallelism for C++, algorithms, performance, Linux, Docker, and systems thinking.
+- Project fit: RocketGrader for REST APIs/auth/cloud storage, Self-Adaptive Parallelism for C++, algorithms, performance, Linux, Docker, and systems thinking, and Diff-Grounded PR Description Generation for GitHub/API-driven engineering productivity.
 
 ### Gaps / Intentionally Omitted Unsupported Keywords
 
@@ -136,5 +137,5 @@ ATS-style score: 84/100
 - LaTeX compiled: `resume.tex` and `cover-letter.tex` compiled successfully with `pdflatex -interaction=nonstopmode -halt-on-error`.
 - PDF page count: `resume.pdf` is 1 page; `cover-letter.pdf` is 1 page.
 - PDF text checked: Extracted text from both PDFs with `pdftotext` and verified readable extraction.
-- Visual review: Rendered both PDFs to PNG with `pdftoppm`; resume is dense but readable and cover letter is cleanly spaced.
+- Visual review: Rendered both PDFs to PNG with `pdftoppm`; resume is now fuller, dense but readable, and cover letter is cleanly spaced.
 - Cleanup: Removed LaTeX build artifacts and kept source files plus final submission PDFs.
