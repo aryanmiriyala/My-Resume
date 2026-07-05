@@ -7,10 +7,10 @@ Position Aryan as an AI/automation software engineer with practical experience a
 The resume emphasizes:
 
 - SmartSolve: QMS document relationship planning, Next.js/PostgreSQL internal tooling, SSO/auth middleware, Codex/Claude Code, Docker isolation.
-- BGSU Graduate Research Assistant: cybersecurity documentation, training materials, demos, curriculum mapping, technical enablement, leadership of 10 undergraduate students.
+- BGSU Graduate Research Assistant remains useful interview context for cybersecurity training and enablement, but is intentionally omitted from the tailored resume to improve readability.
 - AAIS: production data automation, Python/PySpark/AWS Glue, IAM/S3 access controls, data models, RBAC/JWT, Lambda/S3 workflows.
 - APKD: Lucee/ColdFusion work on an AWS-hosted internal healthcare operations platform, including anti-CSRF coverage, audit logging, access-denied/404 flows, date/time picker migrations, logistics defaults, and reliability fixes.
-- Projects: FalconGraph Search for RAG/content/metadata alignment, Diff-Grounded PR Generation for LLM grounding and evaluation, RocketGrader for AI workflow integration, DreamScape for AI content generation/audio workflows.
+- Projects: FalconGraph Search for RAG/content/metadata alignment, Diff-Grounded PR Generation for LLM grounding and evaluation, and RocketGrader for AI workflow integration.
 
 ## Cover Letter Angle
 
@@ -22,8 +22,7 @@ Use Libbey's enterprise AI strategy and Toledo location as the hook. The letter 
 - FalconGraph Search: RAG, web/PDF ingestion, document chunking, retrieval, source-grounded answers, graph relationships, metadata-aware knowledge system.
 - Diff-Grounded PR Description Generation: Python, OpenAI API, GitHub API, structured evidence, LLM evaluation, grounded generation.
 - RocketGrader: Angular, TypeScript, Express, MongoDB, Auth0, AWS S3, LangChain, Mistral AI, file parsing, AI grading workflows.
-- DreamScape: Gemini API, ElevenLabs API, AI document summarization, generated quizzes, text-to-speech cues, audio caching, local-first tracking.
-- BGSU GRA: technical documentation, cybersecurity training materials, demos, enablement, leadership, NICE/CAE-CD curriculum mapping, security-focused content.
+- BGSU GRA: technical documentation, cybersecurity training materials, demos, enablement, leadership, NICE/CAE-CD curriculum mapping, and security-focused content remain useful interview/cover-letter context, but were removed from the resume for readability.
 - AAIS: enterprise data standardization, AWS Glue, Lambda, S3, IAM, SQL, Python, PySpark, RBAC/JWT, PostgreSQL/Oracle data modeling.
 - Alliance for Paired Kidney Donation: Lucee/ColdFusion, AWS-hosted internal healthcare operations platform, anti-CSRF, audit logging, access-denied/404 flows, date/time picker migration, logistics defaults, reliability fixes.
 

@@ -1,7 +1,7 @@
 \documentclass[letterpaper,11pt]{article}
 
 \usepackage{latexsym}
-\usepackage[letterpaper, left=0.18in, right=0.18in, top=0.08in, bottom=0.06in]{geometry}
+\usepackage[letterpaper, left=0.22in, right=0.22in, top=0.1in, bottom=0.08in]{geometry}
 \usepackage{titlesec}
 \usepackage{marvosym}
 \usepackage[usenames,dvipsnames]{color}
@@ -25,31 +25,31 @@
 \setlength{\tabcolsep}{0in}
 
 \titleformat{\section}{
-  \vspace{-6pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+  \vspace{-5pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-6pt}]
 
 \pdfgentounicode=1
 
 \newcommand{\resumeItem}[1]{
   \item\small{
-    {#1 \vspace{-3pt}}
+    {#1 \vspace{-1pt}}
   }
 }
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
+  \vspace{-1pt}\item
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-4pt}
+    \end{tabular*}\vspace{-3pt}
 }
 
 \renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.16in, itemsep=0pt, topsep=0pt, parsep=0pt]}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-6pt}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.16in, itemsep=0pt, topsep=1pt, parsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
 
 \begin{document}
 
@@ -89,14 +89,6 @@
       \resumeItemListEnd
 
     \resumeSubheading
-      {Graduate Research Assistant I}{Aug. 2024 -- May 2026}
-      {Bowling Green State University}{Bowling Green, OH}
-      \resumeItemListStart
-        \resumeItem{Developed technical training materials, lab guides, and presentations across cybersecurity, cryptography, secure key management, and \textbf{NICE}/\textbf{CAE-CD} curriculum mapping.}
-        \resumeItem{Led \textbf{10} undergraduate students in organizing a CyberCamp, translating technical security topics into structured demos, hands-on labs, and student-facing explanations.}
-      \resumeItemListEnd
-
-    \resumeSubheading
       {Data Engineering Intern}{May 2025 -- Aug. 2025}
       {American Association of Insurance Services}{Lisle, IL}
       \resumeItemListStart
@@ -116,12 +108,11 @@
   \resumeSubHeadingListEnd
 
 \section{Projects}
-\begin{itemize}[leftmargin=0.15in, label={}, itemsep=-2pt, topsep=0pt, parsep=0pt]
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=1pt, topsep=1pt, parsep=0pt]
   \item\small{\textbf{Self-Adaptive Parallelism} $|$ \emph{C++, OpenMP, Python, Docker, Linux}: Built a runtime research system with per-epoch telemetry and a UCB controller to tune scheduling policy, chunk size, and thread count across Mandelbrot, heat diffusion, and reduction workloads.}
   \item\small{\textbf{Performance Modeling Outputs} $|$ \emph{Python, CSV telemetry, benchmarking, visualization}: Generated reproducible runtime, speedup, efficiency, Karp-Flatt, and scheduler-decision plots comparing adaptive scheduling against serial and fixed-policy baselines.}
   \item\small{\textbf{MarioRL Agent Comparison} $|$ \emph{Python, PyTorch, Stable-Baselines3, Gym, TensorBoard}: Compared PPO and DQN agents with frame preprocessing, checkpoints, TensorBoard logs, generated clips, and reward/training-speed performance graphs.}
   \item\small{\textbf{HealthTrend Data Pipeline} $|$ \emph{Spark, PySpark, Kafka, Hadoop HDFS, Docker Compose}: Built a containerized pipeline routing CSV patient data and JSON health events into distributed storage and stream-processing workflows.}
-  \item\small{\textbf{Diff-Grounded PR Generation} $|$ \emph{Python, OpenAI API, GitHub API}: Built an LLM evaluation pipeline using commits, diffs, linked issues, and repository metadata to keep generated engineering summaries grounded in source evidence.}
 \end{itemize}\vspace{-7pt}
 
 \section{Technical Skills}

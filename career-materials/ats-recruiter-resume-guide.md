@@ -85,6 +85,9 @@ Recruiters often scan quickly, so the resume must make relevance visible immedia
 
 - Use a readable font size. MIT CAPD recommends no smaller than 10pt; this repo should prefer readability over squeezing in marginal content.
 - Keep the resume visually scannable in 30-60 seconds.
+- Treat visual density as a failure mode during PDF review. If Experience or Projects looks cramped, reduce weaker content or relax spacing before adding more bullets to fill the page.
+- Do not use aggressive negative spacing in Experience or Projects to satisfy the one-page rule. A full page should still have readable line spacing, clear section transitions, and enough breathing room for a recruiter scan.
+- Prefer fewer high-signal projects over a crowded project list when each project is reduced to a dense one-line block.
 - Do not compress Education into an awkward format unless Aryan approves it.
 - Prefer margin/border adjustment before font-size reduction when a resume is slightly over one page.
 - Keep enough detail in Experience and Projects for a human reviewer to understand what was built, how it worked, and why it mattered.
