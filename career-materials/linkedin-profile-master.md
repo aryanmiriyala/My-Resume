@@ -231,7 +231,8 @@ Recommended top projects for LinkedIn Featured / Projects:
 3. FalconGraph Search: AI-Powered Campus Knowledge Search
 4. RocketGrader: Intelligent Assignment Feedback Platform
 5. HealthTrend: Healthcare Big Data Streaming Pipeline
-6. Self-Adaptive Parallelism via OpenMP Runtime Coordination
+6. Travel Health Advisory Map - BGSU Hackathon 2025
+7. Self-Adaptive Parallelism via OpenMP Runtime Coordination
 
 Copy each project into LinkedIn in this order:
 
@@ -293,6 +294,20 @@ Highlights:
 
 - Built a Dockerized healthcare data pipeline using Apache NiFi, Kafka, Hadoop HDFS, and Spark to ingest structured patient records and stream IoT health events.
 - Routed CSV patient data into HDFS and JSON health events into Kafka, then processed both sources with Spark/PySpark for validation and downstream analytics.
+
+### Travel Health Advisory Map - BGSU Hackathon 2025
+
+Description:
+
+Built a BGSU Hackathon 2025 AI/ML + Health track project with team VibeCoders: a full-stack travel health advisory prototype using React, Vite, Express, MongoDB/Mongoose, and Mistral AI. The application lets users click countries on an interactive world map, retrieves country-specific disease records from an Express API backed by MongoDB aggregation, organizes disease risk and vaccination information, and generates a downloadable vaccination checklist PDF. It also includes a health-profile form, local user/health-profile persistence, dark-mode UI controls, route-based login/signup screens, and a floating Mistral AI chatbot that uses the user's health profile as context for travel-health questions.
+
+Full-stack health AI / Tech stack: React 18, Vite, JavaScript, CSS modules, HTML, Express.js, Node.js, MongoDB, Mongoose, REST APIs, react-simple-maps, world-atlas, D3, TopoJSON, Axios, React Router, Mistral AI API, React Markdown, @react-pdf/renderer, React Toastify, Framer Motion, Lucide React, React Icons, dotenv, CORS, localStorage, npm.
+
+Highlights:
+
+- Built a full-stack BGSU Hackathon 2025 health AI prototype with React, Vite, Express, MongoDB/Mongoose, and Mistral AI for travel-health guidance.
+- Implemented an interactive country-selection map with react-simple-maps, retrieving disease records from an Express/MongoDB API and surfacing risk, vaccine availability, healthcare access, and recovery-rate data.
+- Built a health-profile form, context-aware Mistral AI chatbot, and downloadable vaccination checklist PDF for personalized travel-health workflows.
 
 ### RocketGrader: Intelligent Assignment Feedback Platform
 

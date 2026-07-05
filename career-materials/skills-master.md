@@ -26,8 +26,14 @@ This document records all known technologies and skill areas. Use it to tailor t
 - Expo Router
 - React Navigation
 - react-simple-maps
+- world-atlas
 - D3
 - TopoJSON
+- Framer Motion
+- Lucide React
+- React Icons
+- React Toastify
+- React Markdown
 - TailwindCSS
 - DaisyUI
 - Bootstrap
@@ -47,6 +53,8 @@ This document records all known technologies and skill areas. Use it to tailor t
 - Node.js
 - Express.js
 - Axios
+- CORS
+- dotenv
 - Auth middleware
 - JWT authentication
 - RBAC
@@ -56,6 +64,7 @@ This document records all known technologies and skill areas. Use it to tailor t
 - REST APIs
 - Mongoose
 - bcrypt
+- @react-pdf/renderer
 - Lucee / CFML backend workflows
 - ColdFusion form workflows
 

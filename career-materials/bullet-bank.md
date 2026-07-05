@@ -27,6 +27,8 @@ Avoid:
 - Contributed to a React/Node.js modernization by implementing RBAC and JWT authentication patterns to replace broad employee-wide data access with role-specific controls for about 110 users.
 - Built a full-stack LMS application with Angular, Node.js, MongoDB Atlas, Auth0, AWS S3, and Mistral AI to support role-based assignment workflows and automated feedback.
 - Developed a full-stack travel health platform with React, TailwindCSS, Express.js, MongoDB, and Mistral AI to generate personalized destination-specific advisories.
+- Built a full-stack health AI prototype with React, Vite, Express, MongoDB/Mongoose, and Mistral AI for travel-health guidance during BGSU Hackathon 2025.
+- Implemented an interactive country-selection map with react-simple-maps, retrieving disease records from an Express/MongoDB API and surfacing risk, vaccine availability, healthcare access, and recovery-rate data.
 
 ## Data Engineer
 
@@ -42,6 +44,7 @@ Avoid:
 - Engineered a RAG pipeline with Mistral AI and HuggingFace models to vectorize and query MongoDB health data using cosine similarity search.
 - Built a conversational AI assistant that used retrieved health context to generate personalized travel guidance and downloadable checklists.
 - Developed an LMS feedback agent with Mistral AI and LangChain to automate assignment review.
+- Built a context-aware Mistral AI chatbot that used saved user health-profile details to answer travel-health questions in a React health advisory app.
 - Built an ICSME-published LLM research pipeline that generated evidence-grounded GitHub pull request descriptions from commits, diffs, linked issues, and repository metadata.
 - Built a cross-platform React Native/Expo mobile app for sleep-based microlearning with AI-generated study cues, quizzes, text-to-speech audio, and local-first session tracking.
 - Built a BGSU campus search prototype combining lightweight RAG, live web search, crawled webpages, PDFs, and LLM inference to generate source-grounded answers.

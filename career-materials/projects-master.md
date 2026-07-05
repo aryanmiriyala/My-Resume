@@ -49,39 +49,46 @@ Full-stack AI / Tech stack: React, Node.js, Express.js, MongoDB, Mistral AI, Hug
 ## Travel Health Advisory Map - BGSU Hackathon 2025
 
 Date: 2025  
-Primary positioning: Hackathon health AI application, React/Vite frontend, interactive data visualization, Mistral AI chatbot  
+Primary positioning: Hackathon health AI application, full-stack React/Express prototype, interactive health data visualization, Mistral AI chatbot  
 Source: https://github.com/aryanmiriyala/BGSU-Hackathon-2025
 
 ### Platform-Ready Description
 
-Built a BGSU Hackathon 2025 AI/ML + Health track project with team VibeCoders: an interactive travel health advisory map using React, Vite, and react-simple-maps. The application lets users click countries on a world map, highlights the selected location, displays the selected country name, and includes a floating Mistral AI chatbot for travel-health questions. The project also includes React Router login/signup pages, environment-based API key handling through Vite, and JavaScript/CSS/HTML frontend implementation.
+Built a BGSU Hackathon 2025 AI/ML + Health track project with team VibeCoders: a full-stack travel health advisory prototype using React, Vite, Express, MongoDB/Mongoose, and Mistral AI. The application lets users click countries on an interactive `react-simple-maps` world map, retrieves country-specific disease records from an Express API backed by MongoDB aggregation, organizes disease risk and vaccination information, and generates a downloadable vaccination checklist PDF. It also includes a health-profile form, local user/health-profile persistence, dark-mode UI controls, route-based login/signup screens, and a floating Mistral AI chatbot that uses the user's health profile as context for travel-health questions.
 
 ### Features
 
-- Interactive world map for country selection.
-- Country highlighting and selected-country display.
-- Floating Mistral AI chatbot for health-related travel questions.
-- Login and signup navigation through React Router.
-- Vite environment-variable handling for API configuration.
+- Interactive world map for country selection using `react-simple-maps` and world-atlas geography data.
+- Express API with MongoDB/Mongoose disease records and aggregation by country, disease, population affected, healthcare access, vaccine availability, recovery rate, and occurrence count.
+- Health-profile form capturing chronic conditions, surgeries, medications, symptoms, severity, accommodations, assistive devices, and allergies.
+- Disease advisory UI that groups vaccine-required and non-vaccine disease data, calculates risk levels, and displays travel recommendations.
+- Downloadable vaccination checklist PDF generated with `@react-pdf/renderer`.
+- Floating Mistral AI chatbot that builds prompt context from the user's saved health profile.
+- React Router login/signup screens, localStorage-based user flow, dark mode, toast notifications, animated controls, and responsive CSS module styling.
+- Vite environment-variable handling for Mistral API configuration.
 
 ### Tech Stack
 
-Health AI frontend / Tech stack: React 18, Vite, JavaScript, CSS, HTML, react-simple-maps, D3, TopoJSON, Axios, React Router, Mistral AI API, Node.js, npm.
+Full-stack health AI / Tech stack: React 18, Vite, JavaScript, CSS modules, HTML, Express.js, Node.js, MongoDB, Mongoose, REST APIs, react-simple-maps, world-atlas, D3, TopoJSON, Axios, React Router, Mistral AI API, React Markdown, @react-pdf/renderer, React Toastify, Framer Motion, Lucide React, React Icons, dotenv, CORS, localStorage, npm.
 
 ### Positioning Angles
 
 - Healthcare-adjacent software project
 - Graduate software engineer project
-- JavaScript/React feature development
-- AI chatbot integration
-- Interactive data visualization
+- Full-stack JavaScript/React feature development
+- Express/MongoDB health data API
+- AI chatbot integration with user health context
+- Interactive geospatial data visualization
+- Health-profile and vaccination-checklist workflow
+- PDF generation
 - Hackathon teamwork
 
 ### Reusable Bullet Options
 
-- Built a BGSU Hackathon 2025 health AI application with React, Vite, and react-simple-maps, enabling users to explore an interactive world map and select countries for travel-health context.
-- Integrated a floating Mistral AI chatbot with Axios and Vite environment configuration to answer health-related travel questions from the frontend.
-- Implemented React Router login/signup flows and JavaScript/CSS UI components for a hackathon project in the AI/ML and Health tracks.
+- Built a full-stack BGSU Hackathon 2025 health AI prototype with React, Vite, Express, MongoDB/Mongoose, and Mistral AI for travel-health guidance.
+- Implemented an interactive country-selection map with `react-simple-maps`, retrieving disease records from an Express/MongoDB API and surfacing risk, vaccine availability, healthcare access, and recovery-rate data.
+- Built a health-profile form and context-aware Mistral AI chatbot that used saved user health details to answer travel-health questions.
+- Generated downloadable vaccination checklist PDFs with `@react-pdf/renderer` based on country-specific vaccine-required disease data.
 
 ## RocketGrades
 
