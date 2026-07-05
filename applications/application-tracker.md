@@ -1,0 +1,23 @@
+# Application Tracker
+
+Use this table to track active and historical applications. Keep binary resumes and cover letters out of the repo unless explicitly needed.
+
+| Status | Company | Role | Location | Date Added | Last Update | Deadline | Resume Path | Cover Letter Path | Job Link | Notes |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Rejected | Sony | Software Engineer I | TBD | TBD | TBD | N/A | N/A | N/A | N/A | Folder removed after rejection. |
+
+## Status Values
+
+- Considering
+- Drafting
+- Ready
+- Applied
+- Confirmation
+- Assessment
+- Recruiter Response
+- Interviewing
+- Rejected
+- Offer
+- Archived
+- Needs Review
+
