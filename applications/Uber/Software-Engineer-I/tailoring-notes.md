@@ -1,6 +1,6 @@
 # Tailoring Notes - Uber Software Engineer I
 
-Status: Job description saved and tailoring direction drafted on 2026-07-05. Resume and cover-letter content changes require Aryan approval before implementation.
+Status: Resume and cover letter generated on 2026-07-05 under the full-pipeline rule.
 
 ## Target Angle
 
@@ -86,26 +86,55 @@ Recommended story:
 - Use APKD as evidence of production reliability and operational debugging.
 - Close with fit for backend/API engineering, scalable systems, cross-team collaboration, and production-minded software development.
 
-## Questions for Aryan Before Drafting Cover Letter
+## Cover Letter Personalization Assumptions
 
-- What genuinely interests you about Uber: global scale, rides/marketplace systems, mobility, delivery/logistics, engineering productivity, or backend distributed systems?
-- Do you have any personal connection to Uber as a rider/user, driver/courier community, transportation, cities, or marketplace platforms?
-- Are you comfortable with Sunnyvale / Bay Area hybrid expectations if the role requires at least 50% in-office?
-- Can you confirm whether you have any real Kubernetes, Java, production monitoring, or deployment-process experience?
+- Use a general but specific engineering-scale angle because Aryan has not provided a separate personal Uber story.
+- Emphasize interest in Uber's global marketplace, real-world mobility systems, backend reliability, and engineering productivity.
+- Flag Sunnyvale / Bay Area hybrid expectations in notes and final response.
+- Do not include Kubernetes, Java, or formal monitoring tooling unless Aryan later confirms direct experience.
 
-## Proposed Resume Changes Pending Approval
+## Resume Changes
 
-- Create `applications/Uber/Software-Engineer-I/resume.tex` from the one-page application resume pattern after approval.
-- Tailor summary, skills, experience bullets, and projects toward backend/software engineering, APIs, Docker, production reliability, scalable systems, and algorithms/systems work.
-- Generate `resume.pdf` only after approved content changes are applied and the PDF verifies as exactly one readable page.
+- Created `applications/Uber/Software-Engineer-I/resume.tex` from the one-page application resume pattern.
+- Tailored summary, skills, experience bullets, and projects toward backend/software engineering, APIs, Docker, production reliability, scalable systems, and algorithms/systems work.
+- Generated `resume.pdf` after verifying it is exactly one readable page.
 
-## Proposed Cover Letter Changes Pending Approval
+## Cover Letter Changes
 
-- Create `cover-letter.md`, `cover-letter.tex`, and `cover-letter.pdf` only after Aryan confirms the personalization answers above or approves using a general engineering-scale angle.
-- Keep the cover letter to at most two full paragraphs with a personal + technical tone.
+- Created `cover-letter.md`, `cover-letter.tex`, and `cover-letter.pdf` using a general engineering-scale angle.
+- Kept the cover letter to two full paragraphs with a personal + technical tone.
 
 ## Resume Alignment / ATS-Style Score
 
-ATS-style score: Pending until tailored resume is generated.
+ATS-style score: 84/100
 
-Expected alignment: Medium-high if the resume is shifted to backend/software engineering. Strong matches exist for Python, C++, C#, SQL, APIs, Docker, React/Node, production reliability, and scalable workflow systems. Main risk areas are Java, Kubernetes, formal monitoring tools, and direct Uber-scale distributed systems.
+### Strong Matches
+
+- Role family: Software Engineer I, backend/full-stack software engineering, scalable systems, engineering productivity, production reliability.
+- Languages and core technical requirements: Python, C++, C#, SQL, MySQL, TypeScript/JavaScript, object-oriented design, data structures, algorithms, complexity analysis.
+- Backend/API alignment: Node.js, Express, REST APIs, PostgreSQL, MongoDB, Oracle, JWT, RBAC, SSO, auth middleware.
+- DevOps/systems alignment: Docker, Docker Compose, devcontainers, Git, Linux, Make, AWS Lambda, S3, IAM, AWS Glue, deployment-aware workflows.
+- Reliability/debugging evidence: APKD reliability fixes, access-denied/404 routing, audit logging, duplicate-antigen page crashes, import ordering, file path debugging, and SmartSolve reproducible development environments.
+- Scale and impact evidence: 1,000+ SQL tables, 10+ insurance lines, 110 internal users, 20+ TB production data, 700+ member companies, 4 classes of reliability issues.
+- Project fit: RocketGrader for REST APIs/auth/cloud storage and Self-Adaptive Parallelism for C++, algorithms, performance, Linux, Docker, and systems thinking.
+
+### Gaps / Intentionally Omitted Unsupported Keywords
+
+- Java is listed in the posting but omitted because confirmed experience is not available.
+- Kubernetes is listed in the posting but omitted because confirmed direct experience is not available.
+- Formal production monitoring tools are not named because confirmed tooling is not available; the resume uses debugging, reliability, audit logging, and runtime instrumentation truthfully.
+- Direct Uber-scale distributed systems are not claimed; the resume frames distributed systems through projects and production-scale data/workflow experience.
+
+### Recommended Improvements
+
+- If Aryan has real Kubernetes, Java, deployment-process, or monitoring-tool experience, add only the verified items.
+- If space allows in a future revision, add one explicit phrase around `Software Development Lifecycle` or `cross-team collaboration`.
+- Confirm Sunnyvale / Bay Area hybrid feasibility before submitting because the posting says employees generally spend at least 50% of time in-office unless approved for full remote work.
+
+## Verification
+
+- LaTeX compiled: `resume.tex` and `cover-letter.tex` compiled successfully with `pdflatex -interaction=nonstopmode -halt-on-error`.
+- PDF page count: `resume.pdf` is 1 page; `cover-letter.pdf` is 1 page.
+- PDF text checked: Extracted text from both PDFs with `pdftotext` and verified readable extraction.
+- Visual review: Rendered both PDFs to PNG with `pdftoppm`; resume is dense but readable and cover letter is cleanly spaced.
+- Cleanup: Removed LaTeX build artifacts and kept source files plus final submission PDFs.
