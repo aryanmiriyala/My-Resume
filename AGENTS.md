@@ -14,7 +14,7 @@ For every new job application:
 
 1. Create `applications/<Company>/<Role>/`.
 2. Save the job posting as `job-description.md`.
-3. Add or update the role in `applications/application-tracker.md`.
+3. Add or update the role in `application-management/application-tracker.md`.
 4. Review `career-materials/` for relevant experience, projects, skills, and reusable bullets.
 5. Apply `career-materials/cover-letter-guide.md` before drafting any cover letter. Ask Aryan cover-letter personalization questions first:
    - What genuinely interests you about this company?
@@ -25,7 +25,7 @@ For every new job application:
 8. Generate `resume.pdf` locally from the tailored LaTeX source only when needed for submission.
 9. Create `cover-letter.md`.
 10. Add `tailoring-notes.md` explaining which experience, projects, and keywords were emphasized.
-11. Update `applications/application-tracker.md` when the application is ready, applied, rejected, interviewing, or archived.
+11. Update `application-management/application-tracker.md` when the application is ready, applied, rejected, interviewing, or archived.
 
 ## Directory Conventions
 
@@ -33,7 +33,8 @@ For every new job application:
 - `source/master-cover-letter/`: reusable cover-letter template material.
 - `career-materials/`: source-of-truth documents for experience, projects, skills, bullet banks, and cover-letter language.
 - `applications/<Company>/<Role>/`: one complete application package per role.
-- `applications/application-tracker.md`: high-level status tracker for all active and historical applications.
+- `application-management/application-tracker.md`: high-level status tracker for all active and historical applications.
+- `application-management/email-rules.md`: application-email classification and search rules.
 - `templates/`: reusable scaffolds for application folders and notes.
 
 Do not keep duplicate master resume copies. The canonical resume source is `source/master-resume/resume.tex`.
@@ -86,7 +87,7 @@ Rules:
 - A scheduled Gmail status check should run 4 times per day, not continuously.
 - Suggested local schedule: 8:00 AM, 12:00 PM, 4:00 PM, and 8:00 PM local time.
 - The monitor should classify application-related messages as `Confirmation`, `Assessment`, `Recruiter Response`, `Interview`, `Rejection`, `Offer`, or `Unknown`.
-- The monitor should update `applications/application-tracker.md` and, when useful, `applications/<Company>/<Role>/email-updates.md`.
+- The monitor should update `application-management/application-tracker.md` and, when useful, `applications/<Company>/<Role>/email-updates.md`.
 - Do not commit Gmail credentials, OAuth tokens, raw full email bodies, or private message dumps.
 - Store only sanitized metadata by default: sender, subject, date, detected company, detected role, status, and a short note.
 - If uncertain, mark the tracker row as `Needs Review` rather than making an irreversible assumption.
