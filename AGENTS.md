@@ -31,7 +31,8 @@ For every new job application:
 12. Create `cover-letter.md` and, when submitting, generate a `cover-letter.pdf` or `cover-letter.docx`.
 13. Run a resume-vs-job-description alignment pass after generating the resume. Include an ATS-style score, matched keywords, missing-but-truthful keyword opportunities, unsupported keywords intentionally omitted, and concrete next-step recommendations.
 14. Add `tailoring-notes.md` explaining which experience, projects, and keywords were emphasized, plus the alignment pass and ATS-style score.
-15. Update `application-management/application-tracker.md` when the application is ready, applied, rejected, interviewing, or archived.
+15. Run `python3 scripts/validate_application_package.py applications/<Company>/<Role>` before marking the package ready. Fix failures instead of ignoring them. If a failure is intentional for a specific application, document the reason in `tailoring-notes.md` and the final response.
+16. Update `application-management/application-tracker.md` when the application is ready, applied, rejected, interviewing, or archived.
 
 If the job description includes an eligibility, location, sponsorship, clearance, degree, or schedule constraint, flag it during the intake response before spending effort on final artifacts. Continue with the proposal unless the constraint clearly makes the role impossible.
 
@@ -151,5 +152,6 @@ After approved resume changes:
 2. Confirm the PDF page count with `pdfinfo resume.pdf`. It must be exactly 1 page.
 3. Extract text with `pdftotext resume.pdf -` and check that bullets read correctly.
 4. Run the resume-vs-job-description alignment pass and record the ATS-style score in `tailoring-notes.md`.
-5. Report changed files, verification results, and the ATS-style score.
-6. Remove generated LaTeX build artifacts. Keep submission PDFs only when Aryan asks for final application artifacts or when the application package needs a ready-to-submit PDF.
+5. Run `python3 scripts/validate_application_package.py applications/<Company>/<Role>` and address any failures.
+6. Report changed files, verification results, validator result, and the ATS-style score.
+7. Remove generated LaTeX build artifacts. Keep submission PDFs only when Aryan asks for final application artifacts or when the application package needs a ready-to-submit PDF.

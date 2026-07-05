@@ -4,6 +4,36 @@
 
 Position Aryan as an early-career systems/performance engineer with strong computer science fundamentals, Python analysis code, C++/OpenMP runtime experimentation, reproducible benchmarking, ML/RL experimentation, and large-scale data pipeline experience. The job is not a generic applied AI role; it is a workload characterization, performance modeling, hardware/software tradeoff, and technical communication role.
 
+## Job Keyword Map
+
+Required skills:
+
+- Computer Science degree, 0-2 years of relevant systems/ML/performance engineering experience, English written/verbal fluency, strong GPA, Python analysis code, reproducible modeling, technical communication.
+
+Repeated terms:
+
+- AI/ML workloads, workload characterization, performance modeling, throughput, latency, efficiency, architecture discussions, runtime, scheduling, memory layout, KPIs, written reports, presentations.
+
+Responsibilities:
+
+- Study AI/ML workload behavior, build quantitative models, evaluate throughput/latency/efficiency, reason about bottlenecks, communicate findings, and contribute to architecture/design tradeoff discussions.
+
+Domain language:
+
+- Semiconductor systems, hardware/software tradeoffs, inference/training workloads, compute and memory behavior, model validation, pre-silicon estimates, compiler/runtime collaboration.
+
+Must-have tools:
+
+- Python, C++/OpenMP, benchmarking, reproducible analysis, performance telemetry, PyTorch/TensorBoard, SQL/data pipelines where relevant.
+
+Nice-to-have tools:
+
+- Spark/PySpark, AWS Glue, LLM evaluation, Docker/Linux, reinforcement learning experimentation.
+
+Unsupported terms to avoid:
+
+- MLIR, IREE, TVM, RISC-V, silicon validation, SoC architecture ownership, roofline analysis, operational intensity profiling, ISA extensions, memory subsystem sizing, AI compiler toolchains, CUDA/GPU programming unless Aryan later verifies direct experience.
+
 The resume emphasizes:
 
 - Self-Adaptive Parallelism: C++/OpenMP runtime instrumentation, per-epoch telemetry, adaptive scheduling, UCB optimization, benchmarking, speedup/efficiency/Karp-Flatt plots, and workload behavior analysis.
@@ -34,6 +64,28 @@ Use a technical, honest, personal angle: Aryan is drawn to the role because it c
 - Diff-Grounded PR Generation: Python, OpenAI API, GitHub API, commits, diffs, linked issues, metadata, LLM evaluation, source-grounded generation.
 - HealthTrend remains supporting source material for Spark/Kafka/Hadoop context, but was omitted from the tailored resume because internship experience takes precedence over project breadth.
 - BGSU GRA remains useful interview context for technical communication and leadership, but is intentionally omitted from the resume to keep the one-page layout readable.
+
+## Bullet Audit
+
+Every experience and project bullet was checked against: action verb + what changed + technology/method + scope/domain + impact/result.
+
+Experience bullets checked:
+
+- SmartSolve bullets lead with supported/built/created, name QMS, Next.js, TypeScript, PostgreSQL, Drizzle ORM, SSO, auth middleware, Docker, WSL2/Colima, and explain traceability, secure workflows, and reproducible development.
+- AAIS Data Engineering bullets lead with automated/built, name Python, PySpark, AWS Glue, SQL, S3, IAM, MDM, and include verified scale of 20+ TB and 700+ member companies.
+- AAIS Software Engineering bullets lead with engineered/built/automated, name Python/JSON, SQL, Oracle/PostgreSQL, Pandas, AWS Lambda, hashlib/boto3, S3, and include verified 1,000+ table and 10+ insurance-line scope.
+- APKD bullet leads with built and stabilized, names Lucee/ColdFusion and AWS-hosted healthcare operations, and explains security, auditability, date/time modernization, logistics defaults, and reliability fixes.
+
+Project bullets checked:
+
+- Self-Adaptive Parallelism bullet names C++, OpenMP, Python, Docker, Linux, per-epoch telemetry, UCB control, scheduling policy, chunk size, thread count, and performance plots across three workloads.
+- MarioRL bullet names Python, PyTorch, Stable-Baselines3, Gym, TensorBoard, PPO, DQN, preprocessing, checkpoints, generated clips, and performance graphs.
+- Diff-Grounded PR Generation bullet names Python, OpenAI API, GitHub API, LLM evaluation, commits, diffs, linked issues, metadata, structured PR descriptions, and source-grounded output evaluation.
+
+Weak bullets rewritten:
+
+- Consolidated the self-adaptive runtime and performance-output project bullets into one stronger project entry to make room for APKD while preserving performance-modeling evidence.
+- Removed HealthTrend from the submitted resume because internship experience takes precedence over project breadth; kept it as supporting source material in these notes.
 
 ## Important Keyword Targets
 
@@ -80,3 +132,4 @@ Recommended improvements:
 - Cover letter compiled to one page.
 - PDF text extraction reviewed for ATS-readable content.
 - Visual PDF render reviewed for spacing, readability, and bottom-of-page density.
+- Application validator run.

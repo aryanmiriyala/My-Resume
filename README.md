@@ -4,6 +4,14 @@ This repository stores Aryan Miriyala's master resume, career source material, a
 
 The workflow is defined in `AGENTS.md`. Future resume and cover-letter work should follow that pipeline.
 
+Before an application package is treated as ready, run:
+
+```bash
+python3 scripts/validate_application_package.py applications/<Company>/<Role>
+```
+
+The validator checks required application files, the one-page resume PDF rule, ATS/alignment sections in `tailoring-notes.md`, required internship experience markers, cover-letter submission artifacts, and leftover LaTeX build files.
+
 ## Structure
 
 - `source/master-resume/`: canonical general resume source and PDF.
@@ -12,6 +20,7 @@ The workflow is defined in `AGENTS.md`. Future resume and cover-letter work shou
 - `applications/<Company>/<Role>/`: tailored resume source, cover-letter source/artifact, job description, and notes for each application.
 - `application-management/`: application tracker and email-monitoring rules.
 - `templates/`: reusable scaffolds for job descriptions and tailoring notes.
+- `scripts/validate_application_package.py`: package validator for the application pipeline.
 
 ## Current Canonical Resume
 
