@@ -29,35 +29,35 @@ Tone:
 
 ## About Section Draft
 
-### Option A: Balanced and Recruiter-Friendly
+### Option A: Recommended - Applied AI + Software Systems
 
-I am a Computer Science master's student at Bowling Green State University, graduating in August 2026, with experience across software engineering, data engineering, AI-enabled applications, cloud workflows, and cybersecurity education.
+I am a Computer Science master's student at Bowling Green State University, graduating in August 2026, focused on applied AI, software engineering, cloud/data systems, and secure full-stack development.
 
-My work has ranged from building full-stack applications with Next.js, React, Angular, Node.js, PostgreSQL, MongoDB, and Auth0 to developing AWS data pipelines with Glue, S3, Lambda, PySpark, Impala, Oracle, and Semarchy MDM. I have also built AI projects involving RAG, LLM evaluation, Mistral AI, LangChain, OpenAI API, Gemini, HuggingFace models, and mobile AI experiences.
+Across internships, research, and project work, I have built systems that sit between real operational problems and practical technology: AI-assisted applications, LLM/RAG workflows, full-stack web platforms, AWS data pipelines, secure internal tools, healthcare-adjacent software, and cybersecurity education resources. My work has used Python, JavaScript/TypeScript, React, Next.js, Angular, Node.js, PostgreSQL, MongoDB, AWS Glue, S3, Lambda, PySpark, Docker, LangChain, Mistral AI, OpenAI API, Gemini, and modern authentication/access-control patterns.
 
-What connects the work for me is building systems that are useful, reliable, and grounded in real workflows: automating manual billing over large datasets, modernizing secure healthcare workflows, creating AI-assisted education tools, and supporting cybersecurity learning materials for students.
+The common thread in my experience is applied AI with engineering discipline. I am interested in using AI where it actually improves a workflow: helping users reason through information, generating useful feedback, supporting search and retrieval, analyzing software artifacts, assisting engineering work, or making data-heavy systems easier to operate. I care about building products that are useful, reliable, secure, and understandable to the people using them.
 
-I am currently seeking software engineering, full-stack, data engineering, AI/ML, cloud, and analytics roles where I can build practical systems at the intersection of software, data, and AI.
+I am currently seeking software engineering, AI engineering, full-stack, data engineering, cloud, and analytics roles where I can build practical systems at the intersection of software, data, and AI.
 
 ### Option B: More Personal / Story-Driven
 
-I like building systems that turn messy, real-world workflows into software people can actually use.
+I like building software that turns complex, messy workflows into systems people can actually use.
 
-That has shown up in different ways across my work: automating large-scale insurance billing pipelines with AWS Glue and PySpark, building full-stack applications with modern JavaScript stacks, creating AI-powered education and health projects, supporting cybersecurity learning materials, and working on AI-assisted internal tools at SmartSolve.
+That interest has taken me through full-stack product development, cloud data engineering, applied AI projects, cybersecurity education, healthcare-adjacent software, and research involving large language models. I have worked with modern web stacks, AWS data workflows, secure authentication patterns, LLM-powered applications, RAG/search systems, AI-assisted development tools, and data pipelines that connect multiple enterprise sources.
 
-I am currently completing my M.S. in Computer Science at Bowling Green State University, graduating in August 2026. My technical interests sit at the intersection of software engineering, data/cloud systems, AI applications, and applied security. I enjoy work where I can move between product thinking and technical implementation: understanding the workflow, designing the system, building it, and making it reliable enough to matter.
+What I enjoy most is the full path from understanding a problem to shaping the technical solution: figuring out the workflow, designing the system, building the interface or pipeline, connecting the data, and using AI only where it adds real value. I am especially interested in applied AI that helps people make decisions, learn faster, search better, automate repetitive work, or understand complex technical information.
 
-I am open to software engineering, full-stack, data engineering, AI/ML, cloud, and analytics roles.
+I am completing my M.S. in Computer Science at Bowling Green State University and am open to software engineering, AI/ML, full-stack, data engineering, cloud, and analytics roles.
 
-### Option C: Technical but Still Human
+### Option C: Technical and Recruiter-Friendly
 
-I am a Computer Science master's student at Bowling Green State University, graduating in August 2026, focused on building practical software systems across AI, full-stack development, data engineering, cloud workflows, and cybersecurity.
+I am a Computer Science master's student at Bowling Green State University, graduating in August 2026, with experience across applied AI, full-stack software engineering, data engineering, cloud workflows, secure application development, and cybersecurity education.
 
-Professionally, I have worked on AWS data pipelines processing 20+ TB of Impala data, full-stack React/Node and Next.js applications with secure authentication, healthcare workflow modernization in an AWS-hosted Lucee/CFML platform, and AI-assisted internal tooling. My project work includes LLM research for pull-request description generation, RAG-based search and review analysis, AI-powered learning tools, reinforcement learning, and distributed healthcare data pipelines.
+My technical background includes Python, SQL, JavaScript/TypeScript, React, Next.js, Angular, Node.js, PostgreSQL, MongoDB, AWS Glue, S3, Lambda, IAM, PySpark, Docker, LangChain, Mistral AI, OpenAI API, Gemini, HuggingFace models, RAG, LLM evaluation, JWT, RBAC, SSO, and audit/security-aware application workflows.
 
-I am interested in roles where strong engineering fundamentals, practical AI, and data-aware product thinking come together.
+I have built and contributed to AI-enabled products, full-stack applications, cloud data pipelines, healthcare and education technology prototypes, software repository mining research, cybersecurity learning materials, and internal tools that combine secure workflows with practical automation. I am strongest in roles where software engineering, data systems, and applied AI come together.
 
-Currently seeking software engineering, full-stack, data engineering, AI/ML, cloud, and analytics opportunities.
+Currently seeking software engineering, AI engineering, full-stack, data engineering, cloud, and analytics opportunities.
 
 ## Experience Section Drafts
 
