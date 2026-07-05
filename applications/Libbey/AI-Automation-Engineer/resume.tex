@@ -1,0 +1,136 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[letterpaper, left=0.2in, right=0.2in, top=0.1in, bottom=0.08in]{geometry}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-5pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-6pt}]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-3pt}
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.16in, itemsep=0pt, topsep=0pt, parsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+\begin{center}
+    \textbf{\LARGE \scshape Aryan Miriyala} \\ \vspace{-2pt}
+    \small +1 419-315-0444 $|$
+    \href{mailto:aryanmiriyala@gmail.com}{\underline{aryanmiriyala@gmail.com}} $|$
+    \href{https://www.linkedin.com/in/aryan-miriyala-7788a21b6/}{\underline{linkedin.com/in/aryan-miriyala}} $|$
+    \href{https://github.com/aryanmiriyala}{\underline{\textbf{github.com/aryanmiriyala}}}
+\end{center}
+\vspace{-18pt}
+
+\section{Professional Summary}
+\small{AI and automation-focused software engineer with experience building \textbf{LLM}, \textbf{RAG}, full-stack, data, and secure workflow systems using \textbf{Python}, \textbf{TypeScript}, \textbf{Next.js}, \textbf{Node.js}, \textbf{PostgreSQL}, \textbf{Docker}, and \textbf{AWS}. Built AI-assisted workflows, source-grounded generation, document/search systems, internal automation, and technical enablement materials with attention to governance, metadata, APIs, and security.}
+\vspace{-5pt}
+
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Bowling Green State University}{Bowling Green, OH}
+    {Master of Science in Computer Science, \textbf{GPA: 4.00/4.00}}{Aug. 2024 -- Aug. 2026}
+  \resumeSubheading
+    {Bowling Green State University}{Bowling Green, OH}
+    {Bachelor of Science in Computer Science, \textbf{GPA: 4.00/4.00}}{Jan. 2021 -- Apr. 2024}
+\resumeSubHeadingListEnd
+
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Artificial Intelligence \& Computer Science Intern}{May 2026 -- Present}
+      {SmartSolve Industries}{Bowling Green, OH}
+      \resumeItemListStart
+        \resumeItem{Supported AI-enabled internal software planning, including a \textbf{QMS dependency register} for modeling relationships between quality documents and improving document traceability.}
+        \resumeItem{Built secure internal software with \textbf{Next.js}, \textbf{TypeScript}, \textbf{PostgreSQL}, \textbf{Drizzle ORM}, \textbf{SSO}, and auth middleware for onboarding and org-chart workflows around sensitive employee data.}
+        \resumeItem{Applied \textbf{Codex} and \textbf{Claude Code} to implementation planning, debugging, and self-review while using a \textbf{Docker} devcontainer to isolate AI-assisted workflows around proprietary code.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Graduate Research Assistant I}{Aug. 2024 -- May 2026}
+      {Bowling Green State University}{Bowling Green, OH}
+      \resumeItemListStart
+        \resumeItem{Developed technical training materials, lab guides, and enablement content across cybersecurity, email security, cryptography, secure key management, and \textbf{NICE}/\textbf{CAE-CD} curriculum mapping.}
+        \resumeItem{Led \textbf{10} undergraduate students in organizing a CyberCamp, translating security concepts into demos and hands-on activities for phishing, password security, cryptography, and cyber escape-room material.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Data Engineering Intern}{May 2025 -- Aug. 2025}
+      {American Association of Insurance Services}{Lisle, IL}
+      \resumeItemListStart
+        \resumeItem{Automated a fully manual \textbf{SQL} billing workflow with \textbf{Python}, \textbf{PySpark}, and \textbf{AWS Glue}, processing \textbf{20+ TB} of production insurance data for \textbf{700+} member companies.}
+        \resumeItem{Built validation, reverse-ETL, and custom \textbf{AWS IAM} access patterns across \textbf{S3} and MDM workflows, improving controlled data access and reducing recurring manual operations.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Software Engineering Intern}{May 2023 -- May 2024}
+      {American Association of Insurance Services}{Lisle, IL}
+      \resumeItemListStart
+        \resumeItem{Engineered \textbf{Python}/JSON backend automation generating \textbf{1,000+} production \textbf{SQL} tables across \textbf{Oracle}/\textbf{PostgreSQL}, supporting standardized data models across \textbf{10+} insurance lines.}
+        \resumeItem{Contributed to a \textbf{React}/\textbf{Node.js} modernization by implementing \textbf{RBAC} and \textbf{JWT} patterns, replacing broad employee-wide access with role-specific controls for roughly \textbf{110} internal users.}
+        \resumeItem{Automated database validation with \textbf{AWS Lambda} triggers that tokenized PII using \textbf{hashlib}/\textbf{boto3} and ingested structured JSON into \textbf{S3} for downstream workflows.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+\section{Projects}
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=-2pt, topsep=0pt, parsep=0pt]
+  \item\small{\textbf{FalconGraph Search} $|$ \emph{Python, Flask, OpenAI API, RAG, React, Next.js}: Built a campus knowledge-search prototype with web/PDF ingestion, document chunking, retrieval, source-grounded answers, and graph relationships.}
+  \item\small{\textbf{Diff-Grounded PR Description Generation} $|$ \emph{Python, OpenAI API, GitHub API}: Built an LLM pipeline generating evidence-grounded PR descriptions from commits, diffs, linked issues, and metadata, with automated evaluation against code-change evidence.}
+  \item\small{\textbf{RocketGrader} $|$ \emph{Angular, TypeScript, Express, MongoDB, Auth0, AWS S3}: Built a full-stack AI feedback platform with REST APIs, role-based dashboards, file parsing, cloud storage, and LangChain/Mistral AI grading workflows.}
+  \item\small{\textbf{DreamScape} $|$ \emph{React Native, Expo, TypeScript, Gemini API, ElevenLabs API}: Built an AI mobile app with document summarization, generated quizzes, text-to-speech cues, audio caching, cue scheduling, and local-first session tracking.}
+\end{itemize}\vspace{-7pt}
+
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{AI \& Automation}{: Codex, Claude Code, OpenAI API, Gemini API, ElevenLabs API, LangChain, Mistral AI, RAG, prompt engineering, LLM evaluation} \\
+     \textbf{Software \& APIs}{: Python, TypeScript/JavaScript, React, Next.js, Angular, Node.js, Express, REST APIs, PostgreSQL, MongoDB, Oracle} \\
+     \textbf{Cloud, Data \& Security}{: AWS Glue, Lambda, S3, IAM, PySpark, Pandas, Docker, Git, Linux, SSO, JWT, RBAC, anti-CSRF, audit logging} \\
+     \textbf{Knowledge Systems}{: document chunking, metadata-aware retrieval, source-grounded generation, data modeling, technical documentation, training demos}
+    }}
+ \end{itemize}
+
+\end{document}
