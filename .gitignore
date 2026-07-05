@@ -1,0 +1,18 @@
+# Resume copy / working draft (not for version control)
+resume-copy.*
+aryan-resume-jun2026.pdf
+
+# Cover letters
+Cover-Letter-*.docx
+
+# Binary/generated artifacts
+*.pdf
+*.docx
+*.png
+.DS_Store
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.synctex.gz
