@@ -4,6 +4,8 @@ This repository is used to maintain Aryan Miriyala's master resume materials and
 
 ## Operating Rule
 
+When Aryan provides a job description, treat it as a request to run the established application pipeline for that role. Save the posting, research the company when useful, create or update the application package, draft tailoring notes, and propose resume/cover-letter changes. If Aryan asks for specific changes after that, incorporate them into the same pipeline.
+
 Before changing resume or cover-letter content, first show the proposed changes in chat and wait for Aryan's approval. After approval, apply the changes, generate artifacts, and verify the output.
 
 Make incremental commits for small, coherent changes so the repository stays easy to review and push to GitHub. Do not bundle unrelated resume, cover-letter, application, tracker, and source-material updates into one large commit.
