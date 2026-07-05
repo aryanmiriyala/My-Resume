@@ -4,9 +4,9 @@ This repository is used to maintain Aryan Miriyala's master resume materials and
 
 ## Operating Rule
 
-When Aryan provides a job description, treat it as a request to run the established application pipeline for that role. Aryan should not need to separately ask for the next steps. Save the posting, research the company when useful, create or update the application package, draft tailoring notes, update the tracker, and immediately provide the proposed resume and cover-letter direction needed to continue the application.
+When Aryan provides a job description, treat it as a request to run the complete established application pipeline for that role. Aryan should not need to separately ask for setup, next steps, resume generation, cover-letter generation, PDF compilation, ATS alignment, or tracker updates. Save the posting, research the company when useful, create or update the application package, draft tailoring notes, generate the tailored resume and cover letter, compile submission PDFs, run the alignment/ATS-style score, verify outputs, update the tracker, commit, and push.
 
-Supplying a job description is approval to perform intake/setup work and produce the proposal. It is not approval to change resume or cover-letter content. Before changing resume or cover-letter content, first show the proposed changes in chat and wait for Aryan's approval. After approval, apply the changes, generate artifacts, and verify the output.
+Supplying a job description is approval to perform the full pipeline and generate tailored application artifacts. Do not stop at a proposal unless Aryan explicitly asks to review proposed changes first. If the job description has serious blockers, unsupported requirements, or unclear fit, proceed with truthful materials while flagging those risks in `tailoring-notes.md` and the final response.
 
 Make incremental commits for small, coherent changes so the repository stays easy to review and push to GitHub. Do not bundle unrelated resume, cover-letter, application, tracker, and source-material updates into one large commit.
 
@@ -19,12 +19,12 @@ For every new job application:
 3. Add or update the role in `application-management/application-tracker.md`.
 4. Review `career-materials/` for relevant experience, projects, skills, and reusable bullets.
 5. Apply `career-materials/ats-recruiter-resume-guide.md` and `career-materials/resume-targeting-guide.md` before proposing resume edits.
-6. Apply `career-materials/cover-letter-guide.md` before drafting any cover letter. Ask Aryan cover-letter personalization questions first:
+6. Apply `career-materials/cover-letter-guide.md` before drafting any cover letter. Use known personal context from `career-materials/` and prior application notes. Ask Aryan cover-letter personalization questions only when the letter would be materially weaker or risky without the answer:
    - What genuinely interests you about this company?
    - Do you have any personal connection to the company, product, industry, mission, or team?
    - Is there anything specific you want the hiring manager to feel after reading the letter?
-7. As part of the same job-description intake response, show the proposed resume direction, cover-letter angle, strongest matching experience/projects, important keyword targets, unsupported keywords to avoid, and any blocking eligibility questions.
-8. Create a tailored `resume.tex` from `source/master-resume/resume.tex` only after approval.
+7. Document the resume direction, cover-letter angle, strongest matching experience/projects, important keyword targets, unsupported keywords to avoid, and any blocking eligibility questions in `tailoring-notes.md`.
+8. Create a tailored `resume.tex` from `source/master-resume/resume.tex` or the latest successful one-page application resume pattern.
 9. Generate `resume.pdf` locally from the tailored LaTeX source only when needed for submission.
 10. Create `cover-letter.md` and, when submitting, generate a `cover-letter.pdf` or `cover-letter.docx`.
 11. Run a resume-vs-job-description alignment pass after generating the resume. Include an ATS-style score, matched keywords, missing-but-truthful keyword opportunities, unsupported keywords intentionally omitted, and concrete next-step recommendations.
