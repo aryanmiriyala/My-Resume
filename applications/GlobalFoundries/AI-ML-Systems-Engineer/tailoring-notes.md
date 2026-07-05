@@ -9,6 +9,7 @@ The resume emphasizes:
 - Self-Adaptive Parallelism: C++/OpenMP runtime instrumentation, per-epoch telemetry, adaptive scheduling, UCB optimization, benchmarking, speedup/efficiency/Karp-Flatt plots, and workload behavior analysis.
 - MarioRL: ML/RL experimentation, PyTorch, Stable-Baselines3, TensorBoard, preprocessing, model comparison, checkpoints, and performance graphs.
 - HealthTrend: Spark/PySpark/Kafka/Hadoop pipeline for distributed ingestion and processing.
+- Diff-Grounded PR Generation: LLM evaluation, repository evidence, source-grounded generation, and metadata-driven context construction.
 - AAIS: Python, PySpark, AWS Glue, SQL, Pandas, multiprocessing, large CSV processing, production data validation, and reproducible data workflows.
 - Technical communication remains reflected through the systems project outputs, resume project descriptions, and cover letter; the BGSU GRA role was removed from the tailored resume to improve readability.
 - SmartSolve: AI-enabled internal software, QMS relationship modeling, reproducible Docker development environments, and secure workflow design.
@@ -30,11 +31,12 @@ Use a technical, honest, personal angle: Aryan is drawn to the role because it c
 - AAIS Software Engineering: Python/JSON automation, 1,000+ SQL tables, Oracle/PostgreSQL, Python/Pandas data-cleaning workflows, multiprocessing, fuzzy matching, hashing.
 - MarioRL: PyTorch, Stable-Baselines3, PPO, DQN, Gym, TensorBoard, frame preprocessing, checkpoints, reward and training-speed graphs.
 - HealthTrend: Spark, PySpark, Kafka, Hadoop HDFS, Docker Compose, CSV/JSON ingestion, stream and batch processing.
+- Diff-Grounded PR Generation: Python, OpenAI API, GitHub API, commits, diffs, linked issues, metadata, LLM evaluation, source-grounded generation.
 - BGSU GRA remains useful interview context for technical communication and leadership, but is intentionally omitted from the resume to keep the one-page layout readable.
 
 ## Important Keyword Targets
 
-AI/ML Systems Engineer, workload analysis, workload characterization, performance modeling, systems optimization, Python analysis code, reproducible models, throughput, latency, efficiency, KPIs, technical communication, written reports, presentations, architecture discussions, runtime, scheduling, kernel optimization, memory layout, inference and training stack, machine learning workloads, C++, OpenMP, PyTorch, TensorBoard, Spark, PySpark, distributed processing.
+AI/ML Systems Engineer, workload analysis, workload characterization, performance modeling, systems optimization, Python analysis code, reproducible models, throughput, latency, efficiency, KPIs, technical communication, written reports, presentations, architecture discussions, runtime, scheduling, kernel optimization, memory layout, inference and training stack, machine learning workloads, C++, OpenMP, PyTorch, TensorBoard, Spark, PySpark, distributed processing, LLM evaluation.
 
 ## Gaps / Intentionally Omitted Unsupported Keywords
 
@@ -46,13 +48,14 @@ AI/ML Systems Engineer, workload analysis, workload characterization, performanc
 
 ## Alignment Pass
 
-ATS-style score: 82/100
+ATS-style score: 83/100
 
 Strong matches:
 
 - Systems/performance: Self-Adaptive Parallelism provides the strongest match for runtime instrumentation, scheduling, workload benchmarking, performance plots, and systems optimization.
 - Python analysis/reproducibility: AAIS data workflows, Python/Pandas pipelines, PySpark/Glue processing, and project benchmark outputs support clean analysis code and reproducible workflows.
 - ML experimentation: MarioRL supports PyTorch, RL agent comparison, TensorBoard logging, preprocessing, checkpoints, and performance graphs.
+- LLM evaluation: Diff-Grounded PR Generation supports source-grounded generation, repository evidence, metadata-driven context, and automated evaluation.
 - Distributed/data systems: HealthTrend and AAIS cover Spark, PySpark, Kafka/HDFS, SQL, and large-scale production processing.
 - Technical communication: the systems project, benchmark outputs, and cover letter support written analysis, reproducible plots, and explaining technical results.
 - New graduate fit: B.S. and M.S. in Computer Science, 4.00 GPA, internships, leadership, and project experience align with the NCG program.
