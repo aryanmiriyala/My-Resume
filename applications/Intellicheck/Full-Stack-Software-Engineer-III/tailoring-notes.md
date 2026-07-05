@@ -43,9 +43,9 @@ Position Aryan as an early-career full-stack/backend and data engineer with stro
 The resume emphasizes:
 
 - SmartSolve: Next.js, TypeScript, PostgreSQL, Drizzle ORM, SSO/auth middleware, Docker devcontainers, Codex/Claude Code, AI-assisted development.
-- AAIS Data Engineering: Python, PySpark, AWS Glue, S3, IAM, SQL, ETL, data validation, 20+ TB, 700+ member companies.
+- AAIS Data Engineering: Python, PySpark, AWS Glue, S3, IAM, SQL, ETL, data validation, Oracle/Impala profiling, 160+ tables, 25 MDM domains, 20+ TB, 700+ member companies.
 - AAIS Software Engineering: Python/JSON automation, Oracle/PostgreSQL, React/Node.js, RBAC/JWT, AWS Lambda, S3, PII tokenization.
-- APKD: AWS-hosted Lucee/CFML healthcare platform, anti-CSRF, audit logging, access-denied/404 routing, reliability fixes.
+- APKD: AWS-hosted Lucee/CFML healthcare platform, anti-CSRF, audit logging, access-denied/404 routing, HTML5 date/time modernization, logistics defaults, import ordering, MFI upload paths, duplicate-antigen crash handling, and reliability fixes.
 - Projects: RocketGrader for TypeScript/Express/MongoDB/Auth0/AWS S3 REST APIs; Travel Health Advisor for React/Express/MongoDB/Mistral AI; HealthTrend for Kafka/Spark/PySpark/Docker data-pipeline architecture; Diff-Grounded PR Generation for AI code-generation/evaluation alignment.
 
 ## Company Research Notes
@@ -63,9 +63,9 @@ Use a direct, honest angle: Aryan is interested in Intellicheck because the role
 ## Experience Emphasized
 
 - SmartSolve: secure Next.js/TypeScript/PostgreSQL internal tooling, SSO/auth middleware, Docker devcontainers, AI-assisted development with Codex and Claude Code.
-- AAIS Data Engineering: production Python/PySpark/AWS Glue ETL, S3/IAM, validation, data transformation from enterprise sources, 20+ TB, 700+ member companies.
+- AAIS Data Engineering: production Python/PySpark/AWS Glue ETL, S3/IAM, validation, data transformation from enterprise sources, Oracle/Impala profiling, 160+ tables, 25 MDM domains, 20+ TB, 700+ member companies.
 - AAIS Software Engineering: Python/JSON backend automation, 1,000+ SQL tables, Oracle/PostgreSQL, React/Node.js modernization, RBAC/JWT, AWS Lambda, S3, PII tokenization.
-- APKD: web security, audit logging, anti-CSRF, protected access flows, date/time modernization, reliability fixes on an AWS-hosted healthcare workflow platform.
+- APKD: web security, audit logging, anti-CSRF, protected access flows, date/time modernization, logistics defaults, import ordering, MFI reliability fixes, and duplicate-antigen crash handling on an AWS-hosted healthcare workflow platform.
 
 ## Projects Emphasized
 
@@ -85,9 +85,9 @@ Every experience and project bullet was checked against: action verb + what chan
 Experience bullets checked:
 
 - SmartSolve bullets lead with built/created/applied, name Next.js, TypeScript, PostgreSQL, Drizzle ORM, SSO, auth middleware, Docker, WSL2/Colima, Codex, Claude Code, and explain secure workflows, reproducibility, and AI-assisted review.
-- AAIS Data Engineering bullets lead with automated/built, name Python, PySpark, AWS Glue, SQL, S3, IAM, MDM, and include verified scale of 20+ TB and 700+ member companies.
+- AAIS Data Engineering bullets lead with automated/profiled/built, name Python, PySpark, AWS Glue, SQL, Pandas, JDBC, S3, IAM, ETL, reverse-ETL, and MDM, and include verified scope of 20+ TB, 700+ member companies, 160+ tables, and 25 MDM domains.
 - AAIS Software Engineering bullets lead with engineered/built/contributed/automated, name Python/JSON, Pandas, multiprocessing, fuzzy matching, hashing, Oracle/PostgreSQL, React/Node.js, RBAC/JWT, AWS Lambda, hashlib/boto3, S3, and include verified 1,000+ table, 10+ insurance-line, and roughly 110-user scope.
-- APKD bullet leads with secured and stabilized, names AWS-hosted Lucee/CFML, anti-CSRF, IP-aware audit logging, access-denied/404 routing, HTML5 forms, data import reliability, and internal healthcare workflow impact.
+- APKD bullets lead with secured/modernized, name AWS-hosted Lucee/CFML, anti-CSRF, IP-aware audit logging, access-denied/404 routing, HTML5 date/time inputs, logistics defaults, Matchgrid import ordering, MFI upload paths, and duplicate-antigen crash handling, and explain healthcare workflow security/reliability impact.
 
 Project bullets checked:
 
@@ -99,7 +99,7 @@ Project bullets checked:
 Weak bullets rewritten:
 
 - Avoided unsupported FastAPI, Elasticsearch, Kubernetes/Istio, SNS/SQS, RabbitMQ, and 7+ years claims.
-- Compressed project breadth to preserve all internship experience and keep the resume full but readable.
+- Added additional verified AAIS Data Engineering and APKD detail to use available page space with higher-signal experience content, preserving all internship roles while keeping Projects compact and readable.
 
 ## Important Keyword Targets
 
@@ -117,12 +117,12 @@ Full Stack Software Engineer, Python, React, TypeScript, REST APIs, backend, fro
 
 ## Alignment Pass
 
-ATS-style score: 75/100
+ATS-style score: 76/100
 
 Strong matches:
 
 - Full-stack stack overlap: React, TypeScript, Next.js, Angular, Node.js, Express, REST APIs, PostgreSQL, MongoDB, Oracle, and secure auth patterns.
-- Python/backend/data overlap: Python, SQL, PySpark, AWS Glue, Lambda, S3, IAM, ETL, data transformation, and validation.
+- Python/backend/data overlap: Python, SQL, PySpark, AWS Glue, Lambda, S3, IAM, ETL, data transformation, validation, Oracle/Impala profiling, and MDM mapping.
 - Event-driven/cloud overlap: AWS Lambda triggers, Kafka project experience, Docker, and cloud data workflows.
 - Security/domain overlap: identity/fraud-adjacent secure workflows through RBAC/JWT, SSO, anti-CSRF, audit logging, PII tokenization, healthcare workflows, and insurance data.
 - AI tooling overlap: Codex, Claude Code, OpenAI API, Mistral AI, LangChain, LLM evaluation, and AI-assisted development workflows.
@@ -130,7 +130,7 @@ Strong matches:
 Gaps / intentionally omitted unsupported keywords:
 
 - 7+ years, Level III seniority, FastAPI, Elasticsearch, Kubernetes, Istio, SNS/SQS, RabbitMQ, production ML model deployment, and senior mentorship/contractor ownership are not supported.
-- The resume is a truthful stretch application rather than a perfect match.
+- The resume is a truthful stretch application rather than a perfect match. The added AAIS/APKD detail improves evidence density but does not remove the core seniority/tooling gaps.
 
 Recommended improvements:
 
@@ -144,4 +144,4 @@ Recommended improvements:
 - PDF text checked: yes, text extraction preserved section order and keywords.
 - Visual PDF reviewed: yes, resume is full and readable with Experience prioritized.
 - Cover letter compiled: yes, cover-letter PDF is one page.
-- Application validator run:
+- Application validator run: yes.
