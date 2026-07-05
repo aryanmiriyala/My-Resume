@@ -66,4 +66,6 @@ Aryan's cover-letter inputs:
 - Compiled with `pdflatex -interaction=nonstopmode -halt-on-error resume.tex`.
 - Confirmed with `pdfinfo resume.pdf`: `Pages: 1`.
 - Extracted text with `pdftotext resume.pdf -` and verified the resume is readable, keyword-aligned, and in usable ATS order.
+- Rendered the PDF to PNG for visual review after the readability pass.
+- Revised the resume from compressed 10pt/footnote-size bullets to an 11pt document with normal small bullets while preserving the one-page limit.
 - Generated `resume.pdf` is local and ignored by git under the repo's binary/generated artifact rules.
