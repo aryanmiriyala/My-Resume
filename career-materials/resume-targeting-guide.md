@@ -54,6 +54,7 @@ Use `experience-master.md` and `bullet-bank.md`.
 Rules:
 
 - Start from the `Platform-Ready Description` in `experience-master.md` when writing LinkedIn experience sections, cover-letter context, or expanded application material.
+- Use the `Handshake Description` in `experience-master.md` for Handshake experience entries; keep it at or below 500 characters and do not paste the longer platform-ready version into Handshake.
 - Use `Reusable Bullet Options` from `experience-master.md` when the application needs company/role-specific bullets.
 - Use `bullet-bank.md` when the application needs job-family bullets across multiple roles.
 - Prefer bullets matching the job's required stack.
@@ -71,6 +72,7 @@ Use `projects-master.md`.
 Rules:
 
 - Start from each project's `Platform-Ready Description` for LinkedIn, portfolios, cover letters, or expanded project sections.
+- Use each project's `Handshake Description` for Handshake project entries; keep it at or below 500 characters and preserve the most important stack, problem, and outcome.
 - Use `Tech Stack`, `Positioning Angles`, and `Reusable Bullet Options` to select only the project details that match the role.
 - For AI roles, prioritize Travel Health Advisor - BGSU Hackathon 2025 and RocketGrader.
 - For full-stack roles, include both projects if space allows.

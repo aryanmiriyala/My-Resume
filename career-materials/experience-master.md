@@ -8,6 +8,7 @@ Each role should preserve enough detail to support resumes, cover letters, Linke
 
 - Use the same section order for every role. Do not add role-specific alternate-description sections unless the same structure is added for every role.
 - `Platform-Ready Description`: copyable paragraph for LinkedIn experience descriptions, cover-letter context, or an expanded project/experience section.
+- `Handshake Description`: copyable role description for Handshake experience entries. Must be 500 characters or fewer.
 - `Tech Stack`: one comma-separated line with a domain prefix, such as `Data engineering / Tech stack: Python, PySpark, AWS Glue.`
 - `Business / Problem Context`: why the work mattered to the organization or users.
 - `Problem / Company Impact Context`: specific problems solved, scale, or operational impact.
@@ -37,6 +38,10 @@ Dates: May 2026 - Present
 ### Platform-Ready Description
 
 Working on AI-enabled internal software at SmartSolve, combining full-stack engineering, secure workflow design, and AI-assisted development for quality-management and operations tooling. Current work includes planning a QMS dependency register to model relationships between quality documents, building a Next.js onboarding tracker with PostgreSQL, Drizzle ORM, SSO, and authentication middleware for HR/new-hire workflows, and creating Docker devcontainers for WSL2 and Colima to make development environments reproducible while keeping AI-assisted tooling isolated around proprietary code.
+
+### Handshake Description
+
+Working on AI-enabled internal tools for quality-management and operations workflows, including QMS document relationship planning, a secure Next.js/PostgreSQL onboarding tracker with SSO/auth middleware, and Docker devcontainers for reproducible, isolated AI-assisted development.
 
 ### Tech Stack
 
@@ -90,6 +95,10 @@ Dates: Aug. 2024 - May 2026
 ### Platform-Ready Description
 
 Supported BGSU cybersecurity education and research by developing hands-on labs, technical training materials, and curriculum mappings across ethical hacking, OSINT, Nmap/NSE, Metasploit, OpenVAS/Greenbone, Wireshark, Burp Suite, OWASP ZAP, email forensics, cryptography, secure key management, NICE Framework/CAE-CD alignment, and CyberGuardian-based learning. Led 10 undergraduate students in organizing a middle-school CyberCamp, translating security concepts into accessible activities such as phishing demos, password-security exercises, cryptography labs, and cyber escape-room material.
+
+### Handshake Description
+
+Developed cybersecurity labs, training materials, and curriculum mappings across ethical hacking, OSINT, Wireshark, Burp Suite, OWASP ZAP, email forensics, cryptography, secure key management, NICE/CAE-CD, and CyberGuardian. Led 10 undergraduates in organizing a middle-school CyberCamp.
 
 ### Tech Stack
 
@@ -148,6 +157,10 @@ Dates: Aug. 2021 - May 2023
 
 Supported College Algebra instruction at the BGSU Math Emporium by helping students debug quantitative reasoning errors, work through algebra problems, and understand course concepts in a high-volume learning-support environment. The role strengthened technical communication, structured problem explanation, and student-facing support skills by translating abstract math concepts into step-by-step guidance.
 
+### Handshake Description
+
+Supported College Algebra instruction at the BGSU Math Emporium by helping students work through algebra problems, debug quantitative reasoning errors, and understand course concepts in a high-volume learning-support environment.
+
 ### Tech Stack
 
 Teaching / Tech stack: College Algebra, quantitative reasoning, student support, teaching assistance, concept explanation, high-volume learning support.
@@ -188,6 +201,10 @@ Dates: Aug. 2022 - Dec. 2022
 ### Platform-Ready Description
 
 Led CS 2010: Programming Fundamentals labs by helping students understand core programming concepts, debug assignments, reason through lab exercises, and apply foundational problem-solving patterns. The role blended technical instruction with hands-on debugging support for early computer science learners building confidence with code.
+
+### Handshake Description
+
+Led CS 2010: Programming Fundamentals labs by helping students understand core programming concepts, debug assignments, reason through lab exercises, and apply foundational problem-solving patterns.
 
 ### Tech Stack
 
@@ -232,6 +249,10 @@ Dates: May 2021 - Apr. 2023
 
 Supported BGSU Registration and Records operations by handling student records, file workflows, administrative processes, and customer-service requests in a university office environment. The role required accurate record handling, confidentiality, responsive communication, and reliable execution of student-facing operational workflows.
 
+### Handshake Description
+
+Supported BGSU Registration and Records operations through student-record handling, file workflows, administrative support, confidential information handling, and customer-service requests in a university office environment.
+
 ### Tech Stack
 
 Operations / Tech stack: student records, administrative workflows, file handling, customer service, university operations, confidential record handling.
@@ -272,6 +293,10 @@ Dates: May 2025 - Aug. 2025
 ### Platform-Ready Description
 
 Built production AWS data engineering workflows for AAIS insurance data platforms, replacing manually executed SQL billing processes and legacy Pentaho ETL jobs with PySpark, AWS Glue Workflows, partitioned S3 pipelines, custom IAM access controls, reverse ETL, validation workflows, and Semarchy MDM migration architecture. The work processed 20+ TB of golden-table insurance data from Oracle, Impala, PostgreSQL, and related enterprise sources, calculated recurring charges for 700+ member companies, and supported the profiling, mapping, and standardization of 160+ source tables into 25 MDM domains. The role combined end-to-end data engineering responsibilities: understanding source-system structure, designing the migration flow, building production Glue jobs, validating outputs, and helping make insurance data more reliable, governed, and self-service-ready.
+
+### Handshake Description
+
+Built production AWS data workflows for insurance platforms using Python, PySpark, SQL, AWS Glue, S3, IAM, and Semarchy MDM. Automated manual billing over 20+ TB of data for 700+ member companies and supported profiling, mapping, validation, and standardization across enterprise sources.
 
 ### Tech Stack
 
@@ -335,6 +360,10 @@ Dates: May 2023 - May 2024
 
 Built production insurance data-standardization and application modernization workflows at AAIS, including openIDL/openIDS-aligned data-model generation, Python/JSON-driven SQL schema creation, React/Node.js access-control modernization, and AWS Lambda automation for PII-tokenized data movement into S3. The work generated 1,000+ production SQL tables across Oracle/PostgreSQL and 10+ insurance lines, used Pandas, multiprocessing, fuzzy matching, and hashing for large CSV processing, and introduced RBAC/JWT patterns to replace broad employee-wide access with role-specific controls for about 110 users. The role connected backend automation, data modeling, full-stack access control, and AWS event-driven processing to help standardize insurance data structures and support more controlled internal data access.
 
+### Handshake Description
+
+Built insurance data-standardization and modernization workflows using Python, JSON, SQL, Oracle/PostgreSQL, React, Node.js, JWT/RBAC, AWS Lambda, and S3. Generated 1,000+ production SQL tables, processed large CSV datasets, and helped replace broad internal access with role-specific controls.
+
 ### Tech Stack
 
 Software engineering / Data standardization / Tech stack: Python, JSON, Pandas, multiprocessing, SQL, Oracle, PostgreSQL, React, Node.js, JWT, RBAC, AWS Lambda, AWS S3, boto3, hashlib, insurance taxonomies, openIDL / openIDS context, large CSV processing, fuzzy matching, PII tokenization.
@@ -391,6 +420,10 @@ Dates: May 2022 - Aug. 2022
 ### Platform-Ready Description
 
 Improved an AWS-hosted Lucee/CFML healthcare workflow platform for kidney-paired donation operations by strengthening form security, auditability, data-entry reliability, and internal clinical workflow usability. Work included global anti-CSRF form protection, IP-aware audit logging, protected access-denied/404 routing, HTML5 date/time picker modernization, JavaScript fallbacks, themed CSS, cfform/cfinput compatibility updates, reusable modal/tab UI patterns, clinical logistics defaults, Matchgrid import ordering, MFI file-location fixes, and duplicate-antigen MFI crash handling. The role focused on modernizing a legacy healthcare workflow application while preserving graceful degradation and improving reliability for internal transplant operations.
+
+### Handshake Description
+
+Improved an AWS-hosted Lucee/ColdFusion healthcare workflow platform by adding anti-CSRF protection, audit logging, access-denied/404 flows, HTML5 date/time picker updates, JavaScript/CSS fixes, logistics defaults, import ordering, and reliability fixes for internal clinical operations.
 
 ### Tech Stack
 

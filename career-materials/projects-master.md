@@ -5,6 +5,7 @@ This document stores detailed project material for tailoring resumes, cover lett
 ## Standard Project Structure
 
 - `Platform-Ready Description`: copyable project paragraph for LinkedIn, cover letters, portfolios, or an expanded projects section.
+- `Handshake Description`: copyable project description for Handshake project entries. Must be 500 characters or fewer.
 - `Features`: product behavior, user-facing capability, or research functionality.
 - `Tech Stack`: one comma-separated line with a domain prefix, such as `AI / Tech stack: Python, OpenAI API, LLM inference.`
 - `Positioning Angles`: ways to frame the project for different job families.
@@ -19,6 +20,10 @@ Source: https://github.com/aryanmiriyala/BGSU-Hackathon-2025
 ### Platform-Ready Description
 
 Built a BGSU Hackathon 2025 AI/ML + Health track project with team VibeCoders: a full-stack travel health advisory prototype using React, Vite, Express, MongoDB/Mongoose, and Mistral AI. The application lets users click countries on an interactive `react-simple-maps` world map, retrieves country-specific disease records from an Express API backed by MongoDB aggregation, organizes disease risk and vaccination information, and generates a downloadable vaccination checklist PDF. It also includes a health-profile form, local user/health-profile persistence, dark-mode UI controls, route-based login/signup screens, and a floating Mistral AI chatbot that uses the user's health profile as context for travel-health questions.
+
+### Handshake Description
+
+Built a BGSU Hackathon 2025 health AI prototype with React, Vite, Express, MongoDB/Mongoose, and Mistral AI. Users select countries on an interactive map, view disease and vaccine guidance, save health-profile context, ask a Mistral chatbot travel-health questions, and generate vaccination checklist PDFs.
 
 ### Features
 
@@ -65,6 +70,7 @@ Use this section to add future projects. Capture:
 - Features
 - Deployment
 - Measurable impact, if known
+- Handshake description under 500 characters
 - Reusable bullet options
 - Cover-letter talking points
 
@@ -79,6 +85,10 @@ Primary positioning: LLM research, software repository mining, evidence-grounded
 #### Platform-Ready Description
 
 Developed an ICSME-published LLM research project for generating evidence-grounded GitHub pull request descriptions from real repository artifacts. The pipeline collects commits, file diffs, linked issues, and repository metadata; builds structured PR context; improves weak commit messages; summarizes file-level changes; and generates reviewer-ready descriptions under grounding constraints. Also built an automated LLM evaluation workflow to compare generated descriptions against raw code-change evidence. The approach outperformed baseline descriptions from the AIDev and PRSummarizer datasets in correctness, coverage, and clarity.
+
+#### Handshake Description
+
+Developed an ICSME-published LLM research pipeline that generates evidence-grounded GitHub PR descriptions from commits, diffs, linked issues, and repository metadata. Built structured context construction, grounded generation, and automated evaluation against raw code-change evidence.
 
 #### Tech Stack
 
@@ -106,6 +116,10 @@ Primary positioning: AI mobile app, React Native, local-first architecture, gene
 
 Built a cross-platform mobile app for sleep-based microlearning. Users can create flashcards, import documents, generate short learning cues, and replay cues during simulated sleep sessions. The app uses Gemini to summarize PDF/TXT documents into concise study cues and generate multiple-choice morning quizzes. It includes a sleep-mode audio system using ElevenLabs text-to-speech and ambient sound generation, cached audio playback, selectable voice personas, background ambience, cue scheduling, session tracking, and local persistence for topics, flashcards, cues, sleep sessions, quiz results, and user settings.
 
+#### Handshake Description
+
+Built a React Native/Expo mobile app for sleep-based microlearning with Gemini document summarization, generated quizzes, ElevenLabs text-to-speech cues, audio caching, cue scheduling, session tracking, and local-first persistence for topics, flashcards, cues, sessions, quiz results, and settings.
+
 #### Tech Stack
 
 AI mobile / Tech stack: React Native, Expo SDK 54, Expo Router, TypeScript, Gemini API, ElevenLabs API, AI document summarization, AI quiz generation, text-to-speech, ambient audio generation, Expo AV, Expo FileSystem, Expo Document Picker, Zustand, AsyncStorage, Zod, React Navigation, local-first app architecture.
@@ -131,6 +145,10 @@ Primary positioning: RAG, campus search, graph interface, source-grounded answer
 #### Platform-Ready Description
 
 Built an AI-powered campus search prototype for BGSU that combines lightweight RAG with live web search across stored and crawled university webpages, PDFs, and campus resources. The system ingests and stores crawled content, chunks documents into retrievable passages, retrieves relevant context for user questions, and calls LLM inference to generate grounded answers with source-aware summaries. Also worked on graph-search functionality, using page/resource relationships to power an interactive graph interface that helps users trace how answers connect back to original campus sources.
+
+#### Handshake Description
+
+Built an AI-powered BGSU campus search prototype combining lightweight RAG, live web search, crawled webpages, PDFs, document chunking, retrieval, and LLM inference. Added graph-search functionality so users can trace source-grounded answers back to original campus resources.
 
 #### Tech Stack
 
@@ -158,6 +176,10 @@ Primary positioning: distributed data systems, healthcare IoT, streaming and bat
 
 Built a Dockerized proof-of-concept for a healthcare data platform that ingests structured patient records and semi-structured IoT health events. Apache NiFi routes CSV patient data into Hadoop HDFS and streams JSON IoT events into Kafka. Apache Spark reads from both HDFS and Kafka for downstream processing and validation. The project simulates a healthcare analytics architecture for patient records, heart rate, oxygen level, and temperature data inside an isolated Docker Compose environment.
 
+#### Handshake Description
+
+Built a Dockerized healthcare data pipeline using Apache NiFi, Kafka, Hadoop HDFS, Spark, PySpark, and Docker Compose. Routed CSV patient records into HDFS and JSON IoT health events into Kafka, then processed both sources for validation and downstream analytics.
+
 #### Tech Stack
 
 Data engineering / Tech stack: Apache NiFi, Apache Kafka, Apache Zookeeper, Apache Hadoop HDFS, Apache Spark, PySpark, Docker Compose, Python, JSON, CSV, healthcare IoT data, stream ingestion, batch storage, distributed processing, containerized data pipelines.
@@ -183,6 +205,10 @@ Primary positioning: reinforcement learning, model comparison, PyTorch, experime
 
 Built a reinforcement learning project comparing Proximal Policy Optimization and Deep Q-Networks on the Super Mario Bros environment. The project trains agents on level 1-1 using gym-super-mario-bros, applies environment preprocessing including frame skipping, resizing, grayscale conversion, and frame stacking, and tracks model performance through saved checkpoints and TensorBoard logs. It includes training/testing scripts, custom agent/network code, generated clips, experiment artifacts, and performance graphs comparing reward, episode length, and training speed.
 
+#### Handshake Description
+
+Built a reinforcement learning project comparing PPO and DQN agents on Super Mario Bros using Python, PyTorch, Stable-Baselines3, Gym, and TensorBoard. Implemented frame preprocessing, checkpoints, generated clips, and performance graphs for reward, episode length, and training speed.
+
 #### Tech Stack
 
 Reinforcement learning / Tech stack: Python, reinforcement learning, PPO, DQN, Stable-Baselines3, PyTorch, Gym, gym-super-mario-bros, NES-Py, TensorBoard, environment wrappers, frame preprocessing, model checkpointing, training logs, Jupyter Notebook.
@@ -207,6 +233,10 @@ Primary positioning: RAG research, NLP, review mining, software maintenance anal
 
 Built a research project using Retrieval-Augmented Generation to study how mobile app update frequency relates to user feedback in Google Play reviews. The pipeline preprocesses app review datasets, extracts structured review content, generates semantic embeddings with Sentence Transformers, stores review context in ChromaDB, and retrieves relevant evidence for comparative analysis across apps with different version histories. The system uses vector search and review-mining techniques to compare sentiment, recurring user concerns, and maintenance-related feedback patterns.
 
+#### Handshake Description
+
+Built a RAG research pipeline using Python, Sentence Transformers, ChromaDB, embeddings, vector search, and review mining to study how mobile app update frequency relates to Google Play review feedback, sentiment, recurring user concerns, and maintenance patterns.
+
 #### Tech Stack
 
 RAG / NLP / Tech stack: Python, RAG, Sentence Transformers, ChromaDB, embeddings, vector search, semantic retrieval, NLP, review mining, sentiment analysis, scikit-learn, JSON processing, data preprocessing, information retrieval, research evaluation, LaTeX.
@@ -230,6 +260,10 @@ Primary positioning: full-stack AI education platform, secure LMS, file parsing,
 #### Platform-Ready Description
 
 Built a full-stack education platform that helps teachers manage classes, assignments, student submissions, and feedback workflows with AI-assisted grading. The Angular frontend includes role-based teacher/student dashboards, Auth0 login/signup flows, file upload/viewing, assignment management, and chat interactions. The TypeScript/Express backend exposes REST APIs for users, classes, assignments, submissions, files, and chat, with MongoDB/Mongoose models for persistence. Uploaded submissions are stored in AWS S3, parsed from PDF, DOCX, HTML, and text formats, then graded with a LangChain + Mistral AI pipeline returning structured scores, feedback, strengths, improvements, and rubric breakdowns.
+
+#### Handshake Description
+
+Built a full-stack AI assignment feedback platform with Angular, TypeScript, Express, MongoDB, Auth0, AWS S3, LangChain, and Mistral AI. Supported role-based dashboards, REST APIs, file uploads, PDF/DOCX/HTML parsing, and AI-generated scores, feedback, strengths, improvements, and rubric breakdowns.
 
 #### Tech Stack
 
@@ -256,6 +290,10 @@ Primary positioning: systems research, parallel computing, adaptive scheduling, 
 #### Platform-Ready Description
 
 Built a parallel-computing research system that studies how OpenMP workloads can adapt runtime behavior rather than rely on a single fixed scheduling strategy. The system instruments parallel kernels, records per-epoch telemetry, and uses a UCB-based controller to explore combinations of scheduling policy, chunk size, and thread count. Evaluated the adaptive runtime against serial and fixed-policy baselines across Mandelbrot rendering, heat diffusion, and reduction workloads, then generated benchmark summaries and paper-ready plots for runtime, speedup, efficiency, Karp-Flatt behavior, and scheduler decisions.
+
+#### Handshake Description
+
+Built a C++/OpenMP parallel-computing research system that records per-epoch telemetry and uses a UCB controller to tune scheduling policy, chunk size, and thread count. Benchmarked Mandelbrot, heat diffusion, and reduction workloads and generated runtime, speedup, efficiency, and scheduler-behavior plots.
 
 #### Tech Stack
 
