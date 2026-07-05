@@ -53,6 +53,8 @@ Secondary angle: Applied AI/full-stack engineer who has worked across healthcare
 - Added a professional summary to make the healthcare + AWS data engineering + full-stack fit visible immediately.
 - Reduced SmartSolve to two high-signal bullets and used the recovered space to add more detail for AAIS Software Engineering, APKD, projects, and skills.
 - Cleaned the skills section so `operational data` and `troubleshooting` are represented in context through bullets instead of listed as standalone technical skills.
+- Revised experience and project bullets to follow the repo bullet rule more closely: action verb + concrete technology + scope/domain + impact/result.
+- Strengthened impact language around manual workflow removal, maintainability, access control, reliability, usability, setup friction, and healthcare/data workflow outcomes without adding unsupported metrics.
 
 ## Approved Cover Letter Angle
 
@@ -82,4 +84,5 @@ Aryan's cover-letter inputs:
 - Revised the resume from compressed 10pt/footnote-size bullets to an 11pt document with normal small bullets while preserving the one-page limit.
 - Recompiled and re-rendered after the content restructure; confirmed the expanded-detail version still fits on one page.
 - Performed a layout-only spacing pass after visual PDF review: restored the fuller Education format and tightened page margins so the existing summary, experience, projects, and skills still fit on one page without changing bullet content.
+- Rewrote bullets for clearer impact after Aryan approval, then recompiled, re-extracted text, and re-rendered the PDF; confirmed it remains exactly one page.
 - Generated `resume.pdf` is local and ignored by git under the repo's binary/generated artifact rules.
