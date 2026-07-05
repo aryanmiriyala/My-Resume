@@ -8,9 +8,9 @@ The resume emphasizes:
 
 - Self-Adaptive Parallelism: C++/OpenMP runtime instrumentation, per-epoch telemetry, adaptive scheduling, UCB optimization, benchmarking, speedup/efficiency/Karp-Flatt plots, and workload behavior analysis.
 - MarioRL: ML/RL experimentation, PyTorch, Stable-Baselines3, TensorBoard, preprocessing, model comparison, checkpoints, and performance graphs.
-- HealthTrend: Spark/PySpark/Kafka/Hadoop pipeline for distributed ingestion and processing.
 - Diff-Grounded PR Generation: LLM evaluation, repository evidence, source-grounded generation, and metadata-driven context construction.
 - AAIS: Python, PySpark, AWS Glue, SQL, Pandas, multiprocessing, large CSV processing, production data validation, and reproducible data workflows.
+- Alliance for Paired Kidney Donation: Lucee/ColdFusion work on an AWS-hosted healthcare operations platform, including anti-CSRF coverage, audit logging, date/time picker migrations, logistics defaults, and reliability fixes.
 - Technical communication remains reflected through the systems project outputs, resume project descriptions, and cover letter; the BGSU GRA role was removed from the tailored resume to improve readability.
 - SmartSolve: AI-enabled internal software, QMS relationship modeling, reproducible Docker development environments, and secure workflow design.
 
@@ -29,9 +29,10 @@ Use a technical, honest, personal angle: Aryan is drawn to the role because it c
 - Self-Adaptive Parallelism: C++, OpenMP, Python, runtime instrumentation, UCB controller, scheduling policy, chunk size, thread count, Mandelbrot, heat diffusion, reduction workloads, serial/fixed-policy baselines, runtime/speedup/efficiency/Karp-Flatt plots.
 - AAIS Data Engineering: Python, PySpark, AWS Glue, SQL, 20+ TB of production insurance data, 700+ member companies, validation, reproducible workflows.
 - AAIS Software Engineering: Python/JSON automation, 1,000+ SQL tables, Oracle/PostgreSQL, Python/Pandas data-cleaning workflows, multiprocessing, fuzzy matching, hashing.
+- Alliance for Paired Kidney Donation: Lucee/ColdFusion, AWS-hosted healthcare platform, anti-CSRF protection, audit logging, date/time picker modernization, logistics defaults, reliability fixes.
 - MarioRL: PyTorch, Stable-Baselines3, PPO, DQN, Gym, TensorBoard, frame preprocessing, checkpoints, reward and training-speed graphs.
-- HealthTrend: Spark, PySpark, Kafka, Hadoop HDFS, Docker Compose, CSV/JSON ingestion, stream and batch processing.
 - Diff-Grounded PR Generation: Python, OpenAI API, GitHub API, commits, diffs, linked issues, metadata, LLM evaluation, source-grounded generation.
+- HealthTrend remains supporting source material for Spark/Kafka/Hadoop context, but was omitted from the tailored resume because internship experience takes precedence over project breadth.
 - BGSU GRA remains useful interview context for technical communication and leadership, but is intentionally omitted from the resume to keep the one-page layout readable.
 
 ## Important Keyword Targets
@@ -56,7 +57,8 @@ Strong matches:
 - Python analysis/reproducibility: AAIS data workflows, Python/Pandas pipelines, PySpark/Glue processing, and project benchmark outputs support clean analysis code and reproducible workflows.
 - ML experimentation: MarioRL supports PyTorch, RL agent comparison, TensorBoard logging, preprocessing, checkpoints, and performance graphs.
 - LLM evaluation: Diff-Grounded PR Generation supports source-grounded generation, repository evidence, metadata-driven context, and automated evaluation.
-- Distributed/data systems: HealthTrend and AAIS cover Spark, PySpark, Kafka/HDFS, SQL, and large-scale production processing.
+- Distributed/data systems: AAIS covers PySpark, Glue, SQL, AWS workflows, validation, and large-scale production processing; HealthTrend remains supporting source material outside the submitted resume.
+- Internship continuity: SmartSolve, AAIS Data Engineering, AAIS Software Engineering, and APKD are all represented in Experience, with project content compressed before cutting internship roles.
 - Technical communication: the systems project, benchmark outputs, and cover letter support written analysis, reproducible plots, and explaining technical results.
 - New graduate fit: B.S. and M.S. in Computer Science, 4.00 GPA, internships, leadership, and project experience align with the NCG program.
 

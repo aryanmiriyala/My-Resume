@@ -58,6 +58,7 @@ Do not commit binary/generated artifacts unless Aryan explicitly asks. This incl
 - When adding new skills, confirm they are supported by experience, projects, or explicit user input.
 - Keep bullets concise enough to fit the one-page layout.
 - Do not enforce an arbitrary maximum number of bullets per role or projects per resume. Use as many as the one-page layout can support when the content is relevant, truthful, and materially improves fit.
+- Experience takes precedence over Projects. All internship roles are core experience and should remain on tailored resumes by default, including less directly aligned internships, unless Aryan explicitly approves removing a specific role. If space is tight, cut or compress Projects, Skills, or lower-priority detail before removing an internship.
 - Do not leave a tailored resume looking sparse. If there is usable space, add high-signal experience bullets, a relevant project, or stronger technical detail before considering the resume complete.
 - During PDF review, explicitly check the lower half and bottom of the page for obvious unused whitespace. A final resume should feel like a complete, full one-page document with no visual gaps, while still remaining readable.
 - If the resume has meaningful open space, first add verified role-aligned substance: stronger bullets for existing roles, an additional relevant project, richer technical skills, or a concise summary. Do not stop at an artificially small number of bullets or projects when the job fit would improve.
