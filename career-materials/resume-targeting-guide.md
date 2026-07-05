@@ -1,6 +1,6 @@
 # Resume Targeting Guide
 
-Use this guide when tailoring a resume to a specific company and role.
+Use this guide when tailoring a resume to a specific company and role. Apply the rules in `career-materials/ats-recruiter-resume-guide.md` throughout the process.
 
 ## Step 1: Parse the Job Description
 
@@ -16,6 +16,8 @@ Extract:
 - Domain context
 - Repeated keywords
 - Nice-to-have skills
+- Recruiter-screen responsibilities
+- ATS-critical exact terms
 
 Save the posting in `applications/<Company>/<Role>/job-description.md`.
 
@@ -43,6 +45,7 @@ Rules:
 - Use `Reusable Bullet Options` from `experience-master.md` when the application needs company/role-specific bullets.
 - Use `bullet-bank.md` when the application needs job-family bullets across multiple roles.
 - Prefer bullets matching the job's required stack.
+- Put job keywords into bullets only when supported by real experience.
 - Keep the most recent experience strong.
 - Do not force unrelated skills into a bullet.
 - Do not invent metrics.
@@ -68,6 +71,7 @@ Use `skills-master.md`.
 Rules:
 
 - Include skills that appear in the job description and are supported by experience.
+- Prefer exact job-description wording for tools and frameworks when truthful.
 - Put the most relevant categories first.
 - Keep the skills section compact.
 - Avoid listing technologies that distract from the target role.
@@ -79,4 +83,5 @@ After approval and edits:
 - Compile LaTeX.
 - Confirm the resume PDF is exactly one page.
 - Extract PDF text and inspect bullets.
+- Confirm the PDF text preserves section order and important keywords.
 - Save tailoring notes.
