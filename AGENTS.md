@@ -4,9 +4,9 @@ This repository is used to maintain Aryan Miriyala's master resume materials and
 
 ## Operating Rule
 
-When Aryan provides a job description, treat it as a request to run the established application pipeline for that role. Save the posting, research the company when useful, create or update the application package, draft tailoring notes, and propose resume/cover-letter changes. If Aryan asks for specific changes after that, incorporate them into the same pipeline.
+When Aryan provides a job description, treat it as a request to run the established application pipeline for that role. Aryan should not need to separately ask for the next steps. Save the posting, research the company when useful, create or update the application package, draft tailoring notes, update the tracker, and immediately provide the proposed resume and cover-letter direction needed to continue the application.
 
-Before changing resume or cover-letter content, first show the proposed changes in chat and wait for Aryan's approval. After approval, apply the changes, generate artifacts, and verify the output.
+Supplying a job description is approval to perform intake/setup work and produce the proposal. It is not approval to change resume or cover-letter content. Before changing resume or cover-letter content, first show the proposed changes in chat and wait for Aryan's approval. After approval, apply the changes, generate artifacts, and verify the output.
 
 Make incremental commits for small, coherent changes so the repository stays easy to review and push to GitHub. Do not bundle unrelated resume, cover-letter, application, tracker, and source-material updates into one large commit.
 
@@ -23,12 +23,14 @@ For every new job application:
    - What genuinely interests you about this company?
    - Do you have any personal connection to the company, product, industry, mission, or team?
    - Is there anything specific you want the hiring manager to feel after reading the letter?
-7. Show proposed resume and cover-letter content changes in chat and wait for approval.
+7. As part of the same job-description intake response, show the proposed resume direction, cover-letter angle, strongest matching experience/projects, important keyword targets, unsupported keywords to avoid, and any blocking eligibility questions.
 8. Create a tailored `resume.tex` from `source/master-resume/resume.tex` only after approval.
 9. Generate `resume.pdf` locally from the tailored LaTeX source only when needed for submission.
 10. Create `cover-letter.md` and, when submitting, generate a `cover-letter.pdf` or `cover-letter.docx`.
 11. Add `tailoring-notes.md` explaining which experience, projects, and keywords were emphasized.
 12. Update `application-management/application-tracker.md` when the application is ready, applied, rejected, interviewing, or archived.
+
+If the job description includes an eligibility, location, sponsorship, clearance, degree, or schedule constraint, flag it during the intake response before spending effort on final artifacts. Continue with the proposal unless the constraint clearly makes the role impossible.
 
 ## Directory Conventions
 
