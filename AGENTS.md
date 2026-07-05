@@ -16,7 +16,7 @@ For every new job application:
 2. Save the job posting as `job-description.md`.
 3. Add or update the role in `applications/application-tracker.md`.
 4. Review `career-materials/` for relevant experience, projects, skills, and reusable bullets.
-5. Ask Aryan cover-letter personalization questions before drafting any cover letter:
+5. Apply `career-materials/cover-letter-guide.md` before drafting any cover letter. Ask Aryan cover-letter personalization questions first:
    - What genuinely interests you about this company?
    - Do you have any personal connection to the company, product, industry, mission, or team?
    - Is there anything specific you want the hiring manager to feel after reading the letter?
@@ -74,9 +74,8 @@ Good cover letters should:
 
 Cover-letter guidance incorporated from a 2026 web check:
 
-- The Guardian: keep it short, research the company, tailor to the organization/job, explain why the role appeals, and avoid repeating the CV.
-- The Cut / Ask a Manager: do not rehash the resume, show rather than tell, keep tone warm and conversational, individualize each letter, and keep it under one page.
-- Vogue: keep it concise, highlight relevant achievements, show personality and interest, tailor to the employer, and proofread carefully.
+- Yale Office of Career Strategy: tailor each letter to a specific job, connect skills to employer needs, use job-description keywords truthfully, write in confident active language, keep it to one page, and use a clear opening/body/closing structure.
+- Purdue OWL: use the cover letter to explain experience in a story-like format, go deeper on relevant skills, relate those skills to job requirements, show individualized tailoring, and demonstrate written communication quality.
 
 ## Application Email Monitoring
 
