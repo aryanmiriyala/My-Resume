@@ -10,43 +10,7 @@ This document stores detailed project material for tailoring resumes, cover lett
 - `Positioning Angles`: ways to frame the project for different job families.
 - `Reusable Bullet Options`: ATS-friendly bullets for resumes and tailored applications.
 
-## Travel Health Advisor
-
-Date: Apr. 2025  
-Primary positioning: Full-stack AI application, RAG, personalized health recommendations
-
-### Platform-Ready Description
-
-Travel Health Advisor is a full-stack health application that provides personalized travel health advisories based on a user's health profile and destination. The project combines a React frontend, Node.js/Express backend, MongoDB persistence, and an AI-powered retrieval/generation pipeline.
-
-### Features
-
-- Personalized destination-specific health advisories.
-- Health-risk and precaution recommendations based on user profile and travel destination.
-- RAG-powered retrieval from a large health database.
-- Conversational chatbot for follow-up questions.
-- Downloadable dynamic travel checklist.
-
-### Tech Stack
-
-Full-stack AI / Tech stack: React, Node.js, Express.js, MongoDB, Mistral AI, HuggingFace models, TailwindCSS, cosine similarity search, RAG.
-
-### Positioning Angles
-
-- AI product engineering
-- Full-stack web application
-- RAG pipeline design
-- Health-domain personalization
-- Conversational AI
-- MongoDB-backed retrieval
-
-### Reusable Bullet Options
-
-- Developed a full-stack travel health platform with React, TailwindCSS, and Express.js to generate personalized destination-specific advisories from user health profiles.
-- Engineered a RAG pipeline with Mistral AI and HuggingFace models to vectorize and query MongoDB health data using cosine similarity search.
-- Built a conversational AI assistant that used retrieved health context to generate personalized travel guidance and downloadable checklists.
-
-## Travel Health Advisory Map - BGSU Hackathon 2025
+## Travel Health Advisor - BGSU Hackathon 2025
 
 Date: 2025  
 Primary positioning: Hackathon health AI application, full-stack React/Express prototype, interactive health data visualization, Mistral AI chatbot  
@@ -89,40 +53,6 @@ Full-stack health AI / Tech stack: React 18, Vite, JavaScript, CSS modules, HTML
 - Implemented an interactive country-selection map with `react-simple-maps`, retrieving disease records from an Express/MongoDB API and surfacing risk, vaccine availability, healthcare access, and recovery-rate data.
 - Built a health-profile form and context-aware Mistral AI chatbot that used saved user health details to answer travel-health questions.
 - Generated downloadable vaccination checklist PDFs with `@react-pdf/renderer` based on country-specific vaccine-required disease data.
-
-## RocketGrades
-
-Date: Mar. 2025  
-Primary positioning: Full-stack LMS, AI feedback, secure backend, file storage
-
-### Platform-Ready Description
-
-RocketGrades is a full-stack learning management system application with an AI feedback agent. It combines Angular frontend work, Node.js backend services, Auth0 role-based access control, MongoDB Atlas persistence, AWS S3 file storage, and Mistral AI/LangChain for assignment feedback.
-
-### Features
-
-- LMS-style assignment workflows.
-- AI-powered assignment feedback.
-- Role-based access control through Auth0.
-- Persistent application data in MongoDB Atlas.
-- File storage in AWS S3.
-
-### Tech Stack
-
-Full-stack LMS / AI / Tech stack: Angular, Node.js, Mistral AI, LangChain, MongoDB, MongoDB Atlas, AWS S3, Auth0, TailwindCSS.
-
-### Positioning Angles
-
-- Full-stack software engineering
-- AI-assisted education technology
-- Secure application backend
-- Role-based access control
-- Cloud file storage
-
-### Reusable Bullet Options
-
-- Built a full-stack LMS application with an AI feedback agent using Mistral AI and LangChain to automate assignment review.
-- Designed a secure Node.js backend with Auth0 RBAC, MongoDB Atlas, and AWS S3 for role-based access, persistence, and file storage.
 
 ## Additional Project Slots
 

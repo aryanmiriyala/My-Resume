@@ -56,7 +56,7 @@ Rules:
 
 - Start from each project's `Platform-Ready Description` for LinkedIn, portfolios, cover letters, or expanded project sections.
 - Use `Tech Stack`, `Positioning Angles`, and `Reusable Bullet Options` to select only the project details that match the role.
-- For AI roles, prioritize Travel Health Advisor and RocketGrades.
+- For AI roles, prioritize Travel Health Advisor - BGSU Hackathon 2025 and RocketGrader.
 - For full-stack roles, include both projects if space allows.
 - For data-heavy roles, consider reducing project bullets to preserve room for AAIS data engineering.
 - For security/platform roles, emphasize Auth0, RBAC, JWT, SSO, PII tokenization, and AWS.

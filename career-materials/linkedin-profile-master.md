@@ -231,7 +231,7 @@ Recommended top projects for LinkedIn Featured / Projects:
 3. FalconGraph Search: AI-Powered Campus Knowledge Search
 4. RocketGrader: Intelligent Assignment Feedback Platform
 5. HealthTrend: Healthcare Big Data Streaming Pipeline
-6. Travel Health Advisory Map - BGSU Hackathon 2025
+6. Travel Health Advisor - BGSU Hackathon 2025
 7. Self-Adaptive Parallelism via OpenMP Runtime Coordination
 
 Copy each project into LinkedIn in this order:
@@ -295,7 +295,7 @@ Highlights:
 - Built a Dockerized healthcare data pipeline using Apache NiFi, Kafka, Hadoop HDFS, and Spark to ingest structured patient records and stream IoT health events.
 - Routed CSV patient data into HDFS and JSON health events into Kafka, then processed both sources with Spark/PySpark for validation and downstream analytics.
 
-### Travel Health Advisory Map - BGSU Hackathon 2025
+### Travel Health Advisor - BGSU Hackathon 2025
 
 Description:
 
