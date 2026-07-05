@@ -27,8 +27,9 @@ For every new job application:
 8. Create a tailored `resume.tex` from `source/master-resume/resume.tex` only after approval.
 9. Generate `resume.pdf` locally from the tailored LaTeX source only when needed for submission.
 10. Create `cover-letter.md` and, when submitting, generate a `cover-letter.pdf` or `cover-letter.docx`.
-11. Add `tailoring-notes.md` explaining which experience, projects, and keywords were emphasized.
-12. Update `application-management/application-tracker.md` when the application is ready, applied, rejected, interviewing, or archived.
+11. Run a resume-vs-job-description alignment pass after generating the resume. Include an ATS-style score, matched keywords, missing-but-truthful keyword opportunities, unsupported keywords intentionally omitted, and concrete next-step recommendations.
+12. Add `tailoring-notes.md` explaining which experience, projects, and keywords were emphasized, plus the alignment pass and ATS-style score.
+13. Update `application-management/application-tracker.md` when the application is ready, applied, rejected, interviewing, or archived.
 
 If the job description includes an eligibility, location, sponsorship, clearance, degree, or schedule constraint, flag it during the intake response before spending effort on final artifacts. Continue with the proposal unless the constraint clearly makes the role impossible.
 
@@ -61,6 +62,27 @@ Do not commit binary/generated artifacts unless Aryan explicitly asks. This incl
 - Use a professional summary only when it improves immediate role alignment. It must be 2-3 lines maximum, tailored to the job, grounded in verified experience, and written as what Aryan brings, not what Aryan wants.
 - Technical Skills should list actual tools, languages, frameworks, cloud/data platforms, and technical methods. Do not list broad responsibilities such as `operational data` or `troubleshooting` as standalone skills; put those in bullets with context.
 - Experience and project bullets must contain enough concrete detail for both ATS matching and human review. Keywords alone are not enough.
+
+## Alignment And ATS-Style Score
+
+Every finalized application resume should include an alignment pass against the saved `job-description.md`.
+
+Use this scoring model as a practical internal check, not as a guarantee of a real ATS result:
+
+- Keyword coverage: 40 points for truthful coverage of important job-title, skill, tool, platform, methodology, and domain keywords.
+- Experience relevance: 25 points for how strongly the selected experience/projects match the role's responsibilities and business context.
+- Impact and evidence: 15 points for quantified scope, concrete outcomes, and action + technology + impact bullets.
+- Formatting and ATS parsing: 10 points for one-page PDF, readable layout, extractable text, standard headings, and no graphics/tables that break parsing.
+- Risk and gap handling: 10 points for avoiding unsupported claims, identifying important missing skills, and flagging eligibility/location constraints.
+
+Record the score in `tailoring-notes.md` with:
+
+- `ATS-style score: X/100`
+- `Strong matches`
+- `Gaps / intentionally omitted unsupported keywords`
+- `Recommended improvements`
+
+Do not inflate the score by adding unsupported keywords. A truthful 80/100 resume is better than a 95/100 resume with claims Aryan cannot defend.
 
 ## Cover Letter Rules
 
@@ -112,5 +134,6 @@ After approved resume changes:
 1. Compile the LaTeX file with `pdflatex -interaction=nonstopmode -halt-on-error resume.tex`.
 2. Confirm the PDF page count with `pdfinfo resume.pdf`. It must be exactly 1 page.
 3. Extract text with `pdftotext resume.pdf -` and check that bullets read correctly.
-4. Report changed files and verification results.
-5. Remove generated PDF and LaTeX build artifacts from the repo unless Aryan explicitly wants to retain them.
+4. Run the resume-vs-job-description alignment pass and record the ATS-style score in `tailoring-notes.md`.
+5. Report changed files, verification results, and the ATS-style score.
+6. Remove generated LaTeX build artifacts. Keep submission PDFs only when Aryan asks for final application artifacts or when the application package needs a ready-to-submit PDF.

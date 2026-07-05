@@ -110,3 +110,30 @@ Recommended story:
 - PDF text checked: Extracted text from both PDFs with `pdftotext` and verified readable extraction.
 - Visual review: Rendered both PDFs to PNG with `pdftoppm` and checked layout; resume is dense but readable and cover letter is cleanly spaced.
 - Cleanup: Removed LaTeX build artifacts and kept only source files plus final submission PDFs.
+
+## Resume Alignment / ATS-Style Score
+
+ATS-style score: 86/100
+
+### Strong Matches
+
+- Job title and role family: Data Engineer, data pipelines, data assets, analytics, ML/AI-ready data.
+- Core tools: Python, SQL, PySpark, Spark, AWS Glue, S3, Lambda, IAM, Git, Linux, Docker.
+- Data sources and formats: Oracle, PostgreSQL, Impala, Hadoop HDFS, Kafka, JSON, CSV, JDBC.
+- Data quality and governance: data validation, metadata/MDM, Semarchy xDM, IAM access patterns, PII tokenization.
+- Domain fit: insurance-domain data engineering through AAIS, including production billing, MDM migration, standardized data models, and large-scale source-system work.
+- Evidence and scope: 20+ TB, 700+ member companies, 160+ source tables, 25 MDM domains, 160+ Pentaho jobs, 1,000+ SQL tables, 10+ insurance lines, 110 internal users.
+
+### Gaps / Intentionally Omitted Unsupported Keywords
+
+- R is listed as preferred in the posting but is not included because confirmed experience is not available.
+- Autosys, Cron, and Airflow are not included because confirmed direct experience is not available; AWS Glue Workflows and automation are used truthfully instead.
+- AWS EMR is not included because confirmed direct experience is not available; Spark/PySpark and AWS Glue/S3 are included truthfully.
+- XML is not included because confirmed direct experience is not available.
+- MLOps is not overstated; the resume uses ML/AI-ready data assets and analytics-facing pipelines instead.
+
+### Recommended Improvements
+
+- If confirmed as truthful, add `data lineage` and `exploratory data analysis` to one bullet or the summary.
+- If Aryan has used Cron, Airflow, Autosys, EMR, XML, or R in coursework/projects, add only the verified items.
+- Confirm the role is viable before submitting because the posting says no sponsorship and no STEM OPT I-983 support.
