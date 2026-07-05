@@ -21,6 +21,7 @@ Keep the letter to two body paragraphs:
 - APKD: debugging, reliability fixes, form modernization, anti-CSRF, audit logging, AWS-hosted healthcare workflow platform.
 - RocketGrader: Angular, TypeScript, Express, MongoDB, Auth0, AWS S3, REST APIs, file upload/storage, role-based dashboards.
 - Travel Health Advisor: React, Express, MongoDB, Mistral AI, interactive maps, health-profile workflow, AI chat, PDF generation.
+- HealthTrend: NiFi, Kafka, Hadoop HDFS, Spark, PySpark, Docker, CSV/JSON ingestion, batch and streaming data paths.
 - Self-Adaptive Parallelism: C++, OpenMP, runtime telemetry, scheduling algorithms, UCB optimization, benchmarking, debugging noisy performance behavior.
 - Diff-Grounded PR Description Generation: Python, GitHub API, OpenAI API, repository metadata, LLM-assisted engineering productivity.
 
@@ -41,7 +42,7 @@ ATS-style score: 90/100
 
 Strong matches:
 
-- Builder-first evidence: multiple full-stack, backend, data, and systems projects are included.
+- Builder-first evidence: multiple full-stack, backend, data, streaming, and systems projects are included.
 - New-grad fit: education, internships, and recent projects align with entry-level/recent graduate expectations.
 - Backend/frontend/infrastructure breadth: resume covers React, Next.js, Angular, Node.js, Express, PostgreSQL, MongoDB, Docker, AWS, Python, C++, and SQL.
 - Debugging and production fixes: APKD reliability triage, AAIS production automation, and Self-Adaptive benchmarking support this signal.
