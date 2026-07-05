@@ -1,6 +1,6 @@
 # Tailoring Notes - Fuze Health Graduate Software Engineer
 
-Status: Proposal stage; resume and cover-letter content not yet changed.
+Status: Resume and cover letter drafted after Aryan approval on 2026-07-05.
 
 ## Target Role Angle
 
@@ -42,21 +42,28 @@ Secondary angle: Applied AI/full-stack engineer who has worked across healthcare
 - Do not include unsupported Travel Health Advisor RAG/HuggingFace/cosine-search claims from the current master resume.
 - Keep the generated resume exactly one page after approval.
 
-## Proposed Resume Emphasis
+## Approved Resume Emphasis
 
 - Lead with SmartSolve full-stack/internal software and secure workflow work.
 - Keep AAIS Data Engineering strong because it maps to cloud computing, complex data environments, Python, AWS, operational data, and troubleshooting.
 - Reframe AAIS Software Engineering toward Python data modeling, React/Node feature work, RBAC/JWT, AWS Lambda, and PII-safe data movement.
 - Reframe APKD toward healthcare workflow reliability, bug fixing, form security, audit logging, access-denied behavior, crash fixes, and legacy modernization.
 - Use Travel Health Advisor as the top project because it is healthcare, full-stack JavaScript, Express/MongoDB, Mistral AI, and user-facing product work.
-- Consider RocketGrader or HealthTrend as the second project depending on page fit; RocketGrader helps full-stack/feature development, HealthTrend helps healthcare data/cloud.
+- Use HealthTrend as the second project because it reinforces healthcare data, streaming, Spark/PySpark, and operational analytics alignment.
 
-## Proposed Cover Letter Angle
+## Approved Cover Letter Angle
 
-Personal + technical direction: connect Fuze's patient-first digital health mission with Aryan's pattern of building software for complex healthcare-adjacent, data-heavy, and internal operational workflows. Use one technical proof point from APKD or Travel Health Advisor for healthcare software, plus one from AAIS for AWS/data troubleshooting and production workflows.
+Personal + technical direction: connect Fuze's patient-first digital health and remote-care mission with Aryan's pattern of building software for complex healthcare-adjacent, data-heavy, and internal operational workflows. Lead with digital health and remote care interest, but keep the strongest focus on the engineering and data side. Use APKD as the personal/professional healthcare connection, AAIS as the AWS/data troubleshooting proof point, and a combined healthcare + cloud/data + full-stack story.
 
-Questions still needed from Aryan before drafting:
+Aryan's cover-letter inputs:
 
-- What specifically interests you about Fuze Health, LetsGetChecked, Truepill, Alto Pharmacy, digital health, diagnostics, pharmacy, or patient access?
-- Do you have any personal connection to healthcare access, patient care, pharmacy, diagnostics, or remote care?
-- Should the cover letter lead with healthcare motivation, cloud/data troubleshooting, or full-stack product engineering?
+- Interest: digital health and remote care, with the engineering and data side as the strongest interest.
+- Personal/professional connection: APKD healthcare workflow experience.
+- Lead angle: combination of healthcare motivation, AWS/data troubleshooting, and full-stack product engineering.
+
+## Resume Verification
+
+- Compiled with `pdflatex -interaction=nonstopmode -halt-on-error resume.tex`.
+- Confirmed with `pdfinfo resume.pdf`: `Pages: 1`.
+- Extracted text with `pdftotext resume.pdf -` and verified the resume is readable, keyword-aligned, and in usable ATS order.
+- Generated `resume.pdf` is local and ignored by git under the repo's binary/generated artifact rules.
