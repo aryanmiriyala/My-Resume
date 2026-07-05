@@ -1,0 +1,137 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[letterpaper, left=0.18in, right=0.18in, top=0.08in, bottom=0.06in]{geometry}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-6pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-3pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-4pt}
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.16in, itemsep=0pt, topsep=0pt, parsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-6pt}}
+
+\begin{document}
+
+\begin{center}
+    \textbf{\LARGE \scshape Aryan Miriyala} \\ \vspace{-2pt}
+    \small +1 419-315-0444 $|$
+    \href{mailto:aryanmiriyala@gmail.com}{\underline{aryanmiriyala@gmail.com}} $|$
+    \href{https://www.linkedin.com/in/aryan-miriyala-7788a21b6/}{\underline{linkedin.com/in/aryan-miriyala}} $|$
+    \href{https://github.com/aryanmiriyala}{\underline{\textbf{github.com/aryanmiriyala}}}
+\end{center}
+\vspace{-18pt}
+
+\section{Professional Summary}
+\small{AI/ML systems-oriented computer science graduate student with experience in \textbf{Python} analysis code, \textbf{C++}/\textbf{OpenMP} runtime experimentation, workload benchmarking, reproducible modeling, and cloud-scale data pipelines. Built performance telemetry, adaptive scheduling, ML/RL experiments, and production data workflows with emphasis on quantitative analysis, technical communication, and systems tradeoffs.}
+\vspace{-5pt}
+
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Bowling Green State University}{Bowling Green, OH}
+    {Master of Science in Computer Science, \textbf{GPA: 4.00/4.00}}{Aug. 2024 -- Aug. 2026}
+  \resumeSubheading
+    {Bowling Green State University}{Bowling Green, OH}
+    {Bachelor of Science in Computer Science, \textbf{GPA: 4.00/4.00}}{Jan. 2021 -- Apr. 2024}
+\resumeSubHeadingListEnd
+
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Artificial Intelligence \& Computer Science Intern}{May 2026 -- Present}
+      {SmartSolve Industries}{Bowling Green, OH}
+      \resumeItemListStart
+        \resumeItem{Supported AI-enabled internal software planning, including a \textbf{QMS dependency register} for modeling relationships between quality documents and improving document traceability.}
+        \resumeItem{Built secure internal software with \textbf{Next.js}, \textbf{TypeScript}, \textbf{PostgreSQL}, \textbf{Drizzle ORM}, \textbf{SSO}, and auth middleware for onboarding and org-chart workflows around sensitive employee data.}
+        \resumeItem{Created a cross-platform \textbf{Docker} devcontainer for \textbf{WSL2}/\textbf{Colima}, standardizing reproducible development environments for AI-assisted software development and code review.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Graduate Research Assistant I}{Aug. 2024 -- May 2026}
+      {Bowling Green State University}{Bowling Green, OH}
+      \resumeItemListStart
+        \resumeItem{Developed technical training materials, lab guides, and presentations across cybersecurity, cryptography, secure key management, and \textbf{NICE}/\textbf{CAE-CD} curriculum mapping.}
+        \resumeItem{Led \textbf{10} undergraduate students in organizing a CyberCamp, translating technical security topics into structured demos, hands-on labs, and student-facing explanations.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Data Engineering Intern}{May 2025 -- Aug. 2025}
+      {American Association of Insurance Services}{Lisle, IL}
+      \resumeItemListStart
+        \resumeItem{Automated a manual \textbf{SQL} billing workflow with \textbf{Python}, \textbf{PySpark}, and \textbf{AWS Glue}, processing \textbf{20+ TB} of production insurance data for \textbf{700+} member companies.}
+        \resumeItem{Built data validation, reverse-ETL, and custom \textbf{AWS IAM} access patterns across \textbf{S3} and MDM workflows, improving controlled data access and reproducible production operations.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Software Engineering Intern}{May 2023 -- May 2024}
+      {American Association of Insurance Services}{Lisle, IL}
+      \resumeItemListStart
+        \resumeItem{Engineered \textbf{Python}/JSON backend automation generating \textbf{1,000+} production \textbf{SQL} tables across \textbf{Oracle}/\textbf{PostgreSQL}, supporting standardized data models across \textbf{10+} insurance lines.}
+        \resumeItem{Built \textbf{Python}/\textbf{Pandas} workflows with multiprocessing, fuzzy matching, and hashing to clean large CSV datasets for production data-standardization pipelines.}
+        \resumeItem{Automated database validation with \textbf{AWS Lambda} triggers that tokenized PII using \textbf{hashlib}/\textbf{boto3} and ingested structured JSON into \textbf{S3} for downstream workflows.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+\section{Projects}
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=-2pt, topsep=0pt, parsep=0pt]
+  \item\small{\textbf{Self-Adaptive Parallelism} $|$ \emph{C++, OpenMP, Python, Docker, Linux}: Built a runtime research system with per-epoch telemetry and a UCB controller to tune scheduling policy, chunk size, and thread count across Mandelbrot, heat diffusion, and reduction workloads.}
+  \item\small{\textbf{Performance Modeling Outputs} $|$ \emph{Python, CSV telemetry, benchmarking, visualization}: Generated reproducible runtime, speedup, efficiency, Karp-Flatt, and scheduler-decision plots comparing adaptive scheduling against serial and fixed-policy baselines.}
+  \item\small{\textbf{MarioRL Agent Comparison} $|$ \emph{Python, PyTorch, Stable-Baselines3, Gym, TensorBoard}: Compared PPO and DQN agents with frame preprocessing, checkpoints, TensorBoard logs, generated clips, and reward/training-speed performance graphs.}
+  \item\small{\textbf{HealthTrend Data Pipeline} $|$ \emph{Spark, PySpark, Kafka, Hadoop HDFS, Docker Compose}: Built a containerized pipeline routing CSV patient data and JSON health events into distributed storage and stream-processing workflows.}
+  \item\small{\textbf{Diff-Grounded PR Generation} $|$ \emph{Python, OpenAI API, GitHub API}: Built an LLM evaluation pipeline using commits, diffs, linked issues, and repository metadata to keep generated engineering summaries grounded in source evidence.}
+\end{itemize}\vspace{-7pt}
+
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Systems \& Performance}{: C++, OpenMP, Python, Linux, Docker, Make, runtime instrumentation, adaptive scheduling, UCB optimization, workload characterization, throughput/latency/efficiency analysis, CSV telemetry, data visualization} \\
+     \textbf{AI/ML \& Modeling}{: PyTorch, Stable-Baselines3, PPO, DQN, Gym, TensorBoard, reinforcement learning, LLM inference, RAG, prompt engineering} \\
+     \textbf{Data \& Analysis}{: Pandas, PySpark, Spark, SQL, AWS Glue, S3, Lambda, IAM, Kafka, Hadoop HDFS, data validation, reproducible pipelines} \\
+     \textbf{Software Engineering}{: Git, Docker Compose, TypeScript/JavaScript, Next.js, Node.js, Express, PostgreSQL, Oracle, REST APIs, technical documentation}
+    }}
+ \end{itemize}
+
+\end{document}
