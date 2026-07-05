@@ -55,11 +55,15 @@ Strong software/data examples:
 Checklist for each bullet:
 
 - Starts with a strong action verb.
+- States what was built, changed, automated, analyzed, secured, validated, or improved.
 - Names the actual technology used.
 - Shows scope, user, system, or domain context.
 - Includes a metric when verified.
 - Explains impact without exaggeration.
 - Does not read like a job description responsibility.
+- Uses job-description keywords in context when the keyword is truthful.
+
+If a bullet cannot satisfy this checklist, rewrite it before compiling the final resume. If a metric is unavailable, use a truthful qualitative outcome such as reliability, traceability, security, standardization, reduced manual work, reproducibility, or clearer downstream workflows.
 
 ## Recruiter Scan Rules
 
@@ -122,13 +126,14 @@ For healthcare or compliance-adjacent roles:
 2. Extract keywords and role responsibilities.
 3. Select a primary resume angle from `resume-targeting-guide.md`.
 4. Decide whether a professional summary is useful for this specific role.
-5. Choose 2-4 strongest experience bullets and 1-2 matching projects.
+5. Choose the strongest experience bullets first, preserving internship roles by default; then choose as many matching projects as the one-page layout can support without reducing experience quality.
 6. Rewrite bullets using the formula above, keeping claims grounded in source docs.
 7. Tune the skills section to the job's language.
-8. Compile LaTeX and confirm the PDF is exactly one page.
-9. Extract PDF text and verify ATS readability.
-10. Visually inspect the PDF for human readability before considering it done.
-11. Save `tailoring-notes.md` with keywords used, experience emphasized, and verification results.
+8. Audit every experience and project bullet against the bullet checklist.
+9. Compile LaTeX and confirm the PDF is exactly one page.
+10. Extract PDF text and verify ATS readability.
+11. Visually inspect the PDF for human readability before considering it done.
+12. Save `tailoring-notes.md` with keywords used, experience emphasized, and verification results.
 
 ## Common Failure Modes
 

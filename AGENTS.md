@@ -19,17 +19,19 @@ For every new job application:
 3. Add or update the role in `application-management/application-tracker.md`.
 4. Review `career-materials/` for relevant experience, projects, skills, and reusable bullets.
 5. Apply `career-materials/ats-recruiter-resume-guide.md` and `career-materials/resume-targeting-guide.md` before proposing resume edits.
-6. Apply `career-materials/cover-letter-guide.md` before drafting any cover letter. Use known personal context from `career-materials/` and prior application notes. Ask Aryan cover-letter personalization questions only when the letter would be materially weaker or risky without the answer:
+6. Build a job keyword map before writing the resume: required skills, repeated terms, responsibilities, domain language, must-have tools, nice-to-have tools, and unsupported terms to avoid. Use this map to decide the resume angle, bullet selection, projects, technical skills, and cover-letter proof points.
+7. Apply `career-materials/cover-letter-guide.md` before drafting any cover letter. Use known personal context from `career-materials/` and prior application notes. Ask Aryan cover-letter personalization questions only when the letter would be materially weaker or risky without the answer:
    - What genuinely interests you about this company?
    - Do you have any personal connection to the company, product, industry, mission, or team?
    - Is there anything specific you want the hiring manager to feel after reading the letter?
-7. Document the resume direction, cover-letter angle, strongest matching experience/projects, important keyword targets, unsupported keywords to avoid, and any blocking eligibility questions in `tailoring-notes.md`.
-8. Create a tailored `resume.tex` from `source/master-resume/resume.tex` or the latest successful one-page application resume pattern.
-9. Generate `resume.pdf` locally from the tailored LaTeX source only when needed for submission.
-10. Create `cover-letter.md` and, when submitting, generate a `cover-letter.pdf` or `cover-letter.docx`.
-11. Run a resume-vs-job-description alignment pass after generating the resume. Include an ATS-style score, matched keywords, missing-but-truthful keyword opportunities, unsupported keywords intentionally omitted, and concrete next-step recommendations.
-12. Add `tailoring-notes.md` explaining which experience, projects, and keywords were emphasized, plus the alignment pass and ATS-style score.
-13. Update `application-management/application-tracker.md` when the application is ready, applied, rejected, interviewing, or archived.
+8. Document the resume direction, cover-letter angle, strongest matching experience/projects, important keyword targets, unsupported keywords to avoid, and any blocking eligibility questions in `tailoring-notes.md`.
+9. Create a tailored `resume.tex` from `source/master-resume/resume.tex` or the latest successful one-page application resume pattern.
+10. Audit every experience and project bullet against the bullet rules before compiling. Rewrite any bullet that lacks a strong action verb, truthful job-aligned technology, scope/domain context, and impact/result.
+11. Generate `resume.pdf` locally from the tailored LaTeX source only when needed for submission.
+12. Create `cover-letter.md` and, when submitting, generate a `cover-letter.pdf` or `cover-letter.docx`.
+13. Run a resume-vs-job-description alignment pass after generating the resume. Include an ATS-style score, matched keywords, missing-but-truthful keyword opportunities, unsupported keywords intentionally omitted, and concrete next-step recommendations.
+14. Add `tailoring-notes.md` explaining which experience, projects, and keywords were emphasized, plus the alignment pass and ATS-style score.
+15. Update `application-management/application-tracker.md` when the application is ready, applied, rejected, interviewing, or archived.
 
 If the job description includes an eligibility, location, sponsorship, clearance, degree, or schedule constraint, flag it during the intake response before spending effort on final artifacts. Continue with the proposal unless the constraint clearly makes the role impossible.
 
@@ -51,9 +53,12 @@ Do not commit binary/generated artifacts unless Aryan explicitly asks. This incl
 
 - The resume must be exactly one page: not more than one page, and not less than one full page of serious content.
 - Use ATS-friendly bullets: action verb + technical keywords + scope + impact.
+- Every experience and project bullet must pass the bullet formula: action verb + what was built/changed + technology/method + scope/domain + impact/result. If a verified metric is unavailable, use a truthful qualitative result such as improved reliability, reduced manual work, strengthened security, standardized data flow, improved traceability, or supported downstream workflows.
+- The first one or two bullets under the most relevant roles should visibly match the job description's highest-priority responsibilities and keywords.
 - Do not invent metrics. Use exact numbers only when supported by the source material.
 - Prefer concrete technologies, systems, and business/domain context over vague claims.
 - Tailor keywords to the job description while keeping statements truthful.
+- Keywords must appear in context, not only in Technical Skills. A keyword is strongest when tied to what Aryan built, automated, secured, modeled, validated, analyzed, or shipped.
 - Preserve the existing LaTeX style unless Aryan asks for a redesign.
 - When adding new skills, confirm they are supported by experience, projects, or explicit user input.
 - Keep bullets concise enough to fit the one-page layout.
@@ -71,6 +76,7 @@ Do not commit binary/generated artifacts unless Aryan explicitly asks. This incl
 - Use a professional summary only when it improves immediate role alignment. It must be 2-3 lines maximum, tailored to the job, grounded in verified experience, and written as what Aryan brings, not what Aryan wants.
 - Technical Skills should list actual tools, languages, frameworks, cloud/data platforms, and technical methods. Do not list broad responsibilities such as `operational data` or `troubleshooting` as standalone skills; put those in bullets with context.
 - Experience and project bullets must contain enough concrete detail for both ATS matching and human review. Keywords alone are not enough.
+- Before finalizing, scan for weak bullets that only describe responsibilities, use vague verbs, lack technologies, lack domain/scope, or do not explain why the work mattered. Rewrite those before compiling the final PDF.
 
 ## Alignment And ATS-Style Score
 
@@ -100,6 +106,7 @@ Do not inflate the score by adding unsupported keywords. A truthful 80/100 resum
 - Reuse verified facts from `career-materials/`.
 - Avoid generic filler and unsupported claims.
 - Emphasize the strongest match between the job description and Aryan's experience.
+- Map the cover letter to the job description using one or two verified proof points. Important repeated job keywords may appear naturally, but only when they fit the story and are supported by Aryan's actual experience.
 - Prefer confident, direct language over exaggerated language.
 - Do not rehash the resume. Use the cover letter to add context, motivation, judgment, and personal fit.
 - Keep the cover letter under one page.

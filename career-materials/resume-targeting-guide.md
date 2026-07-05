@@ -59,6 +59,8 @@ Rules:
 - Use `bullet-bank.md` when the application needs job-family bullets across multiple roles.
 - Prefer bullets matching the job's required stack.
 - Put job keywords into bullets only when supported by real experience.
+- Preserve internship roles by default. If the one-page layout is tight, compress or remove projects before cutting an internship, unless Aryan explicitly approves removing that role.
+- Audit each selected bullet against the formula: action verb + what changed + technology/method + scope/domain + impact/result.
 - Keep the most recent experience strong.
 - Do not force unrelated skills into a bullet.
 - Do not invent metrics.
@@ -74,6 +76,7 @@ Rules:
 - Start from each project's `Platform-Ready Description` for LinkedIn, portfolios, cover letters, or expanded project sections.
 - Use each project's `Handshake Description` for Handshake project entries; keep it at or below 500 characters and preserve the most important stack, problem, and outcome.
 - Use `Tech Stack`, `Positioning Angles`, and `Reusable Bullet Options` to select only the project details that match the role.
+- Projects support the resume angle after experience has been protected. Include fewer projects with stronger job-aligned bullets instead of cutting internship experience to fit more projects.
 - For AI roles, prioritize Travel Health Advisor - BGSU Hackathon 2025 and RocketGrader.
 - For full-stack roles, include both projects if space allows.
 - For data-heavy roles, consider reducing project bullets to preserve room for AAIS data engineering.
