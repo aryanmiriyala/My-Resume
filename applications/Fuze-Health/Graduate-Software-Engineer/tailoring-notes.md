@@ -50,6 +50,9 @@ Secondary angle: Applied AI/full-stack engineer who has worked across healthcare
 - Reframe APKD toward healthcare workflow reliability, bug fixing, form security, audit logging, access-denied behavior, crash fixes, and legacy modernization.
 - Use Travel Health Advisor as the top project because it is healthcare, full-stack JavaScript, Express/MongoDB, Mistral AI, and user-facing product work.
 - Use HealthTrend as the second project because it reinforces healthcare data, streaming, Spark/PySpark, and operational analytics alignment.
+- Added a professional summary to make the healthcare + AWS data engineering + full-stack fit visible immediately.
+- Reduced SmartSolve to two high-signal bullets and used the recovered space to add more detail for AAIS Software Engineering, APKD, projects, and skills.
+- Cleaned the skills section so `operational data` and `troubleshooting` are represented in context through bullets instead of listed as standalone technical skills.
 
 ## Approved Cover Letter Angle
 
@@ -68,4 +71,5 @@ Aryan's cover-letter inputs:
 - Extracted text with `pdftotext resume.pdf -` and verified the resume is readable, keyword-aligned, and in usable ATS order.
 - Rendered the PDF to PNG for visual review after the readability pass.
 - Revised the resume from compressed 10pt/footnote-size bullets to an 11pt document with normal small bullets while preserving the one-page limit.
+- Recompiled and re-rendered after the content restructure; confirmed the expanded-detail version still fits on one page.
 - Generated `resume.pdf` is local and ignored by git under the repo's binary/generated artifact rules.

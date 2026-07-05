@@ -41,7 +41,7 @@
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-8pt}
+    \end{tabular*}\vspace{-6pt}
 }
 
 \newcommand{\resumeProjectHeading}[2]{
@@ -67,6 +67,10 @@
 \end{center}
 \vspace{-18pt}
 
+\section{Professional Summary}
+\small{Graduate software engineer with healthcare workflow, AWS data engineering, and full-stack software experience across digital-health-adjacent systems, cloud ETL, secure access controls, and AI-enabled applications. Built and debugged systems with \textbf{Python}, \textbf{JavaScript/TypeScript}, \textbf{React/Next.js}, \textbf{Node.js}, \textbf{AWS Glue/S3/Lambda/IAM}, \textbf{PySpark}, \textbf{SQL}, \textbf{PostgreSQL}, \textbf{Oracle}, \textbf{MongoDB}, and \textbf{Lucee/CFML}.}
+\vspace{-5pt}
+
 \section{Education}
 \resumeSubHeadingListStart
   \resumeSubheading
@@ -84,9 +88,8 @@
       {Artificial Intelligence \& Computer Science Intern}{May 2026 -- Present}
       {SmartSolve Industries}{Bowling Green, OH}
       \resumeItemListStart
-        \resumeItem{Architected a full-stack \textbf{Next.js} onboarding tracker with \textbf{PostgreSQL}, \textbf{Drizzle ORM}, \textbf{SSO}, and auth middleware to centralize new-hire workflows and protect sensitive employee data.}
-        \resumeItem{Built a cross-platform \textbf{Docker} devcontainer for \textbf{WSL2}/\textbf{Colima}, improving development reproducibility while isolating AI-assisted workflows around proprietary source code.}
-        \resumeItem{Used \textbf{Codex} and \textbf{Claude Code} for AI-assisted planning, implementation, review, and debugging across internal software and quality-management tooling.}
+        \resumeItem{Architected a full-stack \textbf{Next.js} onboarding tracker with \textbf{PostgreSQL}, \textbf{Drizzle ORM}, \textbf{SSO}, and auth middleware to centralize HR/new-hire workflows and protect sensitive employee data.}
+        \resumeItem{Built a cross-platform \textbf{Docker} devcontainer for \textbf{WSL2}/\textbf{Colima} and used \textbf{Codex}/\textbf{Claude Code} for AI-assisted planning, implementation, review, and debugging of internal software.}
       \resumeItemListEnd
 
     \resumeSubheading
@@ -104,7 +107,8 @@
       {American Association of Insurance Services}{Lisle, IL}
       \resumeItemListStart
         \resumeItem{Generated \textbf{1,000+ production SQL tables} across \textbf{Oracle}/\textbf{PostgreSQL} and 10+ insurance lines by parsing insurance taxonomies with \textbf{Python}/JSON workflows.}
-        \resumeItem{Contributed to a full-stack \textbf{React}/\textbf{Node.js} modernization by implementing \textbf{RBAC} and \textbf{JWT} authentication patterns for role-specific access across about 110 internal users.}
+        \resumeItem{Built Python data-processing workflows with \textbf{Pandas}, multiprocessing, fuzzy matching, and hashing to clean large CSV datasets and support insurance data standardization.}
+        \resumeItem{Contributed to a full-stack \textbf{React}/\textbf{Node.js} modernization by implementing \textbf{RBAC} and \textbf{JWT} patterns to replace broad employee-wide access with role-specific controls for about 110 users.}
         \resumeItem{Automated database validation with \textbf{AWS Lambda} triggers that tokenized PII using \textbf{hashlib}/\textbf{boto3} and ingested structured JSON into \textbf{S3} for downstream workflows.}
       \resumeItemListEnd
 
@@ -112,25 +116,26 @@
       {Software Engineering Intern}{May 2022 -- Aug. 2022}
       {Alliance for Paired Kidney Donation}{Toledo, OH}
       \resumeItemListStart
-        \resumeItem{Improved an \textbf{AWS-hosted} \textbf{Lucee}/\textbf{CFML} healthcare workflow platform by adding global \textbf{anti-CSRF} form protection, IP-aware audit logging, and access-denied/404 routing.}
-        \resumeItem{Modernized legacy forms with \textbf{HTML5} date/time inputs, themed \textbf{CSS}, JavaScript fallbacks, and \textbf{cfform} updates to improve data-entry reliability and graceful degradation.}
-        \resumeItem{Triaged and fixed workflow issues including Matchgrid upload ordering, MFI file-location errors, duplicate-antigen crash cases, and clinical logistics defaults for internal transplant operations.}
+        \resumeItem{Secured an \textbf{AWS-hosted} \textbf{Lucee}/\textbf{CFML} healthcare workflow platform with global \textbf{anti-CSRF} form protection, IP-aware audit logging, and protected access-denied/404 routing.}
+        \resumeItem{Modernized legacy data-entry workflows by replacing \textbf{cfinput}/\textbf{cfform} date/time fields with \textbf{HTML5} inputs, themed \textbf{CSS}, JavaScript fallbacks, and form script updates.}
+        \resumeItem{Improved internal transplant logistics by adding center-level preferred blood-tube defaults and surfacing those values on logistics-sheet workflows used by clinical operations teams.}
+        \resumeItem{Triaged and fixed reliability issues across Matchgrid import ordering, MFI upload file paths, duplicate-antigen RecipientMFIEdit crashes, and reusable modal/tab workflow screens.}
       \resumeItemListEnd
 
   \resumeSubHeadingListEnd
 
 \section{Projects}
-\begin{itemize}[leftmargin=0.15in, label={}, itemsep=-2pt, topsep=0pt, parsep=0pt]
-  \item\footnotesize{\textbf{Travel Health Advisor} $|$ \emph{React, Vite, Express, MongoDB, Mistral AI}: Built a full-stack health AI prototype with country disease advisories, health-profile context, AI chat, REST APIs, and checklist PDFs.}
-  \item\footnotesize{\textbf{HealthTrend} $|$ \emph{Apache NiFi, Kafka, Hadoop HDFS, Spark, Docker}: Built a Dockerized healthcare data pipeline to ingest patient records, stream IoT health events, and process CSV/JSON health data with Spark/PySpark.}
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=-1pt, topsep=0pt, parsep=0pt]
+  \item\small{\textbf{Travel Health Advisor} $|$ \emph{React, Vite, Express, MongoDB, Mistral AI}: Built a full-stack health AI prototype with an interactive country map, Express/MongoDB disease-data APIs, health-profile context, Mistral AI chat, vaccine-risk views, and downloadable checklist PDFs.}
+  \item\small{\textbf{HealthTrend} $|$ \emph{Apache NiFi, Kafka, Hadoop HDFS, Spark, Docker}: Built a Dockerized healthcare data pipeline that routes CSV patient records into HDFS, streams JSON IoT health events into Kafka, and processes operational health data with Spark/PySpark.}
 \end{itemize}\vspace{-7pt}
 
 \section{Technical Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-     \textbf{Languages}{: Python, SQL, JavaScript/TypeScript, C++/C, C\#} \\
-     \textbf{Cloud, Data \& Observability}{: AWS Glue, S3, Lambda, IAM, PySpark, Spark, Kafka, Hadoop HDFS, SQL, operational data, troubleshooting} \\
-     \textbf{Web \& Backend}{: React, Next.js, Node.js, Express, REST APIs, Auth middleware, JWT, RBAC, HTML5, CSS, Lucee/CFML} \\
+     \textbf{Languages}{: Python, SQL, JavaScript/TypeScript, C++/C, C\#, Lucee/CFML} \\
+     \textbf{Cloud \& Data}{: AWS Glue, S3, Lambda, IAM, PySpark, Spark, Kafka, Hadoop HDFS, ETL, reverse ETL, data validation} \\
+     \textbf{Web, APIs \& Auth}{: React, Next.js, Node.js, Express, REST APIs, SSO, JWT, RBAC, auth middleware, HTML5, CSS} \\
      \textbf{Databases \& Tools}{: PostgreSQL, Oracle, MongoDB, Mongoose, Drizzle ORM, Semarchy xDM, Docker, Git, Pandas, boto3}
     }}
  \end{itemize}
