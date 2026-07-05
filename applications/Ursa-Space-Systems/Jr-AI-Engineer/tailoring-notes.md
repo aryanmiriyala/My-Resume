@@ -1,6 +1,6 @@
 # Tailoring Notes - Ursa Space Systems Jr. AI Engineer
 
-Status: Drafting. Job description saved on 2026-07-05.
+Status: Resume and cover letter generated after Aryan approval on 2026-07-05.
 
 ## Target Angle
 
@@ -95,11 +95,13 @@ Recommended story:
 
 ## Changes Made
 
-- Resume: Not changed yet. Proposed changes must be shown to Aryan before editing.
-- Cover letter: Not drafted yet. Personalization questions must be answered before writing final content.
+- Resume: Created `resume.tex` and `resume.pdf` with an AI-first / human-on-the-loop angle. Emphasized SmartSolve Codex/Claude Code workflows, Next.js/TypeScript, Docker devcontainers, LLM evaluation/repository-mining research, FalconGraph RAG/search, Python, React, AWS, and software quality.
+- Cover letter: Created `cover-letter.md`, `cover-letter.tex`, and `cover-letter.pdf` using the approved two-paragraph personal + technical draft. Focused on sincere interest in Ursa's GeoAI / satellite-spatial data mission and Aryan's interest in accountable AI-assisted engineering.
 
 ## Verification
 
-- LaTeX compiled: N/A
-- PDF page count: N/A
-- PDF text checked: N/A
+- LaTeX compiled: `resume.tex` and `cover-letter.tex` compiled successfully with `pdflatex -interaction=nonstopmode -halt-on-error`.
+- PDF page count: `resume.pdf` is 1 page; `cover-letter.pdf` is 1 page.
+- PDF text checked: Extracted text from both PDFs with `pdftotext` and verified readable order.
+- Visual review: Rendered both PDFs to PNG and verified one-page layouts.
+- Submission artifacts: `resume.pdf` and `cover-letter.pdf` are included for submission.
