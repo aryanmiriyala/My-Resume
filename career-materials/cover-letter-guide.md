@@ -16,7 +16,7 @@ Do not use the cover letter as a paragraph version of the resume. Use it to conn
 
 - Ask personalization questions before drafting any cover letter.
 - Keep the letter under one page.
-- Use three to four short paragraphs.
+- Default to at most two full body paragraphs, plus greeting and sign-off, unless Aryan explicitly asks for a longer version.
 - Tailor every letter to the company and job description.
 - Use role keywords naturally when they are supported by Aryan's experience.
 - Use confident, active language without exaggeration.
@@ -24,6 +24,7 @@ Do not use the cover letter as a paragraph version of the resume. Use it to conn
 - Prefer one deep technical example over a broad list of tools.
 - Do not invent metrics, company interest, product familiarity, or domain motivation.
 - Proofread carefully before generating final artifacts.
+- For submitted applications, generate a PDF or DOCX artifact. Markdown is acceptable as the editable source, but not as the only final submission file.
 
 ## Questions Before Drafting
 
@@ -37,12 +38,12 @@ Ask these before writing a new cover letter:
 
 ## Persona + Technical Structure
 
-Use this structure by default:
+Use this two-paragraph structure by default:
 
-1. Opening paragraph: state the role, give the real reason the company or problem matters, and summarize the strongest fit in one sentence.
-2. Technical proof paragraph: show one relevant project or role in depth, naming the systems, tools, data, architecture, or workflow involved.
-3. Personal/professional fit paragraph: connect Aryan's broader pattern of work to the company: applied AI, useful software, secure workflows, data systems, or tools that make complex work easier.
-4. Closing paragraph: reiterate fit and invite a conversation without sounding generic.
+1. Paragraph 1: state the role, give the real reason the company/problem matters, and connect that motivation to Aryan's strongest matching experience.
+2. Paragraph 2: provide one or two technical proof points, name the relevant systems/tools/data/workflows, connect them to the employer's needs, and close with a concise invitation to talk.
+
+Use three short paragraphs only when the company-specific personal connection and technical proof both need space.
 
 ## Technical Story Angles
 
@@ -65,6 +66,7 @@ Choose one primary angle per letter:
 - If the job description repeats specific keywords, incorporate them naturally only when truthful.
 - Avoid claims like "perfect fit," "expert," or "passionate about technology" unless the sentence proves it.
 - Avoid confidential details, internal names, or unsupported business impact.
+- Keep the tone personal plus technical: enough human motivation to feel specific, enough technical evidence to prove fit.
 
 ## Source Notes
 

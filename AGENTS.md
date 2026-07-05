@@ -16,16 +16,17 @@ For every new job application:
 2. Save the job posting as `job-description.md`.
 3. Add or update the role in `application-management/application-tracker.md`.
 4. Review `career-materials/` for relevant experience, projects, skills, and reusable bullets.
-5. Apply `career-materials/cover-letter-guide.md` before drafting any cover letter. Ask Aryan cover-letter personalization questions first:
+5. Apply `career-materials/ats-recruiter-resume-guide.md` and `career-materials/resume-targeting-guide.md` before proposing resume edits.
+6. Apply `career-materials/cover-letter-guide.md` before drafting any cover letter. Ask Aryan cover-letter personalization questions first:
    - What genuinely interests you about this company?
    - Do you have any personal connection to the company, product, industry, mission, or team?
    - Is there anything specific you want the hiring manager to feel after reading the letter?
-6. Show proposed resume and cover-letter changes in chat and wait for approval.
-7. Create a tailored `resume.tex` from `source/master-resume/resume.tex` only after approval.
-8. Generate `resume.pdf` locally from the tailored LaTeX source only when needed for submission.
-9. Create `cover-letter.md`.
-10. Add `tailoring-notes.md` explaining which experience, projects, and keywords were emphasized.
-11. Update `application-management/application-tracker.md` when the application is ready, applied, rejected, interviewing, or archived.
+7. Show proposed resume and cover-letter content changes in chat and wait for approval.
+8. Create a tailored `resume.tex` from `source/master-resume/resume.tex` only after approval.
+9. Generate `resume.pdf` locally from the tailored LaTeX source only when needed for submission.
+10. Create `cover-letter.md` and, when submitting, generate a `cover-letter.pdf` or `cover-letter.docx`.
+11. Add `tailoring-notes.md` explaining which experience, projects, and keywords were emphasized.
+12. Update `application-management/application-tracker.md` when the application is ready, applied, rejected, interviewing, or archived.
 
 ## Directory Conventions
 
@@ -51,6 +52,11 @@ Do not commit binary/generated artifacts unless Aryan explicitly asks. This incl
 - Preserve the existing LaTeX style unless Aryan asks for a redesign.
 - When adding new skills, confirm they are supported by experience, projects, or explicit user input.
 - Keep bullets concise enough to fit the one-page layout.
+- The resume must be readable by a human reviewer. Do not solve length problems by making the document feel cramped or shrinking text into unreadable sizes.
+- Prefer margin/border and spacing adjustments before cutting meaningful experience, changing the Education structure, or reducing font size.
+- Use a professional summary only when it improves immediate role alignment. It must be 2-3 lines maximum, tailored to the job, grounded in verified experience, and written as what Aryan brings, not what Aryan wants.
+- Technical Skills should list actual tools, languages, frameworks, cloud/data platforms, and technical methods. Do not list broad responsibilities such as `operational data` or `troubleshooting` as standalone skills; put those in bullets with context.
+- Experience and project bullets must contain enough concrete detail for both ATS matching and human review. Keywords alone are not enough.
 
 ## Cover Letter Rules
 
@@ -62,6 +68,8 @@ Do not commit binary/generated artifacts unless Aryan explicitly asks. This incl
 - Prefer confident, direct language over exaggerated language.
 - Do not rehash the resume. Use the cover letter to add context, motivation, judgment, and personal fit.
 - Keep the cover letter under one page.
+- Default to at most two full body paragraphs unless Aryan asks for a longer version.
+- For job submission, produce a PDF or DOCX cover-letter artifact, not only a Markdown draft.
 - Use a warm, professional, human tone.
 - Mention company-specific research and personal connection when truthful.
 
