@@ -1,7 +1,7 @@
 \documentclass[letterpaper,11pt]{article}
 
 \usepackage{latexsym}
-\usepackage[letterpaper, left=0.2in, right=0.2in, top=0.1in, bottom=0.08in]{geometry}
+\usepackage[letterpaper, left=0.16in, right=0.16in, top=0.08in, bottom=0.06in]{geometry}
 \usepackage{titlesec}
 \usepackage{marvosym}
 \usepackage[usenames,dvipsnames]{color}
@@ -25,23 +25,23 @@
 \setlength{\tabcolsep}{0in}
 
 \titleformat{\section}{
-  \vspace{-5pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-6pt}]
+  \vspace{-6pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
 
 \pdfgentounicode=1
 
 \newcommand{\resumeItem}[1]{
   \item\small{
-    {#1 \vspace{-2pt}}
+    {#1 \vspace{-3pt}}
   }
 }
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-1pt}\item
+  \vspace{-2pt}\item
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-3pt}
+    \end{tabular*}\vspace{-4pt}
 }
 
 \renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
@@ -49,7 +49,7 @@
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 \newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.16in, itemsep=0pt, topsep=0pt, parsep=0pt]}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-6pt}}
 
 \begin{document}
 
@@ -111,6 +111,13 @@
         \resumeItem{Engineered \textbf{Python}/JSON backend automation generating \textbf{1,000+} production \textbf{SQL} tables across \textbf{Oracle}/\textbf{PostgreSQL}, supporting standardized data models across \textbf{10+} insurance lines.}
         \resumeItem{Contributed to a \textbf{React}/\textbf{Node.js} modernization by implementing \textbf{RBAC} and \textbf{JWT} patterns, replacing broad employee-wide access with role-specific controls for roughly \textbf{110} internal users.}
         \resumeItem{Automated database validation with \textbf{AWS Lambda} triggers that tokenized PII using \textbf{hashlib}/\textbf{boto3} and ingested structured JSON into \textbf{S3} for downstream workflows.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Software Engineering Intern}{May 2022 -- Aug. 2022}
+      {Alliance for Paired Kidney Donation}{Toledo, OH}
+      \resumeItemListStart
+        \resumeItem{Built and stabilized \textbf{Lucee}/\textbf{ColdFusion} features for an \textbf{AWS}-hosted internal healthcare operations platform, adding anti-CSRF coverage, audit logging, access-denied/404 flows, date/time picker migrations, logistics defaults, and reliability fixes.}
       \resumeItemListEnd
 
   \resumeSubHeadingListEnd

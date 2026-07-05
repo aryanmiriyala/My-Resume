@@ -9,6 +9,7 @@ The resume emphasizes:
 - SmartSolve: QMS document relationship planning, Next.js/PostgreSQL internal tooling, SSO/auth middleware, Codex/Claude Code, Docker isolation.
 - BGSU Graduate Research Assistant: cybersecurity documentation, training materials, demos, curriculum mapping, technical enablement, leadership of 10 undergraduate students.
 - AAIS: production data automation, Python/PySpark/AWS Glue, IAM/S3 access controls, data models, RBAC/JWT, Lambda/S3 workflows.
+- APKD: Lucee/ColdFusion work on an AWS-hosted internal healthcare operations platform, including anti-CSRF coverage, audit logging, access-denied/404 flows, date/time picker migrations, logistics defaults, and reliability fixes.
 - Projects: FalconGraph Search for RAG/content/metadata alignment, Diff-Grounded PR Generation for LLM grounding and evaluation, RocketGrader for AI workflow integration, DreamScape for AI content generation/audio workflows.
 
 ## Cover Letter Angle
@@ -24,6 +25,7 @@ Use Libbey's enterprise AI strategy and Toledo location as the hook. The letter 
 - DreamScape: Gemini API, ElevenLabs API, AI document summarization, generated quizzes, text-to-speech cues, audio caching, local-first tracking.
 - BGSU GRA: technical documentation, cybersecurity training materials, demos, enablement, leadership, NICE/CAE-CD curriculum mapping, security-focused content.
 - AAIS: enterprise data standardization, AWS Glue, Lambda, S3, IAM, SQL, Python, PySpark, RBAC/JWT, PostgreSQL/Oracle data modeling.
+- Alliance for Paired Kidney Donation: Lucee/ColdFusion, AWS-hosted internal healthcare operations platform, anti-CSRF, audit logging, access-denied/404 flows, date/time picker migration, logistics defaults, reliability fixes.
 
 ## Important Keyword Targets
 
@@ -38,7 +40,7 @@ AI & Automation Engineer, Agentic AI, AI agents, multi-step reasoning, task exec
 
 ## Alignment Pass
 
-ATS-style score: 86/100
+ATS-style score: 87/100
 
 Strong matches:
 
@@ -46,7 +48,7 @@ Strong matches:
 - Agentic/AI-assisted workflows: SmartSolve Codex/Claude Code workflows and Docker isolation support the AI-agent/tool-use direction.
 - Enterprise workflow automation: SmartSolve onboarding/QMS planning and AAIS production automation show internal workflow, data, and process automation experience.
 - Data structures/content/metadata: FalconGraph, QMS dependency planning, AAIS standardized data models, and RAG/document chunking support this requirement.
-- Security/governance/enablement: SSO, auth middleware, IAM, RBAC/JWT, PII tokenization, cybersecurity training material, demos, and documentation align with Cyber Security & AI reporting structure.
+- Security/governance/enablement: SSO, auth middleware, IAM, RBAC/JWT, PII tokenization, anti-CSRF coverage, audit logging, cybersecurity training material, demos, and documentation align with Cyber Security & AI reporting structure.
 - Cross-functional communication: BGSU training/enablement and SmartSolve/AAIS internal systems support stakeholder-facing technical communication.
 
 Gaps / intentionally omitted unsupported keywords:
