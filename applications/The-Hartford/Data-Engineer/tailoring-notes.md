@@ -1,6 +1,6 @@
 # Tailoring Notes - The Hartford Data Engineer
 
-Status: Job description saved and tailoring direction drafted on 2026-07-05. Resume and cover-letter content changes require Aryan approval before implementation.
+Status: Resume and cover letter generated after Aryan approval on 2026-07-05.
 
 ## Target Angle
 
@@ -94,15 +94,19 @@ Recommended story:
 
 ## Proposed Resume Changes Pending Approval
 
-- Create `applications/The-Hartford/Data-Engineer/resume.tex` from the master resume after approval.
-- Tailor the summary, skills, AAIS bullets, selected APKD/SmartSolve bullets, and project section toward data engineering, insurance, AWS, Spark/PySpark, data quality, metadata, and ML/AI data assets.
-- Generate `resume.pdf` only after approved content changes are applied and the PDF verifies as exactly one readable page.
+- Created `applications/The-Hartford/Data-Engineer/resume.tex` from the one-page application resume pattern.
+- Tailored the summary, skills, AAIS bullets, APKD/SmartSolve bullets, and project section toward data engineering, insurance, AWS, Spark/PySpark, data quality, metadata, and ML/AI data assets.
+- Generated `resume.pdf` as the submission artifact after verifying it is exactly one readable page.
 
 ## Proposed Cover Letter Changes Pending Approval
 
-- Create `cover-letter.md`, `cover-letter.tex`, and `cover-letter.pdf` only after Aryan confirms the personalization answers above.
-- Keep the cover letter at most two full paragraphs, with a personal + technical tone and no resume-style task dump.
+- Created `cover-letter.md`, `cover-letter.tex`, and `cover-letter.pdf`.
+- Kept the cover letter to two full paragraphs with a personal + technical tone grounded in AAIS insurance data engineering and The Hartford's actuarial modeling / ML-AI data-asset needs.
 
 ## Verification
 
-- Pending approval: no resume or cover-letter artifact has been generated yet.
+- LaTeX compiled: `resume.tex` and `cover-letter.tex` compiled successfully with `pdflatex -interaction=nonstopmode -halt-on-error`.
+- PDF page count: `resume.pdf` is 1 page; `cover-letter.pdf` is 1 page.
+- PDF text checked: Extracted text from both PDFs with `pdftotext` and verified readable extraction.
+- Visual review: Rendered both PDFs to PNG with `pdftoppm` and checked layout; resume is dense but readable and cover letter is cleanly spaced.
+- Cleanup: Removed LaTeX build artifacts and kept only source files plus final submission PDFs.
