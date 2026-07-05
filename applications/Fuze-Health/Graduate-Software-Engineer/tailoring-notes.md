@@ -81,5 +81,5 @@ Aryan's cover-letter inputs:
 - Rendered the PDF to PNG for visual review after the readability pass.
 - Revised the resume from compressed 10pt/footnote-size bullets to an 11pt document with normal small bullets while preserving the one-page limit.
 - Recompiled and re-rendered after the content restructure; confirmed the expanded-detail version still fits on one page.
-- Performed a layout-only spacing pass after visual PDF review: compacted Education into two one-line entries and loosened spacing around experience role headers without changing resume bullet content.
+- Performed a layout-only spacing pass after visual PDF review: restored the fuller Education format and tightened page margins so the existing summary, experience, projects, and skills still fit on one page without changing bullet content.
 - Generated `resume.pdf` is local and ignored by git under the repo's binary/generated artifact rules.
