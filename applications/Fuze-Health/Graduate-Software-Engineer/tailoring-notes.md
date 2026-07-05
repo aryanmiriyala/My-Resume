@@ -68,8 +68,9 @@ Aryan's cover-letter inputs:
 
 ## Cover Letter Verification
 
-- Created `cover-letter.tex` from the approved Markdown cover-letter content.
-- Compiled with `pdflatex -interaction=nonstopmode -halt-on-error cover-letter.tex`.
+- Rewrote the cover letter after Aryan approval to follow the repo rules more closely: two body paragraphs, personal + technical tone, one healthcare proof point, one cloud/data proof point, and no resume-style task dump.
+- Updated both `cover-letter.md` and `cover-letter.tex` with the approved rewrite.
+- Recompiled with `pdflatex -interaction=nonstopmode -halt-on-error cover-letter.tex`.
 - Confirmed with `pdfinfo cover-letter.pdf`: `Pages: 1`.
 - Extracted text with `pdftotext cover-letter.pdf -` and verified readable text extraction.
 - Rendered the PDF to PNG for visual review; confirmed clean one-page layout.
