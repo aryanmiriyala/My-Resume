@@ -12,6 +12,26 @@ Every final application response must include the ready artifact paths, one-page
 
 Make incremental commits for small, coherent changes so the repository stays easy to review and push to GitHub. Do not bundle unrelated resume, cover-letter, application, tracker, and source-material updates into one large commit.
 
+## Pipeline Execution Contract
+
+For every job description, start from this file as the source of truth. Do not rely on memory from the current chat, prior application habits, or an abbreviated version of the workflow. Re-read the relevant `AGENTS.md` instructions and then execute the pipeline as a checklist.
+
+Do not mark an application package complete until all required outputs exist and have been verified:
+
+- `applications/<Company>/<Role>/job-description.md`
+- `applications/<Company>/<Role>/tailoring-notes.md`
+- `applications/<Company>/<Role>/resume.tex`
+- `applications/<Company>/<Role>/resume.pdf`
+- `applications/<Company>/<Role>/cover-letter.md`
+- `applications/<Company>/<Role>/cover-letter.pdf` or `cover-letter.docx`
+- Updated `application-management/application-tracker.md`
+- Recorded ATS-style score and alignment pass in `tailoring-notes.md`
+- Passing `scripts/validate_application_package.py` result
+- Cleaned generated LaTeX artifacts
+- Incremental commit and push
+
+If context is resumed, compacted, or interrupted mid-application, re-open the application folder and this file before continuing. Continue from the repository state, not from assumptions about what was already done.
+
 ## Application Pipeline
 
 For every new job application:
