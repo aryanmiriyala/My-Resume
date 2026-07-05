@@ -55,6 +55,7 @@ Secondary angle: Applied AI/full-stack engineer who has worked across healthcare
 - Cleaned the skills section so `operational data` and `troubleshooting` are represented in context through bullets instead of listed as standalone technical skills.
 - Revised experience and project bullets to follow the repo bullet rule more closely: action verb + concrete technology + scope/domain + impact/result.
 - Strengthened impact language around manual workflow removal, maintainability, access control, reliability, usability, setup friction, and healthcare/data workflow outcomes without adding unsupported metrics.
+- Added conservative quantifiable scope to weaker bullets after review: SmartSolve workflow consolidation, AAIS Python/Pandas workflows tied to `1,000+` tables and `10+` insurance lines, APKD `4` blood-tube defaults, and APKD `4` reliability issue classes.
 
 ## Approved Cover Letter Angle
 
@@ -86,4 +87,5 @@ Aryan's cover-letter inputs:
 - Recompiled and re-rendered after the content restructure; confirmed the expanded-detail version still fits on one page.
 - Performed a layout-only spacing pass after visual PDF review: restored the fuller Education format and tightened page margins so the existing summary, experience, projects, and skills still fit on one page without changing bullet content.
 - Rewrote bullets for clearer impact after Aryan approval, then recompiled, re-extracted text, and re-rendered the PDF; confirmed it remains exactly one page.
-- Generated `resume.pdf` is local and ignored by git under the repo's binary/generated artifact rules.
+- Recompiled and re-rendered after quantifiable-achievement pass; confirmed the submission PDF remains exactly one page.
+- `resume.pdf` is included as the tracked submission-ready resume artifact for this application.
