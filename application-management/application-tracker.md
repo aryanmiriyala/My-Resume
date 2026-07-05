@@ -4,7 +4,7 @@ Use this table to track active and historical applications. Keep binary resumes 
 
 | Status | Company | Role | Location | Date Added | Last Update | Deadline | Resume Path | Cover Letter Path | Job Link | Notes |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Ready | Fuze Health | Graduate Software Engineer | Remote - United States | 2026-07-05 | 2026-07-05 | N/A | applications/Fuze-Health/Graduate-Software-Engineer/resume.tex | applications/Fuze-Health/Graduate-Software-Engineer/cover-letter.md | N/A | Resume compiled to exactly one page; cover letter drafted with digital-health/APKD angle. |
+| Ready | Fuze Health | Graduate Software Engineer | Remote - United States | 2026-07-05 | 2026-07-05 | N/A | applications/Fuze-Health/Graduate-Software-Engineer/resume.tex | applications/Fuze-Health/Graduate-Software-Engineer/cover-letter.pdf | N/A | Resume compiled to exactly one page; cover letter generated as PDF with digital-health/APKD angle. |
 | Rejected | Sony | Software Engineer I | TBD | TBD | TBD | N/A | N/A | N/A | N/A | Folder removed after rejection. |
 
 ## Status Values

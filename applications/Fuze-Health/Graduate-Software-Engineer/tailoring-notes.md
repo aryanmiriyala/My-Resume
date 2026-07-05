@@ -64,6 +64,15 @@ Aryan's cover-letter inputs:
 - Personal/professional connection: APKD healthcare workflow experience.
 - Lead angle: combination of healthcare motivation, AWS/data troubleshooting, and full-stack product engineering.
 
+## Cover Letter Verification
+
+- Created `cover-letter.tex` from the approved Markdown cover-letter content.
+- Compiled with `pdflatex -interaction=nonstopmode -halt-on-error cover-letter.tex`.
+- Confirmed with `pdfinfo cover-letter.pdf`: `Pages: 1`.
+- Extracted text with `pdftotext cover-letter.pdf -` and verified readable text extraction.
+- Rendered the PDF to PNG for visual review; confirmed clean one-page layout.
+- `cover-letter.pdf` is included as the submission-ready cover-letter artifact.
+
 ## Resume Verification
 
 - Compiled with `pdflatex -interaction=nonstopmode -halt-on-error resume.tex`.
