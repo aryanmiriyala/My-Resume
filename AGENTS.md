@@ -58,6 +58,19 @@ For every new job application:
 
 If the job description includes an eligibility, location, sponsorship, clearance, degree, or schedule constraint, flag it during the intake response before spending effort on final artifacts. Continue with the proposal unless the constraint clearly makes the role impossible.
 
+## Job Discovery Pipeline
+
+When Aryan asks to find recently posted jobs, do not rely only on generic public boards. Use the layered job-search workflow in `job-search/`:
+
+1. Generate recent Google/search links for target roles and ATS domains.
+2. Use search results to collect ATS-hosted job URLs, especially Greenhouse, Lever, Ashby, and SmartRecruiters links.
+3. Run `discover-direct-ats-targets` on the collected URLs to extract, verify, and save company board tokens in `job-search/config/direct-ats-targets.json`.
+4. Run `run-direct-ats` to pull structured postings from verified ATS feeds into `job-search/jobs-inbox.csv` and dated reports.
+5. Use `run-public-search` as a supplemental source, not the main source.
+6. Keep Workday, iCIMS, Workable, Oracle, SAP SuccessFactors, ADP, BambooHR, Jobvite, and company-specific pages marked as adapter/backlog sources until reliable structured ingestion is implemented and verified.
+
+The goal is breadth plus accuracy: search discovers new company boards, direct ATS APIs provide structured job data, and the CSV remains the manual-review source of truth.
+
 ## Directory Conventions
 
 - `master-documents/master-resume/`: canonical general resume source and PDF.

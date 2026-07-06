@@ -28,6 +28,12 @@ Run direct ATS targets:
 python3 job-search/src/job_discovery.py run-direct-ats
 ```
 
+Discover and verify new direct ATS targets from pasted Google/search-result URLs:
+
+```bash
+python3 job-search/src/job_discovery.py discover-direct-ats-targets job-search/results/YYYY-MM-DD/google-result-urls.txt
+```
+
 The default run now produces two layers:
 
 - A strict shortlist imported into `job-search/jobs-inbox.csv`.
@@ -117,9 +123,10 @@ Default `run-public-search` thresholds: `--min-score 60` for the strict CSV shor
 - `research/ats-query-chat.txt`: raw research notes from the job-search query planning conversation.
 - `research/job-discovery-strategy.md`: layered discovery architecture and implementation order.
 - `research/expanded-job-source-audit.md`: expanded ATS, job-board, aggregator, and company-specific source audit.
+- `research/direct-ats-pull-playbook.md`: exact workflow for using search to discover ATS board tokens, validating them, and ingesting structured postings.
 
 The Google `qdr` filters are useful for finding recently indexed pages, but they do not always prove the job was posted in that exact window. The report therefore uses `first_discovered_at` as the operational freshness signal and keeps job links manual-reviewable before applying.
 
 ## Current Boundaries
 
-This build does not scrape Google result pages. It generates search links, fetches public no-key provider data from Arbeitnow and RemoteOK, and provides the CSV/results foundation. The source catalog now tracks many more possible sources; the next implementation step is direct Greenhouse and Lever adapters, followed by Ashby, SmartRecruiters, Workday/iCIMS-style enterprise parsers, sponsor-watchlist scans, and search-backed import.
+This build does not scrape Google result pages. It generates search links, fetches public no-key provider data from Arbeitnow and RemoteOK, discovers direct ATS targets from pasted URLs, and fetches configured Greenhouse, Lever, Ashby, and SmartRecruiters targets through structured endpoints. Workday, iCIMS, Workable, Oracle, SAP SuccessFactors, ADP, BambooHR, Jobvite, and company-specific career pages still need dedicated adapters or manual-review imports before they can be treated as reliable structured sources.

@@ -29,6 +29,7 @@ ROLE_BUCKETS_PATH = ROOT / "config" / "role-buckets.json"
 ATS_SOURCES_PATH = ROOT / "config" / "ats-sources.json"
 FILTERS_PATH = ROOT / "config" / "filters.json"
 DIRECT_ATS_TARGETS_PATH = ROOT / "config" / "direct-ats-targets.json"
+URL_PATTERN = re.compile(r'https?://[^\s<>)\"\']+')
 
 CSV_FIELDS = [
     "first_discovered_at",
@@ -347,6 +348,194 @@ def fetch_provider_jobs(source: str) -> list[dict[str, str]]:
     raise ValueError(f"Unsupported source: {source}")
 
 
+
+
+def strip_url_punctuation(url: str) -> str:
+    return url.rstrip(".,;:)]}")
+
+
+def extract_urls(text: str) -> list[str]:
+    return [strip_url_punctuation(match.group(0)) for match in URL_PATTERN.finditer(text)]
+
+
+def humanize_token(token: str) -> str:
+    words = re.sub(r"[-_]+", " ", token).strip()
+    return words.title() if words else token
+
+
+def direct_ats_target_from_url(url: str) -> dict[str, Any] | None:
+    parsed = urlparse(url)
+    host = (parsed.hostname or "").lower()
+    parts = [part for part in parsed.path.split("/") if part]
+    source = ""
+    token = ""
+
+    if host in {"boards.greenhouse.io", "job-boards.greenhouse.io"} and parts:
+        source, token = "greenhouse", parts[0]
+    elif host == "boards-api.greenhouse.io" and len(parts) >= 3 and parts[0] == "v1" and parts[1] == "boards":
+        source, token = "greenhouse", parts[2]
+    elif host == "jobs.lever.co" and parts:
+        source, token = "lever", parts[0]
+    elif host == "api.lever.co" and len(parts) >= 3 and parts[0] == "v0" and parts[1] == "postings":
+        source, token = "lever", parts[2]
+    elif host == "jobs.ashbyhq.com" and parts:
+        source, token = "ashby", parts[0]
+    elif host == "api.ashbyhq.com" and len(parts) >= 3 and parts[0] == "posting-api" and parts[1] == "job-board":
+        source, token = "ashby", parts[2]
+    elif host == "jobs.smartrecruiters.com" and parts:
+        source, token = "smartrecruiters", parts[0]
+    elif host == "api.smartrecruiters.com" and len(parts) >= 3 and parts[0] == "v1" and parts[1] == "companies":
+        source, token = "smartrecruiters", parts[2]
+
+    if not source or not token:
+        return None
+    token = token.strip()
+    if not re.fullmatch(r"[A-Za-z0-9_.-]+", token):
+        return None
+    return {
+        "source": source,
+        "company": humanize_token(token),
+        "token": token,
+        "priority": 2,
+        "notes": f"Discovered from ATS URL: {url}",
+        "discovered_from_url": url,
+    }
+
+
+def load_direct_ats_targets(path: Path) -> dict[str, Any]:
+    if path.exists():
+        return load_json(path)
+    return {
+        "version": 1,
+        "purpose": "Verified direct ATS targets for structured job ingestion.",
+        "targets": [],
+        "supported_sources": ["greenhouse", "lever", "ashby", "smartrecruiters"],
+        "notes": [],
+    }
+
+
+def target_key(target: dict[str, Any]) -> tuple[str, str]:
+    return str(target.get("source", "")).lower(), str(target.get("token", "")).lower()
+
+
+def verify_direct_ats_target(target: dict[str, Any]) -> tuple[bool, int, str]:
+    try:
+        jobs = fetch_direct_ats_target(target)
+    except Exception as exc:
+        return False, 0, str(exc)
+    if not jobs:
+        return False, 0, "Endpoint returned zero public jobs"
+    return True, len(jobs), "verified"
+
+
+def render_target_discovery_report(result: dict[str, Any]) -> str:
+    lines = [
+        f"# Direct ATS Target Discovery - {utc_now().date().isoformat()}",
+        "",
+        f"Generated at: `{result['generated_at']}`",
+        f"Input file: `{result['input_path']}`",
+        f"Target config: `{result['targets_path']}`",
+        "",
+        "## Summary",
+        "",
+        f"- URLs found: `{result['url_count']}`",
+        f"- Candidate ATS targets extracted: `{result['candidate_count']}`",
+        f"- Verified targets: `{result['verified_count']}`",
+        f"- Added targets: `{result['added_count']}`",
+        f"- Existing targets: `{result['existing_count']}`",
+        f"- Failed targets: `{result['failed_count']}`",
+        "",
+        "## Targets",
+        "",
+        "| Status | Source | Company | Token | Jobs | URL / Note |",
+        "|---|---|---|---|---:|---|",
+    ]
+    for item in result["rows"]:
+        lines.append(
+            "| {status} | {source} | {company} | {token} | {jobs} | {note} |".format(
+                status=md_cell(item["status"]),
+                source=md_cell(item["source"]),
+                company=md_cell(item["company"]),
+                token=md_cell(item["token"]),
+                jobs=md_cell(str(item["jobs"])),
+                note=md_cell(item["note"]),
+            )
+        )
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def discover_direct_ats_targets(args: argparse.Namespace) -> dict[str, Any]:
+    input_path = Path(args.path)
+    text = input_path.read_text(encoding="utf-8")
+    urls = extract_urls(text)
+    candidate_targets: dict[tuple[str, str], dict[str, Any]] = {}
+    for url in urls:
+        target = direct_ats_target_from_url(url)
+        if target:
+            candidate_targets.setdefault(target_key(target), target)
+
+    targets_path = Path(args.targets)
+    payload = load_direct_ats_targets(targets_path)
+    existing = {target_key(target): target for target in payload.get("targets", [])}
+    rows: list[dict[str, Any]] = []
+    added_count = 0
+    existing_count = 0
+    verified_count = 0
+    failed_count = 0
+
+    for key, target in sorted(candidate_targets.items()):
+        was_existing = key in existing
+        if was_existing:
+            known = existing[key]
+            target["company"] = known.get("company") or target["company"]
+            existing_count += 1
+        if args.no_verify:
+            verified, job_count, message = True, 0, "not verified (--no-verify)"
+        else:
+            verified, job_count, message = verify_direct_ats_target(target)
+        if verified:
+            verified_count += 1
+            if not was_existing:
+                config_target = {k: v for k, v in target.items() if k != "discovered_from_url"}
+                config_target["notes"] = f"Discovered from ATS URL and verified with {job_count} public jobs."
+                payload.setdefault("targets", []).append(config_target)
+                existing[key] = config_target
+                added_count += 1
+                status = "added"
+            else:
+                status = "existing"
+        else:
+            failed_count += 1
+            status = "failed"
+        rows.append(
+            {
+                "status": status,
+                "source": target["source"],
+                "company": target["company"],
+                "token": target["token"],
+                "jobs": job_count,
+                "note": target.get("discovered_from_url") or message,
+            }
+        )
+
+    payload["targets"] = sorted(payload.get("targets", []), key=lambda item: (item.get("priority", 99), item.get("source", ""), item.get("company", "")))
+    if added_count and not args.dry_run:
+        targets_path.parent.mkdir(parents=True, exist_ok=True)
+        targets_path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+    result = {
+        "generated_at": utc_now().replace(microsecond=0).isoformat(),
+        "input_path": input_path.as_posix(),
+        "targets_path": targets_path.as_posix(),
+        "url_count": len(urls),
+        "candidate_count": len(candidate_targets),
+        "verified_count": verified_count,
+        "added_count": added_count if not args.dry_run else 0,
+        "existing_count": existing_count,
+        "failed_count": failed_count,
+        "rows": rows,
+    }
+    return result
 
 
 def normalize_direct_ats_job(target: dict[str, Any], item: dict[str, Any]) -> dict[str, str] | None:
@@ -849,6 +1038,14 @@ def build_parser() -> argparse.ArgumentParser:
     run.add_argument("--include-location-review", action="store_true")
     run.add_argument("--results-dir", default=str(DEFAULT_RESULTS_DIR / utc_now().date().isoformat()))
 
+
+    discover = sub.add_parser("discover-direct-ats-targets", help="Extract and verify direct ATS targets from pasted job/search-result URLs")
+    discover.add_argument("path", help="Text file containing pasted job or search-result URLs")
+    discover.add_argument("--targets", default=str(DIRECT_ATS_TARGETS_PATH), help="Direct ATS target config path")
+    discover.add_argument("--output", default=str(DEFAULT_RESULTS_DIR / utc_now().date().isoformat() / "direct-ats-target-discovery.md"))
+    discover.add_argument("--no-verify", action="store_true", help="Extract targets without calling ATS endpoints")
+    discover.add_argument("--dry-run", action="store_true", help="Write the report without updating the target config")
+
     direct = sub.add_parser("run-direct-ats", help="Fetch configured direct ATS targets, update inbox, and write run outputs")
     direct.add_argument("--targets", default=str(DIRECT_ATS_TARGETS_PATH), help="Direct ATS target config path")
     direct.add_argument("--sources", nargs="*", choices=["greenhouse", "lever", "ashby", "smartrecruiters"], default=[])
@@ -884,6 +1081,9 @@ def main() -> None:
     elif args.command == "run-public-search":
         result = fetch_public_jobs(args)
         write_run_outputs(result, args)
+    elif args.command == "discover-direct-ats-targets":
+        result = discover_direct_ats_targets(args)
+        write_output(render_target_discovery_report(result), args.output)
     elif args.command == "run-direct-ats":
         result = fetch_direct_ats_jobs(args)
         write_run_outputs(result, args)
