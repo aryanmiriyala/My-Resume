@@ -49,7 +49,12 @@ python3 job-discovery/src/job_discovery.py export-report
 - `config/ats-sources.json`: ATS domains and preferred sources.
 - `config/filters.json`: early-career terms, location terms, positive skill terms, exclusions, and report buckets.
 
+## Research Notes
+
+- `research/ats-query-chat.txt`: raw research notes from the job-search query planning conversation.
+
+The Google `qdr` filters are useful for finding recently indexed pages, but they do not always prove the job was posted in that exact window. The report therefore uses `first_discovered_at` as the operational freshness signal and keeps job links manual-reviewable before applying.
+
 ## Current Boundaries
 
 This first build does not scrape Google result pages. It generates search links and provides the storage/reporting foundation. The next practical step is adding a search API ingestion path or ATS-specific providers for Greenhouse, Lever, Ashby, Workday, and SmartRecruiters.
-

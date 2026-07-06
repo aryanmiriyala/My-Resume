@@ -1,0 +1,251 @@
+Here are the updated ATS-optimized queries including Data Engineer roles and a Last 1 Hour search variant.
+1. One-line explanation
+Queries to surface Software Engineer + Data Engineer intern/early-career jobs posted very recently on U.S. ATS systems.
+2. Broad Query
+("Software Engineer" OR "Software Engineering Intern" OR "Junior Software Engineer" 
+ OR "Data Engineer" OR "Data Engineering Intern" OR "Junior Data Engineer")
+(site:myworkdayjobs.com OR site:boards.greenhouse.io OR site:greenhouse.io 
+ OR site:jobs.lever.co OR site:lever.co OR site:icims.com 
+ OR site:jobs.smartrecruiters.com OR site:smartrecruiters.com)
+"2026"
+3. Strict Query
+("Software Engineer" OR "Software Engineering Intern" OR "Junior Software Engineer" 
+ OR "Data Engineer" OR "Data Engineering Intern" OR "Junior Data Engineer")
+("United States" OR US)
+("posted" OR "new opening" OR "just posted")
+(site:myworkdayjobs.com OR site:boards.greenhouse.io OR site:greenhouse.io 
+ OR site:jobs.lever.co OR site:lever.co OR site:icims.com 
+ OR site:jobs.smartrecruiters.com OR site:smartrecruiters.com)
+"2026"
+4. Clean Exclusion Query
+("Software Engineer" OR "Software Engineering Intern" OR "Junior Software Engineer" 
+ OR "Data Engineer" OR "Data Engineering Intern" OR "Junior Data Engineer")
+(site:myworkdayjobs.com OR site:boards.greenhouse.io OR site:greenhouse.io 
+ OR site:jobs.lever.co OR site:lever.co OR site:icims.com 
+ OR site:jobs.smartrecruiters.com OR site:smartrecruiters.com)
+-"talent pool" -"pipeline" -"evergreen" -"future openings" -"join our network"
+5. One-Click Google URLs
+Last 24 hours
+https://www.google.com/search?q=%28%22Software+Engineer%22+OR+%22Software+Engineering+Intern%22+OR+%22Junior+Software+Engineer%22+OR+%22Data+Engineer%22+OR+%22Data+Engineering+Intern%22+OR+%22Junior+Data+Engineer%22%29+%28site%3Amyworkdayjobs.com+OR+site%3Aboards.greenhouse.io+OR+site%3Agreenhouse.io+OR+site%3Ajobs.lever.co+OR+site%3Alever.co+OR+site%3Aicims.com+OR+site%3Ajobs.smartrecruiters.com+OR+site%3Asmartrecruiters.com%29&num=50&tbs=qdr:d
+Last 6 hours
+https://www.google.com/search?q=%28%22Software+Engineer%22+OR+%22Software+Engineering+Intern%22+OR+%22Junior+Software+Engineer%22+OR+%22Data+Engineer%22+OR+%22Data+Engineering+Intern%22+OR+%22Junior+Data+Engineer%22%29+%28site%3Amyworkdayjobs.com+OR+site%3Aboards.greenhouse.io+OR+site%3Agreenhouse.io+OR+site%3Ajobs.lever.co+OR+site%3Alever.co+OR+site%3Aicims.com+OR+site%3Ajobs.smartrecruiters.com+OR+site%3Asmartrecruiters.com%29&num=50&tbs=qdr:h6
+Last 1 hour (your request)
+Google does not allow finer granularity than qdr:h, but this hack works:
+&tbs=qdr:h1
+Last 1 hour
+https://www.google.com/search?q=%28%22Software+Engineer%22+OR+%22Software+Engineering+Intern%22+OR+%22Junior+Software+Engineer%22+OR+%22Data+Engineer%22+OR+%22Data+Engineering+Intern%22+OR+%22Junior+Data+Engineer%22%29+%28site%3Amyworkdayjobs.com+OR+site%3Aboards.greenhouse.io+OR+site%3Agreenhouse.io+OR+site%3Ajobs.lever.co+OR+site%3Alever.co+OR+site%3Aicims.com+OR+site%3Ajobs.smartrecruiters.com+OR+site%3Asmartrecruiters.com%29&num=50&tbs=qdr:h1
+6. Daily 10-Minute Execution Routine
+Open 1-hour, 6-hour, and 24-hour URLs.
+Identify fresh postings from ATS domains only.
+Prioritize roles with real descriptions, not pipelines.
+Apply immediately; save links in a tracker.
+Repeat every morning and evening.
+If you want, I can now generate variants for ML Engineer, Backend Engineer, Cloud Engineer, or multiple roles in a single batch.
+&tbs=qdr:d
+
+what does this do?
+&tbs=qdr:d is a Google Search time filter parameter.
+Here is the precise meaning, in ATS-job-search terms and Google-internals terms:
+
+What &tbs=qdr:d does
+It forces Google to return only results indexed within the last 24 hours.
+Breakdown:
+
+tbs = "time based search"
+qdr = "query date range"
+d = "day" (24 hours)
+So:
+&tbs=qdr:d
+= show results from the past 24 hours only
+Related variants
+Google uses single-letter time windows:
+Parameter	Time Window	Purpose
+&tbs=qdr:h1	Last 1 hour	Ultra-fresh results
+&tbs=qdr:h6	Last 6 hours	Very recent ATS postings
+&tbs=qdr:h	Last 24 hours (same as d)	Daily sweep
+&tbs=qdr:d	Last 24 hours	Standard ATS job search filter
+&tbs=qdr:w	Last 7 days	Weekly sweep
+Note: h1 and h6 are “hacks” that Google accepts even though they’re not officially documented.
+Why ATS hunters use &tbs=qdr:d
+ATS postings appear on Google before they appear on LinkedIn.
+Filtering to the last 24 hours makes you first to see them.
+Combined with site:myworkdayjobs.com / site:greenhouse.io, it surfaces direct-apply roles before aggregators index them.
+If you want, I can build you a query set that automatically cycles 1h + 3h + 6h + 24h for maximum coverage.
+why would we use & after datatype? what does that signify
+& has nothing to do with "datatype" — it is simply the separator for query parameters in a URL.
+Here is the clean explanation:
+
+What & means in a URL
+When you see something like:
+https://www.google.com/search?q=software+engineer&tbs=qdr:d
+The ? begins the query-string
+The & separates multiple parameters.
+Think of it as:
+
+?parameter1=value1 & parameter2=value2 & parameter3=value3
+In our case:
+q= → the search query
+tbs= → time-based search filter
+Therefore:
+?q=....&tbs=qdr:d
+= run this search query AND also apply this date filter
+The & simply glues them together.
+Without &
+If you tried:
+?q=software+tbs=qdr:d
+Google would treat all of it as one search query, NOT a filter.
+So & is essential — it tells Google:
+
+“This is another parameter, not part of the query text.”
+
+Summary
+& = separator for additional URL parameters.
+You use it any time you want Google to apply:
+
+time filters (tbs=)
+language filters
+count limits
+safe-search settings
+etc.
+If you want, I can show you how all ATS job query parameters combine inside a single URL and how to modify them quickly.
+
+Thought for a couple of seconds
+Yep — here are high-signal Google searches that combine all the experiences from your screenshot so you’re much more likely to hit the exact profile (and not random similar interns).
+Use these in order (top ones are the strongest).
+
+1) “All-companies combo-lock” (very strict, usually tiny results)
+site:linkedin.com/in ("Jane Street" AND NVIDIA AND "Virtu Financial") -jobs -hiring -careers -company
+2) Jane Street + NVIDIA + the rare keywords
+site:linkedin.com/in ("Jane Street" AND NVIDIA) ("Marketdata Systems Performance" OR "OCaml and Performance Engineering" OR "Confidential Computing" OR "GPU/Hardware Security") -jobs -hiring -careers -company
+3) Jane Street + Virtu + market/systems wording
+site:linkedin.com/in ("Jane Street" AND "Virtu Financial") ("Equities Desk" OR "Marketdata" OR "Simulation" OR "Research Engineer Intern") -jobs -hiring -careers -company
+4) NVIDIA + UT Austin ARL + SLAM/Sonar (super specific)
+site:linkedin.com/in (NVIDIA AND ("Applied Research Laboratories" OR "University of Texas at Austin")) ("SLAM" OR Sonar OR "Point Cloud") -jobs -hiring -careers -company
+5) Include Lockheed Martin too (security clearance phrasing)
+site:linkedin.com/in ("Jane Street" OR NVIDIA OR "Virtu Financial") ("Lockheed Martin" OR "Active Secret" OR "Security Clearance") -jobs -hiring -careers -company
+6) Everything + locations (helps a lot if results are still broad)
+site:linkedin.com/in ("Jane Street" AND "New York") (NVIDIA AND "Santa Clara") ("Virtu Financial" AND "New York") -jobs -hiring -careers -company
+7) “Exact-phrases only” (most precise from your screenshot)
+site:linkedin.com/in ("Marketdata Systems Performance" OR "OCaml and Performance Engineering") "Jane Street" ("GPU/Hardware Security" OR "Confidential Computing") -jobs -hiring -careers -company
+Optional: if you keep getting company pages instead of people
+Add this to the end of any query:
+-intitle:"jobs" -intitle:"careers" -inurl:"company/"
+If you want, paste one of the wrong profiles you keep landing on (just the headline text like “Student at X / Incoming Intern at Y”), and I’ll tell you the exact -keyword exclusions to remove that whole category of false matches without hurting your target.
+is there no way to figure who someone is based on their linkedin experience section
+Not reliably, and for one big reason: an “experience section” is not a unique identifier. Lots of different people can share the same employers/titles/keywords (especially for big-name internships), and the text is often templated (“Software Engineer Intern”, “On-site”, city names, standard team names). So you can’t deterministically “figure out who it is” from that alone.
+What is possible:
+
+Narrow to a small candidate set using rare phrases + combinations (what we’ve been doing).
+Confirm a match once you have a candidate profile by checking for multiple uncommon details (same team names + same sequence of internships + same locations + overlapping dates).
+What’s typically needed to uniquely identify someone (any one of these usually makes it easy):
+Name (even partial)
+School + grad year
+A project title / publication / competition
+A unique phrase from their “About” or a project description
+A link to GitHub/personal site from their LinkedIn
+If you can share one more non-sensitive detail you can see on the profile (e.g., the school name or graduation year), I can give you a set of searches that usually lands on the exact person within a few clicks.
+lets add all the expereicne into one line and then search
+Here you go — one single-line “everything at once” Google query built from all the experiences visible in your screenshot. Copy/paste this into Google:
+site:linkedin.com/in ("Jane Street" "Software Engineer Intern" "Equities Desk" "Marketdata Systems Performance" OCaml "Performance Engineering" "New York") ("NVIDIA" "Software Engineer Intern" "GPU Architecture" "Confidential Computing" "GPU/Hardware Security" "Santa Clara") ("Virtu Financial" "Research Engineer Intern" "Research & Simulation Technology" "New York") ("Applied Research Laboratories" "University of Texas at Austin" Sonar "Point Cloud Registration" SLAM) ("Lockheed Martin" "Active Secret" "Security Clearance" "ML" "Data Pipeline") -jobs -hiring -careers -inurl:company
+If that returns zero results (it might, because it’s extremely strict), use this “looser” one-liner that still includes everything but allows more variation:
+site:linkedin.com/in ("Jane Street" OR "Virtu Financial" OR NVIDIA OR "Lockheed Martin" OR "Applied Research Laboratories" OR "University of Texas at Austin") ("Marketdata" OR "Equities Desk" OR OCaml OR "Performance Engineering" OR "Research & Simulation" OR "Confidential Computing" OR "GPU/Hardware Security" OR "GPU Architecture" OR Sonar OR SLAM OR "Point Cloud") ("New York" OR "Santa Clara") -jobs -hiring -careers -inurl:company
+Two quick tips so you don’t get junk:
+Keep -inurl:company to avoid company directory pages.
+If you still see job posts, add: -inurl:jobs -intitle:jobs -intitle:careers
+If you tell me whether the person’s profile looks US undergrad (e.g., “BS”, “Class of 2027/2028”), I can give you an even tighter one-liner that filters out 90% of the wrong people.
+
+these are some tricks i used in the past to find people/job postings. i need to find software, data, ai, ml or anything adjacent jobs like business analyst, data analyst or similar jobs that have been posted in the last 24 hours. use all of this context to help me figure this out please
+I’ll turn this into a practical “job-hunting search system”: role buckets, ATS domains, time filters, exclusion filters, and ready-to-click Google URLs. I’ll also sanity-check a few live searches so the syntax matches how results are showing up now.
+One thing already stands out: plain ATS queries often surface older postings unless the URL time filter is applied. In a live sanity check, broad ATS searches surfaced roles marked 3, 4, and 17 days old, so the tbs=qdr:d piece matters a lot for the “last 24 hours” goal.
+Thought for 1m 12s
+Yes — based on everything you pasted, I would make your search system broader than just “Software Engineer / Data Engineer,” but still strict enough to avoid garbage postings.
+The key is to search by role bucket + early-career modifier + ATS domain + last-24h filter + exclusions.
+
+1. Role buckets to include
+Use these buckets separately instead of one giant query every time. Giant queries often become too strict or too noisy.
+A. Software / backend / cloud
+("Software Engineer" OR "Software Developer" OR "Backend Engineer" OR "Full Stack Engineer" OR "Platform Engineer" OR "Cloud Engineer")
+B. Data engineering
+("Data Engineer" OR "Analytics Engineer" OR "ETL Developer" OR "Data Platform Engineer" OR "BI Engineer")
+C. AI / ML / data science
+("Machine Learning Engineer" OR "ML Engineer" OR "AI Engineer" OR "Applied AI Engineer" OR "MLOps Engineer" OR "Data Scientist")
+D. Analyst-adjacent roles
+("Data Analyst" OR "Business Analyst" OR "BI Analyst" OR "Business Intelligence Analyst" OR "Product Analyst" OR "Operations Analyst" OR "Reporting Analyst")
+2. Early-career filter
+Add this to each query:
+("Intern" OR Internship OR "Co-op" OR "New Grad" OR "New Graduate" OR "Entry Level" OR "Early Career" OR "Associate" OR "Junior" OR "University Grad" OR "Recent Graduate" OR "Campus")
+This catches internships, co-ops, new-grad roles, and analyst-style entry-level roles.
+3. ATS domain filter
+Your existing list is good, but I would add Ashby and Workable because a lot of startups use them now.
+(site:myworkdayjobs.com OR site:boards.greenhouse.io OR site:greenhouse.io 
+ OR site:jobs.lever.co OR site:lever.co 
+ OR site:icims.com 
+ OR site:jobs.smartrecruiters.com OR site:smartrecruiters.com
+ OR site:jobs.ashbyhq.com
+ OR site:apply.workable.com
+ OR site:jobvite.com
+ OR site:bamboohr.com)
+The live sanity check confirmed this style does hit real ATS postings across Workday, Greenhouse, Lever, and SmartRecruiters, but broad searches can still return older roles unless you use the time filter. For example, I saw ATS results such as Boeing’s 2026 entry-level software role marked 4 days ago, Toyota’s software engineer role marked 3 days ago, Northrop Grumman’s 2026 software role marked 17 days ago, and Blue River’s Greenhouse “Software Data Engineer” posting.
+4. Exclusion filter
+Use this to remove talent pools, senior jobs, and fake/evergreen listings:
+-"talent pool" -pipeline -evergreen -"future openings" -"join our network" 
+-senior -staff -principal -manager -director -lead -architect 
+-"10+ years" -"8+ years"
+Be careful with -lead: it can accidentally remove “leadership development” or “technical lead intern” pages, but usually it helps.
+5. Best full queries
+Master broad query: software + data + AI + analyst
+("Software Engineer" OR "Software Developer" OR "Backend Engineer" OR "Full Stack Engineer" OR "Platform Engineer" OR "Cloud Engineer" OR "Data Engineer" OR "Analytics Engineer" OR "Machine Learning Engineer" OR "ML Engineer" OR "AI Engineer" OR "MLOps Engineer" OR "Data Scientist" OR "Data Analyst" OR "Business Analyst" OR "BI Analyst" OR "Product Analyst" OR "Operations Analyst")
+("Intern" OR Internship OR "Co-op" OR "New Grad" OR "New Graduate" OR "Entry Level" OR "Early Career" OR "Associate" OR "Junior" OR "University Grad" OR "Recent Graduate" OR "Campus")
+("United States" OR USA OR Remote)
+(site:myworkdayjobs.com OR site:boards.greenhouse.io OR site:greenhouse.io OR site:jobs.lever.co OR site:lever.co OR site:icims.com OR site:jobs.smartrecruiters.com OR site:smartrecruiters.com OR site:jobs.ashbyhq.com OR site:apply.workable.com OR site:jobvite.com OR site:bamboohr.com)
+-"talent pool" -pipeline -evergreen -"future openings" -"join our network" -senior -staff -principal -manager -director -lead -architect -"10+ years" -"8+ years"
+Software-only query
+("Software Engineer" OR "Software Developer" OR "Backend Engineer" OR "Full Stack Engineer" OR "Platform Engineer" OR "Cloud Engineer")
+("Intern" OR Internship OR "Co-op" OR "New Grad" OR "New Graduate" OR "Entry Level" OR "Early Career" OR "Associate" OR "Junior" OR "University Grad" OR "Recent Graduate" OR "Campus")
+("United States" OR USA OR Remote)
+(site:myworkdayjobs.com OR site:boards.greenhouse.io OR site:greenhouse.io OR site:jobs.lever.co OR site:lever.co OR site:icims.com OR site:jobs.smartrecruiters.com OR site:smartrecruiters.com OR site:jobs.ashbyhq.com OR site:apply.workable.com)
+-senior -staff -principal -manager -director -lead -architect -"talent pool" -pipeline -evergreen
+Data / AI query
+("Data Engineer" OR "Analytics Engineer" OR "ETL Developer" OR "Data Platform Engineer" OR "Machine Learning Engineer" OR "ML Engineer" OR "AI Engineer" OR "MLOps Engineer" OR "Data Scientist")
+("Intern" OR Internship OR "Co-op" OR "New Grad" OR "New Graduate" OR "Entry Level" OR "Early Career" OR "Associate" OR "Junior")
+("United States" OR USA OR Remote)
+(site:myworkdayjobs.com OR site:boards.greenhouse.io OR site:greenhouse.io OR site:jobs.lever.co OR site:lever.co OR site:icims.com OR site:jobs.smartrecruiters.com OR site:jobs.ashbyhq.com OR site:apply.workable.com)
+-senior -staff -principal -manager -director -lead -architect -"10+ years" -"8+ years" -"talent pool" -pipeline -evergreen
+Analyst-adjacent query
+("Data Analyst" OR "Business Analyst" OR "BI Analyst" OR "Business Intelligence Analyst" OR "Product Analyst" OR "Operations Analyst" OR "Reporting Analyst")
+("Intern" OR Internship OR "Co-op" OR "New Grad" OR "New Graduate" OR "Entry Level" OR "Early Career" OR "Associate" OR "Junior")
+("United States" OR USA OR Remote)
+(site:myworkdayjobs.com OR site:boards.greenhouse.io OR site:greenhouse.io OR site:jobs.lever.co OR site:lever.co OR site:icims.com OR site:jobs.smartrecruiters.com OR site:jobs.ashbyhq.com OR site:apply.workable.com)
+-senior -staff -principal -manager -director -lead -architect -"talent pool" -pipeline -evergreen
+6. Time filter strategy
+Use the same query with different endings:
+&tbs=qdr:h1   = last 1 hour
+&tbs=qdr:h6   = last 6 hours
+&tbs=qdr:d    = last 24 hours
+&tbs=qdr:w    = last 7 days
+The most useful routine is:
+Morning:  qdr:h6, then qdr:d
+Evening:  qdr:h6, then qdr:d
+Random quick check: qdr:h1
+Weekly cleanup: qdr:w
+7. Sponsorship / F-1-friendly variant
+Since you are on F-1/OPT/CPT context, this variant is useful, but it can miss jobs that sponsor but do not mention it clearly.
+("Software Engineer" OR "Data Engineer" OR "Machine Learning Engineer" OR "Data Analyst" OR "Business Analyst")
+("Intern" OR "New Grad" OR "Entry Level" OR "Associate" OR "Junior")
+("OPT" OR "CPT" OR "visa sponsorship" OR "sponsor" OR "F-1" OR "STEM OPT")
+(site:myworkdayjobs.com OR site:boards.greenhouse.io OR site:greenhouse.io OR site:jobs.lever.co OR site:lever.co OR site:icims.com OR site:jobs.smartrecruiters.com OR site:jobs.ashbyhq.com OR site:apply.workable.com)
+-senior -staff -principal -manager -director -lead -architect -"talent pool" -pipeline -evergreen
+Also run the opposite exclusion carefully:
+-"unable to sponsor" -"no sponsorship" -"must be a US citizen" -"US citizen" -"green card"
+But do not use this on every search, because some job descriptions say things like “we are unable to sponsor this role” in one section and still appear in search snippets. You should use it as a cleanup filter, not the default.
+8. Best workflow
+Use this order:
+Run Software-only, last 6 hours.
+Run Data / AI, last 6 hours.
+Run Analyst-adjacent, last 6 hours.
+Run Master broad, last 24 hours.
+Open only ATS domains.
+Skip anything that says senior, staff, principal, manager, talent pool, evergreen, or “future openings.”
+Save these fields in a tracker: company, title, ATS link, posted date, location, visa/sponsorship note, applied yes/no.
+A good rule: if a role is on Workday/Greenhouse/Lever/Ashby and looks real, apply directly from the ATS page before LinkedIn or Simplify shows it widely.
+I can monitor this twice a day and send you fresh software/data/AI/analyst postings from ATS sites. Want me to set that up?

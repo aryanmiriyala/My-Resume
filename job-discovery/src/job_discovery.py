@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sqlite3
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -106,6 +107,15 @@ def normalize_text(*parts: str | None) -> str:
     return " ".join(part or "" for part in parts).lower()
 
 
+def contains_term(text: str, term: str) -> bool:
+    """Match terms without substring false positives like architect/architecture."""
+    needle = term.lower()
+    if any(char.isalnum() for char in needle):
+        pattern = r"(?<![a-z0-9])" + re.escape(needle) + r"(?![a-z0-9])"
+        return re.search(pattern, text) is not None
+    return needle in text
+
+
 @dataclass
 class ScoreResult:
     score: int
@@ -132,7 +142,7 @@ def score_job(
     detected_bucket = explicit_bucket or ""
     if not detected_bucket:
         for bucket, payload in role_buckets.items():
-            if any(term.lower() in title_text for term in payload["terms"]):
+            if any(contains_term(title_text, term) for term in payload["terms"]):
                 detected_bucket = bucket
                 break
     if detected_bucket:
@@ -141,24 +151,24 @@ def score_job(
         detected_bucket = "unclassified"
         flags.append("no_role_bucket_match")
 
-    if any(term.lower() in text for term in filters["early_career_terms"]):
+    if any(contains_term(text, term) for term in filters["early_career_terms"]):
         score += 15
     else:
         flags.append("no_early_career_signal")
 
-    if any(term.lower() in text for term in filters["location_terms"]):
+    if any(contains_term(text, term) for term in filters["location_terms"]):
         score += 10
     else:
         flags.append("location_needs_review")
 
-    matched_skills = [term for term in filters["positive_skill_terms"] if term.lower() in text]
+    matched_skills = [term for term in filters["positive_skill_terms"] if contains_term(text, term)]
     score += min(20, len(matched_skills) * 2)
 
     if source in ats_sources.get("preferred_sources", []):
         score += 5
 
     for term in filters["negative_terms"]:
-        if term.lower() in text:
+        if contains_term(text, term):
             score -= 15
             flags.append(f"negative:{term}")
 
