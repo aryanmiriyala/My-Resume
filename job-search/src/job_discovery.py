@@ -28,6 +28,7 @@ DEFAULT_RESULTS_DIR = ROOT / "results"
 ROLE_BUCKETS_PATH = ROOT / "config" / "role-buckets.json"
 ATS_SOURCES_PATH = ROOT / "config" / "ats-sources.json"
 FILTERS_PATH = ROOT / "config" / "filters.json"
+DIRECT_ATS_TARGETS_PATH = ROOT / "config" / "direct-ats-targets.json"
 
 CSV_FIELDS = [
     "first_discovered_at",
@@ -344,6 +345,156 @@ def fetch_provider_jobs(source: str) -> list[dict[str, str]]:
             if (job := normalize_provider_job(source, item)) and job["url"] and job["title"] and job["company"]
         ]
     raise ValueError(f"Unsupported source: {source}")
+
+
+
+
+def normalize_direct_ats_job(target: dict[str, Any], item: dict[str, Any]) -> dict[str, str] | None:
+    source = target["source"]
+    company = target["company"]
+    if source == "greenhouse":
+        location = item.get("location") or {}
+        departments = item.get("departments") or []
+        department_names = ", ".join(dept.get("name", "") for dept in departments if dept.get("name"))
+        return {
+            "url": str(item.get("absolute_url") or "").strip(),
+            "title": clean_text(item.get("title")),
+            "company": company,
+            "location": clean_text(location.get("name") if isinstance(location, dict) else location),
+            "source": source,
+            "snippet": clean_text(" ".join([item.get("content") or "", department_names])),
+            "posted_at": clean_text(item.get("updated_at") or item.get("created_at")),
+        }
+    if source == "lever":
+        categories = item.get("categories") or {}
+        lists = item.get("lists") or []
+        list_text = " ".join(str(part.get("content", "")) for part in lists if isinstance(part, dict))
+        created = item.get("createdAt") or item.get("updatedAt") or ""
+        posted_at = parse_epoch(int(created) / 1000).replace(microsecond=0).isoformat() if created else ""
+        return {
+            "url": str(item.get("hostedUrl") or item.get("applyUrl") or "").strip(),
+            "title": clean_text(item.get("text")),
+            "company": company,
+            "location": clean_text(categories.get("location") if isinstance(categories, dict) else ""),
+            "source": source,
+            "snippet": clean_text(" ".join([item.get("descriptionPlain") or item.get("description") or "", list_text])),
+            "posted_at": posted_at,
+        }
+    if source == "ashby":
+        return {
+            "url": str(item.get("jobUrl") or item.get("applyUrl") or "").strip(),
+            "title": clean_text(item.get("title")),
+            "company": company,
+            "location": clean_text(item.get("locationName") or item.get("location") or ""),
+            "source": source,
+            "snippet": clean_text(item.get("descriptionPlain") or item.get("descriptionHtml") or item.get("department") or ""),
+            "posted_at": clean_text(item.get("publishedAt") or item.get("updatedAt") or ""),
+        }
+    if source == "smartrecruiters":
+        location = item.get("location") or {}
+        location_text = location.get("city") or location.get("region") or location.get("country") or "" if isinstance(location, dict) else location
+        return {
+            "url": str(item.get("ref") or item.get("applyUrl") or "").strip(),
+            "title": clean_text(item.get("name") or item.get("title")),
+            "company": company,
+            "location": clean_text(location_text),
+            "source": source,
+            "snippet": clean_text(item.get("jobAd") or item.get("description") or ""),
+            "posted_at": clean_text(item.get("releasedDate") or item.get("updatedDate") or ""),
+        }
+    return None
+
+
+def fetch_direct_ats_target(target: dict[str, Any]) -> list[dict[str, str]]:
+    source = target["source"]
+    token = target["token"]
+    if source == "greenhouse":
+        payload = fetch_json(f"https://boards-api.greenhouse.io/v1/boards/{token}/jobs?content=true")
+        items = payload.get("jobs", [])
+    elif source == "lever":
+        items = fetch_json(f"https://api.lever.co/v0/postings/{token}?mode=json")
+    elif source == "ashby":
+        payload = fetch_json(f"https://api.ashbyhq.com/posting-api/job-board/{token}")
+        items = payload.get("jobs", [])
+    elif source == "smartrecruiters":
+        payload = fetch_json(f"https://api.smartrecruiters.com/v1/companies/{token}/postings?limit=100")
+        items = payload.get("content") or payload.get("postings") or []
+    else:
+        raise ValueError(f"Unsupported direct ATS source: {source}")
+    jobs = []
+    for item in items:
+        if isinstance(item, dict):
+            job = normalize_direct_ats_job(target, item)
+            if job and job["url"] and job["title"] and job["company"]:
+                jobs.append(job)
+    return jobs
+
+
+def fetch_direct_ats_jobs(args: argparse.Namespace) -> dict[str, Any]:
+    now = utc_now()
+    payload = load_json(Path(args.targets))
+    selected_sources = set(args.sources or [])
+    selected_companies = {company.lower() for company in (args.companies or [])}
+    targets = payload.get("targets", [])
+    fetched_by_source: dict[str, int] = {}
+    skipped_by_source: dict[str, int] = {}
+    shortlist: list[dict[str, str]] = []
+    review_candidates: list[dict[str, str]] = []
+
+    for target in targets:
+        if selected_sources and target["source"] not in selected_sources:
+            continue
+        if selected_companies and target["company"].lower() not in selected_companies:
+            continue
+        source = target["source"]
+        try:
+            jobs = fetch_direct_ats_target(target)
+        except Exception as exc:
+            fetched_by_source[source] = fetched_by_source.get(source, 0)
+            skipped_by_source[source] = skipped_by_source.get(source, 0) + 1
+            continue
+        fetched_by_source[source] = fetched_by_source.get(source, 0) + len(jobs)
+        skipped = 0
+        for job in jobs:
+            if not is_recent_post(job, now, args.max_age_hours):
+                skipped += 1
+                continue
+            record = make_job_record(build_namespace(job, notes=f"Imported from {source} direct ATS target"))
+            if passes_review_filters(record, args):
+                review_candidates.append(record)
+            else:
+                skipped += 1
+                continue
+            if passes_shortlist_filters(record, args):
+                shortlist.append(record)
+                upsert_job_csv(Path(args.inbox), record)
+            else:
+                review_record = {**record, "status": "needs_review"}
+                review_record["notes"] = "Direct ATS match; review location, seniority, and fit before applying"
+                upsert_job_csv(Path(args.inbox), review_record)
+        skipped_by_source[source] = skipped_by_source.get(source, 0) + skipped
+
+    shortlist = sorted(shortlist, key=lambda item: int_or_zero(item["fit_score"]), reverse=True)[: args.limit]
+    review_candidates = sorted(review_candidates, key=lambda item: int_or_zero(item["fit_score"]), reverse=True)[: args.review_limit]
+    return {
+        "generated_at": now.replace(microsecond=0).isoformat(),
+        "sources": sorted(fetched_by_source),
+        "fetched_by_source": fetched_by_source,
+        "skipped_by_source": skipped_by_source,
+        "imported_count": len(shortlist),
+        "review_count": len(review_candidates),
+        "imported": shortlist,
+        "review_candidates": review_candidates,
+    }
+
+
+def write_run_outputs(result: dict[str, Any], args: argparse.Namespace) -> None:
+    results_dir = Path(args.results_dir)
+    results_dir.mkdir(parents=True, exist_ok=True)
+    write_output(render_run_summary(result, args), str(results_dir / "run-summary.md"))
+    write_output("# Review Candidates\n\n" + "\n".join(render_job_table(result["review_candidates"])), str(results_dir / "review-candidates.md"))
+    write_output(render_report(argparse.Namespace(inbox=args.inbox, output="", now="")), str(results_dir / "recent-jobs.md"))
+    write_output(generate_queries(argparse.Namespace(windows=["0-6h", "0-12h", "0-18h", "0-24h"])), str(results_dir / "search-links.md"))
 
 
 def build_namespace(job: dict[str, str], status: str = "new", notes: str = "") -> argparse.Namespace:
@@ -697,6 +848,20 @@ def build_parser() -> argparse.ArgumentParser:
     run.add_argument("--include-unclassified", action="store_true")
     run.add_argument("--include-location-review", action="store_true")
     run.add_argument("--results-dir", default=str(DEFAULT_RESULTS_DIR / utc_now().date().isoformat()))
+
+    direct = sub.add_parser("run-direct-ats", help="Fetch configured direct ATS targets, update inbox, and write run outputs")
+    direct.add_argument("--targets", default=str(DIRECT_ATS_TARGETS_PATH), help="Direct ATS target config path")
+    direct.add_argument("--sources", nargs="*", choices=["greenhouse", "lever", "ashby", "smartrecruiters"], default=[])
+    direct.add_argument("--companies", nargs="*", default=[], help="Optional exact company names from the target config")
+    direct.add_argument("--limit", type=int, default=50, help="Maximum strict shortlist jobs imported to the CSV inbox")
+    direct.add_argument("--review-limit", type=int, default=100, help="Maximum broader candidates written to review-candidates.md")
+    direct.add_argument("--min-score", type=int, default=60, help="Strict shortlist minimum score")
+    direct.add_argument("--review-min-score", type=int, default=45, help="Broader review-candidate minimum score")
+    direct.add_argument("--max-age-hours", type=int, default=720)
+    direct.add_argument("--include-negative", action="store_true")
+    direct.add_argument("--include-unclassified", action="store_true")
+    direct.add_argument("--include-location-review", action="store_true")
+    direct.add_argument("--results-dir", default=str(DEFAULT_RESULTS_DIR / utc_now().date().isoformat() / "direct-ats"))
     return parser
 
 
@@ -718,12 +883,10 @@ def main() -> None:
         write_output(render_report(args), args.output)
     elif args.command == "run-public-search":
         result = fetch_public_jobs(args)
-        results_dir = Path(args.results_dir)
-        results_dir.mkdir(parents=True, exist_ok=True)
-        write_output(render_run_summary(result, args), str(results_dir / "run-summary.md"))
-        write_output("# Review Candidates\n\n" + "\n".join(render_job_table(result["review_candidates"])), str(results_dir / "review-candidates.md"))
-        write_output(render_report(argparse.Namespace(inbox=args.inbox, output="", now="")), str(results_dir / "recent-jobs.md"))
-        write_output(generate_queries(argparse.Namespace(windows=["0-6h", "0-12h", "0-18h", "0-24h"])), str(results_dir / "search-links.md"))
+        write_run_outputs(result, args)
+    elif args.command == "run-direct-ats":
+        result = fetch_direct_ats_jobs(args)
+        write_run_outputs(result, args)
 
 
 if __name__ == "__main__":

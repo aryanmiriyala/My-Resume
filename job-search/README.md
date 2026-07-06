@@ -6,6 +6,7 @@ The workflow is intentionally targeted and dependency-free:
 
 - Generates high-signal Google search URLs for ATS-hosted jobs.
 - Fetches public no-key job-board API leads from Arbeitnow and RemoteOK.
+- Fetches configured direct ATS targets from Greenhouse, Lever, Ashby, and SmartRecruiters.
 - Stores discovered jobs in `jobs-inbox.csv`, which can be opened and edited directly in VS Code.
 - Scores jobs against Aryan's target profile.
 - Writes dated run outputs under `results/YYYY-MM-DD/`.
@@ -21,6 +22,12 @@ Run a public job-search pass:
 python3 job-search/src/job_discovery.py run-public-search
 ```
 
+Run direct ATS targets:
+
+```bash
+python3 job-search/src/job_discovery.py run-direct-ats
+```
+
 The default run now produces two layers:
 
 - A strict shortlist imported into `job-search/jobs-inbox.csv`.
@@ -34,6 +41,7 @@ This updates `job-search/jobs-inbox.csv` and writes:
 - `job-search/results/YYYY-MM-DD/review-candidates.md`
 - `job-search/results/YYYY-MM-DD/recent-jobs.md`
 - `job-search/results/YYYY-MM-DD/search-links.md`
+- `job-search/results/YYYY-MM-DD/direct-ats/` for direct ATS runs
 
 Generate search links only:
 

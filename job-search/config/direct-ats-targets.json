@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "purpose": "Verified direct ATS targets for structured job ingestion. Add entries only after endpoint validation or known career URL confirmation.",
+  "targets": [
+    {
+      "source": "greenhouse",
+      "company": "Anthropic",
+      "token": "anthropic",
+      "priority": 1,
+      "notes": "Verified public Greenhouse board API."
+    },
+    {
+      "source": "greenhouse",
+      "company": "Databricks",
+      "token": "databricks",
+      "priority": 1,
+      "notes": "Verified public Greenhouse board API."
+    },
+    {
+      "source": "ashby",
+      "company": "OpenAI",
+      "token": "openai",
+      "priority": 1,
+      "notes": "Verified public Ashby posting API."
+    },
+    {
+      "source": "ashby",
+      "company": "Cursor",
+      "token": "cursor",
+      "priority": 1,
+      "notes": "Verified public Ashby posting API."
+    }
+  ],
+  "supported_sources": [
+    "greenhouse",
+    "lever",
+    "ashby",
+    "smartrecruiters"
+  ],
+  "notes": [
+    "Greenhouse, Lever, Ashby, and SmartRecruiters adapters are implemented in job_discovery.py.",
+    "Targets are intentionally explicit because most direct ATS APIs require a company board token/slug.",
+    "Use Google/search results to discover more valid board tokens, then add them here."
+  ]
+}
