@@ -1,0 +1,10 @@
+# Cover Letter - Pinterest Software Engineer II
+
+Dear Pinterest Hiring Team,
+
+I am applying for the Software Engineer II role on Pinterest's MySQL Infra team because the work sits at the intersection of backend reliability, large-scale data systems, developer velocity, and responsible AI-assisted engineering. Pinterest describes this team as supporting one of the company's most vital backend systems across hundreds of business-critical use cases, which is the kind of engineering environment where I want to keep building: systems where correctness, clear communication, operational judgment, and performance directly affect other teams' ability to move quickly.
+
+My strongest fit is a combination of Python, SQL-heavy production workflows, secure backend tooling, and careful AI-assisted development. At AAIS, I automated a manual SQL billing process with Python, PySpark, and AWS Glue over 20+ TB of production insurance data for 700+ member companies; profiled 160+ Oracle/Impala tables with Python, Pandas, SQL, and JDBC; and built validation, reverse-ETL, IAM, Lambda, and S3 workflows that reduced manual operations and made data access more controlled. At SmartSolve, I built secure internal software with Next.js, TypeScript, PostgreSQL, Drizzle ORM, SSO, auth middleware, and Docker-based development environments while using Codex and Claude Code for planning and review. I have also worked on reliability fixes and auditability in an AWS-hosted healthcare workflow platform. I would bring Pinterest a grounded backend engineering mindset: use data to diagnose problems, automate carefully, communicate tradeoffs clearly, and apply AI tools only with validation and ownership of the result.
+
+Best regards,  
+Aryan Miriyala
