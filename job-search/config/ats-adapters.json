@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "purpose": "Source registry for direct ATS/job-board adapters. Prefer direct public JSON/API endpoints before search-engine fallback.",
+  "purpose": "Expanded source registry for direct ATS/job-board adapters. Prefer structured public APIs first, then site-specific enterprise/custom parsers, then search fallback.",
   "adapters": {
     "greenhouse": {
       "priority": 1,
@@ -110,6 +110,138 @@
         "canonical_url"
       ],
       "notes": "Use search fallback and company-specific lightweight adapters. Never let these disappear; mark as needs_review when parsing is uncertain."
+    },
+    "teamtailor": {
+      "priority": 2,
+      "coverage": "Startup and international companies using Teamtailor career sites.",
+      "requires_key": "varies",
+      "requires_company_token": true,
+      "company_token_source": "Company/career-site slug from Teamtailor-hosted careers pages.",
+      "list_endpoint_pattern": "platform-specific; verify from Teamtailor docs and observed career site URLs",
+      "freshness_field": "published/updated where available",
+      "url_fields": [
+        "url",
+        "apply_url"
+      ],
+      "notes": "Add after Greenhouse/Lever/Ashby/SmartRecruiters."
+    },
+    "recruitee": {
+      "priority": 2,
+      "coverage": "Companies using Recruitee career sites, common in startups and Europe.",
+      "requires_key": "varies",
+      "requires_company_token": true,
+      "company_token_source": "Company slug from Recruitee careers URL.",
+      "list_endpoint_pattern": "platform-specific; verify from Recruitee API docs and observed URLs",
+      "freshness_field": "created_at/updated_at where available",
+      "url_fields": [
+        "careers_url",
+        "apply_url"
+      ],
+      "notes": "Good second-wave adapter."
+    },
+    "oracle_recruiting": {
+      "priority": 3,
+      "coverage": "Large enterprises using Oracle Recruiting Cloud/HCM career sites.",
+      "requires_key": false,
+      "requires_company_token": true,
+      "company_token_source": "Oracle Cloud HCM career URL tenant/site path.",
+      "list_endpoint_pattern": "tenant-specific; discover from career page network calls",
+      "freshness_field": "posted date where available",
+      "url_fields": [
+        "canonical_url"
+      ],
+      "notes": "Enterprise-heavy; use search fallback until parser is built."
+    },
+    "sap_successfactors": {
+      "priority": 3,
+      "coverage": "Large enterprises using SAP SuccessFactors career sites.",
+      "requires_key": false,
+      "requires_company_token": true,
+      "company_token_source": "SuccessFactors career site URL.",
+      "list_endpoint_pattern": "site-specific; discover from career page network calls",
+      "freshness_field": "posted date where available",
+      "url_fields": [
+        "canonical_url"
+      ],
+      "notes": "Enterprise-heavy; likely needs HTML/JSON parser."
+    },
+    "dayforce": {
+      "priority": 3,
+      "coverage": "Companies using Dayforce/Ceridian career pages.",
+      "requires_key": false,
+      "requires_company_token": true,
+      "company_token_source": "Dayforce career-site URL.",
+      "list_endpoint_pattern": "site-specific; discover from career page network calls",
+      "freshness_field": "posted date where available",
+      "url_fields": [
+        "canonical_url"
+      ],
+      "notes": "Add when observed in target company results."
+    },
+    "ukg": {
+      "priority": 4,
+      "coverage": "Companies using UKG recruiting pages.",
+      "requires_key": false,
+      "requires_company_token": true,
+      "company_token_source": "UKG career-site URL.",
+      "list_endpoint_pattern": "site-specific",
+      "freshness_field": "posted date where available",
+      "url_fields": [
+        "canonical_url"
+      ],
+      "notes": "Lower-priority enterprise adapter."
+    },
+    "adp": {
+      "priority": 4,
+      "coverage": "Companies using ADP recruiting pages.",
+      "requires_key": false,
+      "requires_company_token": true,
+      "company_token_source": "ADP career-site URL.",
+      "list_endpoint_pattern": "site-specific",
+      "freshness_field": "posted date where available",
+      "url_fields": [
+        "canonical_url"
+      ],
+      "notes": "Lower-priority enterprise adapter."
+    },
+    "paylocity": {
+      "priority": 4,
+      "coverage": "Midsize companies using Paylocity career pages.",
+      "requires_key": false,
+      "requires_company_token": true,
+      "company_token_source": "Paylocity career-site URL.",
+      "list_endpoint_pattern": "site-specific",
+      "freshness_field": "posted date where available",
+      "url_fields": [
+        "canonical_url"
+      ],
+      "notes": "Add when observed."
+    },
+    "paycom": {
+      "priority": 4,
+      "coverage": "Midsize companies using Paycom career pages.",
+      "requires_key": false,
+      "requires_company_token": true,
+      "company_token_source": "Paycom career-site URL.",
+      "list_endpoint_pattern": "site-specific",
+      "freshness_field": "posted date where available",
+      "url_fields": [
+        "canonical_url"
+      ],
+      "notes": "Add when observed."
+    },
+    "rippling": {
+      "priority": 4,
+      "coverage": "Startups and midsize companies using Rippling recruiting/career pages.",
+      "requires_key": false,
+      "requires_company_token": true,
+      "company_token_source": "Rippling career URL or embedded jobs component.",
+      "list_endpoint_pattern": "site-specific",
+      "freshness_field": "posted date where available",
+      "url_fields": [
+        "canonical_url"
+      ],
+      "notes": "Growing source; needs validation."
     }
   }
 }

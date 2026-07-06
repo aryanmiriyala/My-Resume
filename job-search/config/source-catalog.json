@@ -1,0 +1,347 @@
+{
+  "version": 1,
+  "purpose": "Comprehensive job-discovery source catalog. Use direct structured sources first, then search-backed discovery, then manual review for uncertain/custom sources.",
+  "source_tiers": {
+    "tier_1_direct_public_ats": [
+      "greenhouse",
+      "lever",
+      "ashby",
+      "smartrecruiters",
+      "teamtailor",
+      "recruitee",
+      "workable"
+    ],
+    "tier_2_enterprise_hcm_or_variable_ats": [
+      "workday",
+      "icims",
+      "oracle_recruiting",
+      "sap_successfactors",
+      "dayforce",
+      "ukg",
+      "adp",
+      "bamboohr",
+      "jobvite",
+      "paylocity",
+      "paycom",
+      "rippling"
+    ],
+    "tier_3_startup_and_niche_boards": [
+      "y_combinator_work_at_a_startup",
+      "wellfound",
+      "builtin",
+      "levels_fyi",
+      "simplify",
+      "hiring_cafe",
+      "handshake",
+      "otta_welcome_to_the_jungle",
+      "dice"
+    ],
+    "tier_4_remote_and_public_feeds": [
+      "remoteok",
+      "remotive",
+      "we_work_remotely",
+      "arbeitnow",
+      "adzuna",
+      "usajobs",
+      "hacker_news_who_is_hiring"
+    ],
+    "tier_5_search_or_scraper_backed": [
+      "google_search",
+      "google_jobs",
+      "serpapi",
+      "jobspy",
+      "company_specific_json_ld",
+      "company_sitemap",
+      "company_careers_html"
+    ]
+  },
+  "sources": {
+    "greenhouse": {
+      "kind": "ats",
+      "priority": 1,
+      "mode": "direct_api",
+      "confidence": "confirmed",
+      "notes": "Public board API supports GET without authentication; best first adapter."
+    },
+    "lever": {
+      "kind": "ats",
+      "priority": 1,
+      "mode": "direct_api",
+      "confidence": "confirmed",
+      "notes": "Public postings endpoint is widely used by jobs.lever.co company slugs."
+    },
+    "ashby": {
+      "kind": "ats",
+      "priority": 1,
+      "mode": "direct_api_or_embed",
+      "confidence": "needs_endpoint_validation",
+      "notes": "High startup coverage; verify posting API behavior per organization."
+    },
+    "smartrecruiters": {
+      "kind": "ats",
+      "priority": 1,
+      "mode": "direct_api",
+      "confidence": "confirmed_docs_present",
+      "notes": "Public developer docs exist; implement with pagination and company identifiers."
+    },
+    "teamtailor": {
+      "kind": "ats",
+      "priority": 2,
+      "mode": "api_or_careers_page",
+      "confidence": "confirmed_docs_present",
+      "notes": "Good coverage for startups and international companies."
+    },
+    "recruitee": {
+      "kind": "ats",
+      "priority": 2,
+      "mode": "api_or_careers_page",
+      "confidence": "confirmed_docs_present",
+      "notes": "Useful for European/startup postings."
+    },
+    "workable": {
+      "kind": "ats",
+      "priority": 2,
+      "mode": "api_or_widget",
+      "confidence": "confirmed_docs_present",
+      "notes": "Developer API exists; public widget endpoints may vary."
+    },
+    "workday": {
+      "kind": "enterprise_hcm",
+      "priority": 2,
+      "mode": "tenant_specific_cxs",
+      "confidence": "common_pattern_needs_validation",
+      "notes": "Huge enterprise coverage; endpoint shape depends on tenant/site."
+    },
+    "icims": {
+      "kind": "enterprise_ats",
+      "priority": 2,
+      "mode": "portal_specific",
+      "confidence": "needs_validation",
+      "notes": "Important enterprise source; often requires portal-specific parsing."
+    },
+    "oracle_recruiting": {
+      "kind": "enterprise_hcm",
+      "priority": 3,
+      "mode": "company_site_or_oracle_cloud",
+      "confidence": "needs_validation",
+      "notes": "Common for larger companies; use search fallback and per-site parsing."
+    },
+    "sap_successfactors": {
+      "kind": "enterprise_hcm",
+      "priority": 3,
+      "mode": "company_site_or_successfactors",
+      "confidence": "needs_validation",
+      "notes": "Common enterprise platform; URLs and APIs vary."
+    },
+    "dayforce": {
+      "kind": "enterprise_hcm",
+      "priority": 3,
+      "mode": "company_site",
+      "confidence": "needs_validation",
+      "notes": "Often appears as Dayforce/Ceridian career pages."
+    },
+    "ukg": {
+      "kind": "enterprise_hcm",
+      "priority": 3,
+      "mode": "company_site",
+      "confidence": "needs_validation",
+      "notes": "Useful for midsize/enterprise roles; likely custom parser."
+    },
+    "adp": {
+      "kind": "enterprise_hcm",
+      "priority": 3,
+      "mode": "company_site",
+      "confidence": "needs_validation",
+      "notes": "Common payroll/HCM provider with recruiting pages."
+    },
+    "bamboohr": {
+      "kind": "ats",
+      "priority": 3,
+      "mode": "authenticated_api_or_public_page",
+      "confidence": "confirmed_authenticated_api",
+      "notes": "Official job summaries API exists but requires credentials, so public careers pages need separate parsing."
+    },
+    "jobvite": {
+      "kind": "ats",
+      "priority": 3,
+      "mode": "company_site",
+      "confidence": "needs_validation",
+      "notes": "Still appears in many corporate career pages."
+    },
+    "paylocity": {
+      "kind": "enterprise_hcm",
+      "priority": 4,
+      "mode": "company_site",
+      "confidence": "needs_validation",
+      "notes": "Lower priority unless a target employer uses it."
+    },
+    "paycom": {
+      "kind": "enterprise_hcm",
+      "priority": 4,
+      "mode": "company_site",
+      "confidence": "needs_validation",
+      "notes": "Lower priority unless a target employer uses it."
+    },
+    "rippling": {
+      "kind": "hris_ats",
+      "priority": 4,
+      "mode": "company_site",
+      "confidence": "needs_validation",
+      "notes": "Growing among startups; add parser when observed in results."
+    },
+    "y_combinator_work_at_a_startup": {
+      "kind": "startup_board",
+      "priority": 2,
+      "mode": "job_board",
+      "confidence": "needs_validation",
+      "notes": "High-signal startup source for software/AI roles."
+    },
+    "wellfound": {
+      "kind": "startup_board",
+      "priority": 2,
+      "mode": "job_board",
+      "confidence": "needs_validation",
+      "notes": "Startup roles; may require browser/API handling."
+    },
+    "builtin": {
+      "kind": "tech_job_board",
+      "priority": 2,
+      "mode": "job_board",
+      "confidence": "needs_validation",
+      "notes": "Good for US tech roles by city/remote."
+    },
+    "levels_fyi": {
+      "kind": "tech_job_board",
+      "priority": 3,
+      "mode": "job_board",
+      "confidence": "needs_validation",
+      "notes": "Useful for tech roles and company compensation context."
+    },
+    "simplify": {
+      "kind": "tech_job_board",
+      "priority": 2,
+      "mode": "job_board",
+      "confidence": "needs_validation",
+      "notes": "Strong early-career/new-grad/internship signal when available."
+    },
+    "hiring_cafe": {
+      "kind": "job_search_engine",
+      "priority": 2,
+      "mode": "job_board",
+      "confidence": "needs_validation",
+      "notes": "Useful broad search UI; API/automation needs validation."
+    },
+    "handshake": {
+      "kind": "student_job_board",
+      "priority": 2,
+      "mode": "manual_or_browser",
+      "confidence": "requires_user_account",
+      "notes": "Important for internships/new grad, but likely account-gated."
+    },
+    "otta_welcome_to_the_jungle": {
+      "kind": "curated_job_board",
+      "priority": 3,
+      "mode": "job_board",
+      "confidence": "needs_validation",
+      "notes": "Good curated tech/startup roles."
+    },
+    "dice": {
+      "kind": "tech_job_board",
+      "priority": 3,
+      "mode": "job_board",
+      "confidence": "needs_validation",
+      "notes": "Tech-focused board; useful as supplemental source."
+    },
+    "remoteok": {
+      "kind": "remote_board",
+      "priority": 4,
+      "mode": "public_api",
+      "confidence": "implemented",
+      "notes": "Already implemented; noisy but useful supplemental source."
+    },
+    "remotive": {
+      "kind": "remote_board",
+      "priority": 4,
+      "mode": "public_api",
+      "confidence": "tested",
+      "notes": "Public API exists but recent feed was noisy; add as supplemental source."
+    },
+    "we_work_remotely": {
+      "kind": "remote_board",
+      "priority": 4,
+      "mode": "rss_or_page",
+      "confidence": "needs_validation",
+      "notes": "Remote-specific source for software roles."
+    },
+    "arbeitnow": {
+      "kind": "public_feed",
+      "priority": 4,
+      "mode": "public_api",
+      "confidence": "implemented",
+      "notes": "Already implemented; Europe-heavy/noisy."
+    },
+    "adzuna": {
+      "kind": "job_aggregator",
+      "priority": 3,
+      "mode": "api_key",
+      "confidence": "confirmed_requires_key",
+      "notes": "Official REST API; requires app_id/app_key."
+    },
+    "usajobs": {
+      "kind": "government_board",
+      "priority": 4,
+      "mode": "api_key_or_rss",
+      "confidence": "confirmed_developer_portal",
+      "notes": "Government roles; sponsorship fit varies and usually needs careful review."
+    },
+    "hacker_news_who_is_hiring": {
+      "kind": "community_thread",
+      "priority": 3,
+      "mode": "monthly_thread_parser",
+      "confidence": "needs_validation",
+      "notes": "High-signal startup/engineering roles, but manual parsing and freshness logic needed."
+    },
+    "google_search": {
+      "kind": "search_fallback",
+      "priority": 2,
+      "mode": "manual_or_api",
+      "confidence": "manual_confirmed",
+      "notes": "Your Google query finds many results; API path needs SerpAPI/other search provider or manual import."
+    },
+    "google_jobs": {
+      "kind": "search_fallback",
+      "priority": 2,
+      "mode": "paid_api_or_scraper",
+      "confidence": "serpapi_available",
+      "notes": "Good breadth if we use a paid API such as SerpAPI."
+    },
+    "jobspy": {
+      "kind": "scraper_library",
+      "priority": 3,
+      "mode": "library",
+      "confidence": "confirmed_open_source",
+      "notes": "Can scrape LinkedIn, Indeed, Glassdoor, Google, ZipRecruiter and more; higher blocking/TOS risk."
+    },
+    "company_specific_json_ld": {
+      "kind": "custom_company_page",
+      "priority": 2,
+      "mode": "structured_data_parser",
+      "confidence": "recommended",
+      "notes": "Parse schema.org JobPosting when present."
+    },
+    "company_sitemap": {
+      "kind": "custom_company_page",
+      "priority": 3,
+      "mode": "sitemap_parser",
+      "confidence": "recommended",
+      "notes": "Use sitemap lastmod and URL patterns for custom career pages."
+    },
+    "company_careers_html": {
+      "kind": "custom_company_page",
+      "priority": 4,
+      "mode": "html_parser",
+      "confidence": "fallback",
+      "notes": "Capture URL/title/snippet and mark needs_review."
+    }
+  }
+}

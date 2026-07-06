@@ -92,6 +92,7 @@ Company-specific career pages that are not backed by a known ATS should still be
 
 Key source configs:
 
+- `config/source-catalog.json`: broader source universe across ATS platforms, enterprise HCM systems, startup boards, remote boards, aggregators, and search-backed sources.
 - `config/ats-adapters.json`: direct ATS endpoint patterns, token rules, and adapter priorities.
 - `config/h1b-sponsor-watchlist.json`: prioritized H-1B sponsor watchlist seed for active company monitoring.
 
@@ -106,9 +107,11 @@ Default `run-public-search` thresholds: `--min-score 60` for the strict CSV shor
 ## Research Notes
 
 - `research/ats-query-chat.txt`: raw research notes from the job-search query planning conversation.
+- `research/job-discovery-strategy.md`: layered discovery architecture and implementation order.
+- `research/expanded-job-source-audit.md`: expanded ATS, job-board, aggregator, and company-specific source audit.
 
 The Google `qdr` filters are useful for finding recently indexed pages, but they do not always prove the job was posted in that exact window. The report therefore uses `first_discovered_at` as the operational freshness signal and keeps job links manual-reviewable before applying.
 
 ## Current Boundaries
 
-This build does not scrape Google result pages. It generates search links, fetches public no-key provider data from Arbeitnow and RemoteOK, and provides the CSV/results foundation. A future build can add dedicated providers for Greenhouse, Lever, Ashby, Workday, and SmartRecruiters.
+This build does not scrape Google result pages. It generates search links, fetches public no-key provider data from Arbeitnow and RemoteOK, and provides the CSV/results foundation. The source catalog now tracks many more possible sources; the next implementation step is direct Greenhouse and Lever adapters, followed by Ashby, SmartRecruiters, Workday/iCIMS-style enterprise parsers, sponsor-watchlist scans, and search-backed import.
