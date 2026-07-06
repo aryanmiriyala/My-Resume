@@ -1,0 +1,53 @@
+{
+  "software": {
+    "label": "Software / Backend / Full-Stack / Cloud",
+    "terms": [
+      "Software Engineer",
+      "Software Developer",
+      "Backend Engineer",
+      "Full Stack Engineer",
+      "Full-Stack Engineer",
+      "Platform Engineer",
+      "Cloud Engineer",
+      "DevOps Engineer",
+      "Application Developer"
+    ]
+  },
+  "data": {
+    "label": "Data Engineering / Analytics Engineering",
+    "terms": [
+      "Data Engineer",
+      "Analytics Engineer",
+      "ETL Developer",
+      "Data Platform Engineer",
+      "BI Engineer",
+      "Business Intelligence Engineer"
+    ]
+  },
+  "ai_ml": {
+    "label": "AI / ML / Data Science",
+    "terms": [
+      "Machine Learning Engineer",
+      "ML Engineer",
+      "AI Engineer",
+      "Applied AI Engineer",
+      "MLOps Engineer",
+      "Data Scientist",
+      "NLP Engineer",
+      "LLM Engineer"
+    ]
+  },
+  "analyst": {
+    "label": "Analyst Adjacent",
+    "terms": [
+      "Data Analyst",
+      "Business Analyst",
+      "BI Analyst",
+      "Business Intelligence Analyst",
+      "Product Analyst",
+      "Operations Analyst",
+      "Reporting Analyst",
+      "Technical Analyst"
+    ]
+  }
+}

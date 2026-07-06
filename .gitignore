@@ -10,9 +10,16 @@ Cover-Letter-*.docx
 *.docx
 *.png
 .DS_Store
+__pycache__/
+*.pyc
 
 # LaTeX build artifacts
 *.aux
 *.log
 *.out
 *.synctex.gz
+
+# Job discovery generated files
+job-discovery/data/*.sqlite
+job-discovery/data/*.sqlite-*
+job-discovery/reports/*.md

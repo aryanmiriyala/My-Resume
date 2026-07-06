@@ -1,0 +1,107 @@
+{
+  "early_career_terms": [
+    "Intern",
+    "Internship",
+    "Co-op",
+    "New Grad",
+    "New Graduate",
+    "Entry Level",
+    "Early Career",
+    "Associate",
+    "Junior",
+    "University Grad",
+    "Recent Graduate",
+    "Campus",
+    "Graduate"
+  ],
+  "location_terms": [
+    "United States",
+    "USA",
+    "Remote",
+    "Hybrid",
+    "Ohio",
+    "Michigan",
+    "Illinois",
+    "New York",
+    "California",
+    "Texas",
+    "Washington",
+    "Massachusetts",
+    "North Carolina"
+  ],
+  "positive_skill_terms": [
+    "Python",
+    "TypeScript",
+    "JavaScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "SQL",
+    "PostgreSQL",
+    "MongoDB",
+    "AWS",
+    "Glue",
+    "Lambda",
+    "S3",
+    "PySpark",
+    "Spark",
+    "ETL",
+    "Docker",
+    "Kubernetes",
+    "AI",
+    "ML",
+    "LLM",
+    "RAG",
+    "Data Pipeline",
+    "Analytics"
+  ],
+  "negative_terms": [
+    "talent pool",
+    "talent pipeline",
+    "candidate pipeline",
+    "hiring pipeline",
+    "evergreen",
+    "future openings",
+    "join our network",
+    "senior",
+    "staff",
+    "principal",
+    "manager",
+    "director",
+    "team lead",
+    "architect",
+    "10+ years",
+    "8+ years",
+    "7+ years",
+    "5+ years",
+    "clearance required"
+  ],
+  "search_windows": {
+    "0-6h": "qdr:h6",
+    "0-12h": "qdr:h12",
+    "0-18h": "qdr:h18",
+    "0-24h": "qdr:d"
+  },
+  "report_buckets": [
+    {
+      "label": "0-6 Hours",
+      "min_hours": 0,
+      "max_hours": 6
+    },
+    {
+      "label": "6-12 Hours",
+      "min_hours": 6,
+      "max_hours": 12
+    },
+    {
+      "label": "12-18 Hours",
+      "min_hours": 12,
+      "max_hours": 18
+    },
+    {
+      "label": "18-24 Hours",
+      "min_hours": 18,
+      "max_hours": 24
+    }
+  ]
+}

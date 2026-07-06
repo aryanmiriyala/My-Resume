@@ -1,6 +1,6 @@
 # Resume Repo Instructions
 
-This repository is used to maintain Aryan Miriyala's master resume materials and generate targeted resumes and cover letters for specific job applications.
+This repository is used to maintain Aryan Miriyala's master resume materials, discover recent job opportunities, and generate targeted resumes and cover letters for specific job applications.
 
 ## Operating Rule
 
@@ -66,6 +66,7 @@ If the job description includes an eligibility, location, sponsorship, clearance
 - `applications/<Company>/<Role>/`: one complete application package per role.
 - `application-management/application-tracker.md`: high-level status tracker for all active and historical applications.
 - `application-management/email-rules.md`: application-email classification and search rules.
+- `job-discovery/`: recent-job discovery tooling for ATS search links, local job storage, scoring, and recency-bucket reports.
 - `templates/`: reusable scaffolds for application folders, notes, and the reusable prompt for starting a new application pipeline.
 
 Do not keep duplicate master resume copies. The canonical resume source is `source/master-resume/resume.tex`.

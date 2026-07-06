@@ -1,0 +1,26 @@
+{
+  "domains": [
+    "myworkdayjobs.com",
+    "boards.greenhouse.io",
+    "job-boards.greenhouse.io",
+    "greenhouse.io",
+    "jobs.lever.co",
+    "lever.co",
+    "icims.com",
+    "jobs.smartrecruiters.com",
+    "smartrecruiters.com",
+    "jobs.ashbyhq.com",
+    "apply.workable.com",
+    "jobvite.com",
+    "bamboohr.com"
+  ],
+  "preferred_sources": [
+    "greenhouse",
+    "lever",
+    "ashby",
+    "workday",
+    "smartrecruiters",
+    "workable",
+    "icims"
+  ]
+}

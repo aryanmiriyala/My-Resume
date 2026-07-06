@@ -1,6 +1,6 @@
-# Resume and Application Materials
+# Career Materials and Application Operations
 
-This repository stores Aryan Miriyala's master resume, career source material, and targeted job-application packages.
+This repository stores Aryan Miriyala's master resume, career source material, targeted job-application packages, and job-search operations tooling.
 
 The workflow is defined in `AGENTS.md`. Future resume and cover-letter work should follow that pipeline.
 
@@ -19,6 +19,7 @@ The validator checks required application files, the one-page resume PDF rule, A
 - `career-materials/`: comprehensive experience, projects, skills, bullet banks, and tailoring guidance.
 - `applications/<Company>/<Role>/`: tailored resume source, cover-letter source/artifact, job description, and notes for each application.
 - `application-management/`: application tracker and email-monitoring rules.
+- `job-discovery/`: recent-job discovery tooling for ATS search links, local job storage, scoring, and recency-bucket reports.
 - `templates/`: reusable scaffolds for job descriptions, tailoring notes, and the new-application prompt.
 - `scripts/validate_application_package.py`: package validator for the application pipeline.
 
