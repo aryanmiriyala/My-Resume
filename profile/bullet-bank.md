@@ -32,10 +32,10 @@ Avoid:
 ## Data Engineer
 
 - Automated a fully manual SQL billing workflow by developing a production PySpark job and AWS Glue Workflow, processing 20+ TB of golden-table insurance data for 700+ member companies.
-- Profiled 160+ Oracle/Impala tables using Python, Pandas, SQL, and JDBC to map cross-system similarities and define a unified taxonomy across 25 MDM domains.
+- Profiled 160+ MySQL/Oracle/Impala tables using Python, Pandas, SQL, and JDBC to map cross-system similarities and define a unified taxonomy across 25 MDM domains.
 - Replaced 160+ legacy Pentaho workflows with AWS Glue ETL pipelines and partitioned S3 data movement for Semarchy MDM.
 - Built reverse-ETL and validation workflows with custom AWS IAM roles to support controlled self-service data access, reduce manual entry, and maintain 24-hour data latency.
-- Engineered openIDL/openIDS-aligned data-modeling workflows by parsing insurance taxonomies with Python/JSON logic and generating 1,000+ production SQL tables across Oracle/PostgreSQL and 10+ insurance lines.
+- Engineered openIDL/openIDS-aligned data-modeling workflows by parsing insurance taxonomies with Python/JSON logic and generating 1,000+ production SQL tables across MySQL, Oracle, PostgreSQL, and 10+ insurance lines.
 
 ## AI Engineer / AI Product Engineer
 

@@ -23,7 +23,7 @@ Aryan's experience sits at the intersection of full-stack software engineering, 
 Core themes:
 
 - Full-stack product engineering with Next.js, React, Angular, Node.js, PostgreSQL, MongoDB, Auth0, SSO, and role-based access control.
-- Cloud and data engineering with AWS Glue, S3, Lambda, PySpark, Impala, Oracle, PostgreSQL, JDBC, and Semarchy MDM.
+- Cloud and data engineering with AWS Glue, S3, Lambda, PySpark, MySQL, Impala, Oracle, PostgreSQL, JDBC, and Semarchy MDM.
 - AI-first engineering with Codex, Claude Code, LangChain, RAG, Mistral AI, HuggingFace, PyTorch, and TensorFlow.
 - Security and compliance work involving SSO, JWT, RBAC, anti-CSRF tokens, PII tokenization, audit logging, and protected workflows.
 - Legacy modernization involving ColdFusion/Lucee/CFML, HTML5 form updates, JavaScript fallbacks, CSS modernization, Bootstrap UI, and reusable modal/tab components.
@@ -292,7 +292,7 @@ Dates: May 2025 - Aug. 2025
 
 ### Platform-Ready Description
 
-Built production AWS data engineering workflows for AAIS insurance data platforms, replacing manually executed SQL billing processes and legacy Pentaho ETL jobs with PySpark, AWS Glue Workflows, partitioned S3 pipelines, custom IAM access controls, reverse ETL, validation workflows, and Semarchy MDM migration architecture. The work processed 20+ TB of golden-table insurance data from Oracle, Impala, PostgreSQL, and related enterprise sources, calculated recurring charges for 700+ member companies, and supported the profiling, mapping, and standardization of 160+ source tables into 25 MDM domains. The role combined end-to-end data engineering responsibilities: understanding source-system structure, designing the migration flow, building production Glue jobs, validating outputs, and helping make insurance data more reliable, governed, and self-service-ready.
+Built production AWS data engineering workflows for AAIS insurance data platforms, replacing manually executed SQL billing processes and legacy Pentaho ETL jobs with PySpark, AWS Glue Workflows, partitioned S3 pipelines, custom IAM access controls, reverse ETL, validation workflows, and Semarchy MDM migration architecture. The work processed 20+ TB of golden-table insurance data from MySQL, Oracle, Impala, PostgreSQL, and related enterprise sources, calculated recurring charges for 700+ member companies, and supported the profiling, mapping, and standardization of 160+ source tables into 25 MDM domains. The role combined end-to-end data engineering responsibilities: understanding source-system structure, designing the migration flow, building production Glue jobs, validating outputs, and helping make insurance data more reliable, governed, and self-service-ready.
 
 ### Handshake Description
 
@@ -300,7 +300,7 @@ Built production AWS data workflows for insurance platforms using Python, PySpar
 
 ### Tech Stack
 
-Data engineering / Tech stack: Python, Pandas, SQL, PySpark, AWS Glue, AWS Glue Workflows, AWS S3, AWS IAM, Impala, Oracle, PostgreSQL, JDBC, Semarchy MDM / Semarchy xDM, Pentaho, golden tables, insurance data platforms, billing workflows, master data management, reverse ETL, data validation.
+Data engineering / Tech stack: Python, Pandas, SQL, PySpark, AWS Glue, AWS Glue Workflows, AWS S3, AWS IAM, MySQL, Impala, Oracle, PostgreSQL, JDBC, Semarchy MDM / Semarchy xDM, Pentaho, golden tables, insurance data platforms, billing workflows, master data management, reverse ETL, data validation.
 
 ### Business / Problem Context
 
@@ -309,7 +309,7 @@ AAIS is a P&C insurance advisory and statistical-agent organization that support
 ### Problem / Company Impact Context
 
 - Replaced a fully manual SQL billing workflow with a production PySpark and AWS Glue Workflow, removing manual execution from recurring charge calculations.
-- Processed 20+ TB of production golden-table data from sources including Impala, Oracle, PostgreSQL, and related enterprise systems.
+- Processed 20+ TB of production golden-table data from sources including MySQL, Impala, Oracle, PostgreSQL, and related enterprise systems.
 - Supported billing calculations for 700+ member companies.
 - Contributed to MDM migration work intended to reduce legacy Pentaho job sprawl, standardize data domains, and move toward more maintainable cloud-native ETL patterns.
 - Built custom IAM roles so users and workflows had appropriate AWS data access instead of broad or mismatched permissions.
@@ -318,11 +318,11 @@ AAIS is a P&C insurance advisory and statistical-agent organization that support
 ### Work Performed
 
 - Automated a fully manual SQL billing process with a production PySpark script and AWS Glue Workflow.
-- Developed PySpark processing over production golden tables from multiple enterprise sources, including Impala, Oracle, PostgreSQL, and related systems.
+- Developed PySpark processing over production golden tables from multiple enterprise sources, including MySQL, Impala, Oracle, PostgreSQL, and related systems.
 - Orchestrated recurring AWS Glue Workflows.
 - Processed 20+ TB of production insurance data.
 - Calculated charges for 700+ member companies.
-- Profiled 160+ Oracle/Impala tables using Python, Pandas, SQL, and JDBC.
+- Profiled 160+ MySQL/Oracle/Impala tables using Python, Pandas, SQL, and JDBC.
 - Mapped data similarities across systems.
 - Designed architecture and data flow for migration into 25 MDM domains.
 - Defined a unified taxonomy of 25 MDM domains.
@@ -346,7 +346,7 @@ AAIS is a P&C insurance advisory and statistical-agent organization that support
 ### Reusable Bullet Options
 
 - Automated a 100% manual SQL billing workflow by building a production PySpark job and AWS Glue Workflow, processing 20+ TB of golden-table insurance data to calculate charges for 700+ member companies.
-- Architected a 160+ table MDM migration by profiling Oracle/Impala data through JDBC with Python, Pandas, and SQL, mapping cross-system similarities, and defining a unified taxonomy across 25 MDM domains.
+- Architected a 160+ table MDM migration by profiling MySQL/Oracle/Impala data through JDBC with Python, Pandas, and SQL, mapping cross-system similarities, and defining a unified taxonomy across 25 MDM domains.
 - Replaced 160+ legacy Pentaho jobs with AWS Glue ETL workflows and partitioned S3 pipelines for Semarchy MDM, improving maintainability and standardizing cloud data movement.
 - Built reverse-ETL and data-validation workflows with custom AWS IAM roles to support controlled self-service data access, reduce manual entry, and maintain 24-hour data latency.
 
@@ -358,15 +358,15 @@ Dates: May 2023 - May 2024
 
 ### Platform-Ready Description
 
-Built production insurance data-standardization and application modernization workflows at AAIS, including openIDL/openIDS-aligned data-model generation, Python/JSON-driven SQL schema creation, React/Node.js access-control modernization, and AWS Lambda automation for PII-tokenized data movement into S3. The work generated 1,000+ production SQL tables across Oracle/PostgreSQL and 10+ insurance lines, used Pandas, multiprocessing, fuzzy matching, and hashing for large CSV processing, and introduced RBAC/JWT patterns to replace broad employee-wide access with role-specific controls for about 110 users. The role connected backend automation, data modeling, full-stack access control, and AWS event-driven processing to help standardize insurance data structures and support more controlled internal data access.
+Built production insurance data-standardization and application modernization workflows at AAIS, including openIDL/openIDS-aligned data-model generation, Python/JSON-driven SQL schema creation, React/Node.js access-control modernization, and AWS Lambda automation for PII-tokenized data movement into S3. The work generated 1,000+ production SQL tables across MySQL, Oracle, PostgreSQL, and 10+ insurance lines, used Pandas, multiprocessing, fuzzy matching, and hashing for large CSV processing, and introduced RBAC/JWT patterns to replace broad employee-wide access with role-specific controls for about 110 users. The role connected backend automation, data modeling, full-stack access control, and AWS event-driven processing to help standardize insurance data structures and support more controlled internal data access.
 
 ### Handshake Description
 
-Built insurance data-standardization and modernization workflows using Python, JSON, SQL, Oracle/PostgreSQL, React, Node.js, JWT/RBAC, AWS Lambda, and S3. Generated 1,000+ production SQL tables, processed large CSV datasets, and helped replace broad internal access with role-specific controls.
+Built insurance data-standardization and modernization workflows using Python, JSON, SQL, MySQL, Oracle/PostgreSQL, React, Node.js, JWT/RBAC, AWS Lambda, and S3. Generated 1,000+ production SQL tables, processed large CSV datasets, and helped replace broad internal access with role-specific controls.
 
 ### Tech Stack
 
-Software engineering / Data standardization / Tech stack: Python, JSON, Pandas, multiprocessing, SQL, Oracle, PostgreSQL, React, Node.js, JWT, RBAC, AWS Lambda, AWS S3, boto3, hashlib, insurance taxonomies, openIDL / openIDS context, large CSV processing, fuzzy matching, PII tokenization.
+Software engineering / Data standardization / Tech stack: Python, JSON, Pandas, multiprocessing, SQL, MySQL, Oracle, PostgreSQL, React, Node.js, JWT, RBAC, AWS Lambda, AWS S3, boto3, hashlib, insurance taxonomies, openIDL / openIDS context, large CSV processing, fuzzy matching, PII tokenization.
 
 ### Business / Problem Context
 
@@ -377,14 +377,14 @@ This role combined software engineering, insurance data modeling, full-stack mod
 - Supported a larger insurance data-standardization effort connected to openIDL/openIDS-style goals: common insurance data models, reduced duplication, and easier sharing/reporting across industry workflows.
 - Generated 1,000+ production SQL tables from Python/JSON-driven taxonomy parsing instead of hand-building schema structures.
 - Helped move internal application access away from broad employee-wide visibility toward role-specific access control for about 110 employees.
-- Automated database validation triggered by new rows in Oracle/PostgreSQL tables, tokenizing PII and moving structured output into S3 for downstream standardization flows.
+- Automated database validation triggered by new rows in MySQL, Oracle, and PostgreSQL tables, tokenizing PII and moving structured output into S3 for downstream standardization flows.
 
 ### Work Performed
 
 - Engineered foundational data-modeling work for openIDL/openIDS-aligned insurance standardization.
 - Parsed insurance taxonomies with Python and JSON-based generation logic.
 - Generated and implemented 1,000+ production SQL tables.
-- Supported Oracle and PostgreSQL databases.
+- Supported MySQL, Oracle, and PostgreSQL databases.
 - Worked across 10+ insurance lines.
 - Built Python data-processing workflows using Pandas and multiprocessing.
 - Cleaned and processed large CSV datasets.
@@ -392,7 +392,7 @@ This role combined software engineering, insurance data modeling, full-stack mod
 - Contributed to React/Node.js modernization work.
 - Implemented RBAC and JWT authentication proposal/workflows to replace broad employee-wide data access.
 - Built secure, role-specific internal landing page functionality for about 110 internal users.
-- Automated database validation triggered by new Oracle/PostgreSQL rows with AWS Lambda.
+- Automated database validation triggered by new MySQL, Oracle, and PostgreSQL rows with AWS Lambda.
 - Used hashlib and boto3 to tokenize PII and ingest structured JSON into S3 for downstream standardization workflows.
 
 ### Positioning Angles
@@ -406,7 +406,7 @@ This role combined software engineering, insurance data modeling, full-stack mod
 
 ### Reusable Bullet Options
 
-- Engineered foundational openIDL/openIDS-aligned data-modeling workflows, parsing insurance taxonomies with Python/JSON logic to generate 1,000+ production SQL tables across Oracle/PostgreSQL and 10+ insurance lines.
+- Engineered foundational openIDL/openIDS-aligned data-modeling workflows, parsing insurance taxonomies with Python/JSON logic to generate 1,000+ production SQL tables across MySQL, Oracle, PostgreSQL, and 10+ insurance lines.
 - Built Python data-processing workflows with Pandas, multiprocessing, fuzzy matching, and hashing to clean large CSV datasets and support compliant data handling.
 - Contributed to a full-stack React/Node.js modernization by implementing RBAC and JWT authentication patterns to replace broad employee-wide data access with role-specific controls for about 110 users.
 - Automated database validation with AWS Lambda triggers that tokenized PII using hashlib/boto3 and ingested structured JSON into S3 for downstream standardization flows.
