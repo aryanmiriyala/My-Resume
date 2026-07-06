@@ -95,7 +95,7 @@ Recommended story:
 
 ## Resume Changes
 
-- Created `applications/Uber/Software-Engineer-I/resume.tex` from the one-page application resume pattern.
+- Created `application-packages/Uber/Software-Engineer-I/resume.tex` from the one-page application resume pattern.
 - Tailored summary, skills, experience bullets, and projects toward backend/software engineering, APIs, Docker, production reliability, scalable systems, and algorithms/systems work.
 - Expanded the resume after review so it did not look sparse: added a SmartSolve engineering-productivity bullet, an AAIS Python/Pandas processing bullet, an APKD legacy-form modernization bullet, and the Diff-Grounded PR Description Generation project.
 - Generated `resume.pdf` after verifying it is exactly one readable page.

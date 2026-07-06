@@ -1,6 +1,6 @@
 # Gmail Application Monitor
 
-This directory is for a future Gmail status monitor that checks Aryan's inbox for job-application updates and updates `application-management/application-tracker.md`.
+This directory is for a future Gmail status monitor that checks Aryan's inbox for job-application updates and updates `operations/application-tracker.md`.
 
 The monitor should run on a schedule, not continuously. Current desired cadence: **4 times per day**.
 
@@ -16,7 +16,7 @@ Suggested local times:
 Use scheduled Gmail API polling:
 
 1. Authenticate with Gmail API using OAuth.
-2. Search recent messages using the query from `application-management/email-rules.md`.
+2. Search recent messages using the query from `operations/email-rules.md`.
 3. Classify messages as:
    - Confirmation
    - Assessment
@@ -25,8 +25,8 @@ Use scheduled Gmail API polling:
    - Rejection
    - Offer
    - Unknown / Needs Review
-4. Update `application-management/application-tracker.md`.
-5. Optionally append sanitized updates to `applications/<Company>/<Role>/email-updates.md`.
+4. Update `operations/application-tracker.md`.
+5. Optionally append sanitized updates to `application-packages/<Company>/<Role>/email-updates.md`.
 
 ## Privacy Rules
 
@@ -73,7 +73,7 @@ Use launchd if running on Aryan's Mac. The job can be scheduled four times per d
 Equivalent cron schedule:
 
 ```cron
-0 8,12,16,20 * * * cd /path/to/My-Resume && /path/to/python scripts/gmail_application_monitor/check_gmail.py
+0 8,12,16,20 * * * cd /path/to/career-ops && /path/to/python automation/gmail_application_monitor/check_gmail.py
 ```
 
 ### Manual

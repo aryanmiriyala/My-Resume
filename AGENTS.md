@@ -1,6 +1,6 @@
-# Resume Repo Instructions
+# Career Ops Repo Instructions
 
-This repository is used to maintain Aryan Miriyala's master resume materials, discover recent job opportunities, and generate targeted resumes and cover letters for specific job applications.
+This repository is used to maintain Aryan Miriyala's career source material, discover recent job opportunities, track applications, and generate targeted resumes and cover letters for specific job applications.
 
 ## Operating Rule
 
@@ -18,15 +18,15 @@ For every job description, start from this file as the source of truth. Do not r
 
 Do not mark an application package complete until all required outputs exist and have been verified:
 
-- `applications/<Company>/<Role>/job-description.md`
-- `applications/<Company>/<Role>/tailoring-notes.md`
-- `applications/<Company>/<Role>/resume.tex`
-- `applications/<Company>/<Role>/resume.pdf`
-- `applications/<Company>/<Role>/cover-letter.md`
-- `applications/<Company>/<Role>/cover-letter.pdf` or `cover-letter.docx`
-- Updated `application-management/application-tracker.md`
+- `application-packages/<Company>/<Role>/job-description.md`
+- `application-packages/<Company>/<Role>/tailoring-notes.md`
+- `application-packages/<Company>/<Role>/resume.tex`
+- `application-packages/<Company>/<Role>/resume.pdf`
+- `application-packages/<Company>/<Role>/cover-letter.md`
+- `application-packages/<Company>/<Role>/cover-letter.pdf` or `cover-letter.docx`
+- Updated `operations/application-tracker.md`
 - Recorded ATS-style score and alignment pass in `tailoring-notes.md`
-- Passing `scripts/validate_application_package.py` result
+- Passing `automation/validate_application_package.py` result
 - Cleaned generated LaTeX artifacts
 - Incremental commit and push
 
@@ -36,40 +36,40 @@ If context is resumed, compacted, or interrupted mid-application, re-open the ap
 
 For every new job application:
 
-1. Create `applications/<Company>/<Role>/`.
+1. Create `application-packages/<Company>/<Role>/`.
 2. Save the job posting as `job-description.md`.
-3. Add or update the role in `application-management/application-tracker.md`.
-4. Review `career-materials/` for relevant experience, projects, skills, and reusable bullets.
-5. Apply `career-materials/ats-recruiter-resume-guide.md` and `career-materials/resume-targeting-guide.md` before proposing resume edits.
+3. Add or update the role in `operations/application-tracker.md`.
+4. Review `profile/` for relevant experience, projects, skills, and reusable bullets.
+5. Apply `profile/ats-recruiter-resume-guide.md` and `profile/resume-targeting-guide.md` before proposing resume edits.
 6. Build a job keyword map before writing the resume: required skills, repeated terms, responsibilities, domain language, must-have tools, nice-to-have tools, and unsupported terms to avoid. Use this map to decide the resume angle, bullet selection, projects, technical skills, and cover-letter proof points.
-7. Apply `career-materials/cover-letter-guide.md` before drafting any cover letter. Use known personal context from `career-materials/` and prior application notes. Ask Aryan cover-letter personalization questions only when the letter would be materially weaker or risky without the answer:
+7. Apply `profile/cover-letter-guide.md` before drafting any cover letter. Use known personal context from `profile/` and prior application notes. Ask Aryan cover-letter personalization questions only when the letter would be materially weaker or risky without the answer:
    - What genuinely interests you about this company?
    - Do you have any personal connection to the company, product, industry, mission, or team?
    - Is there anything specific you want the hiring manager to feel after reading the letter?
 8. Document the resume direction, cover-letter angle, strongest matching experience/projects, important keyword targets, unsupported keywords to avoid, and any blocking eligibility questions in `tailoring-notes.md`.
-9. Create a tailored `resume.tex` from `source/master-resume/resume.tex` or the latest successful one-page application resume pattern.
+9. Create a tailored `resume.tex` from `master-documents/master-resume/resume.tex` or the latest successful one-page application resume pattern.
 10. Audit every experience and project bullet against the bullet rules before compiling. Rewrite any bullet that lacks a strong action verb, truthful job-aligned technology, scope/domain context, and impact/result.
 11. Generate `resume.pdf` locally from the tailored LaTeX source only when needed for submission.
 12. Create `cover-letter.md` and, when submitting, generate a `cover-letter.pdf` or `cover-letter.docx`.
 13. Run a resume-vs-job-description alignment pass after generating the resume. Include an ATS-style score, matched keywords, missing-but-truthful keyword opportunities, unsupported keywords intentionally omitted, and concrete next-step recommendations.
 14. Add `tailoring-notes.md` explaining which experience, projects, and keywords were emphasized, plus the alignment pass and ATS-style score.
-15. Run `python3 scripts/validate_application_package.py applications/<Company>/<Role>` before marking the package ready. Fix failures instead of ignoring them. If a failure is intentional for a specific application, document the reason in `tailoring-notes.md` and the final response.
-16. Update `application-management/application-tracker.md` when the application is ready, applied, rejected, interviewing, or archived.
+15. Run `python3 automation/validate_application_package.py application-packages/<Company>/<Role>` before marking the package ready. Fix failures instead of ignoring them. If a failure is intentional for a specific application, document the reason in `tailoring-notes.md` and the final response.
+16. Update `operations/application-tracker.md` when the application is ready, applied, rejected, interviewing, or archived.
 
 If the job description includes an eligibility, location, sponsorship, clearance, degree, or schedule constraint, flag it during the intake response before spending effort on final artifacts. Continue with the proposal unless the constraint clearly makes the role impossible.
 
 ## Directory Conventions
 
-- `source/master-resume/`: canonical general resume source and PDF.
-- `source/master-cover-letter/`: reusable cover-letter template material.
-- `career-materials/`: source-of-truth documents for experience, projects, skills, bullet banks, and cover-letter language.
-- `applications/<Company>/<Role>/`: one complete application package per role.
-- `application-management/application-tracker.md`: high-level status tracker for all active and historical applications.
-- `application-management/email-rules.md`: application-email classification and search rules.
-- `job-discovery/`: recent-job discovery tooling for ATS search links, `jobs-inbox.csv` local job storage, scoring, and recency-bucket reports.
+- `master-documents/master-resume/`: canonical general resume source and PDF.
+- `master-documents/master-cover-letter/`: reusable cover-letter template material.
+- `profile/`: source-of-truth documents for experience, projects, skills, bullet banks, and cover-letter language.
+- `application-packages/<Company>/<Role>/`: one complete application package per role.
+- `operations/application-tracker.md`: high-level status tracker for all active and historical applications.
+- `operations/email-rules.md`: application-email classification and search rules.
+- `job-search/`: recent-job discovery tooling for ATS search links, `jobs-inbox.csv` local job storage, scoring, and recency-bucket reports.
 - `templates/`: reusable scaffolds for application folders, notes, and the reusable prompt for starting a new application pipeline.
 
-Do not keep duplicate master resume copies. The canonical resume source is `source/master-resume/resume.tex`.
+Do not keep duplicate master resume copies. The canonical resume source is `master-documents/master-resume/resume.tex`.
 
 Do not commit binary/generated artifacts unless Aryan explicitly asks. This includes PDFs, DOCX files, PNG previews, and LaTeX build artifacts.
 
@@ -127,7 +127,7 @@ Do not inflate the score by adding unsupported keywords. A truthful 80/100 resum
 
 - Keep cover letters specific to the company and role.
 - Before drafting, ask Aryan about personal connection, motivation, and how he feels about the company.
-- Reuse verified facts from `career-materials/`.
+- Reuse verified facts from `profile/`.
 - Avoid generic filler and unsupported claims.
 - Emphasize the strongest match between the job description and Aryan's experience.
 - Map the cover letter to the job description using one or two verified proof points. Important repeated job keywords may appear naturally, but only when they fit the story and are supported by Aryan's actual experience.
@@ -154,14 +154,14 @@ Cover-letter guidance incorporated from a 2026 web check:
 
 ## Application Email Monitoring
 
-The repo may include a Gmail application-status monitor scaffold under `scripts/gmail_application_monitor/`.
+The repo may include a Gmail application-status monitor scaffold under `automation/gmail_application_monitor/`.
 
 Rules:
 
 - A scheduled Gmail status check should run 4 times per day, not continuously.
 - Suggested local schedule: 8:00 AM, 12:00 PM, 4:00 PM, and 8:00 PM local time.
 - The monitor should classify application-related messages as `Confirmation`, `Assessment`, `Recruiter Response`, `Interview`, `Rejection`, `Offer`, or `Unknown`.
-- The monitor should update `application-management/application-tracker.md` and, when useful, `applications/<Company>/<Role>/email-updates.md`.
+- The monitor should update `operations/application-tracker.md` and, when useful, `application-packages/<Company>/<Role>/email-updates.md`.
 - Do not commit Gmail credentials, OAuth tokens, raw full email bodies, or private message dumps.
 - Store only sanitized metadata by default: sender, subject, date, detected company, detected role, status, and a short note.
 - If uncertain, mark the tracker row as `Needs Review` rather than making an irreversible assumption.
@@ -175,6 +175,6 @@ After approved resume changes:
 2. Confirm the PDF page count with `pdfinfo resume.pdf`. It must be exactly 1 page.
 3. Extract text with `pdftotext resume.pdf -` and check that bullets read correctly.
 4. Run the resume-vs-job-description alignment pass and record the ATS-style score in `tailoring-notes.md`.
-5. Run `python3 scripts/validate_application_package.py applications/<Company>/<Role>` and address any failures.
+5. Run `python3 automation/validate_application_package.py application-packages/<Company>/<Role>` and address any failures.
 6. Report changed files, verification results, validator result, and the ATS-style score.
 7. Remove generated LaTeX build artifacts. Keep submission PDFs only when Aryan asks for final application artifacts or when the application package needs a ready-to-submit PDF.

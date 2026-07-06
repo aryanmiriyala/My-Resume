@@ -122,7 +122,7 @@ For healthcare or compliance-adjacent roles:
 
 ## Tailoring Workflow
 
-1. Save the job description in `applications/<Company>/<Role>/job-description.md`.
+1. Save the job description in `application-packages/<Company>/<Role>/job-description.md`.
 2. Extract keywords and role responsibilities.
 3. Select a primary resume angle from `resume-targeting-guide.md`.
 4. Decide whether a professional summary is useful for this specific role.

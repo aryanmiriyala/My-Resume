@@ -142,7 +142,7 @@ def validate(app_dir: Path) -> int:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Validate a tailored application package.")
-    parser.add_argument("application_dir", help="Path like applications/Company/Role")
+    parser.add_argument("application_dir", help="Path like application-packages/Company/Role")
     args = parser.parse_args()
     return validate(Path(args.application_dir))
 

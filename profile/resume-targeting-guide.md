@@ -1,6 +1,6 @@
 # Resume Targeting Guide
 
-Use this guide when tailoring a resume to a specific company and role. Apply the rules in `career-materials/ats-recruiter-resume-guide.md` throughout the process.
+Use this guide when tailoring a resume to a specific company and role. Apply the rules in `profile/ats-recruiter-resume-guide.md` throughout the process.
 
 ## Step 1: Parse the Job Description
 
@@ -19,7 +19,7 @@ Extract:
 - Recruiter-screen responsibilities
 - ATS-critical exact terms
 
-Save the posting in `applications/<Company>/<Role>/job-description.md`.
+Save the posting in `application-packages/<Company>/<Role>/job-description.md`.
 
 ## Step 2: Select the Resume Angle
 

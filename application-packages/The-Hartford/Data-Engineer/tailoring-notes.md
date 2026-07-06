@@ -94,7 +94,7 @@ Recommended story:
 
 ## Proposed Resume Changes Pending Approval
 
-- Created `applications/The-Hartford/Data-Engineer/resume.tex` from the one-page application resume pattern.
+- Created `application-packages/The-Hartford/Data-Engineer/resume.tex` from the one-page application resume pattern.
 - Tailored the summary, skills, AAIS bullets, APKD/SmartSolve bullets, and project section toward data engineering, insurance, AWS, Spark/PySpark, data quality, metadata, and ML/AI data assets.
 - Generated `resume.pdf` as the submission artifact after verifying it is exactly one readable page.
 

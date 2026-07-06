@@ -17,19 +17,19 @@ Freshness is based on `first_discovered_at`, not only an ATS-provided posted dat
 Generate search links:
 
 ```bash
-python3 job-discovery/src/job_discovery.py generate-queries --output job-discovery/reports/search-links.md
+python3 job-search/src/job_discovery.py generate-queries --output job-search/reports/search-links.md
 ```
 
 Initialize the editable CSV inbox:
 
 ```bash
-python3 job-discovery/src/job_discovery.py init-inbox
+python3 job-search/src/job_discovery.py init-inbox
 ```
 
 Add a promising role manually:
 
 ```bash
-python3 job-discovery/src/job_discovery.py add-job \
+python3 job-search/src/job_discovery.py add-job \
   --url "https://jobs.ashbyhq.com/example/software-engineer-new-grad" \
   --company "Example Co" \
   --title "Software Engineer, New Grad" \
@@ -40,12 +40,12 @@ python3 job-discovery/src/job_discovery.py add-job \
 Export the recent-job report:
 
 ```bash
-python3 job-discovery/src/job_discovery.py export-report
+python3 job-search/src/job_discovery.py export-report
 ```
 
 ## Where Jobs Live
 
-Use `job-discovery/jobs-inbox.csv` as the source of truth. This file is intentionally tracked and human-readable so it can be opened in VS Code, edited, sorted, and committed when useful.
+Use `job-search/jobs-inbox.csv` as the source of truth. This file is intentionally tracked and human-readable so it can be opened in VS Code, edited, sorted, and committed when useful.
 
 Important columns:
 
@@ -55,7 +55,7 @@ Important columns:
 - `flags`: fit/risk notes from the scoring rules.
 - `notes`: your manual notes about whether the job is worth applying to.
 
-Generated Markdown reports stay under `job-discovery/reports/`. Reports are local generated files by default; regenerate them whenever the inbox changes.
+Generated Markdown reports stay under `job-search/reports/`. Reports are local generated files by default; regenerate them whenever the inbox changes.
 
 ## Config Files
 
