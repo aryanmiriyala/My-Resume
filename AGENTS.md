@@ -2,9 +2,27 @@
 
 This repository is used to maintain Aryan Miriyala's career source material, discover recent job opportunities, track applications, and generate targeted resumes and cover letters for specific job applications.
 
-## Operating Rule
+## Pipeline Separation Rule
 
-When Aryan provides a job description, treat it as a request to run the complete established application pipeline for that role. Aryan should not need to separately ask for setup, next steps, resume generation, cover-letter generation, PDF compilation, ATS alignment, or tracker updates. Save the posting, research the company when useful, create or update the application package, draft tailoring notes, generate the tailored resume and cover letter, compile submission PDFs, run the alignment/ATS-style score, verify outputs, update the tracker, commit, and push.
+This repo has two separate pipelines. Do not merge them unless Aryan explicitly asks to move from one pipeline into the other.
+
+### Pipeline 1: Job Discovery
+
+Trigger this pipeline when Aryan asks to find jobs, search job boards, discover recent postings, scan ATS feeds, update `job-search/jobs-inbox.csv`, generate Google search links, collect ATS URLs, or improve job crawling/discovery.
+
+Job Discovery outputs belong under `job-search/` and should produce job leads, source reports, search links, direct ATS target updates, and CSV inbox updates. It does not generate tailored resumes or cover letters.
+
+### Pipeline 2: Application Package Generation
+
+Trigger this pipeline when Aryan provides a specific job description or says he is applying to a specific role/company.
+
+Application Package Generation outputs belong under `application-packages/<Company>/<Role>/` and should produce the tailored resume, cover letter, tailoring notes, validation result, ATS-style score, and tracker update. It does not search broadly for additional jobs unless Aryan separately asks for job discovery.
+
+A discovered job becomes an application only after Aryan selects it or provides the specific job description/application link for that role.
+
+## Application Package Operating Rule
+
+When Aryan provides a job description, treat it as a request to run the complete established application package pipeline for that role. Aryan should not need to separately ask for setup, next steps, resume generation, cover-letter generation, PDF compilation, ATS alignment, or tracker updates. Save the posting, research the company when useful, create or update the application package, draft tailoring notes, generate the tailored resume and cover letter, compile submission PDFs, run the alignment/ATS-style score, verify outputs, update the tracker, commit, and push.
 
 Supplying a job description is approval to perform the full pipeline and generate tailored application artifacts. Do not stop at a proposal unless Aryan explicitly asks to review proposed changes first. If the job description has serious blockers, unsupported requirements, or unclear fit, proceed with truthful materials while flagging those risks in `tailoring-notes.md` and the final response.
 
@@ -12,7 +30,7 @@ Every final application response must include the ready artifact paths, one-page
 
 Make incremental commits for small, coherent changes so the repository stays easy to review and push to GitHub. Do not bundle unrelated resume, cover-letter, application, tracker, and source-material updates into one large commit.
 
-## Pipeline Execution Contract
+## Application Pipeline Execution Contract
 
 For every job description, start from this file as the source of truth. Do not rely on memory from the current chat, prior application habits, or an abbreviated version of the workflow. Re-read the relevant `AGENTS.md` instructions and then execute the pipeline as a checklist.
 
@@ -32,7 +50,7 @@ Do not mark an application package complete until all required outputs exist and
 
 If context is resumed, compacted, or interrupted mid-application, re-open the application folder and this file before continuing. Continue from the repository state, not from assumptions about what was already done.
 
-## Application Pipeline
+## Application Package Pipeline
 
 For every new job application:
 
@@ -60,7 +78,7 @@ If the job description includes an eligibility, location, sponsorship, clearance
 
 ## Job Discovery Pipeline
 
-When Aryan asks to find recently posted jobs, do not rely only on generic public boards. Use the layered job-search workflow in `job-search/`:
+For job-search and job-discovery requests, do not rely only on generic public boards. Use the layered job-search workflow in `job-search/`:
 
 1. Generate recent Google/search links for target roles and ATS domains.
 2. Use search results to collect ATS-hosted job URLs, especially Greenhouse, Lever, Ashby, and SmartRecruiters links.
