@@ -98,7 +98,6 @@ Keep `job-search/jobs-inbox.csv` minimal. It should contain only `company`, `pos
 - `profile/`: source-of-truth documents for experience, projects, skills, bullet banks, and cover-letter language.
 - `application-packages/<Company>/<Role>/`: one complete application package per role.
 - `operations/application-tracker.md`: high-level status tracker for all active and historical applications.
-- `operations/email-rules.md`: application-email classification and search rules.
 - `job-search/`: recent-job discovery tooling for ATS search links, `jobs-inbox.csv` local job storage, scoring, and recency-bucket reports.
 - `templates/`: reusable scaffolds for application folders, notes, and the reusable prompt for starting a new application pipeline.
 
@@ -184,21 +183,6 @@ Cover-letter guidance incorporated from a 2026 web check:
 
 - Yale Office of Career Strategy: tailor each letter to a specific job, connect skills to employer needs, use job-description keywords truthfully, write in confident active language, keep it to one page, and use a clear opening/body/closing structure.
 - Purdue OWL: use the cover letter to explain experience in a story-like format, go deeper on relevant skills, relate those skills to job requirements, show individualized tailoring, and demonstrate written communication quality.
-
-## Application Email Monitoring
-
-The repo may include a Gmail application-status monitor scaffold under `automation/gmail_application_monitor/`.
-
-Rules:
-
-- A scheduled Gmail status check should run 4 times per day, not continuously.
-- Suggested local schedule: 8:00 AM, 12:00 PM, 4:00 PM, and 8:00 PM local time.
-- The monitor should classify application-related messages as `Confirmation`, `Assessment`, `Recruiter Response`, `Interview`, `Rejection`, `Offer`, or `Unknown`.
-- The monitor should update `operations/application-tracker.md` and, when useful, `application-packages/<Company>/<Role>/email-updates.md`.
-- Do not commit Gmail credentials, OAuth tokens, raw full email bodies, or private message dumps.
-- Store only sanitized metadata by default: sender, subject, date, detected company, detected role, status, and a short note.
-- If uncertain, mark the tracker row as `Needs Review` rather than making an irreversible assumption.
-- Gmail API push notifications are not required for this repo. Scheduled polling is the preferred default.
 
 ## Verification
 

@@ -1,38 +1,61 @@
 # Career Ops
 
-This repository stores Aryan Miriyala's career source material, master resume and cover-letter documents, targeted job-application packages, job-search tooling, and application operations.
+This repository has two active workflows:
 
-The workflow is defined in `AGENTS.md`. Future resume and cover-letter work should follow that pipeline.
+1. **Job Discovery**: find recently posted roles and keep a clean CSV inbox for manual review.
+2. **Application Packages**: create tailored resumes, cover letters, tailoring notes, PDFs, and ATS-style alignment checks for selected roles.
 
-Before an application package is treated as ready, run:
+The detailed operating rules live in `AGENTS.md`.
+
+## Start Here
+
+- Want to find jobs? Use `job-search/`.
+- Want to apply to a specific job? Use `application-packages/<Company>/<Role>/`.
+- Want to update the source material used in resumes, cover letters, LinkedIn, or Handshake? Use `profile/`.
+- Want the canonical master resume? Use `master-documents/master-resume/resume.tex`.
+
+## Folder Map
+
+| Path | Purpose |
+|---|---|
+| `profile/` | Source-of-truth career material: experience, projects, skills, LinkedIn copy, bullet bank, resume rules, and cover-letter language. |
+| `master-documents/` | Canonical master resume and reusable cover-letter template. |
+| `application-packages/` | One folder per company/role with job description, tailored resume, cover letter, tailoring notes, and submission artifacts. |
+| `job-search/` | Job-discovery tooling, ATS source configs, research notes, dated search results, and the clean `jobs-inbox.csv`. |
+| `operations/` | Application tracker only. |
+| `automation/` | Application package validation scripts. |
+| `templates/` | Reusable job-description, tailoring-notes, and application-pipeline prompt templates. |
+
+## Main Commands
+
+Validate an application package:
 
 ```bash
 python3 automation/validate_application_package.py application-packages/<Company>/<Role>
 ```
 
-The validator checks required application files, the one-page resume PDF rule, ATS/alignment sections in `tailoring-notes.md`, required internship experience markers, cover-letter submission artifacts, and leftover LaTeX build files.
+Run direct ATS job discovery after target boards are configured:
 
-## Structure
+```bash
+python3 job-search/src/job_discovery.py run-direct-ats
+```
 
-- `master-documents/master-resume/`: canonical general resume source and PDF.
-- `master-documents/master-cover-letter/`: reusable cover-letter template.
-- `profile/`: comprehensive experience, projects, skills, bullet banks, LinkedIn language, and tailoring guidance.
-- `application-packages/<Company>/<Role>/`: tailored resume source, cover-letter source/artifact, job description, and notes for each application.
-- `operations/`: application tracker and email-monitoring rules.
-- `job-search/`: recent-job discovery tooling for ATS search links, a VS Code-editable CSV job inbox, scoring, and recency-bucket reports.
-- `templates/`: reusable scaffolds for job descriptions, tailoring notes, and the new-application prompt.
-- `automation/validate_application_package.py`: package validator for the application pipeline.
+Generate search links for finding more ATS-hosted jobs:
 
-## Current Canonical Resume
+```bash
+python3 job-search/src/job_discovery.py generate-queries
+```
 
-The current June 2026 resume is the canonical resume source:
+## Canonical Resume
+
+The current master resume source is:
 
 - `master-documents/master-resume/resume.tex`
 
-Generated PDFs are build artifacts by default. Create them when needed for applications, but do not keep duplicate binary copies in the repo unless explicitly requested. Cover-letter PDFs or DOCX files may be committed when they are the requested submission artifact.
+Tailored resumes belong inside `application-packages/<Company>/<Role>/`. Do not create duplicate master resumes.
 
-## Current Rule
+## Generated Files
 
-There should be one master resume source: `master-documents/master-resume/resume.tex`. Tailored application resumes can be created inside `application-packages/<Company>/<Role>/` after proposed changes are approved.
+PDFs and DOCX files are usually generated artifacts. Application-package PDFs may stay when they are ready-to-submit artifacts. LaTeX build files, `.DS_Store`, `__pycache__`, and local scratch files should not be committed.
 
 Based off of [sb2nov/resume](https://github.com/sb2nov/resume/).

@@ -1,9 +1,0 @@
-{
-  "check_cadence": "4 times per day",
-  "suggested_local_times": ["08:00", "12:00", "16:00", "20:00"],
-  "gmail_query": "newer_than:30d (application OR applied OR interview OR recruiter OR assessment OR \"thank you for applying\" OR \"not selected\" OR \"unfortunately\" OR \"next steps\")",
-  "tracker_path": "operations/application-tracker.md",
-  "email_rules_path": "operations/email-rules.md",
-  "store_raw_email_bodies": false,
-  "default_uncertain_status": "Needs Review"
-}
