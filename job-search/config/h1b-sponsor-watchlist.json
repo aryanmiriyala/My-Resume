@@ -1,0 +1,388 @@
+{
+  "version": 1,
+  "purpose": "Priority company watchlist for job discovery where H-1B sponsorship history makes the company worth monitoring. Sponsorship can change by role, team, location, and year; always verify the individual posting.",
+  "source_basis": [
+    "U.S. Department of Labor OFLC performance/disclosure data is the preferred source of truth for LCA history.",
+    "USCIS H-1B Employer Data Hub can be used when available, but availability may vary.",
+    "This seed list is intentionally conservative and should be refreshed from OFLC LCA disclosure data before being treated as authoritative."
+  ],
+  "search_policy": {
+    "always_include_in_company_watch": true,
+    "status_for_matches": "needs_review",
+    "notes": "Prioritize software, data, AI/ML, analytics, full-stack, cloud, and internship/new-grad roles. Do not assume sponsorship unless the posting or recruiter confirms it."
+  },
+  "companies": [
+    {
+      "name": "Amazon",
+      "aliases": [
+        "Amazon.com Services",
+        "AWS",
+        "Amazon Web Services"
+      ],
+      "priority": 1,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "Machine Learning Engineer",
+        "Business Intelligence Engineer"
+      ]
+    },
+    {
+      "name": "Google",
+      "aliases": [
+        "Google LLC",
+        "Alphabet",
+        "YouTube"
+      ],
+      "priority": 1,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "AI Engineer",
+        "Data Scientist"
+      ]
+    },
+    {
+      "name": "Microsoft",
+      "aliases": [
+        "Microsoft Corporation"
+      ],
+      "priority": 1,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "Cloud Engineer",
+        "AI Engineer"
+      ]
+    },
+    {
+      "name": "Meta",
+      "aliases": [
+        "Meta Platforms",
+        "Facebook",
+        "Instagram"
+      ],
+      "priority": 1,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "Machine Learning Engineer",
+        "Data Scientist"
+      ]
+    },
+    {
+      "name": "Apple",
+      "aliases": [
+        "Apple Inc."
+      ],
+      "priority": 1,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "Machine Learning Engineer"
+      ]
+    },
+    {
+      "name": "NVIDIA",
+      "aliases": [
+        "Nvidia Corporation"
+      ],
+      "priority": 1,
+      "target_roles": [
+        "Software Engineer",
+        "AI Engineer",
+        "Machine Learning Engineer",
+        "Systems Software Engineer"
+      ]
+    },
+    {
+      "name": "Intel",
+      "aliases": [
+        "Intel Corporation"
+      ],
+      "priority": 1,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "AI/ML Systems Engineer"
+      ]
+    },
+    {
+      "name": "Oracle",
+      "aliases": [
+        "Oracle America"
+      ],
+      "priority": 1,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "Cloud Engineer"
+      ]
+    },
+    {
+      "name": "Salesforce",
+      "aliases": [
+        "Salesforce Inc."
+      ],
+      "priority": 1,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "AI Engineer"
+      ]
+    },
+    {
+      "name": "Adobe",
+      "aliases": [
+        "Adobe Inc."
+      ],
+      "priority": 1,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "Machine Learning Engineer"
+      ]
+    },
+    {
+      "name": "IBM",
+      "aliases": [
+        "International Business Machines"
+      ],
+      "priority": 1,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "Cloud Engineer",
+        "AI Engineer"
+      ]
+    },
+    {
+      "name": "Cisco",
+      "aliases": [
+        "Cisco Systems"
+      ],
+      "priority": 1,
+      "target_roles": [
+        "Software Engineer",
+        "Network Software Engineer",
+        "Cloud Engineer"
+      ]
+    },
+    {
+      "name": "Qualcomm",
+      "aliases": [
+        "Qualcomm Technologies"
+      ],
+      "priority": 1,
+      "target_roles": [
+        "Software Engineer",
+        "Embedded Software Engineer",
+        "AI Engineer"
+      ]
+    },
+    {
+      "name": "Broadcom",
+      "aliases": [
+        "Broadcom Inc."
+      ],
+      "priority": 2,
+      "target_roles": [
+        "Software Engineer",
+        "Systems Software Engineer"
+      ]
+    },
+    {
+      "name": "ServiceNow",
+      "aliases": [
+        "ServiceNow Inc."
+      ],
+      "priority": 2,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "AI Engineer"
+      ]
+    },
+    {
+      "name": "Uber",
+      "aliases": [
+        "Uber Technologies"
+      ],
+      "priority": 2,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "Machine Learning Engineer"
+      ]
+    },
+    {
+      "name": "Airbnb",
+      "aliases": [
+        "Airbnb Inc."
+      ],
+      "priority": 2,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "Machine Learning Engineer"
+      ]
+    },
+    {
+      "name": "DoorDash",
+      "aliases": [
+        "DoorDash Inc."
+      ],
+      "priority": 2,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "Machine Learning Engineer"
+      ]
+    },
+    {
+      "name": "Databricks",
+      "aliases": [
+        "Databricks Inc."
+      ],
+      "priority": 2,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "Machine Learning Engineer"
+      ]
+    },
+    {
+      "name": "Snowflake",
+      "aliases": [
+        "Snowflake Inc."
+      ],
+      "priority": 2,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "Data Platform Engineer"
+      ]
+    },
+    {
+      "name": "Stripe",
+      "aliases": [
+        "Stripe Inc."
+      ],
+      "priority": 2,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "Full Stack Engineer"
+      ]
+    },
+    {
+      "name": "PayPal",
+      "aliases": [
+        "PayPal Inc."
+      ],
+      "priority": 2,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "Analytics Engineer"
+      ]
+    },
+    {
+      "name": "Walmart Global Tech",
+      "aliases": [
+        "Walmart",
+        "Walmart Labs"
+      ],
+      "priority": 2,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "Machine Learning Engineer"
+      ]
+    },
+    {
+      "name": "Capital One",
+      "aliases": [
+        "Capital One Services"
+      ],
+      "priority": 2,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "Machine Learning Engineer"
+      ]
+    },
+    {
+      "name": "JPMorgan Chase",
+      "aliases": [
+        "JPMorgan",
+        "Chase"
+      ],
+      "priority": 2,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "AI/ML Engineer"
+      ]
+    },
+    {
+      "name": "Bloomberg",
+      "aliases": [
+        "Bloomberg LP"
+      ],
+      "priority": 2,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer"
+      ]
+    },
+    {
+      "name": "Goldman Sachs",
+      "aliases": [
+        "Goldman Sachs & Co."
+      ],
+      "priority": 2,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "Analyst"
+      ]
+    },
+    {
+      "name": "American Express",
+      "aliases": [
+        "Amex"
+      ],
+      "priority": 2,
+      "target_roles": [
+        "Software Engineer",
+        "Data Engineer",
+        "Data Analyst"
+      ]
+    },
+    {
+      "name": "The Hartford",
+      "aliases": [
+        "Hartford Financial Services"
+      ],
+      "priority": 3,
+      "target_roles": [
+        "Data Engineer",
+        "Software Engineer",
+        "Analytics Engineer"
+      ]
+    },
+    {
+      "name": "Libbey",
+      "aliases": [
+        "Libbey Inc."
+      ],
+      "priority": 3,
+      "target_roles": [
+        "AI Engineer",
+        "Automation Engineer",
+        "Software Engineer"
+      ]
+    }
+  ]
+}

@@ -78,6 +78,23 @@ Important columns:
 
 Dated run outputs stay under `job-search/results/YYYY-MM-DD/`. The CSV inbox is the source of truth; regenerate the report whenever the inbox changes.
 
+
+## Discovery Strategy
+
+The job-search pipeline should prioritize sources in this order:
+
+1. Direct ATS adapters: Greenhouse, Lever, Ashby, SmartRecruiters, Workday, iCIMS, and Workable.
+2. H-1B sponsor company watchlist scans from `config/h1b-sponsor-watchlist.json`.
+3. Google/search fallback queries for ATS pages and company-specific career pages.
+4. Supplemental public job-board APIs such as Arbeitnow and RemoteOK.
+
+Company-specific career pages that are not backed by a known ATS should still be captured through search fallback or lightweight custom parsers and marked `needs_review` when structured data is uncertain. The detailed strategy is in `research/job-discovery-strategy.md`.
+
+Key source configs:
+
+- `config/ats-adapters.json`: direct ATS endpoint patterns, token rules, and adapter priorities.
+- `config/h1b-sponsor-watchlist.json`: prioritized H-1B sponsor watchlist seed for active company monitoring.
+
 ## Config Files
 
 - `config/role-buckets.json`: software, data, AI/ML, and analyst-adjacent role terms.

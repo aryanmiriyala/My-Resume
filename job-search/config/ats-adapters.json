@@ -1,0 +1,115 @@
+{
+  "version": 1,
+  "purpose": "Source registry for direct ATS/job-board adapters. Prefer direct public JSON/API endpoints before search-engine fallback.",
+  "adapters": {
+    "greenhouse": {
+      "priority": 1,
+      "coverage": "High for companies using boards.greenhouse.io or job-boards.greenhouse.io.",
+      "requires_key": false,
+      "requires_company_token": true,
+      "company_token_source": "Board slug in URLs such as https://boards.greenhouse.io/{board_token} or https://job-boards.greenhouse.io/{board_token}.",
+      "list_endpoint_pattern": "https://boards-api.greenhouse.io/v1/boards/{board_token}/jobs?content=true",
+      "freshness_field": "updated_at",
+      "url_fields": [
+        "absolute_url"
+      ],
+      "notes": "Best first adapter: official public JSON, no auth for GET endpoints. Need a board-token watchlist or token discovery from Google results."
+    },
+    "lever": {
+      "priority": 1,
+      "coverage": "High for companies using jobs.lever.co.",
+      "requires_key": false,
+      "requires_company_token": true,
+      "company_token_source": "Company slug in URLs such as https://jobs.lever.co/{company}.",
+      "list_endpoint_pattern": "https://api.lever.co/v0/postings/{company}?mode=json",
+      "freshness_field": "createdAt / updatedAt where available",
+      "url_fields": [
+        "hostedUrl",
+        "applyUrl"
+      ],
+      "notes": "Strong second adapter. Some companies expose posting lists cleanly; old/closed postings still need filtering."
+    },
+    "ashby": {
+      "priority": 1,
+      "coverage": "Growing among startups and AI companies using jobs.ashbyhq.com.",
+      "requires_key": false,
+      "requires_company_token": true,
+      "company_token_source": "Organization slug in URLs such as https://jobs.ashbyhq.com/{organization}.",
+      "list_endpoint_pattern": "https://api.ashbyhq.com/posting-api/job-board/{organization}",
+      "freshness_field": "publishedAt / updatedAt where available",
+      "url_fields": [
+        "jobUrl",
+        "applyUrl"
+      ],
+      "notes": "High priority because many startup roles are on Ashby. Endpoint behavior should be verified per company."
+    },
+    "smartrecruiters": {
+      "priority": 2,
+      "coverage": "Medium for larger companies using jobs.smartrecruiters.com.",
+      "requires_key": false,
+      "requires_company_token": true,
+      "company_token_source": "Company slug in URLs such as https://jobs.smartrecruiters.com/{company}.",
+      "list_endpoint_pattern": "https://api.smartrecruiters.com/v1/companies/{company}/postings",
+      "freshness_field": "releasedDate / updatedDate where available",
+      "url_fields": [
+        "ref",
+        "applyUrl"
+      ],
+      "notes": "Good candidate after Greenhouse/Lever/Ashby. Needs pagination handling."
+    },
+    "workday": {
+      "priority": 2,
+      "coverage": "High for large enterprises, but endpoint shape varies by tenant and site.",
+      "requires_key": false,
+      "requires_company_token": true,
+      "company_token_source": "Tenant and site path from myworkdayjobs URLs.",
+      "list_endpoint_pattern": "https://{tenant}.wd1.myworkdayjobs.com/wday/cxs/{tenant}/{site}/jobs",
+      "freshness_field": "postedOn / startDate where available",
+      "url_fields": [
+        "externalPath"
+      ],
+      "notes": "Important for enterprise jobs. Requires per-tenant URL parsing and POST payload support."
+    },
+    "icims": {
+      "priority": 3,
+      "coverage": "Medium; many enterprise career sites use company-specific iCIMS portals.",
+      "requires_key": "varies",
+      "requires_company_token": true,
+      "company_token_source": "Company-specific portal domain or iCIMS customer path.",
+      "list_endpoint_pattern": "company-specific; detect from iCIMS portal pages first",
+      "freshness_field": "postedDate / updatedDate where available",
+      "url_fields": [
+        "url",
+        "applyUrl"
+      ],
+      "notes": "Do after higher-yield adapters. Some portals expose JSON; others require HTML parsing."
+    },
+    "workable": {
+      "priority": 3,
+      "coverage": "Medium for smaller companies and startups.",
+      "requires_key": false,
+      "requires_company_token": true,
+      "company_token_source": "Company slug in apply.workable.com URLs.",
+      "list_endpoint_pattern": "https://apply.workable.com/api/v1/widget/accounts/{company}?details=true",
+      "freshness_field": "published / updated where available",
+      "url_fields": [
+        "shortcode",
+        "url"
+      ],
+      "notes": "Useful fallback adapter, but endpoint should be verified per company."
+    },
+    "company_specific": {
+      "priority": 4,
+      "coverage": "Companies with custom career pages or ATS not covered above.",
+      "requires_key": false,
+      "requires_company_token": false,
+      "company_token_source": "A watched careers URL, sitemap, RSS feed, or Google query result.",
+      "list_endpoint_pattern": "custom per company",
+      "freshness_field": "detected from page metadata, JSON-LD JobPosting datePosted, sitemap lastmod, or first_discovered_at",
+      "url_fields": [
+        "canonical_url"
+      ],
+      "notes": "Use search fallback and company-specific lightweight adapters. Never let these disappear; mark as needs_review when parsing is uncertain."
+    }
+  }
+}
