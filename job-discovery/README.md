@@ -5,7 +5,7 @@ This module helps find recently discovered roles so Aryan can manually apply wit
 The MVP is intentionally targeted and dependency-free:
 
 - Generates high-signal Google search URLs for ATS-hosted jobs.
-- Stores discovered jobs in SQLite.
+- Stores discovered jobs in `jobs-inbox.csv`, which can be opened and edited directly in VS Code.
 - Scores jobs against Aryan's target profile.
 - Exports a Markdown report partitioned into `0-6`, `6-12`, `12-18`, and `18-24` hour buckets.
 - Leaves final application decisions manual. Chosen jobs should then enter the main `AGENTS.md` resume and cover-letter pipeline.
@@ -20,10 +20,10 @@ Generate search links:
 python3 job-discovery/src/job_discovery.py generate-queries --output job-discovery/reports/search-links.md
 ```
 
-Initialize the local database:
+Initialize the editable CSV inbox:
 
 ```bash
-python3 job-discovery/src/job_discovery.py init-db
+python3 job-discovery/src/job_discovery.py init-inbox
 ```
 
 Add a promising role manually:
@@ -43,6 +43,20 @@ Export the recent-job report:
 python3 job-discovery/src/job_discovery.py export-report
 ```
 
+## Where Jobs Live
+
+Use `job-discovery/jobs-inbox.csv` as the source of truth. This file is intentionally tracked and human-readable so it can be opened in VS Code, edited, sorted, and committed when useful.
+
+Important columns:
+
+- `first_discovered_at`: when this repo first found or added the job.
+- `fit_score`: deterministic fit score from the local rules.
+- `status`: use values like `new`, `reviewing`, `applied`, `rejected`, `archived`, or `needs_review`.
+- `flags`: fit/risk notes from the scoring rules.
+- `notes`: your manual notes about whether the job is worth applying to.
+
+Generated Markdown reports stay under `job-discovery/reports/`. Reports are local generated files by default; regenerate them whenever the inbox changes.
+
 ## Config Files
 
 - `config/role-buckets.json`: software, data, AI/ML, and analyst-adjacent role terms.
@@ -57,4 +71,4 @@ The Google `qdr` filters are useful for finding recently indexed pages, but they
 
 ## Current Boundaries
 
-This first build does not scrape Google result pages. It generates search links and provides the storage/reporting foundation. The next practical step is adding a search API ingestion path or ATS-specific providers for Greenhouse, Lever, Ashby, Workday, and SmartRecruiters.
+This first build does not scrape Google result pages. It generates search links and provides the CSV/reporting foundation. The next practical step is adding a search API ingestion path or ATS-specific providers for Greenhouse, Lever, Ashby, Workday, and SmartRecruiters.

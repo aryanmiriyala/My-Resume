@@ -19,7 +19,7 @@ The validator checks required application files, the one-page resume PDF rule, A
 - `career-materials/`: comprehensive experience, projects, skills, bullet banks, and tailoring guidance.
 - `applications/<Company>/<Role>/`: tailored resume source, cover-letter source/artifact, job description, and notes for each application.
 - `application-management/`: application tracker and email-monitoring rules.
-- `job-discovery/`: recent-job discovery tooling for ATS search links, local job storage, scoring, and recency-bucket reports.
+- `job-discovery/`: recent-job discovery tooling for ATS search links, a VS Code-editable CSV job inbox, scoring, and recency-bucket reports.
 - `templates/`: reusable scaffolds for job descriptions, tailoring notes, and the new-application prompt.
 - `scripts/validate_application_package.py`: package validator for the application pipeline.
 
