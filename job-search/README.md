@@ -21,11 +21,17 @@ Run a public job-search pass:
 python3 job-search/src/job_discovery.py run-public-search
 ```
 
-The default run is intentionally strict: it excludes unclassified roles, location-review roles, and negative-signal roles so the inbox stays focused on software, data, AI/ML, cloud, and analyst-adjacent jobs. To broaden a run, add `--include-unclassified`, `--include-location-review`, or `--include-negative`.
+The default run now produces two layers:
+
+- A strict shortlist imported into `job-search/jobs-inbox.csv`.
+- A broader `review-candidates.md` file with role-relevant public API matches that may need manual review for location, seniority, or fit.
+
+This avoids polluting the active CSV with junk while still showing you more than the final shortlist. To broaden a run further, add `--include-unclassified`, `--include-location-review`, or `--include-negative`.
 
 This updates `job-search/jobs-inbox.csv` and writes:
 
 - `job-search/results/YYYY-MM-DD/run-summary.md`
+- `job-search/results/YYYY-MM-DD/review-candidates.md`
 - `job-search/results/YYYY-MM-DD/recent-jobs.md`
 - `job-search/results/YYYY-MM-DD/search-links.md`
 
@@ -78,7 +84,7 @@ Dated run outputs stay under `job-search/results/YYYY-MM-DD/`. The CSV inbox is 
 - `config/ats-sources.json`: ATS domains and preferred sources.
 - `config/filters.json`: early-career terms, location terms, positive skill terms, exclusions, and report buckets.
 
-Default `run-public-search` threshold: `--min-score 60`, `--max-age-hours 168`, and strict role/location filtering. Use `--max-age-hours 24` when you want only the last day of provider-posted jobs.
+Default `run-public-search` thresholds: `--min-score 60` for the strict CSV shortlist, `--review-min-score 50` for broader review candidates, and `--max-age-hours 168`. Use `--max-age-hours 24` when you want only the last day of provider-posted jobs.
 
 ## Research Notes
 

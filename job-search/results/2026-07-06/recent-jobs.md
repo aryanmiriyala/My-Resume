@@ -1,6 +1,6 @@
 # Recent Job Report - 2026-07-06
 
-Generated at: `2026-07-06T02:10:07+00:00`
+Generated at: `2026-07-06T02:19:05+00:00`
 
 Source inbox: `/Users/aryanmiriyala/Desktop/Personal-Projects/career-ops/job-search/jobs-inbox.csv`
 
@@ -10,8 +10,12 @@ Jobs are bucketed by `first_discovered_at`, which is more reliable than ATS post
 
 | Fit | Company | Role | Location | Source | Bucket | Status | Link | Flags | Notes |
 |---:|---|---|---|---|---|---|---|---|---|
+| 70 | Numa | Junior Data Analyst | Lisboa, Lisboa, Lisboa, Portugal | remoteok | analyst | needs_review | [Apply](https://remoteOK.com/remote-jobs/remote-junior-data-analyst-numa-1134429) | location_needs_review | Broader public API match; review location, seniority, and fit before applying |
 | 65 | Blockchain.com | Business Analyst | New York, New York, United States | remoteok | analyst | new | [Apply](https://remoteOK.com/remote-jobs/remote-business-analyst-blockchain-com-1134457) | no_early_career_signal | Imported from remoteok public API |
 | 65 | TextUs | Business Operations Analyst | Denver, Denver, Colorado, United States | remoteok | analyst | new | [Apply](https://remoteOK.com/remote-jobs/remote-business-operations-analyst-textus-1134500) | no_early_career_signal | Imported from remoteok public API |
+| 55 | New Flyer | Data Scientist | Winnipeg, Winnipeg, Manitoba, Canada | remoteok | ai_ml | needs_review | [Apply](https://remoteOK.com/remote-jobs/remote-data-scientist-new-flyer-1134357) | no_early_career_signal; location_needs_review | Broader public API match; review location, seniority, and fit before applying |
+| 55 | Software Engineering Weber GmbH | Embedded Software Developer - FREELANCE GESUCHT | Kempten | arbeitnow | software | needs_review | [Apply](https://www.arbeitnow.com/jobs/companies/software-engineering-weber-gmbh/embedded-software-developer-freelance-gesucht-kempten-5816) | no_early_career_signal; location_needs_review | Broader public API match; review location, seniority, and fit before applying |
+| 55 | MY Humancapital GmbH | IT Business Analyst (m/w/d) | Munich | arbeitnow | analyst | needs_review | [Apply](https://www.arbeitnow.com/jobs/companies/my-humancapital-gmbh/it-business-analyst-munich-49076) | no_early_career_signal; location_needs_review | Broader public API match; review location, seniority, and fit before applying |
 
 ## 6-12 Hours
 

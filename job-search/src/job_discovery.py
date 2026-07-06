@@ -370,12 +370,39 @@ def is_recent_post(job: dict[str, str], now: datetime, max_age_hours: int) -> bo
     return (now - posted_at).total_seconds() <= max_age_hours * 3600
 
 
+def flag_set(record: dict[str, str]) -> set[str]:
+    return {flag for flag in record["flags"].split("; ") if flag}
+
+
+def has_negative_flag(flags: set[str]) -> bool:
+    return any(flag.startswith("negative:") for flag in flags)
+
+
+def passes_review_filters(record: dict[str, str], args: argparse.Namespace) -> bool:
+    flags = flag_set(record)
+    if has_negative_flag(flags) and not args.include_negative:
+        return False
+    if "no_role_bucket_match" in flags and not args.include_unclassified:
+        return False
+    return int_or_zero(record["fit_score"]) >= args.review_min_score
+
+
+def passes_shortlist_filters(record: dict[str, str], args: argparse.Namespace) -> bool:
+    flags = flag_set(record)
+    if not passes_review_filters(record, args):
+        return False
+    if "location_needs_review" in flags and not args.include_location_review:
+        return False
+    return int_or_zero(record["fit_score"]) >= args.min_score
+
+
 def fetch_public_jobs(args: argparse.Namespace) -> dict[str, Any]:
     now = utc_now()
     sources = args.sources or ["arbeitnow", "remoteok"]
     fetched_by_source: dict[str, int] = {}
     skipped_by_source: dict[str, int] = {}
-    imported: list[dict[str, str]] = []
+    shortlist: list[dict[str, str]] = []
+    review_candidates: list[dict[str, str]] = []
 
     for source in sources:
         jobs = fetch_provider_jobs(source)
@@ -386,38 +413,59 @@ def fetch_public_jobs(args: argparse.Namespace) -> dict[str, Any]:
                 skipped += 1
                 continue
             record = make_job_record(build_namespace(job, notes=f"Imported from {source} public API"))
-            flags = [flag for flag in record["flags"].split("; ") if flag]
-            has_negative = any(flag.startswith("negative:") for flag in flags)
-            has_unclassified = "no_role_bucket_match" in flags
-            has_location_review = "location_needs_review" in flags
-            if has_negative and not args.include_negative:
+            if passes_review_filters(record, args):
+                review_candidates.append(record)
+            else:
                 skipped += 1
                 continue
-            if has_unclassified and not args.include_unclassified:
-                skipped += 1
-                continue
-            if has_location_review and not args.include_location_review:
-                skipped += 1
-                continue
-            if int_or_zero(record["fit_score"]) < args.min_score:
-                skipped += 1
-                continue
-            upsert_job_csv(Path(args.inbox), record)
-            imported.append(record)
-            if len(imported) >= args.limit:
+            if passes_shortlist_filters(record, args):
+                shortlist.append(record)
+                upsert_job_csv(Path(args.inbox), record)
+            else:
+                review_record = {**record, "status": "needs_review"}
+                review_record["notes"] = "Broader public API match; review location, seniority, and fit before applying"
+                upsert_job_csv(Path(args.inbox), review_record)
+            if len(review_candidates) >= args.review_limit and len(shortlist) >= args.limit:
                 break
         skipped_by_source[source] = skipped
-        if len(imported) >= args.limit:
+        if len(review_candidates) >= args.review_limit and len(shortlist) >= args.limit:
             break
+
+    shortlist = sorted(shortlist, key=lambda item: int_or_zero(item["fit_score"]), reverse=True)[: args.limit]
+    review_candidates = sorted(review_candidates, key=lambda item: int_or_zero(item["fit_score"]), reverse=True)[: args.review_limit]
 
     return {
         "generated_at": now.replace(microsecond=0).isoformat(),
         "sources": sources,
         "fetched_by_source": fetched_by_source,
         "skipped_by_source": skipped_by_source,
-        "imported_count": len(imported),
-        "imported": imported,
+        "imported_count": len(shortlist),
+        "review_count": len(review_candidates),
+        "imported": shortlist,
+        "review_candidates": review_candidates,
     }
+
+
+def render_job_table(rows: list[dict[str, str]]) -> list[str]:
+    if not rows:
+        return ["_No jobs matched the current filters._"]
+    lines = [
+        "| Fit | Company | Role | Location | Source | Link | Flags |",
+        "|---:|---|---|---|---|---|---|",
+    ]
+    for row in rows:
+        lines.append(
+            "| {fit} | {company} | {title} | {location} | {source} | {link} | {flags} |".format(
+                fit=md_cell(row["fit_score"]),
+                company=md_cell(row["company"]),
+                title=md_cell(row["title"]),
+                location=md_cell(row["location"]),
+                source=md_cell(row["source"]),
+                link=markdown_link("Apply", row["url"]),
+                flags=md_cell(row["flags"]),
+            )
+        )
+    return lines
 
 
 def render_run_summary(result: dict[str, Any], args: argparse.Namespace) -> str:
@@ -428,11 +476,13 @@ def render_run_summary(result: dict[str, Any], args: argparse.Namespace) -> str:
         "",
         f"Inbox: `{Path(args.inbox).as_posix()}`",
         f"Max posted age: `{args.max_age_hours} hours`",
-        f"Minimum fit score: `{args.min_score}`",
-        f"Imported limit: `{args.limit}`",
+        f"Shortlist minimum fit score: `{args.min_score}`",
+        f"Review minimum fit score: `{args.review_min_score}`",
+        f"Shortlist limit: `{args.limit}`",
+        f"Review limit: `{args.review_limit}`",
         f"Include negative matches: `{args.include_negative}`",
         f"Include unclassified roles: `{args.include_unclassified}`",
-        f"Include location-review roles: `{args.include_location_review}`",
+        f"Include location-review roles in shortlist: `{args.include_location_review}`",
         "",
         "## Provider Counts",
         "",
@@ -441,24 +491,12 @@ def render_run_summary(result: dict[str, Any], args: argparse.Namespace) -> str:
     ]
     for source in result["sources"]:
         lines.append(f"| {source} | {result['fetched_by_source'].get(source, 0)} | {result['skipped_by_source'].get(source, 0)} |")
-    lines.extend(["", "## Imported Jobs", ""])
-    if not result["imported"]:
-        lines.append("_No jobs matched the current filters._")
-    else:
-        lines.append("| Fit | Company | Role | Location | Source | Link | Flags |")
-        lines.append("|---:|---|---|---|---|---|---|")
-        for row in result["imported"]:
-            lines.append(
-                "| {fit} | {company} | {title} | {location} | {source} | {link} | {flags} |".format(
-                    fit=md_cell(row["fit_score"]),
-                    company=md_cell(row["company"]),
-                    title=md_cell(row["title"]),
-                    location=md_cell(row["location"]),
-                    source=md_cell(row["source"]),
-                    link=markdown_link("Apply", row["url"]),
-                    flags=md_cell(row["flags"]),
-                )
-            )
+    lines.extend(["", "## Shortlist Imported To CSV", ""])
+    lines.extend(render_job_table(result["imported"]))
+    lines.extend(["", "## Broader Review Candidates", ""])
+    lines.append("These are role-relevant public API matches that may need location, seniority, or fit review before applying.")
+    lines.append("")
+    lines.extend(render_job_table(result["review_candidates"]))
     return "\n".join(lines).rstrip() + "\n"
 
 
@@ -650,8 +688,10 @@ def build_parser() -> argparse.ArgumentParser:
 
     run = sub.add_parser("run-public-search", help="Fetch public job-board APIs, update inbox, and write run outputs")
     run.add_argument("--sources", nargs="*", choices=["arbeitnow", "remoteok"], default=["arbeitnow", "remoteok"])
-    run.add_argument("--limit", type=int, default=25)
-    run.add_argument("--min-score", type=int, default=60)
+    run.add_argument("--limit", type=int, default=25, help="Maximum strict shortlist jobs imported to the CSV inbox")
+    run.add_argument("--review-limit", type=int, default=50, help="Maximum broader candidates written to review-candidates.md")
+    run.add_argument("--min-score", type=int, default=60, help="Strict shortlist minimum score")
+    run.add_argument("--review-min-score", type=int, default=50, help="Broader review-candidate minimum score")
     run.add_argument("--max-age-hours", type=int, default=168)
     run.add_argument("--include-negative", action="store_true")
     run.add_argument("--include-unclassified", action="store_true")
@@ -681,6 +721,7 @@ def main() -> None:
         results_dir = Path(args.results_dir)
         results_dir.mkdir(parents=True, exist_ok=True)
         write_output(render_run_summary(result, args), str(results_dir / "run-summary.md"))
+        write_output("# Review Candidates\n\n" + "\n".join(render_job_table(result["review_candidates"])), str(results_dir / "review-candidates.md"))
         write_output(render_report(argparse.Namespace(inbox=args.inbox, output="", now="")), str(results_dir / "recent-jobs.md"))
         write_output(generate_queries(argparse.Namespace(windows=["0-6h", "0-12h", "0-18h", "0-24h"])), str(results_dir / "search-links.md"))
 
