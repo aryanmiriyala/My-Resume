@@ -89,6 +89,8 @@ For job-search and job-discovery requests, do not rely only on generic public bo
 
 The goal is breadth plus accuracy: search discovers new company boards, direct ATS APIs provide structured job data, and the CSV remains the manual-review source of truth.
 
+Keep `job-search/jobs-inbox.csv` minimal. It should contain only `company`, `position`, `posted_at`, `pulled_at`, and `url`. Put scoring, source metadata, fit flags, notes, snippets, and other noisy/internal details in dated Markdown reports instead of the CSV.
+
 ## Directory Conventions
 
 - `master-documents/master-resume/`: canonical general resume source and PDF.

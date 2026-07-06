@@ -31,22 +31,7 @@ FILTERS_PATH = ROOT / "config" / "filters.json"
 DIRECT_ATS_TARGETS_PATH = ROOT / "config" / "direct-ats-targets.json"
 URL_PATTERN = re.compile(r'https?://[^\s<>)\"\']+')
 
-CSV_FIELDS = [
-    "first_discovered_at",
-    "last_seen_at",
-    "company",
-    "title",
-    "location",
-    "source",
-    "role_bucket",
-    "fit_score",
-    "status",
-    "flags",
-    "url",
-    "posted_at",
-    "snippet",
-    "notes",
-]
+CSV_FIELDS = ["company", "position", "posted_at", "pulled_at", "url"]
 
 
 def utc_now() -> datetime:
@@ -228,8 +213,26 @@ def read_jobs(path: Path) -> list[dict[str, str]]:
         reader = csv.DictReader(handle)
         rows = []
         for row in reader:
-            rows.append({field: (row.get(field) or "").strip() for field in CSV_FIELDS})
+            normalized = {
+                "company": (row.get("company") or "").strip(),
+                "position": (row.get("position") or row.get("title") or "").strip(),
+                "posted_at": (row.get("posted_at") or "").strip(),
+                "pulled_at": (row.get("pulled_at") or row.get("first_discovered_at") or "").strip(),
+                "url": (row.get("url") or "").strip(),
+            }
+            if normalized["url"]:
+                rows.append(normalized)
         return rows
+
+
+def csv_row_from_job(job: dict[str, str]) -> dict[str, str]:
+    return {
+        "company": (job.get("company") or "").strip(),
+        "position": (job.get("position") or job.get("title") or "").strip(),
+        "posted_at": (job.get("posted_at") or "").strip(),
+        "pulled_at": (job.get("pulled_at") or job.get("first_discovered_at") or iso_now()).strip(),
+        "url": (job.get("url") or "").strip(),
+    }
 
 
 def write_jobs(path: Path, rows: list[dict[str, str]]) -> None:
@@ -238,7 +241,7 @@ def write_jobs(path: Path, rows: list[dict[str, str]]) -> None:
         writer = csv.DictWriter(handle, fieldnames=CSV_FIELDS)
         writer.writeheader()
         for row in rows:
-            writer.writerow({field: row.get(field, "") for field in CSV_FIELDS})
+            writer.writerow(csv_row_from_job(row))
 
 
 def make_job_record(args: argparse.Namespace) -> dict[str, str]:
@@ -278,18 +281,17 @@ def make_job_record(args: argparse.Namespace) -> dict[str, str]:
 
 def upsert_job_csv(inbox: Path, job: dict[str, str]) -> None:
     rows = read_jobs(inbox)
+    csv_job = csv_row_from_job(job)
     for index, row in enumerate(rows):
-        if row["url"] == job["url"]:
-            job["first_discovered_at"] = row["first_discovered_at"] or job["first_discovered_at"]
-            if row["status"] and row["status"] != "new":
-                job["status"] = row["status"]
-            if row["notes"] and not job["notes"]:
-                job["notes"] = row["notes"]
-            rows[index] = job
+        if row["url"] == csv_job["url"]:
+            csv_job["pulled_at"] = row.get("pulled_at") or csv_job["pulled_at"]
+            if row.get("posted_at") and not csv_job.get("posted_at"):
+                csv_job["posted_at"] = row["posted_at"]
+            rows[index] = csv_job
             break
     else:
-        rows.append(job)
-    rows.sort(key=lambda item: (int_or_zero(item.get("fit_score", "")), item["first_discovered_at"]), reverse=True)
+        rows.append(csv_job)
+    rows.sort(key=lambda item: item.get("pulled_at", ""), reverse=True)
     write_jobs(inbox, rows)
 
 
@@ -894,23 +896,17 @@ def fetch_recent_jobs(rows: list[dict[str, str]], now: datetime) -> list[dict[st
     cutoff = now.timestamp() - 24 * 60 * 60
     recent = []
     for row in rows:
-        if row.get("status") == "archived":
-            continue
         try:
-            discovered = parse_dt(row["first_discovered_at"])
-        except ValueError:
+            pulled = parse_dt(row["pulled_at"])
+        except (KeyError, ValueError):
             continue
-        if discovered.timestamp() >= cutoff:
+        if pulled.timestamp() >= cutoff:
             recent.append(row)
-    return sorted(
-        recent,
-        key=lambda item: (int_or_zero(item.get("fit_score", "")), item.get("first_discovered_at", "")),
-        reverse=True,
-    )
+    return sorted(recent, key=lambda item: item.get("pulled_at", ""), reverse=True)
 
 
 def age_hours(row: dict[str, str], now: datetime) -> float:
-    return (now - parse_dt(row["first_discovered_at"])).total_seconds() / 3600
+    return (now - parse_dt(row["pulled_at"])).total_seconds() / 3600
 
 
 def row_bucket(row: dict[str, str], now: datetime, filters: dict[str, Any]) -> str | None:
@@ -947,7 +943,7 @@ def render_report(args: argparse.Namespace) -> str:
         "",
         f"Source inbox: `{Path(args.inbox).as_posix()}`",
         "",
-        "Jobs are bucketed by `first_discovered_at`, which is more reliable than ATS posted dates for freshness.",
+        "Jobs are bucketed by `pulled_at`, which records when this repo first pulled the posting into the CSV.",
         "",
     ]
 
@@ -958,21 +954,16 @@ def render_report(args: argparse.Namespace) -> str:
             lines.append("_No jobs stored in this bucket yet._")
             lines.append("")
             continue
-        lines.append("| Fit | Company | Role | Location | Source | Bucket | Status | Link | Flags | Notes |")
-        lines.append("|---:|---|---|---|---|---|---|---|---|---|")
+        lines.append("| Company | Position | Posted At | Pulled At | Link |")
+        lines.append("|---|---|---|---|---|")
         for row in bucket_rows:
             lines.append(
-                "| {fit} | {company} | {title} | {location} | {source} | {role_bucket} | {status} | {link} | {flags} | {notes} |".format(
-                    fit=md_cell(row["fit_score"]),
-                    company=md_cell(row["company"]),
-                    title=md_cell(row["title"]),
-                    location=md_cell(row["location"]),
-                    source=md_cell(row["source"]),
-                    role_bucket=md_cell(row["role_bucket"]),
-                    status=md_cell(row["status"]),
-                    link=markdown_link("Apply", row["url"]),
-                    flags=md_cell(row["flags"]),
-                    notes=md_cell(row["notes"]),
+                "| {company} | {position} | {posted_at} | {pulled_at} | {link} |".format(
+                    company=md_cell(row.get("company", "")),
+                    position=md_cell(row.get("position", "")),
+                    posted_at=md_cell(row.get("posted_at", "")),
+                    pulled_at=md_cell(row.get("pulled_at", "")),
+                    link=markdown_link("Apply", row.get("url", "")),
                 )
             )
         lines.append("")

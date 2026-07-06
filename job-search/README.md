@@ -82,13 +82,15 @@ python3 job-search/src/job_discovery.py export-report
 
 Use `job-search/jobs-inbox.csv` as the source of truth. This file is intentionally tracked and human-readable so it can be opened in VS Code, edited, sorted, and committed when useful.
 
-Important columns:
+The CSV intentionally contains only the fields needed for manual review:
 
-- `first_discovered_at`: when this repo first found or added the job.
-- `fit_score`: deterministic fit score from the local rules.
-- `status`: use values like `new`, `reviewing`, `applied`, `rejected`, `archived`, or `needs_review`.
-- `flags`: fit/risk notes from the scoring rules.
-- `notes`: your manual notes about whether the job is worth applying to.
+- `company`: company name.
+- `position`: job role or position title.
+- `posted_at`: posting timestamp from the source when available.
+- `pulled_at`: when this repo first pulled the job into the inbox.
+- `url`: direct job/application link.
+
+Fit scoring, source details, flags, and review notes belong in dated Markdown reports, not the CSV inbox.
 
 Dated run outputs stay under `job-search/results/YYYY-MM-DD/`. The CSV inbox is the source of truth; regenerate the report whenever the inbox changes.
 
