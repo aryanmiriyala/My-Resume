@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import html
 import json
 import re
 from dataclasses import dataclass
@@ -18,11 +19,12 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlencode, urlparse
+from urllib.request import Request, urlopen
 
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INBOX = ROOT / "jobs-inbox.csv"
-DEFAULT_REPORT_DIR = ROOT / "reports"
+DEFAULT_RESULTS_DIR = ROOT / "results"
 ROLE_BUCKETS_PATH = ROOT / "config" / "role-buckets.json"
 ATS_SOURCES_PATH = ROOT / "config" / "ats-sources.json"
 FILTERS_PATH = ROOT / "config" / "filters.json"
@@ -63,8 +65,18 @@ def parse_dt(value: str) -> datetime:
     return dt.astimezone(timezone.utc)
 
 
+def parse_epoch(value: Any) -> datetime:
+    return datetime.fromtimestamp(int(value), tz=timezone.utc)
+
+
 def load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def fetch_json(url: str) -> Any:
+    request = Request(url, headers={"User-Agent": "career-ops-job-search"})
+    with urlopen(request, timeout=30) as response:
+        return json.load(response)
 
 
 def quote_term(term: str) -> str:
@@ -123,6 +135,13 @@ def detect_source(url: str) -> str:
 
 def normalize_text(*parts: str | None) -> str:
     return " ".join(part or "" for part in parts).lower()
+
+
+def clean_text(value: Any, max_length: int = 700) -> str:
+    text = html.unescape(str(value or ""))
+    text = re.sub(r"<[^>]+>", " ", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text[:max_length]
 
 
 def contains_term(text: str, term: str) -> bool:
@@ -277,6 +296,170 @@ def int_or_zero(value: str) -> int:
         return int(value)
     except (TypeError, ValueError):
         return 0
+
+
+def normalize_provider_job(source: str, item: dict[str, Any]) -> dict[str, str] | None:
+    if source == "arbeitnow":
+        posted_dt = parse_epoch(item.get("created_at", 0))
+        tags = ", ".join(item.get("tags") or [])
+        job_types = ", ".join(item.get("job_types") or [])
+        return {
+            "url": str(item.get("url") or "").strip(),
+            "title": clean_text(item.get("title")),
+            "company": clean_text(item.get("company_name")),
+            "location": clean_text(item.get("location") or ("Remote" if item.get("remote") else "")),
+            "source": source,
+            "snippet": clean_text(" ".join([item.get("description") or "", tags, job_types])),
+            "posted_at": posted_dt.replace(microsecond=0).isoformat(),
+        }
+    if source == "remoteok":
+        posted = str(item.get("date") or "")
+        posted_dt = parse_dt(posted) if posted else parse_epoch(item.get("epoch", 0))
+        tags = ", ".join(item.get("tags") or [])
+        return {
+            "url": str(item.get("apply_url") or item.get("url") or "").strip(),
+            "title": clean_text(item.get("position")),
+            "company": clean_text(item.get("company")),
+            "location": clean_text(item.get("location")),
+            "source": source,
+            "snippet": clean_text(" ".join([item.get("description") or "", tags])),
+            "posted_at": posted_dt.replace(microsecond=0).isoformat(),
+        }
+    return None
+
+
+def fetch_provider_jobs(source: str) -> list[dict[str, str]]:
+    if source == "arbeitnow":
+        payload = fetch_json("https://www.arbeitnow.com/api/job-board-api")
+        return [
+            job
+            for item in payload.get("data", [])
+            if (job := normalize_provider_job(source, item)) and job["url"] and job["title"] and job["company"]
+        ]
+    if source == "remoteok":
+        payload = fetch_json("https://remoteok.com/api")
+        return [
+            job
+            for item in payload[1:]
+            if (job := normalize_provider_job(source, item)) and job["url"] and job["title"] and job["company"]
+        ]
+    raise ValueError(f"Unsupported source: {source}")
+
+
+def build_namespace(job: dict[str, str], status: str = "new", notes: str = "") -> argparse.Namespace:
+    return argparse.Namespace(
+        url=job["url"],
+        title=job["title"],
+        company=job["company"],
+        location=job.get("location", ""),
+        source=job.get("source", ""),
+        role_bucket="",
+        snippet=job.get("snippet", ""),
+        posted_at=job.get("posted_at", ""),
+        discovered_at="",
+        status=status,
+        notes=notes,
+    )
+
+
+def is_recent_post(job: dict[str, str], now: datetime, max_age_hours: int) -> bool:
+    try:
+        posted_at = parse_dt(job["posted_at"])
+    except (KeyError, ValueError):
+        return True
+    return (now - posted_at).total_seconds() <= max_age_hours * 3600
+
+
+def fetch_public_jobs(args: argparse.Namespace) -> dict[str, Any]:
+    now = utc_now()
+    sources = args.sources or ["arbeitnow", "remoteok"]
+    fetched_by_source: dict[str, int] = {}
+    skipped_by_source: dict[str, int] = {}
+    imported: list[dict[str, str]] = []
+
+    for source in sources:
+        jobs = fetch_provider_jobs(source)
+        fetched_by_source[source] = len(jobs)
+        skipped = 0
+        for job in jobs:
+            if not is_recent_post(job, now, args.max_age_hours):
+                skipped += 1
+                continue
+            record = make_job_record(build_namespace(job, notes=f"Imported from {source} public API"))
+            flags = [flag for flag in record["flags"].split("; ") if flag]
+            has_negative = any(flag.startswith("negative:") for flag in flags)
+            has_unclassified = "no_role_bucket_match" in flags
+            has_location_review = "location_needs_review" in flags
+            if has_negative and not args.include_negative:
+                skipped += 1
+                continue
+            if has_unclassified and not args.include_unclassified:
+                skipped += 1
+                continue
+            if has_location_review and not args.include_location_review:
+                skipped += 1
+                continue
+            if int_or_zero(record["fit_score"]) < args.min_score:
+                skipped += 1
+                continue
+            upsert_job_csv(Path(args.inbox), record)
+            imported.append(record)
+            if len(imported) >= args.limit:
+                break
+        skipped_by_source[source] = skipped
+        if len(imported) >= args.limit:
+            break
+
+    return {
+        "generated_at": now.replace(microsecond=0).isoformat(),
+        "sources": sources,
+        "fetched_by_source": fetched_by_source,
+        "skipped_by_source": skipped_by_source,
+        "imported_count": len(imported),
+        "imported": imported,
+    }
+
+
+def render_run_summary(result: dict[str, Any], args: argparse.Namespace) -> str:
+    lines = [
+        f"# Job Search Run - {utc_now().date().isoformat()}",
+        "",
+        f"Generated at: `{result['generated_at']}`",
+        "",
+        f"Inbox: `{Path(args.inbox).as_posix()}`",
+        f"Max posted age: `{args.max_age_hours} hours`",
+        f"Minimum fit score: `{args.min_score}`",
+        f"Imported limit: `{args.limit}`",
+        f"Include negative matches: `{args.include_negative}`",
+        f"Include unclassified roles: `{args.include_unclassified}`",
+        f"Include location-review roles: `{args.include_location_review}`",
+        "",
+        "## Provider Counts",
+        "",
+        "| Source | Fetched | Skipped |",
+        "|---|---:|---:|",
+    ]
+    for source in result["sources"]:
+        lines.append(f"| {source} | {result['fetched_by_source'].get(source, 0)} | {result['skipped_by_source'].get(source, 0)} |")
+    lines.extend(["", "## Imported Jobs", ""])
+    if not result["imported"]:
+        lines.append("_No jobs matched the current filters._")
+    else:
+        lines.append("| Fit | Company | Role | Location | Source | Link | Flags |")
+        lines.append("|---:|---|---|---|---|---|---|")
+        for row in result["imported"]:
+            lines.append(
+                "| {fit} | {company} | {title} | {location} | {source} | {link} | {flags} |".format(
+                    fit=md_cell(row["fit_score"]),
+                    company=md_cell(row["company"]),
+                    title=md_cell(row["title"]),
+                    location=md_cell(row["location"]),
+                    source=md_cell(row["source"]),
+                    link=markdown_link("Apply", row["url"]),
+                    flags=md_cell(row["flags"]),
+                )
+            )
+    return "\n".join(lines).rstrip() + "\n"
 
 
 def generate_queries(args: argparse.Namespace) -> str:
@@ -462,8 +645,18 @@ def build_parser() -> argparse.ArgumentParser:
     imp.add_argument("path")
 
     report = sub.add_parser("export-report", help="Export recent-job Markdown report from the CSV inbox")
-    report.add_argument("--output", default=str(DEFAULT_REPORT_DIR / f"recent-jobs-{utc_now().date().isoformat()}.md"))
+    report.add_argument("--output", default=str(DEFAULT_RESULTS_DIR / utc_now().date().isoformat() / "recent-jobs.md"))
     report.add_argument("--now", default="", help="Override current time for testing")
+
+    run = sub.add_parser("run-public-search", help="Fetch public job-board APIs, update inbox, and write run outputs")
+    run.add_argument("--sources", nargs="*", choices=["arbeitnow", "remoteok"], default=["arbeitnow", "remoteok"])
+    run.add_argument("--limit", type=int, default=25)
+    run.add_argument("--min-score", type=int, default=60)
+    run.add_argument("--max-age-hours", type=int, default=168)
+    run.add_argument("--include-negative", action="store_true")
+    run.add_argument("--include-unclassified", action="store_true")
+    run.add_argument("--include-location-review", action="store_true")
+    run.add_argument("--results-dir", default=str(DEFAULT_RESULTS_DIR / utc_now().date().isoformat()))
     return parser
 
 
@@ -483,6 +676,13 @@ def main() -> None:
         print(f"imported {count}")
     elif args.command == "export-report":
         write_output(render_report(args), args.output)
+    elif args.command == "run-public-search":
+        result = fetch_public_jobs(args)
+        results_dir = Path(args.results_dir)
+        results_dir.mkdir(parents=True, exist_ok=True)
+        write_output(render_run_summary(result, args), str(results_dir / "run-summary.md"))
+        write_output(render_report(argparse.Namespace(inbox=args.inbox, output="", now="")), str(results_dir / "recent-jobs.md"))
+        write_output(generate_queries(argparse.Namespace(windows=["0-6h", "0-12h", "0-18h", "0-24h"])), str(results_dir / "search-links.md"))
 
 
 if __name__ == "__main__":

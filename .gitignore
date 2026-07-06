@@ -19,7 +19,3 @@ __pycache__/
 *.out
 *.synctex.gz
 
-# Job search generated files
-job-search/data/*.sqlite
-job-search/data/*.sqlite-*
-job-search/reports/*.md

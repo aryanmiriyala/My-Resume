@@ -1,23 +1,38 @@
-# Job Discovery
+# Job Search
 
 This module helps find recently discovered roles so Aryan can manually apply without searching every job portal by hand.
 
-The MVP is intentionally targeted and dependency-free:
+The workflow is intentionally targeted and dependency-free:
 
 - Generates high-signal Google search URLs for ATS-hosted jobs.
+- Fetches public no-key job-board API leads from Arbeitnow and RemoteOK.
 - Stores discovered jobs in `jobs-inbox.csv`, which can be opened and edited directly in VS Code.
 - Scores jobs against Aryan's target profile.
-- Exports a Markdown report partitioned into `0-6`, `6-12`, `12-18`, and `18-24` hour buckets.
+- Writes dated run outputs under `results/YYYY-MM-DD/`.
 - Leaves final application decisions manual. Chosen jobs should then enter the main `AGENTS.md` resume and cover-letter pipeline.
 
 Freshness is based on `first_discovered_at`, not only an ATS-provided posted date. Many ATS systems do not expose reliable posted dates, and some keep stale postings in public feeds.
 
 ## Quick Start
 
-Generate search links:
+Run a public job-search pass:
 
 ```bash
-python3 job-search/src/job_discovery.py generate-queries --output job-search/reports/search-links.md
+python3 job-search/src/job_discovery.py run-public-search
+```
+
+The default run is intentionally strict: it excludes unclassified roles, location-review roles, and negative-signal roles so the inbox stays focused on software, data, AI/ML, cloud, and analyst-adjacent jobs. To broaden a run, add `--include-unclassified`, `--include-location-review`, or `--include-negative`.
+
+This updates `job-search/jobs-inbox.csv` and writes:
+
+- `job-search/results/YYYY-MM-DD/run-summary.md`
+- `job-search/results/YYYY-MM-DD/recent-jobs.md`
+- `job-search/results/YYYY-MM-DD/search-links.md`
+
+Generate search links only:
+
+```bash
+python3 job-search/src/job_discovery.py generate-queries --output job-search/results/YYYY-MM-DD/search-links.md
 ```
 
 Initialize the editable CSV inbox:
@@ -55,13 +70,15 @@ Important columns:
 - `flags`: fit/risk notes from the scoring rules.
 - `notes`: your manual notes about whether the job is worth applying to.
 
-Generated Markdown reports stay under `job-search/reports/`. Reports are local generated files by default; regenerate them whenever the inbox changes.
+Dated run outputs stay under `job-search/results/YYYY-MM-DD/`. The CSV inbox is the source of truth; regenerate the report whenever the inbox changes.
 
 ## Config Files
 
 - `config/role-buckets.json`: software, data, AI/ML, and analyst-adjacent role terms.
 - `config/ats-sources.json`: ATS domains and preferred sources.
 - `config/filters.json`: early-career terms, location terms, positive skill terms, exclusions, and report buckets.
+
+Default `run-public-search` threshold: `--min-score 60`, `--max-age-hours 168`, and strict role/location filtering. Use `--max-age-hours 24` when you want only the last day of provider-posted jobs.
 
 ## Research Notes
 
@@ -71,4 +88,4 @@ The Google `qdr` filters are useful for finding recently indexed pages, but they
 
 ## Current Boundaries
 
-This first build does not scrape Google result pages. It generates search links and provides the CSV/reporting foundation. The next practical step is adding a search API ingestion path or ATS-specific providers for Greenhouse, Lever, Ashby, Workday, and SmartRecruiters.
+This build does not scrape Google result pages. It generates search links, fetches public no-key provider data from Arbeitnow and RemoteOK, and provides the CSV/results foundation. A future build can add dedicated providers for Greenhouse, Lever, Ashby, Workday, and SmartRecruiters.
