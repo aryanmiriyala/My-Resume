@@ -1,0 +1,10 @@
+# Cover Letter - Cisco Software Engineer Data/AI/Intelligent Systems I
+
+Dear Hiring Manager,
+
+I am applying for Cisco's Software Engineer Data/AI/Intelligent Systems I role because it sits where my work has been strongest: building reliable data pipelines, AI-adjacent software, and infrastructure that makes information useful for downstream teams. Cisco's focus on AI-driven platforms, data infrastructure, analytics, and intelligent automation feels like a natural place to apply the mix of software engineering and data systems experience I have built through internships and projects. At AAIS, I worked on production insurance data workflows using Python, SQL, PySpark, AWS Glue, S3, IAM, MySQL, Oracle, Impala, PostgreSQL, JDBC, and Semarchy MDM, including automating a manual billing workflow over 20+ TB of data and helping replace legacy ETL jobs with cloud data pipelines.
+
+I would bring Cisco a practical engineering style: understand the source systems, build the pipeline or platform carefully, validate the data, and make the result maintainable for the people who depend on it. My project work also maps closely to the role's data and AI requirements: I built a Dockerized Spark/Hadoop/Kafka healthcare pipeline, a PyTorch reinforcement-learning comparison with TensorBoard tracking, and RAG/search systems that combine retrieval, embeddings, and source-grounded answers. I am especially interested in roles where data infrastructure and AI systems have to work together reliably at scale, and I would be glad to contribute that mindset to Cisco's Data/AI/Intelligent Systems teams.
+
+Best regards,  
+Aryan Miriyala
