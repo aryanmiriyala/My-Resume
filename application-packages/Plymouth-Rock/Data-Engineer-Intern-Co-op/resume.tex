@@ -1,0 +1,136 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[letterpaper, left=0.2in, right=0.2in, top=0.1in, bottom=0.08in]{geometry}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-5pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-6pt}]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-1pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-3pt}
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.16in, itemsep=0pt, topsep=0pt, parsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
+
+\begin{document}
+
+\begin{center}
+    \textbf{\LARGE \scshape Aryan Miriyala} \\ \vspace{-2pt}
+    \small +1 419-315-0444 $|$
+    \href{mailto:aryanmiriyala@gmail.com}{\underline{aryanmiriyala@gmail.com}} $|$
+    \href{https://www.linkedin.com/in/aryan-miriyala-7788a21b6/}{\underline{linkedin.com/in/aryan-miriyala}} $|$
+    \href{https://github.com/aryanmiriyala}{\underline{\textbf{github.com/aryanmiriyala}}}
+\end{center}
+\vspace{-18pt}
+
+\section{Professional Summary}
+\small{Data engineer and CS graduate student with insurance-domain experience building \textbf{Python}, \textbf{SQL}, \textbf{PySpark}, and \textbf{AWS Glue}/\textbf{S3} pipelines across production AAIS systems. Built validation, partitioned S3 workflows, MDM migration, IAM-controlled access, and reusable data-processing logic for reliable analytics-ready datasets.}
+\vspace{-5pt}
+
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Bowling Green State University}{Bowling Green, OH}
+    {Master of Science in Computer Science, \textbf{GPA: 4.00/4.00}}{Aug. 2024 -- Aug. 2026}
+  \resumeSubheading
+    {Bowling Green State University}{Bowling Green, OH}
+    {Bachelor of Science in Computer Science, \textbf{GPA: 4.00/4.00}}{Jan. 2021 -- Apr. 2024}
+\resumeSubHeadingListEnd
+
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Artificial Intelligence \& Computer Science Intern}{May 2026 -- Present}
+      {SmartSolve Industries}{Bowling Green, OH}
+      \resumeItemListStart
+        \resumeItem{Built secure internal software with \textbf{Next.js}, \textbf{PostgreSQL}, \textbf{Drizzle ORM}, \textbf{SSO}, and auth middleware, organizing onboarding and operations workflows around sensitive employee data.}
+        \resumeItem{Created a cross-platform \textbf{Docker} devcontainer for \textbf{WSL2}/\textbf{Colima}, standardizing reproducible local setup for AI-assisted internal software development.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Data Engineering Intern}{May 2025 -- Aug. 2025}
+      {American Association of Insurance Services}{Lisle, IL}
+      \resumeItemListStart
+        \resumeItem{Automated a manual \textbf{SQL} billing workflow with \textbf{Python}, \textbf{PySpark}, and \textbf{AWS Glue Workflows}, processing \textbf{20+ TB} of golden-table insurance data for \textbf{700+ member companies}.}
+        \resumeItem{Built cloud ETL and partitioned \textbf{S3} pipelines that replaced \textbf{160+} legacy Pentaho jobs for \textbf{Semarchy MDM}, improving maintainability and standardizing data movement into AWS-backed workflows.}
+        \resumeItem{Profiled \textbf{160+} \textbf{MySQL}/\textbf{Oracle}/\textbf{Impala} tables through \textbf{JDBC} with \textbf{Python}, \textbf{Pandas}, and \textbf{SQL}, mapping source-system similarities into \textbf{25} MDM domains.}
+        \resumeItem{Implemented reverse-ETL, data-validation, and custom \textbf{AWS IAM} access patterns to reduce manual entry, support controlled self-service data access, and maintain \textbf{24-hour} data latency.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Software Engineering Intern}{May 2023 -- May 2024}
+      {American Association of Insurance Services}{Lisle, IL}
+      \resumeItemListStart
+        \resumeItem{Generated \textbf{1,000+} production SQL tables across \textbf{MySQL}, \textbf{Oracle}, and \textbf{PostgreSQL} with \textbf{Python}/JSON workflows, supporting standardized insurance data models across \textbf{10+} lines.}
+        \resumeItem{Built \textbf{Python}/\textbf{Pandas} data-processing workflows with multiprocessing, fuzzy matching, and hashing to clean large CSV datasets used in insurance data-standardization pipelines.}
+        \resumeItem{Automated database validation with \textbf{AWS Lambda} triggers that tokenized PII using \textbf{hashlib}/\textbf{boto3} and ingested structured JSON into \textbf{S3} for downstream data workflows.}
+        \resumeItem{Implemented \textbf{RBAC} and \textbf{JWT} patterns in a \textbf{React}/\textbf{Node.js} modernization effort, replacing broad employee-wide access with role-specific controls for about \textbf{110} users.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Software Engineering Intern}{May 2022 -- Aug. 2022}
+      {Alliance for Paired Kidney Donation}{Toledo, OH}
+      \resumeItemListStart
+        \resumeItem{Improved an \textbf{AWS-hosted} \textbf{Lucee}/\textbf{CFML} healthcare workflow platform with anti-CSRF protection, IP-aware audit logging, protected routing, and data-entry reliability fixes.}
+        \resumeItem{Modernized legacy forms with \textbf{HTML5}, JavaScript fallbacks, themed CSS, and reusable modal/tab patterns to improve maintainability for internal clinical operations workflows.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+\section{Projects}
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=-1pt, topsep=0pt, parsep=0pt]
+  \item\small{\textbf{HealthTrend} $|$ \emph{Apache NiFi, Kafka, Hadoop HDFS, Spark, PySpark, Docker}: Built a Dockerized healthcare data pipeline routing CSV patient records into HDFS and JSON IoT health events into Kafka, then processing both sources with Spark/PySpark for validation and downstream analytics.}
+  \item\small{\textbf{RAG-Based App Review Analysis} $|$ \emph{Python, Sentence Transformers, ChromaDB, JSON, NLP}: Built a research pipeline using preprocessing, embeddings, vector search, semantic retrieval, and review mining to compare app update frequency, user feedback, sentiment, and maintenance patterns.}
+\end{itemize}\vspace{-7pt}
+
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, SQL, JavaScript/TypeScript, C++/C, C\#, Lucee/CFML} \\
+     \textbf{Cloud \& Data Engineering}{: AWS Glue, Glue Workflows, S3, Lambda, IAM, PySpark, Spark, ETL, reverse ETL} \\
+     \textbf{Data Quality \& Modeling}{: data validation, data profiling, MDM, Semarchy xDM, JDBC, JSON, CSV, Pandas, partitioned S3 pipelines, golden tables, fuzzy matching, hashing} \\
+     \textbf{Databases, Platforms \& Tools}{: MySQL, PostgreSQL, Oracle, Impala, MongoDB, Hadoop HDFS, Kafka, Docker, Git, Linux, Node.js, React}
+    }}
+ \end{itemize}
+
+\end{document}
