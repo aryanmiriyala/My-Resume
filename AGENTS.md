@@ -109,7 +109,8 @@ Do not commit binary/generated artifacts unless Aryan explicitly asks. This incl
 
 - The resume must be exactly one page: not more than one page, and not less than one full page of serious content.
 - Use ATS-friendly bullets: action verb + technical keywords + scope + impact.
-- Every experience and project bullet must pass the bullet formula: action verb + what was built/changed + technology/method + scope/domain + impact/result. If a verified metric is unavailable, use a truthful qualitative result such as improved reliability, reduced manual work, strengthened security, standardized data flow, improved traceability, or supported downstream workflows.
+- The bullet formula is a hard gate, not a suggestion. Every experience and project bullet must pass: action verb + what was built/changed + technology/method + scope/domain + impact/result. If a bullet does not satisfy all parts, rewrite it before compiling. If a verified metric is unavailable, use a truthful qualitative result such as improved reliability, reduced manual work, strengthened security, standardized data flow, improved traceability, or supported downstream workflows.
+- Do not finalize a resume with task-only, responsibility-only, keyword-only, or tool-list-only bullets. A bullet must explain what changed and why it mattered.
 - The first one or two bullets under the most relevant roles should visibly match the job description's highest-priority responsibilities and keywords.
 - Do not invent metrics. Use exact numbers only when supported by the source material.
 - Prefer concrete technologies, systems, and business/domain context over vague claims.
@@ -137,6 +138,8 @@ Do not commit binary/generated artifacts unless Aryan explicitly asks. This incl
 ## Alignment And ATS-Style Score
 
 Every finalized application resume should include an alignment pass against the saved `job-description.md`.
+
+Target ATS-style score is 90/100 or higher for every finalized application package. Before finalizing any package below 90, iterate on truthful keyword coverage, bullet specificity, project selection, skills ordering, and cover-letter proof points. If a score of 90+ cannot be reached without unsupported claims, keep the lower truthful score and explicitly document why in `tailoring-notes.md` and the final response.
 
 Use this scoring model as a practical internal check, not as a guarantee of a real ATS result:
 

@@ -128,7 +128,7 @@ Secondary angle: fintech-adjacent production software engineer with insurance da
 - Keep SmartSolve first because it directly supports the AI-native development workflow screen.
 - Use AAIS Data Engineering and Software Engineering to show production systems, APIs/databases/cloud basics, Python/SQL, React/Node.js, access control, validation, and financial-services-adjacent domain experience.
 - Keep APKD compressed for secure production workflow modernization and operational reliability.
-- Select projects that prove AI-enabled workflows and product engineering: RocketGrader, Diff-Grounded PR Generation, FalconGraph Search, and Travel Health Advisor.
+- Select projects that prove AI-enabled workflows and product engineering: RocketGrader, Diff-Grounded PR Generation, FalconGraph Search, Travel Health Advisor, and DreamScape.
 - Skills section prioritizes AI-first development tools, full-stack product engineering, APIs/databases, cloud, Docker, Git, and Linux.
 
 ## Cover Letter Angle
@@ -153,6 +153,7 @@ No personal connection to Nymbus, Atlanta, or banking was claimed. The company-s
 - Diff-Grounded PR Generation: AI-assisted engineering/review workflow, LLM generation, structured evidence, and evaluation.
 - FalconGraph: RAG/search system with ingestion, vector retrieval, semantic search, LLM answers, and source tracing.
 - Travel Health Advisor: User-facing AI workflow with APIs, database-backed health data, chatbot, and PDF output.
+- DreamScape: User-facing mobile AI workflow with document summarization, generated quizzes, text-to-speech cues, cached audio, and local-first session tracking.
 
 ## Verification
 
@@ -160,7 +161,7 @@ No personal connection to Nymbus, Atlanta, or banking was claimed. The company-s
 - PDF page count: `resume.pdf` is exactly 1 page; `cover-letter.pdf` is exactly 1 page.
 - PDF metadata: both PDFs are portrait letter pages (`612 x 792 pts`) with no page rotation.
 - PDF text checked: extracted text from both PDFs with `pdftotext` and verified readable section order and role-aligned keywords.
-- Visual review: rendered both PDFs to PNG with `pdftoppm`; resume is dense but readable, fills the page without clipping, and the cover letter is cleanly spaced.
+- Visual review: rendered both PDFs to PNG with `pdftoppm`; resume spacing was revised to reduce bottom whitespace while staying readable, fills the page without clipping, and the cover letter is cleanly spaced.
 - Cleanup: generated LaTeX build artifacts and preview PNGs removed after verification.
 
 ## Resume Alignment / ATS-Style Score
@@ -173,7 +174,7 @@ ATS-style score: 91/100
 - Direct AI developer-tool evidence through Codex and Claude Code in current SmartSolve work.
 - Strong technical foundation coverage: TypeScript, Python, SQL, APIs, databases, Git, Docker, Linux, cloud concepts, and full-stack product work.
 - Strong AI bonus coverage: LLMs, prompt engineering, RAG, LangChain, OpenAI/Gemini/Mistral APIs, embeddings, vector search, semantic retrieval, AI-assisted implementation/debugging/review.
-- Strong project alignment: RocketGrader, FalconGraph, Travel Health Advisor, and Diff-Grounded PR Generation all show AI-enabled workflows and working products/prototypes.
+- Strong project alignment: RocketGrader, FalconGraph, Travel Health Advisor, DreamScape, and Diff-Grounded PR Generation all show AI-enabled workflows and working products/prototypes.
 - Good production-system support from AAIS and APKD: production data workflows, React/Node modernization, secure access control, validation, AWS, and reliability fixes.
 - Fit with early-career requirement through current MS program and recent BS completion.
 
