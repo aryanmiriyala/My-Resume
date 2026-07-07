@@ -1,0 +1,10 @@
+# Cover Letter - Nymbus AI-First Software Engineer
+
+Dear Hiring Manager,
+
+I am applying for the AI-First Software Engineer role because Nymbus is describing the way I already like to build: use AI as a serious engineering tool, move quickly, but still care about correctness, readability, and long-term maintainability. In my current SmartSolve internship, I use Codex and Claude Code for planning, implementation, debugging, code review, and self-review while validating the output myself instead of treating AI as a shortcut. I have also built secure internal software with Next.js, TypeScript, PostgreSQL, Drizzle ORM, SSO, and auth middleware, plus a Docker devcontainer that made AI-assisted development more reproducible across environments.
+
+The fintech and banking modernization side of Nymbus is also compelling because my strongest production experience has been in insurance data and internal platforms, where reliability, access control, and business-facing systems matter. At AAIS, I built Python/SQL automation, AWS data workflows, React/Node.js access-control improvements, and validation pipelines used around production insurance data. My projects add the AI-product layer: RocketGrader, FalconGraph, Travel Health Advisor, and my LLM PR-generation research all required turning ambiguous ideas into working software with APIs, databases, retrieval, LLM calls, and user-facing workflows. I would bring Nymbus a builder mindset that is AI-native, practical, and careful about when to trust generated code and when to override it.
+
+Best regards,  
+Aryan Miriyala
