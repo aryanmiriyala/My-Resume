@@ -1,0 +1,17 @@
+# Nymbus Supplemental Questions
+
+## How have you used AI tools while building a project? What tools did you use? What did you use them for? What worked well?
+
+I use AI tools as development accelerators, not replacements for engineering judgment. In my current SmartSolve internship, I use Codex and Claude Code for planning implementation options, breaking down features, debugging, refactoring, code review, and iteration while I still validate the final output myself. I have also built AI product features with OpenAI API, Gemini API, Mistral AI, and LangChain: RocketGrader used LangChain and Mistral AI for assignment-feedback workflows, FalconGraph used RAG and LLM inference for source-grounded campus search, and my Diff-Grounded PR Generation research used OpenAI API and GitHub data to generate evidence-grounded pull request descriptions. What worked well was using AI to move faster through first drafts, unfamiliar code paths, and edge-case brainstorming, while keeping requirements, security, correctness, and maintainability as human-owned responsibilities.
+
+## What signs would tell you that AI-generated code needs improvement, even if it seems correct at first glance?
+
+I get cautious when AI-generated code only handles the happy path, has vague error handling, duplicates existing logic, ignores project conventions, adds unnecessary dependencies, or is difficult to explain line by line. I also look for risky signs like broad auth or data-access assumptions, weak input validation, silent failure modes, brittle prompts, missing source grounding, performance issues, and tests that prove the implementation exists but not that it behaves correctly. If I cannot trace the code back to the requirement, verify it with tests or logs, and explain why the approach fits the system, I treat it as unfinished even if it appears to work in a quick demo.
+
+## What steps do you take to ensure your code is reliable and scalable?
+
+I start by clarifying the expected behavior, data shape, user flow, and failure cases, then build small pieces that follow the project's existing patterns. I validate inputs, handle errors explicitly, keep auth and data access scoped, and review generated or unfamiliar code line by line before trusting it. For production data work at AAIS, reliability meant profiling source tables, validating outputs, using repeatable Python/PySpark/AWS Glue workflows, partitioning S3 data movement, and applying IAM controls around insurance data. For scalability, I avoid hard-coded assumptions, separate concerns, keep APIs and database interactions clear, add logging where it helps debugging, and document workflows so another engineer can maintain the system.
+
+## Describe a time you improved something - a workflow, a project, or a tool - without being asked. Why did you do it? What was the impact?
+
+At SmartSolve, I saw that local setup and AI-assisted development could become inconsistent across WSL2 and Colima, especially when working around proprietary code. I built a cross-platform Docker devcontainer to make the development environment reproducible and to keep AI-assisted workflows more isolated around company source code. I did it because setup friction slows down real feature work, and inconsistent environments make debugging harder than it needs to be. The impact was a cleaner, more repeatable development workflow that reduced environment drift and gave the team a stronger foundation for building internal tools like the Next.js onboarding tracker.
