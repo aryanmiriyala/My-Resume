@@ -1,214 +1,226 @@
-\documentclass[letterpaper,11pt]{article}
+\documentclass[letterpaper,10pt]{article}
 
-\usepackage{latexsym}
-% OPTIMIZED: Replaced your geometry line with this more aggressive one
-\usepackage[letterpaper, left=0.35in, right=0.35in, top=0.25in, bottom=0.25in]{geometry}
+\usepackage[letterpaper, left=0.55in, right=0.55in, top=0.45in, bottom=0.5in]{geometry}
 \usepackage{titlesec}
-\usepackage{marvosym}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{verbatim}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
-\usepackage{tabularx}
 \input{glyphtounicode}
 
-
-%----------FONT OPTIONS----------
-% \usepackage[sfdefault]{FiraSans}
-% \usepackage[sfdefault]{roboto}
-% \usepackage[sfdefault]{noto-sans}
-% \usepackage[default]{sourcesanspro}
-% \usepackage{CormorantGaramond}
-% \usepackage{charter}
-
-
 \pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
-\fancyfoot{}
+\fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
-
 \urlstyle{same}
-
-\raggedbottom
 \raggedright
+\setlength{\parindent}{0pt}
 \setlength{\tabcolsep}{0in}
-
-% Sections formatting
-\titleformat{\section}{
-  \vspace{-6pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
-
-% Ensure that generate pdf is machine readable/ATS parsable
 \pdfgentounicode=1
 
-%-------------------------
-% Custom commands
-\newcommand{\resumeItem}[1]{
-  \item\small{
-    {#1 \vspace{-2pt}}
-  }
-}
+\titleformat{\section}{\large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{7pt}{4pt}
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-9pt}
+  \vspace{2pt}
+  \textbf{#1} \hfill #2\\
+  \textit{#3} \hfill \textit{#4}
 }
 
-\newcommand{\resumeSubSubheading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-7pt}
+\newcommand{\projectHeading}[2]{
+  \vspace{2pt}
+  \textbf{#1} \hfill #2
 }
 
-\newcommand{\resumeProjectHeading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \small#1 & #2 \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
-
-\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
-
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-7pt}}
-
-%-------------------------------------------
-%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\newlist{tightitemize}{itemize}{1}
+\setlist[tightitemize]{leftmargin=0.18in, itemsep=1pt, topsep=2pt, parsep=0pt, label=\textbullet}
 
 \begin{document}
 
-% OPTIMIZED: Reduced font size from \huge to \LARGE and used negative vspace
 \begin{center}
-    \textbf{\LARGE \scshape Aryan Miriyala} \\ \vspace{-2pt}
-    \small +1 419-315-0444 $|$ 
-    \href{mailto:aryanmiriyala@gmail.com}{\underline{aryanmiriyala@gmail.com}} $|$ 
-    \href{https://www.linkedin.com/in/aryan-miriyala-7788a21b6/}{\underline{linkedin.com/in/aryan-miriyala}} $|$
-    \href{https://github.com/aryanmiriyala}{\underline{\textbf{github.com/aryanmiriyala}}}
+  {\LARGE \textbf{Aryan Miriyala}}\\
+  \vspace{2pt}
+  +1 419-315-0444 $|$
+  \href{mailto:aryanmiriyala@gmail.com}{aryanmiriyala@gmail.com} $|$
+  \href{https://www.linkedin.com/in/aryan-miriyala-7788a21b6/}{linkedin.com/in/aryan-miriyala} $|$
+  \href{https://github.com/aryanmiriyala}{github.com/aryanmiriyala}
 \end{center}
-% OPTIMIZED: More aggressive vspace pull-up
-\vspace{-18pt} % Pulls the "Education" section up
 
+\section{Professional Summary}
+Computer science graduate student and software engineer with experience across applied AI, full-stack product engineering, cloud data engineering, cybersecurity education, secure workflow modernization, and systems research. Built LLM/RAG workflows, AI-assisted products, AWS data pipelines, database automation, secure internal tools, healthcare workflow improvements, and C++/OpenMP runtime experiments using Python, TypeScript/JavaScript, SQL, React, Next.js, Angular, Node.js, PostgreSQL, MongoDB, MySQL, Docker, AWS, PySpark, LangChain, OpenAI API, Gemini API, Mistral AI, and ChromaDB.
 
-%-----------EDUCATION-----------
 \section{Education}
-\resumeSubHeadingListStart
-  % OPTIMIZED: Combined specialization and GPA onto one line
-  \resumeSubheading
-    {Bowling Green State University}{Bowling Green, OH}
-    {Master of Science in Computer Science, \textbf{GPA: 4.00/4.00}}{Aug. 2024 -- Aug. 2026}
-  % OPTIMIZED: Combined honors and GPA onto one line
-  \resumeSubheading
-    {Bowling Green State University}{Bowling Green, OH}
-    {Bachelor of Science in Computer Science, \textbf{GPA: 4.00/4.00}}{Jan. 2021 -- Apr. 2024}
-\resumeSubHeadingListEnd
+\resumeSubheading
+{Bowling Green State University}{Bowling Green, OH}
+{Master of Science in Computer Science, GPA: 4.00/4.00}{Aug. 2024 -- Aug. 2026}
 
+\resumeSubheading
+{Bowling Green State University}{Bowling Green, OH}
+{Bachelor of Science in Computer Science, GPA: 4.00/4.00}{Jan. 2021 -- Apr. 2024}
 
-%-----------EXPERIENCE-----------
 \section{Experience}
-  \resumeSubHeadingListStart
+\resumeSubheading
+{Artificial Intelligence \& Computer Science Intern}{May 2026 -- Present}
+{SmartSolve Industries}{Bowling Green, OH}
+\begin{tightitemize}
+  \item Working on AI-enabled internal software across quality-management and operations workflows, combining full-stack engineering, secure workflow design, and AI-assisted development practices.
+  \item Architected a full-stack onboarding tracker with Next.js, TypeScript, PostgreSQL, Drizzle ORM, SSO, and auth middleware to centralize HR/new-hire workflows and protect sensitive employee data.
+  \item Supported planning for a QMS dependency register intended to connect related quality-management documents and make document relationships easier to understand.
+  \item Built a cross-platform Docker devcontainer for WSL2 and Colima, improving reproducible setup and isolating AI-assisted development workflows around proprietary source code.
+  \item Applied Codex and Claude Code for planning, implementation, debugging, code review, and self-review while keeping human validation central.
+\end{tightitemize}
 
-    \resumeSubheading
-      {Artificial Intelligence \& Computer Science Intern}{May 2026 -- Present}
-      {SmartSolve Industries}{Bowling Green, OH}
-      \resumeItemListStart
-        \resumeItem{Drive an \textbf{AI-first workflow} with agentic CLIs (\textbf{Claude Code}, \textbf{Codex}) as daily drivers to architect, ship, and self-review production features.}
-        \resumeItem{Architected a full-stack \textbf{Next.js} onboarding tracker on a \textbf{Postgres}/\textbf{Drizzle ORM} backend, using \textbf{SSO} and \textbf{auth middleware} to protect sensitive new-hire data, cutting HR's manual tracking time and auto-updating the org chart.}
-        \resumeItem{Proactively built a cross-platform \textbf{Docker} devcontainer (\textbf{WSL2}/\textbf{Colima}) isolating \textbf{AI agents} to safeguard \textbf{proprietary data}.}
-      \resumeItemListEnd
+\resumeSubheading
+{Graduate Research Assistant I}{Aug. 2024 -- May 2026}
+{Bowling Green State University}{Bowling Green, OH}
+\begin{tightitemize}
+  \item Developed cybersecurity education materials, lab guides, workshops, and presentations across ethical hacking, OSINT, web security, email security, cryptography, secure key management, and cyber workforce topics.
+  \item Built hands-on instructional content using Kali Linux, Nmap/NSE, Metasploit, OpenVAS/Greenbone, Wireshark/tcpdump, Burp Suite, OWASP ZAP, Shodan, Netcat/Ncat, Snort, John the Ripper, Hydra, DVWA, Metasploitable2, Vulnserver, and PentesterLab.
+  \item Supported NICE Framework and CAE-CD curriculum analysis by mapping cybersecurity roles, knowledge areas, tools, and instructional requirements into student- and instructor-facing materials.
+  \item Created email security and forensics material covering phishing analysis, email headers, SPF/DKIM/DMARC, PGP/GnuPG, packet captures, and secure email communication.
+  \item Built cryptography and secure key-management content involving symmetric/asymmetric encryption, hashing, PKI, key storage, key recovery, Azure Key Vault lab material, and Shamir's Secret Sharing.
+  \item Led 10 undergraduate students in organizing a middle-school CyberCamp using CyberGuardian modules, cryptography activities, phishing demos, password-security exercises, and cyber escape-room material.
+\end{tightitemize}
 
-    \resumeSubheading
-      {Data Engineering Intern}{May 2025 -- Aug. 2025}
-      {American Association of Insurance Services}{Lisle, IL}
-      \resumeItemListStart
-        % OPTIMIZED: Bullet 1 (Billing) - Locked.
-        \resumeItem{Automated a 100\% manual SQL billing script by developing a \textbf{PySpark} job and weekly \textbf{AWS Glue Workflow}, processing \textbf{20+ TB} of \textbf{Impala} data to calculate charges for \textbf{700+ member companies}.}
-        
-        % OPTIMIZED: Bullet 2 (Architecture) - Locked.
-        \resumeItem{Architected the 160+ table migration by profiling \textbf{Oracle/Impala} (via \textbf{JDBC}) with \textbf{Python (Pandas)} and \textbf{SQL} to map \textbf{data similarities} and define a \textbf{single data taxonomy} of \textbf{25 MDM domains}.}
-        
-        % OPTIMIZED: Bullet 3 (Implementation) - Locked.
-        \resumeItem{Replaced \textbf{160+ Pentaho jobs} with an automated \textbf{AWS Glue Workflow}, using the new \textbf{MDM domains} and an \textbf{AWS Glue pipeline} to ETL data into \textbf{S3} (partitioned) for \textbf{Semarchy MDM}.}
-        
-        % OPTIMIZED: Bullets 4+5 merged to free vertical space.
-        \resumeItem{Orchestrated daily \textbf{AWS Glue Workflows} (incl. a \textbf{reverse-ETL} pipeline) to \textbf{enable a new self-service application}, eliminating manual entry and ensuring \textbf{24-hour data latency} across all MDM domains.}
-      \resumeItemListEnd
+\resumeSubheading
+{Data Engineering Intern}{May 2025 -- Aug. 2025}
+{American Association of Insurance Services}{Lisle, IL}
+\begin{tightitemize}
+  \item Automated a fully manual SQL billing workflow by building a production PySpark job and AWS Glue Workflow, processing 20+ TB of golden-table insurance data to calculate charges for 700+ member companies.
+  \item Profiled 160+ MySQL, Oracle, and Impala tables using Python, Pandas, SQL, and JDBC to map source-system similarities and define a unified taxonomy across 25 MDM domains.
+  \item Replaced 160+ legacy Pentaho jobs with AWS Glue ETL workflows and partitioned S3 pipelines for Semarchy MDM, improving maintainability and standardizing cloud data movement.
+  \item Built reverse-ETL and data-validation workflows with custom AWS IAM roles to support controlled self-service data access, reduce manual entry, and maintain 24-hour data latency.
+  \item Worked across Python, PySpark, AWS Glue, Glue Workflows, S3, IAM, SQL, MySQL, Impala, Oracle, PostgreSQL, JDBC, Semarchy MDM/xDM, golden tables, billing workflows, and insurance data platforms.
+\end{tightitemize}
 
-    \resumeSubheading
-      {Software Engineering Intern}{May 2023 -- May 2024}
-      {American Association of Insurance Services}{Lisle, IL}
-      \resumeItemListStart
-        % OPTIMZED: Bullet 1 - Re-integrated the "scale" metrics (1000s of tables, 10+ lines)
-        \resumeItem{Engineered the \textbf{foundational data model} for \textbf{openIDL} (unified insurance-data view), using \textbf{Python} to parse taxonomies into \textbf{1,000s of SQL tables} on \textbf{Oracle/PostgreSQL} across \textbf{10+ insurance lines}.}
+\resumeSubheading
+{Software Engineering Intern}{May 2023 -- May 2024}
+{American Association of Insurance Services}{Lisle, IL}
+\begin{tightitemize}
+  \item Engineered openIDL/openIDS-aligned data-modeling workflows by parsing insurance taxonomies with Python/JSON logic and generating 1,000+ production SQL tables across MySQL, Oracle, PostgreSQL, and 10+ insurance lines.
+  \item Built Python data-processing workflows with Pandas, multiprocessing, fuzzy matching, and hashing to clean large CSV datasets and support insurance data-standardization pipelines.
+  \item Contributed to a full-stack React/Node.js modernization by implementing RBAC and JWT authentication patterns to replace broad employee-wide data access with role-specific controls for about 110 users.
+  \item Automated database validation with AWS Lambda triggers that tokenized PII using hashlib/boto3 and ingested structured JSON into S3 for downstream standardization workflows.
+  \item Worked across Python, JSON, Pandas, SQL, MySQL, Oracle, PostgreSQL, React, Node.js, JWT, RBAC, AWS Lambda, AWS S3, boto3, hashlib, large CSV processing, and insurance taxonomies.
+\end{tightitemize}
 
-        \resumeItem{Built \textbf{Python}/\textbf{Pandas} data-processing workflows with multiprocessing, fuzzy matching, and hashing to clean large CSV datasets for insurance data-standardization pipelines.}
+\resumeSubheading
+{Software Engineering Intern}{May 2022 -- Aug. 2022}
+{Alliance for Paired Kidney Donation}{Toledo, OH}
+\begin{tightitemize}
+  \item Improved an AWS-hosted Lucee/CFML healthcare workflow platform for kidney-paired donation operations by strengthening form security, auditability, data-entry reliability, and internal clinical workflow usability.
+  \item Implemented global anti-CSRF form protection, IP-aware audit logging, protected access-denied routing, and clearer 404 behavior across internal workflows.
+  \item Modernized legacy ColdFusion/Lucee forms with HTML5 date/time pickers, themed CSS, JavaScript fallbacks, cfform script updates, and graceful degradation for manual input.
+  \item Improved transplant logistics and data reliability by adding center-level blood-tube defaults, logistics-sheet population, Matchgrid upload ordering, MFI file-location fixes, and duplicate-antigen MFI crash handling.
+  \item Refactored MatchRun, registration, offer, and combination interfaces into reusable modal/tab components with icons and tooltips to improve usability and maintainability.
+\end{tightitemize}
 
-        % OPTIMIZED: Bullet 3 (React) - Locked.
-        \resumeItem{Contributed to a full-stack \textbf{React} modernization, implementing \textbf{RBAC} and \textbf{JWT auth} with \textbf{Node.js} for a secure, role-specific landing page serving 100+ internal users.}
-        
-        % OPTIMIZED: Bullet 4 (Lambda) - Locked.
-        \resumeItem{Automated a 2-person validation process by building a \textbf{scheduled AWS Lambda} function that polled database tables, \textbf{tokenized PII using hashlib/boto3}, and ingested clean \textbf{JSON} into S3.}
-      \resumeItemListEnd
+\resumeSubheading
+{Teaching Assistant}{Aug. 2021 -- May 2023}
+{Bowling Green State University}{Bowling Green, OH}
+\begin{tightitemize}
+  \item Supported College Algebra instruction at the BGSU Math Emporium by helping students work through algebra problems, debug quantitative reasoning errors, and understand course concepts in a high-volume learning-support environment.
+  \item Strengthened technical communication by translating abstract quantitative concepts into clear step-by-step guidance for students.
+\end{tightitemize}
 
-    \resumeSubheading
-      {Software Engineering Intern}{May 2022 -- Aug. 2022}
-      {Alliance for Paired Kidney Donation}{Toledo, OH}
-      \resumeItemListStart
-        % OPTIMIZED: Bullet 1 (Security) - 1-Line
-        \resumeItem{Ensured \textbf{HIPAA compliance} via site-wide \textbf{anti-CSRF tokens} securing user sessions and patient data.}
-        
-        % OPTIMIZED: Bullet 2 (New Feature) - 1-Line
-        \resumeItem{Built a \textbf{JS/Bootstrap} module to log blood sample data, ensuring data completeness for the matching algorithm.}
-        
-        % OPTIMIZED: Bullets 3+4 merged (UI/UX + performance) to free a line.
-        \resumeItem{Redesigned the responsive \textbf{“Match Run”} page (\textbf{Bootstrap}) and refactored legacy \textbf{JS} to \textbf{async/defer} loading for faster donor-chain rendering.}
-      \resumeItemListEnd
+\resumeSubheading
+{Student Worker, Registration and Records}{May 2021 -- Apr. 2023}
+{Bowling Green State University}{Bowling Green, OH}
+\begin{tightitemize}
+  \item Supported Registration and Records operations through student-record handling, file workflows, administrative support, confidential information handling, and student-facing customer-service requests.
+  \item Built operational reliability and communication skills through accurate record handling and responsive university office support.
+\end{tightitemize}
 
-  \resumeSubHeadingListEnd
+\resumeSubheading
+{Learning Assistant}{Aug. 2022 -- Dec. 2022}
+{Bowling Green State University}{Bowling Green, OH}
+\begin{tightitemize}
+  \item Led CS 2010: Programming Fundamentals labs by helping students understand core programming concepts, debug assignments, reason through lab exercises, and apply foundational problem-solving patterns.
+  \item Answered student questions during labs and support sessions, translating technical concepts into practical explanations for early computer science learners.
+\end{tightitemize}
 
-%-----------PROJECTS-----------
 \section{Projects}
-    \resumeSubHeadingListStart
-    \resumeProjectHeading
-          {\textbf{Travel Health Advisor} $|$ \emph{React, Node.js (Express), MongoDB, Mistral AI, TailwindCSS}}{Apr. 2025}
-          \resumeItemListStart
-            \resumeItem{Developed a full-stack health app using \textbf{React}, \textbf{TailwindCSS}, and \textbf{Express.js} to provide personalized travel health advisories (e.g., disease risk, precautions) based on user health data and destination.}
-            \resumeItem{Built a \textbf{Mistral AI} chatbot and dynamic travel checklist workflow using user health-profile context, disease-risk data, and country-specific vaccine recommendations.}
-          \resumeItemListEnd
+\projectHeading{Travel Health Advisor - BGSU Hackathon 2025}{2025}
+\begin{tightitemize}
+  \item Built a full-stack health AI prototype with React, Vite, Express, MongoDB/Mongoose, and Mistral AI for travel-health guidance.
+  \item Implemented an interactive country-selection map with react-simple-maps, retrieving disease records from an Express/MongoDB API and surfacing risk, vaccine availability, healthcare access, recovery-rate data, and travel recommendations.
+  \item Built a health-profile form and context-aware Mistral AI chatbot that used saved user health details to answer travel-health questions.
+  \item Generated downloadable vaccination checklist PDFs with @react-pdf/renderer based on country-specific vaccine-required disease data.
+\end{tightitemize}
 
-      \resumeProjectHeading
-          {\textbf{Diff-Grounded PR Description Generation} $|$ \emph{Python, OpenAI API, GitHub API, LLM Evaluation}}{2026}
-          \resumeItemListStart
-            \resumeItem{Built an LLM research pipeline that generated evidence-grounded GitHub pull request descriptions from commits, file diffs, linked issues, and repository metadata.}
-            \resumeItem{Developed structured PR-context construction, grounding-constrained generation, and automated LLM evaluation workflows that improved correctness, coverage, and clarity over baseline descriptions.}
-          \resumeItemListEnd
+\newpage
+\projectHeading{Diff-Grounded Pull Request Description Generation with Structured Evidence}{2026}
+\begin{tightitemize}
+  \item Built an ICSME-published LLM research pipeline that generated evidence-grounded GitHub pull request descriptions from commits, file diffs, linked issues, and repository metadata.
+  \item Developed structured PR-context construction, weak-commit-message improvement, file-level summarization, and grounding-constrained generation workflows using Python, OpenAI API, and GitHub API.
+  \item Built an automated LLM evaluation workflow comparing generated PR descriptions against raw code-change evidence, outperforming AIDev and PRSummarizer baselines in correctness, coverage, and clarity.
+  \item Used Python, OpenAI API, LLM inference, prompt engineering, GitHub API, retrieval-augmented context construction, knowledge graphs, software repository mining, NLP, pandas, and scikit-learn.
+\end{tightitemize}
 
-    \resumeSubHeadingListEnd
-%
-%-----------PROGRAMMING SKILLS-----------
-% OPTIMIZED: Replaced the tall 15-line table with this dense, 6-line list
-% This saves a massive amount of vertical space.
+\projectHeading{DreamScape: AI-Powered Sleep Learning Companion}{}
+\begin{tightitemize}
+  \item Built a cross-platform React Native/Expo mobile app for sleep-based microlearning with AI-generated study cues, quizzes, text-to-speech audio, and local-first session tracking.
+  \item Integrated Gemini and ElevenLabs APIs to summarize PDF/TXT documents, generate quizzes, synthesize learning cues, cache audio, and schedule simulated sleep-mode playback.
+  \item Designed typed Zustand/AsyncStorage stores for topics, flashcards, cues, sleep sessions, quiz results, and user settings in a local-first mobile architecture.
+  \item Used Expo SDK 54, Expo Router, TypeScript, Gemini API, ElevenLabs API, Expo AV, Expo FileSystem, Expo Document Picker, Zod, and React Navigation.
+\end{tightitemize}
+
+\projectHeading{FalconGraph Search: AI-Powered Campus Knowledge Search}{}
+\begin{tightitemize}
+  \item Built an AI-powered BGSU campus search prototype combining lightweight RAG, live web search, crawled webpages, PDFs, and LLM inference to generate source-grounded answers.
+  \item Implemented document ingestion, chunking, vector retrieval, semantic search, and source-aware summarization across stored and crawled university resources.
+  \item Developed graph-search functionality and an interactive graph interface using page/resource relationships to trace generated answers back to original sources.
+  \item Used Python, Flask, OpenAI API, embeddings, vector retrieval, semantic search, web crawling, PDF parsing, React, Next.js, Three.js, Tailwind CSS, C++, graph algorithms, and pandas.
+\end{tightitemize}
+
+\projectHeading{HealthTrend: Healthcare Big Data Streaming Pipeline}{}
+\begin{tightitemize}
+  \item Built a Dockerized healthcare data pipeline using Apache NiFi, Kafka, Hadoop HDFS, and Spark to ingest structured patient records and stream IoT health events.
+  \item Routed CSV patient data into HDFS and JSON health events into Kafka, then processed both sources with Spark/PySpark for validation and downstream analytics.
+  \item Simulated a healthcare analytics architecture for patient records, heart rate, oxygen level, and temperature data inside an isolated Docker Compose environment.
+  \item Used Apache NiFi, Apache Kafka, Apache Zookeeper, Hadoop HDFS, Spark, PySpark, Docker Compose, Python, JSON, CSV, stream ingestion, batch storage, and distributed processing.
+\end{tightitemize}
+
+\projectHeading{MarioRL: Super Mario Reinforcement Learning Agent Comparison}{}
+\begin{tightitemize}
+  \item Built a reinforcement learning project comparing PPO and DQN agents on Super Mario Bros using Python, PyTorch, Stable-Baselines3, Gym, and TensorBoard.
+  \item Implemented environment preprocessing with frame skipping, resizing, grayscale conversion, and frame stacking.
+  \item Evaluated agents through checkpoints, training/testing scripts, generated clips, TensorBoard logs, and performance graphs comparing reward, episode length, and training speed.
+  \item Used gym-super-mario-bros, NES-Py, custom agent/network code, Jupyter Notebook, experiment artifacts, and reinforcement-learning evaluation workflows.
+\end{tightitemize}
+
+\projectHeading{RAG-Based Analysis of App Update Frequency and User Reviews}{}
+\begin{tightitemize}
+  \item Built a RAG research pipeline using Python, Sentence Transformers, ChromaDB, embeddings, vector search, and review mining to study how mobile app update frequency relates to Google Play review feedback.
+  \item Applied semantic retrieval, sentiment analysis, JSON preprocessing, and review-mining techniques to compare maintenance patterns, recurring user concerns, and app version histories.
+  \item Used Python, RAG, Sentence Transformers, ChromaDB, vector search, semantic retrieval, NLP, scikit-learn, JSON processing, data preprocessing, information retrieval, research evaluation, and LaTeX.
+\end{tightitemize}
+
+\newpage
+\projectHeading{RocketGrader: Intelligent Assignment Feedback Platform}{}
+\begin{tightitemize}
+  \item Built a full-stack AI assignment feedback platform with Angular, TypeScript, Express, MongoDB, Auth0, AWS S3, LangChain, and Mistral AI.
+  \item Designed REST APIs and MongoDB/Mongoose models for users, classes, assignments, submissions, files, and chat while supporting role-based teacher/student dashboards.
+  \item Implemented submission upload, parsing, and AI grading across PDF, DOCX, HTML, and text files, returning structured scores, feedback, strengths, improvements, and rubric breakdowns.
+  \item Used Angular 19, TypeScript, Auth0, Node.js, Express, MongoDB, Mongoose, REST APIs, JWT, bcrypt, AWS Amplify, Multer, Mammoth, JSDOM, Tailwind CSS, and DaisyUI.
+\end{tightitemize}
+
+\projectHeading{Self-Adaptive Parallelism via OpenMP Runtime Coordination}{}
+\begin{tightitemize}
+  \item Built a C++/OpenMP adaptive runtime research system that used per-epoch telemetry and a UCB controller to tune scheduling policy, chunk size, and thread count.
+  \item Benchmarked adaptive scheduling against serial and fixed-policy baselines across Mandelbrot, heat diffusion, and reduction workloads.
+  \item Generated paper-ready performance summaries and plots for runtime, speedup, efficiency, Karp-Flatt behavior, and scheduler decisions.
+  \item Used C++, OpenMP, Python, PyQt, Docker, Make, Linux, TCP servers, runtime instrumentation, UCB bandit optimization, adaptive scheduling, CSV telemetry pipelines, performance benchmarking, and data visualization.
+\end{tightitemize}
+
 \section{Technical Skills}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-     \textbf{Languages}{: Python, SQL, JavaScript/TypeScript, C++/C, C\#, PHP} \\
-     \textbf{AI-First \& Agentic}{: Claude Code, Codex, LangChain, RAG, Mistral AI, HuggingFace, PyTorch, TensorFlow} \\
-     \textbf{Data Engineering}{: AWS (Glue, S3, Lambda), Spark (PySpark), Impala, Hadoop (HDFS, MapReduce), Semarchy xDM} \\
-     \textbf{Web \& Frameworks}{: React, Next.js, Angular, Node.js, Pandas, NumPy, TailwindCSS} \\
-     \textbf{Databases \& Tools}{: PostgreSQL, Oracle, MongoDB, MySQL, Drizzle ORM, Git, Docker, Vercel}
-    }}
- \end{itemize}
+\textbf{Languages:} Python, SQL, JavaScript, TypeScript, C++, C, C\#, PHP, Lucee/CFML, ColdFusion\\
+\textbf{Frontend:} React, Next.js, Angular, Vite, React Native, Expo, Expo Router, React Navigation, Tailwind CSS, DaisyUI, Bootstrap, HTML5, CSS, D3, TopoJSON, react-simple-maps, Framer Motion, Lucide React, React Icons, React Toastify, React Markdown, responsive UI, modal/tab UI patterns\\
+\textbf{Backend, APIs \& Auth:} Node.js, Express.js, Flask, REST APIs, Axios, CORS, dotenv, auth middleware, JWT, RBAC, SSO, Auth0, Drizzle ORM, Mongoose, bcrypt, @react-pdf/renderer, Lucee/CFML backend workflows\\
+\textbf{Cloud, Data Engineering \& DevOps:} AWS Glue, AWS Glue Workflows, AWS S3, AWS Lambda, AWS IAM, PySpark, Spark, Apache NiFi, Apache Kafka, Apache Zookeeper, Hadoop HDFS, MapReduce, Impala, ETL, reverse ETL, data validation, data profiling, MDM, Semarchy MDM/xDM, partitioned S3 pipelines, golden tables, JDBC, Docker, Docker Compose, devcontainers, WSL2, Colima, Git, Linux, Make, Vercel, AWS Amplify\\
+\textbf{Databases:} PostgreSQL, MySQL, MongoDB, MongoDB Atlas, Oracle, ChromaDB\\
+\textbf{AI, ML \& Retrieval:} Codex, Claude Code, OpenAI API, Gemini API, ElevenLabs API, Mistral AI, LangChain, RAG, prompt engineering, LLM inference, automated LLM evaluation, HuggingFace, Sentence Transformers, embeddings, vector search, semantic retrieval, cosine similarity search, PyTorch, TensorFlow, Stable-Baselines3, reinforcement learning, PPO, DQN, Gym, TensorBoard, scikit-learn, NLP, review mining\\
+\textbf{Security \& Compliance-Aware Engineering:} SSO, JWT, RBAC, auth middleware, anti-CSRF tokens, audit logging, IP-aware logging, access-denied workflows, protected 404 workflows, data access controls, PII tokenization, hashlib, boto3, healthcare/compliance-aware workflows\\
+\textbf{Cybersecurity Education Tooling:} NICE Framework, CAE-CD curriculum mapping, CyberGuardian, Kali Linux, OSINT, Nmap/NSE, Metasploit, OpenVAS/Greenbone, Wireshark/tcpdump, Burp Suite, OWASP ZAP, OWASP Top 10, Shodan, theHarvester, Netcat/Ncat, Masscan, Snort, John the Ripper, Hydra, DVWA, Metasploitable2, Vulnserver, PentesterLab, SPF/DKIM/DMARC, PGP/GnuPG, phishing analysis, cryptography, PKI, secure key management
 
-%-------------------------------------------
 \end{document}
