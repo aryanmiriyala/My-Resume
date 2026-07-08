@@ -1,0 +1,8 @@
+Dear Hiring Manager,
+
+I am applying for the Software Engineer role in Commercial Engineering & AI because the CEAI/SPAI mission lines up closely with the kind of software I have been building: AI-assisted systems that improve real workflows, but still need strong engineering judgment around security, reliability, and maintainability. The phrase "AI-native systems" stands out to me because I have not only built AI product features, I have also changed how I work as an engineer. At SmartSolve, I use Codex and Claude Code for planning, implementation, debugging, and review, and I built a sandboxed Docker/devcontainer workflow using parallel agents, tmux sessions, and git worktrees so AI generated output can be isolated, compared, and validated before it touches the main codebase.
+
+My strongest production experience is in cloud-backed software and data workflows. At AAIS, I automated Python/SQL and AWS Glue workflows over 20+ TB of insurance data, built validation and IAM controlled S3 patterns, generated 1,000+ production SQL tables, and helped modernize React/Node.js access-control flows with RBAC and JWT. My projects add the AI and platform layer: Fix-It-Flow uses typed Next.js APIs, Gemini Vision, voice workflows, and DynamoDB-backed persistence; RocketGrader uses REST APIs, MongoDB, Auth0, AWS S3, and LangChain/Mistral AI; and my C++/OpenMP research used telemetry to tune runtime behavior. I would bring Microsoft a practical software engineering mindset: move quickly with AI, validate carefully, and build systems that remain understandable and reliable as they scale.
+
+Best regards,  
+Aryan Miriyala
