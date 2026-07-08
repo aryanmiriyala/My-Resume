@@ -103,8 +103,8 @@ Secondary angle: CEAI/SPAI fit through agentic development workflows, workflow t
 - code review
 - security
 - proprietary-code boundaries
-- REST APIs
-- typed API routes
+- REST-based APIs
+- typed REST-style API routes
 - cloud-backed data systems
 - cloud storage
 - AWS
@@ -113,6 +113,7 @@ Secondary angle: CEAI/SPAI fit through agentic development workflows, workflow t
 - AWS S3
 - AWS IAM
 - AWS DynamoDB
+- DynamoDB-backed cloud storage
 - Python
 - TypeScript
 - JavaScript
@@ -142,7 +143,9 @@ Secondary angle: CEAI/SPAI fit through agentic development workflows, workflow t
 - Hadoop HDFS
 - telemetry
 - troubleshooting
+- data quality checks
 - validation workflows
+- privacy-aware downstream workflows
 - RBAC
 - JWT
 - SSO
@@ -162,13 +165,14 @@ Secondary angle: CEAI/SPAI fit through agentic development workflows, workflow t
 
 ## Resume Direction
 
-- Lead with CEAI/SPAI terms that are truth-supported: AI-native workflows, REST APIs, cloud-backed data systems, secure internal tools, agentic development practices, validation, telemetry, security, and maintainability.
+- Lead with CEAI/SPAI terms that are truth-supported: AI-native workflows, REST-based APIs, cloud storage systems, secure internal tools, agentic development practices, validation, telemetry, security, and maintainability.
 - Keep SmartSolve first because it is the strongest direct match for AI tools across the SDLC, validating AI-generated output, agentic workflows, and secure internal software.
 - Use AAIS Data Engineering for cloud technologies, data systems, AWS Glue/S3/IAM, validation, repeatable data availability, and large-scale processing.
 - Use AAIS Software Engineering for product-feature development, database automation, React/Node modernization, RBAC/JWT, event-driven AWS Lambda validation, and S3 workflows.
 - Keep APKD for engineering excellence, security, audit logging, AWS-hosted workflow reliability, troubleshooting, and privacy-adjacent healthcare data workflows.
-- Select projects that maximize Microsoft CEAI alignment: Fix-It-Flow for AI-native product and cloud storage, RocketGrader for REST APIs and AI workflow features, HealthTrend for distributed systems/messaging, and Self-Adaptive Parallelism for telemetry and performance-oriented systems work.
+- Select projects that maximize Microsoft CEAI alignment: Fix-It-Flow for AI-native product and cloud storage, RocketGrader for REST APIs and AI workflow features, HealthTrend for distributed systems and Kafka messaging patterns, and Self-Adaptive Parallelism for telemetry and data-driven performance optimization.
 - Skills section orders AWS/cloud/API/data first, then AI-native engineering, then reliability/tools/security.
+- ATS parser review uses exact Microsoft JD language only where supportable, keeps keywords in evidence-bearing bullets, and avoids unsupported direct claims for Azure, Cosmos DB, Service Bus, Event Hub, Storage Queues, Java, CI/CD ownership, and live-site DRI ownership.
 
 ## Cover Letter Angle
 
@@ -178,21 +182,21 @@ No personal connection to Microsoft, Redmond, or the sales ecosystem was claimed
 
 ## Bullet Audit
 
-- Summary: Role-specific and grounded in AI-native workflows, REST APIs, cloud-backed data systems, secure internal tools, agentic development practices, Python, TypeScript/JavaScript, SQL, C++, AWS, Docker, databases, LLM tools, SDLC validation, debugging, telemetry, security, and maintainability.
+- Summary: Role-specific and grounded in AI-native workflows, REST-based APIs, cloud storage systems, secure internal tools, agentic development practices, Python, TypeScript/JavaScript, SQL, C++, AWS, Docker, databases, LLM tools, SDLC validation, debugging, telemetry, security, and maintainability.
 - SmartSolve bullet 1: Action verb + secure internal software + Next.js/TypeScript/PostgreSQL/Drizzle/SSO/auth middleware + employee-data workflow context + security/maintainability value.
 - SmartSolve bullet 2: Action verb + sandboxed Claude Code workflow + Docker devcontainers/tmux/git worktrees + parallel agent isolation + validation before merging.
-- SmartSolve bullet 3: Action verb + Codex/Claude Code + SDLC planning/implementation/debugging/code review + context drift/security/proprietary-code checks.
+- SmartSolve bullet 3: Action verb + Codex/Claude Code + SDLC planning/implementation/debugging/code review + AI-generated output validation + context drift/testing/security/proprietary-code checks.
 - AAIS Data Engineering bullet 1: Action verb + MySQL/SQL billing automation + Python/PySpark/AWS Glue + 20+ TB and 700+ company scale.
 - AAIS Data Engineering bullet 2: Action verb + 160+ table profiling + Python/Pandas/SQL/JDBC + source mapping and 25 MDM domains for cloud ETL migration.
-- AAIS Data Engineering bullet 3: Action verb + ETL validation/reverse ETL/AWS IAM/S3/MDM + controlled cloud storage access and repeatable data availability.
+- AAIS Data Engineering bullet 3: Action verb + ETL validation/reverse ETL/AWS IAM/S3/MDM + controlled cloud storage access, data quality checks, and repeatable availability.
 - AAIS Software Engineering bullet 1: Action verb + Python/JSON backend automation + 1,000+ SQL tables across MySQL/Oracle/PostgreSQL + 10+ insurance lines.
 - AAIS Software Engineering bullet 2: Action verb + React/Node modernization + RBAC/JWT + 110 internal users + access-control impact.
-- AAIS Software Engineering bullet 3: Action verb + AWS Lambda database validation + hashlib/boto3/S3 + PII-tokenized event-driven workflow.
-- APKD bullets: Action verbs + AWS-hosted Lucee/CFML + anti-CSRF/audit logging/access routing + HTML5/JavaScript reliability and troubleshooting improvements.
-- Fix-It-Flow: AI-native product with typed Next.js API routes, Gemini Vision, ElevenLabs, DynamoDB, camera inspection, repair-step generation, and AWS-backed persistence.
-- RocketGrader: REST APIs, Angular/TypeScript/Express/MongoDB/Auth0/AWS S3, role dashboards, parsing, and LangChain/Mistral workflows.
-- HealthTrend: Distributed/messaging/data pipeline proof point with Kafka, Hadoop HDFS, Spark/PySpark, Docker, CSV/JSON, streaming and batch paths.
-- Self-Adaptive Parallelism: C++/OpenMP/Python/Docker/Linux telemetry system with runtime tuning and performance-oriented design.
+- AAIS Software Engineering bullet 3: Action verb + AWS Lambda database validation + hashlib/boto3/S3 + privacy-aware downstream workflow.
+- APKD bullets: Action verbs + AWS-hosted Lucee/CFML + anti-CSRF/audit logging/access routing + security, traceability, reliability, HTML5/JavaScript troubleshooting improvements.
+- Fix-It-Flow: AI-native product with typed REST-style API routes, Gemini Vision, ElevenLabs, DynamoDB, camera inspection, repair-step generation, and cloud storage.
+- RocketGrader: REST APIs, Angular/TypeScript/Express/MongoDB/Auth0/AWS S3, role dashboards, parsing, cloud storage, and LangChain/Mistral workflows.
+- HealthTrend: Distributed/messaging/data pipeline proof point with Kafka messaging patterns, Hadoop HDFS, Spark/PySpark, Docker, CSV/JSON, streaming and batch paths.
+- Self-Adaptive Parallelism: C++/OpenMP/Python/Docker/Linux telemetry system with data-driven runtime tuning and performance-oriented design.
 
 ## Verification
 
@@ -206,17 +210,17 @@ No personal connection to Microsoft, Redmond, or the sales ecosystem was claimed
 
 ## Resume Alignment / ATS-Style Score
 
-ATS-style score: 90/100
+ATS-style score: 92/100
 
 ### Strong matches
 
-- Strong direct match for AI-native development practices through Codex, Claude Code, sandboxed AI workflows, parallel agents, validation of generated outputs, context-drift review, and SDLC use.
+- Strong direct match for AI-native development practices through Codex, Claude Code, sandboxed AI workflows, parallel agents, validation of AI-generated outputs, context-drift/testing-gap review, and SDLC use.
 - Strong language coverage for the required list: Python, TypeScript/JavaScript, SQL, C++, C#, C, and HTML5/CSS are verified and included.
 - Strong cloud and data evidence through AWS Glue, Lambda, S3, IAM, DynamoDB, PySpark, Spark, Kafka, Hadoop HDFS, and large-scale data processing.
-- Strong REST API and product-feature evidence through Fix-It-Flow, RocketGrader, SmartSolve, React/Node modernization, and Express/MongoDB services.
+- Strong REST-based API and product-feature evidence through Fix-It-Flow, RocketGrader, SmartSolve, React/Node modernization, and Express/MongoDB services.
 - Strong security/privacy-adjacent evidence through SSO, RBAC, JWT, anti-CSRF, audit logging, access controls, and PII tokenization.
-- Strong reliability and validation evidence through database validation workflows, ETL validation, debugging, reliability fixes, and telemetry-based C++/OpenMP research.
-- Good distributed-systems adjacent proof through Kafka/HDFS/Spark/Docker pipeline work and AWS-backed event/data workflows.
+- Strong reliability and validation evidence through database validation workflows, ETL validation, data quality checks, debugging, reliability fixes, and telemetry-based C++/OpenMP research.
+- Good distributed-systems adjacent proof through Kafka messaging patterns, HDFS/Spark/Docker pipeline work, and AWS-backed event/data workflows.
 
 ### Gaps / intentionally omitted unsupported keywords
 
@@ -226,6 +230,7 @@ ATS-style score: 90/100
 - Formal live-site DRI, production incident response, feature flighting, rollback planning, and production monitoring ownership are not claimed.
 - Formal CI/CD ownership and named test frameworks are not claimed.
 - Accessibility and regulatory compliance practices are not overstated beyond verified security/privacy-aware work.
+- A 95/100 ATS-style score is not truthfully supportable unless Aryan can verify direct experience with named Microsoft-stack or operations gaps such as Azure, Cosmos DB, Service Bus/Event Hub/Storage Queues, Java, formal CI/CD, live-site DRI/incident response, production monitoring, feature flighting, or rollback ownership.
 
 ### Recommended improvements
 
@@ -233,3 +238,4 @@ ATS-style score: 90/100
 - If Aryan has verified CI/CD or formal test framework experience, add a concise evidence line to improve testing/release alignment.
 - If Aryan has any willingness/ability notes for Redmond 3-days/week in-office and less than 25% travel, confirm before applying.
 - If Aryan has used monitoring tools or handled production incidents, add only verified examples to strengthen live-site operations alignment.
+- Current package is optimized for truthful ATS/recruiter alignment and should not be inflated with unsupported Microsoft product names solely to force a 95+ score.

@@ -141,6 +141,21 @@ Every finalized application resume should include an alignment pass against the 
 
 Target ATS-style score is 90/100 or higher for every finalized application package. Before finalizing any package below 90, iterate on truthful keyword coverage, bullet specificity, project selection, skills ordering, and cover-letter proof points. If a score of 90+ cannot be reached without unsupported claims, keep the lower truthful score and explicitly document why in `tailoring-notes.md` and the final response.
 
+## ATS Parser And Recruiter Screen Rules
+
+Treat ATS alignment as structured parsing plus human review, not as magic. A strong package must be optimized for both the parser and the recruiter.
+
+- Use exact job-description language for critical terms when truthful. If the job says `REST-based API development`, `AI-generated outputs`, `telemetry`, `cloud storage`, or `Git`, use those exact phrases in context rather than only synonyms.
+- Put each high-priority keyword in evidence-bearing context whenever possible: a role bullet, project line, or skills category must show what Aryan built, validated, secured, automated, measured, or improved with that technology or method.
+- Keep standard section headings and a simple single-column structure: `Professional Summary`, `Education`, `Experience`, `Projects`, and `Technical Skills`. Do not use creative section names that could make parser categorization harder.
+- Avoid tables, images, icons, text boxes, multi-column layouts, hidden text, or decorative formatting in application resumes. The PDF must be text-extractable in reading order with `pdftotext`.
+- Put recent and most relevant experience in the top half of the page so both parser scoring and human skim behavior see the match quickly.
+- Mirror required qualifications first, then preferred qualifications. Required degree, location/eligibility constraints, core language requirements, and must-have tools should be visibly covered before nice-to-have tools.
+- Treat keyword frequency as secondary to keyword quality. Repeating a keyword without a defensible bullet is weaker than one strong action + technology + scope + result bullet.
+- Include adjacent truthful technologies only as adjacent evidence, not as substitutes. For example, AWS S3/DynamoDB can support `cloud storage` alignment, but cannot be labeled as Cosmos DB; Kafka can support messaging-pattern alignment, but cannot be labeled as Service Bus or Event Hub.
+- Do not claim or imply unsupported direct experience with a job's named tools. If an ATS-style score cannot reach 95 without unsupported skills, keep the truthful lower score and document the gap.
+- After compiling, extract resume text and scan it as an ATS would: confirm exact role title, required languages, cloud/platform terms, domain terms, and top responsibilities appear in readable order and in context.
+
 Use this scoring model as a practical internal check, not as a guarantee of a real ATS result:
 
 - Keyword coverage: 40 points for truthful coverage of important job-title, skill, tool, platform, methodology, and domain keywords.
@@ -186,6 +201,14 @@ Cover-letter guidance incorporated from a 2026 web check:
 
 - Yale Office of Career Strategy: tailor each letter to a specific job, connect skills to employer needs, use job-description keywords truthfully, write in confident active language, keep it to one page, and use a clear opening/body/closing structure.
 - Purdue OWL: use the cover letter to explain experience in a story-like format, go deeper on relevant skills, relate those skills to job requirements, show individualized tailoring, and demonstrate written communication quality.
+
+ATS/recruiter-screen guidance incorporated from a 2026 web check:
+
+- Yale Office of Career Strategy: ATS review should compare the resume against the job description and identify specific keywords to improve noticeability; ATS-formatted templates matter.
+- MIT CAPD: use the position description to decide what to include, use familiar formatting, one page when appropriate, strong action verbs, specific technologies in context, and accomplishments rather than responsibilities.
+- University of Michigan Career Center: keep formatting easy to skim, use bullets rather than paragraphs, tailor to the application, and use Action Verb + What + How/Why/Impact.
+- Resume parsing research and vendor-style descriptions: parsers extract contact, education, work history, skills, and other fields into searchable databases; many systems support keyword and semantic matching against job descriptions.
+- Current recruiting reporting: ATS/AI tools commonly assist with keyword matching, knockout questions, analytics, and human review rather than guaranteeing automated rejection or selection, so resumes must satisfy both structured matching and recruiter readability.
 
 ## Verification
 
