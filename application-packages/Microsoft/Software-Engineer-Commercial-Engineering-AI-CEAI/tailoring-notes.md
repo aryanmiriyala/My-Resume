@@ -205,6 +205,7 @@ No personal connection to Microsoft, Redmond, or the sales ecosystem was claimed
 - PDF metadata: both PDFs are portrait letter pages (`612 x 792 pts`) with no page rotation.
 - PDF text extraction: extracted text from both PDFs with `pdftotext` and verified readable order, conventional headings, bullets, and Microsoft CEAI-aligned keywords.
 - Visual review: rendered both PDFs with `pdftoppm`; resume fills the page without clipping, visible bottom whitespace bands, or unreadable density, and the cover letter is cleanly spaced.
+- Microsoft U.S. applicant upload instruction: education attendance/graduation date ranges were removed from `resume.tex` and `resume.pdf`; no age or date of birth appears in the resume.
 - Application validator: PASS via `python3 automation/validate_application_package.py application-packages/Microsoft/Software-Engineer-Commercial-Engineering-AI-CEAI`.
 - Cleanup: generated LaTeX build artifacts removed after compilation and validation.
 
