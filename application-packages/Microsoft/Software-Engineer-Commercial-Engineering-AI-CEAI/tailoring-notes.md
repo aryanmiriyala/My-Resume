@@ -1,6 +1,6 @@
 # Tailoring Notes - Microsoft Software Engineer, Commercial Engineering & AI (CEAI)
 
-Status: Resume and cover letter generated on 2026-07-08.
+Status: Resume and cover letter generated on 2026-07-08; updated with Microsoft application-page insights and education-date redaction on 2026-07-09.
 
 ## Target Angle
 
@@ -90,11 +90,24 @@ Secondary angle: CEAI/SPAI fit through agentic development workflows, workflow t
 - CI/CD
 - Git
 
+### Microsoft page insights from previous hires / matching panel
+
+- Application link: https://apply.careers.microsoft.com/careers/job/1970393556914979?domain=microsoft.com
+- Page status shown to Aryan: You have already applied for this position.
+- Matched for: Computer Science, Git, Engineering, Science.
+- Top skills shown: Computer Science, Communication, Automation, Android, Science, Information Systems, Git, Engineering, Construction, Computer Information Systems.
+- Previously worked as: Software Engineer, Junior Software Engineer, Software Engineer - AI, SDE, Software Engineer II.
+- Truth-supported additions from this panel: Computer Science, Git, Engineering, Software Engineer, Software Engineer - AI direction, and Automation/workflow automation.
+- Truth-supported but lower-priority for this one-page resume: Communication is supported by profile material, but the Microsoft JD and resume space favor technical delivery evidence; it remains stronger in cover-letter/interview framing than as a standalone resume keyword.
+- Intentionally not added as claims: Android, Construction, Information Systems degree, and Computer Information Systems degree are not supported as direct resume claims for this Microsoft application.
+
 ### Truth-supported keywords used
 
 - Software engineer
+- Software Engineer - AI direction
 - AI-native workflows
 - agentic workflows
+- workflow automation
 - AI-assisted code review
 - validation of AI-generated outputs
 - SDLC planning
@@ -182,7 +195,7 @@ No personal connection to Microsoft, Redmond, or the sales ecosystem was claimed
 
 ## Bullet Audit
 
-- Summary: Role-specific and grounded in AI-native workflows, REST-based APIs, cloud storage systems, secure internal tools, agentic development practices, Python, TypeScript/JavaScript, SQL, C++, AWS, Docker, databases, LLM tools, SDLC validation, debugging, telemetry, security, and maintainability.
+- Summary: Role-specific and grounded in AI-native workflows, REST-based APIs, workflow automation, cloud storage systems, secure internal tools, agentic development practices, Python, TypeScript/JavaScript, SQL, C++, AWS, Docker, databases, LLM tools, SDLC validation, debugging, telemetry, security, and maintainability.
 - SmartSolve bullet 1: Action verb + secure internal software + Next.js/TypeScript/PostgreSQL/Drizzle/SSO/auth middleware + employee-data workflow context + security/maintainability value.
 - SmartSolve bullet 2: Action verb + sandboxed Claude Code workflow + Docker devcontainers/tmux/git worktrees + parallel agent isolation + validation before merging.
 - SmartSolve bullet 3: Action verb + Codex/Claude Code + SDLC planning/implementation/debugging/code review + AI-generated output validation + context drift/testing/security/proprietary-code checks.
@@ -206,6 +219,7 @@ No personal connection to Microsoft, Redmond, or the sales ecosystem was claimed
 - PDF text extraction: extracted text from both PDFs with `pdftotext` and verified readable order, conventional headings, bullets, and Microsoft CEAI-aligned keywords.
 - Visual review: rendered both PDFs with `pdftoppm`; resume fills the page without clipping, visible bottom whitespace bands, or unreadable density, and the cover letter is cleanly spaced.
 - Microsoft U.S. applicant upload instruction: education attendance/graduation date ranges were removed from `resume.tex` and `resume.pdf`; no age or date of birth appears in the resume.
+- Microsoft page insights: application link, already-applied status, matched-for signals, top-skills panel, and previously-worked-as signals were recorded; resume summary now includes truthful `workflow automation` alignment.
 - Application validator: PASS via `python3 automation/validate_application_package.py application-packages/Microsoft/Software-Engineer-Commercial-Engineering-AI-CEAI`.
 - Cleanup: generated LaTeX build artifacts removed after compilation and validation.
 
@@ -216,6 +230,7 @@ ATS-style score: 92/100
 ### Strong matches
 
 - Strong direct match for AI-native development practices through Codex, Claude Code, sandboxed AI workflows, parallel agents, validation of AI-generated outputs, context-drift/testing-gap review, and SDLC use.
+- Strong match for the Microsoft page's previous-hire/matching-panel signals: Computer Science, Git, Engineering, Automation, Software Engineer, and Software Engineer - AI direction are all truthfully reflected.
 - Strong language coverage for the required list: Python, TypeScript/JavaScript, SQL, C++, C#, C, and HTML5/CSS are verified and included.
 - Strong cloud and data evidence through AWS Glue, Lambda, S3, IAM, DynamoDB, PySpark, Spark, Kafka, Hadoop HDFS, and large-scale data processing.
 - Strong REST-based API and product-feature evidence through Fix-It-Flow, RocketGrader, SmartSolve, React/Node modernization, and Express/MongoDB services.
@@ -231,6 +246,7 @@ ATS-style score: 92/100
 - Formal live-site DRI, production incident response, feature flighting, rollback planning, and production monitoring ownership are not claimed.
 - Formal CI/CD ownership and named test frameworks are not claimed.
 - Accessibility and regulatory compliance practices are not overstated beyond verified security/privacy-aware work.
+- Android, Construction, Information Systems, and Computer Information Systems are not added as direct claims from the previous-hire insights because they are not verified as Aryan's background for this role.
 - A 95/100 ATS-style score is not truthfully supportable unless Aryan can verify direct experience with named Microsoft-stack or operations gaps such as Azure, Cosmos DB, Service Bus/Event Hub/Storage Queues, Java, formal CI/CD, live-site DRI/incident response, production monitoring, feature flighting, or rollback ownership.
 
 ### Recommended improvements

@@ -2,6 +2,10 @@
 
 Source: User-provided job description pasted from Microsoft careers.
 
+Application link: https://apply.careers.microsoft.com/careers/job/1970393556914979?domain=microsoft.com
+
+Application page status shown to Aryan: You have already applied for this position.
+
 ## Role
 
 Software Engineer - Commercial Engineering & AI (CEAI)
@@ -67,3 +71,33 @@ Specific work locations in the San Francisco Bay Area and New York City metropol
 ## Deadline / Posting Note
 
 The position is open for a minimum of 5 days, with applications accepted on an ongoing basis until the position is filled.
+
+## Microsoft Page Insights From Previous Hires / Matching Panel
+
+Matched for:
+
+- Computer Science
+- Git
+- Engineering
+- Science
+
+Top skills:
+
+- Computer Science
+- Communication
+- Automation
+- Android
+- Science
+- Information Systems
+- Git
+- Engineering
+- Construction
+- Computer Information Systems
+
+Previously worked as:
+
+1. Software Engineer
+2. Junior Software Engineer
+3. Software Engineer - AI
+4. SDE
+5. Software Engineer II
