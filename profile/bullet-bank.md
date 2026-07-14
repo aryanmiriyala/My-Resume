@@ -28,6 +28,7 @@ Avoid:
 - Built a full-stack AI assignment feedback platform with Angular, TypeScript, Express, MongoDB, Auth0, AWS S3, LangChain, and Mistral AI.
 - Built a full-stack health AI prototype with React, Vite, Express, MongoDB/Mongoose, and Mistral AI for travel-health guidance during BGSU Hackathon 2025.
 - Implemented an interactive country-selection map with react-simple-maps, retrieving disease records from an Express/MongoDB API and surfacing risk, vaccine availability, healthcare access, and recovery-rate data.
+- Built Fix-It-Flow for RocketHacks 2026, a Next.js 14/TypeScript PWA that uses camera input, voice commands, Gemini Vision, Featherless.AI/Llama reasoning, ElevenLabs TTS, and DynamoDB to guide appliance repair and recycling decisions.
 
 ## Data Engineer
 
@@ -46,6 +47,7 @@ Avoid:
 - Built a cross-platform React Native/Expo mobile app for sleep-based microlearning with AI-generated study cues, quizzes, text-to-speech audio, and local-first session tracking.
 - Built a BGSU campus search prototype combining lightweight RAG, live web search, crawled webpages, PDFs, and LLM inference to generate source-grounded answers.
 - Built a RAG research pipeline using Sentence Transformers and ChromaDB to analyze how mobile app update frequency relates to Google Play review feedback.
+- Implemented a multimodal AI inspection workflow that combined live camera frames, spoken user context, Gemini Vision analysis, Featherless.AI reasoning, and structured sustainability recommendations for repair-first household item support.
 
 ## Cloud Engineer
 
@@ -53,6 +55,7 @@ Avoid:
 - Automated database validation with AWS Lambda triggers that tokenized PII using hashlib/boto3 and ingested structured JSON into S3 for downstream standardization workflows.
 - Designed cloud-backed application workflows with AWS S3 for storage, AWS Lambda for scheduled processing, and AWS Glue for large-scale ETL.
 - Built a Dockerized healthcare data pipeline using Apache NiFi, Kafka, Hadoop HDFS, and Spark to ingest structured patient records and stream IoT health events.
+- Built AWS-backed session persistence with DynamoDB and typed Next.js API routes for inspection turns, repair sessions, device identification, text-to-speech, chat, uploads, findings, frames, and repair steps.
 
 ## Security-Conscious Software Engineer
 
