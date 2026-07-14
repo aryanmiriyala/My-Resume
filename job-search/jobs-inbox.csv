@@ -1,22 +1,29 @@
 company,position,posted_at,pulled_at,url
-Anthropic,Data Engineer,2026-07-01T10:46:39-04:00,2026-07-06T03:08:24+00:00,https://job-boards.greenhouse.io/anthropic/jobs/4956672008
-Anthropic,"Data Scientist, GTM",2026-07-01T14:07:16-04:00,2026-07-06T03:08:24+00:00,https://job-boards.greenhouse.io/anthropic/jobs/5196852008
-Anthropic,"Data Scientist, Safeguards",2026-06-18T16:36:50-04:00,2026-07-06T03:08:24+00:00,https://job-boards.greenhouse.io/anthropic/jobs/5209196008
-Databricks,Software Engineer - GenAI inference,2026-07-01T18:31:25-04:00,2026-07-06T03:08:26+00:00,https://databricks.com/company/careers/open-positions/job?gh_jid=8202670002
-Databricks,"Software Engineer, Web Products",2026-07-01T18:31:39-04:00,2026-07-06T03:08:26+00:00,https://databricks.com/company/careers/open-positions/job?gh_jid=8560779002
-Databricks,AI Engineer - FDE (Forward Deployed Engineer),2026-07-01T18:31:17-04:00,2026-07-06T03:08:25+00:00,https://databricks.com/company/careers/open-positions/job?gh_jid=8099751002
-Anthropic,"Data Scientist, Marketing",2026-06-25T12:29:59-04:00,2026-07-06T03:08:24+00:00,https://job-boards.greenhouse.io/anthropic/jobs/5161402008
-Anthropic,"Data Scientist, Policy",2026-06-25T12:30:17-04:00,2026-07-06T03:08:24+00:00,https://job-boards.greenhouse.io/anthropic/jobs/5232055008
-Anthropic,"Data Scientist, Supply",2026-06-30T16:56:18-04:00,2026-07-06T03:08:24+00:00,https://job-boards.greenhouse.io/anthropic/jobs/5212119008
-Anthropic,"IT Systems Engineer, Client Platform Engineer",2026-06-12T16:01:23-04:00,2026-07-06T03:08:24+00:00,https://job-boards.greenhouse.io/anthropic/jobs/5255853008
-Anthropic,"[P] Data Engineer, Safeguards",2026-07-01T16:27:17-04:00,2026-07-06T03:08:24+00:00,https://job-boards.greenhouse.io/anthropic/jobs/5240422008
+InterEx Group,Business Analyst,2026-07-13T01:07:01+00:00,2026-07-14T03:35:56+00:00,https://remoteOK.com/remote-jobs/remote-business-analyst-interex-group-1134750
+Grow the Roses,Data Analyst,2026-07-12T01:29:59+00:00,2026-07-14T03:35:56+00:00,https://remoteOK.com/remote-jobs/remote-data-analyst-grow-the-roses-1134778
+Work Force Nexus,Graduate Data Scientist,2026-07-11T14:00:47+00:00,2026-07-14T03:35:56+00:00,https://remoteOK.com/remote-jobs/remote-graduate-data-scientist-work-force-nexus-1134707
+Apaleo,Software Engineer (.NET) (f/m/d),2026-07-13T20:45:27+00:00,2026-07-14T03:35:55+00:00,https://www.arbeitnow.com/jobs/companies/apaleo/software-engineer-net-munich-422254
+OneTutor,Software Engineer (f/m/x) - TypeScript (NestJS or React),2026-07-13T14:30:58+00:00,2026-07-14T03:35:55+00:00,https://www.arbeitnow.com/jobs/companies/onetutor/software-engineer-typescript-nestjs-or-react-munich-443607
+Ayunis,Platform Engineer / DevOps (m/f/d) | AI GovTech Startup | Munich,2026-07-13T12:31:05+00:00,2026-07-14T03:35:55+00:00,https://www.arbeitnow.com/jobs/companies/ayunis/platform-engineer-devops-ai-govtech-startup-munich-225129
+Techbiz Global,Founding Backend Engineer(Go),2026-07-13T12:00:26+00:00,2026-07-14T03:35:55+00:00,https://www.arbeitnow.com/jobs/companies/techbiz-global/founding-backend-engineergo-berlin-454012
+Amperecloud GmbH,Software Engineer (m/f/d),2026-07-13T12:00:24+00:00,2026-07-14T03:35:55+00:00,https://www.arbeitnow.com/jobs/companies/amperecloud-gmbh/software-engineer-berlin-167036
+Laioutr GmbH,"AI Engineer (m/f/d) - Full Stack, TypeScript / Nuxt / Next / Vue / React",2026-07-13T15:29:03+00:00,2026-07-14T03:35:55+00:00,https://www.arbeitnow.com/jobs/companies/laioutr-gmbh/ai-engineer-full-stack-typescript-nuxt-next-vue-react-berlin-265753
+OpenAI,"Software Engineer, Codex -Enterprise Controls",2026-07-13T19:27:11.674+00:00,2026-07-14T03:35:17+00:00,https://jobs.ashbyhq.com/openai/fff02c39-1185-427c-bf89-70d7eaa5e3db
+OpenAI,"Software Engineer, ChatGPT Shopping",2026-07-09T22:15:49.719+00:00,2026-07-14T03:35:17+00:00,https://jobs.ashbyhq.com/openai/ca54cd23-2bcc-4327-bcb6-46d81ed414a8
+OpenAI,"Software Engineer, Codex Security",2026-07-07T05:36:29.100+00:00,2026-07-14T03:35:17+00:00,https://jobs.ashbyhq.com/openai/eefeb527-4e36-432e-a787-88e4672e29e1
+OpenAI,"Software Engineer, GPU Infrastructure- ChatGPT Engineering",2026-07-09T22:16:40.505+00:00,2026-07-14T03:35:17+00:00,https://jobs.ashbyhq.com/openai/f8b84ae5-743b-41c9-8432-02dff9993d6b
+OpenAI,"Software Engineer, Codex — User Activation",2026-07-13T19:27:13.459+00:00,2026-07-14T03:35:17+00:00,https://jobs.ashbyhq.com/openai/d1c6cb87-a44d-4d04-92a8-dc40eccd090e
+Databricks,AI Engineer - FDE (Forward Deployed Engineer),2026-07-12T11:25:20-04:00,2026-07-14T03:35:13+00:00,https://databricks.com/company/careers/open-positions/job?gh_jid=8593713002
+Databricks,AI Engineer - FDE (Forward Deployed Engineer),2026-07-13T20:46:34-04:00,2026-07-14T03:35:13+00:00,https://databricks.com/company/careers/open-positions/job?gh_jid=8611391002
+Databricks,AI Engineer - FDE (Forward Deployed Engineer),2026-07-07T22:58:38-04:00,2026-07-14T03:35:13+00:00,https://databricks.com/company/careers/open-positions/job?gh_jid=8569390002
+Databricks,"Applied AI Engineer, Learning Intelligence",2026-07-09T11:00:34-04:00,2026-07-14T03:35:13+00:00,https://databricks.com/company/careers/open-positions/job?gh_jid=8625462002
+Anthropic,"Software Engineer, Research Infrastructure",2026-07-06T10:30:58-04:00,2026-07-14T03:35:12+00:00,https://job-boards.greenhouse.io/anthropic/jobs/5283063008
+Anthropic,"Data Scientist, Developer Productivity",2026-07-07T14:52:28-04:00,2026-07-14T03:35:11+00:00,https://job-boards.greenhouse.io/anthropic/jobs/5197529008
 Cursor,"Data Analyst, User Operations",2026-06-24T17:44:18.151+00:00,2026-07-06T03:08:28+00:00,https://jobs.ashbyhq.com/cursor/c43bdded-80a1-4705-a0ec-8217d771528c
+Cursor,"Software Engineer, Storage",2026-06-28T21:38:54.013+00:00,2026-07-06T03:08:28+00:00,https://jobs.ashbyhq.com/cursor/299ce422-0281-4282-aadd-bc22553be0b5
+Cursor,"Software Engineer, Services Platform",2026-06-28T21:38:56.671+00:00,2026-07-06T03:08:28+00:00,https://jobs.ashbyhq.com/cursor/6eef7144-f2cc-48a8-b065-01f04e4c70ff
 OpenAI,"Full Stack Software Engineer, API Experience",2026-06-25T17:02:07.525+00:00,2026-07-06T03:08:27+00:00,https://jobs.ashbyhq.com/openai/66288824-8b77-4774-bc57-6825d3e6221e
 OpenAI,"Software Engineer, Web Layer",2026-06-11T17:52:46.065+00:00,2026-07-06T03:08:27+00:00,https://jobs.ashbyhq.com/openai/915a325b-55f6-44e2-8314-34ec0d8bb2c9
-Numa,Junior Data Analyst,2026-07-03T08:43:06+00:00,2026-07-06T02:19:05+00:00,https://remoteOK.com/remote-jobs/remote-junior-data-analyst-numa-1134429
-Databricks,Software Engineer - Database Engine Internals,2026-07-01T18:31:21-04:00,2026-07-06T03:08:26+00:00,https://databricks.com/company/careers/open-positions/job?gh_jid=8012658002
-Blockchain.com,Business Analyst,2026-07-03T20:53:35+00:00,2026-07-06T02:10:07+00:00,https://remoteOK.com/remote-jobs/remote-business-analyst-blockchain-com-1134457
-TextUs,Business Operations Analyst,2026-07-03T17:12:44+00:00,2026-07-06T02:10:07+00:00,https://remoteOK.com/remote-jobs/remote-business-operations-analyst-textus-1134500
 OpenAI,"Data Engineer, Scaling Analytics",2026-06-17T17:19:20.677+00:00,2026-07-06T03:08:27+00:00,https://jobs.ashbyhq.com/openai/c59e2e83-59a6-45bc-82cd-665c6a8a5761
 OpenAI,"People Research Data Scientist, AI Fairness & Bias",2026-06-15T16:11:39.213+00:00,2026-07-06T03:08:27+00:00,https://jobs.ashbyhq.com/openai/cadb7c24-2aea-4b98-a793-65ae9388b5d6
 OpenAI,"Systems Software Engineer, Security, First Party Hardware",2026-06-08T23:42:40.083+00:00,2026-07-06T03:08:27+00:00,https://jobs.ashbyhq.com/openai/1c48f39f-60ea-4636-87ed-8b4b4f5243e5
@@ -28,6 +35,15 @@ OpenAI,"Full Stack Software Engineer, ChatGPT ImageGen",2026-06-09T18:38:49.181+
 OpenAI,"Software Engineer, Internal Applications - Enterprise",2026-06-09T17:17:34.199+00:00,2026-07-06T03:08:27+00:00,https://jobs.ashbyhq.com/openai/db053b0e-c1a5-4b7a-bcb6-6e766629e7b1
 OpenAI,"Backend Software Engineer, ChatGPT ImageGen",2026-06-09T18:38:29.400+00:00,2026-07-06T03:08:27+00:00,https://jobs.ashbyhq.com/openai/e7a4ee23-138a-4004-916e-72a452e7d115
 OpenAI,"Founding Full Stack Software Engineer, Legal",2026-06-29T00:06:01.652+00:00,2026-07-06T03:08:27+00:00,https://jobs.ashbyhq.com/openai/fcb0ed1a-9329-4e8f-8aab-92bb626d8141
+OpenAI,"Software Engineer, Private Computing",2026-06-12T17:06:23.120+00:00,2026-07-06T03:08:27+00:00,https://jobs.ashbyhq.com/openai/0f887fe6-39f4-44f6-8ee5-230c3002f0d7
+OpenAI,"Data Scientist, Identity",2026-06-22T22:33:26.193+00:00,2026-07-06T03:08:27+00:00,https://jobs.ashbyhq.com/openai/1f9c3666-82c8-45a7-8d4b-633a265ce996
+OpenAI,"Trust & Safety Operations Analyst, Ads",2026-06-22T19:56:34.514+00:00,2026-07-06T03:08:27+00:00,https://jobs.ashbyhq.com/openai/26e8c199-7dcb-4144-b263-f35220421a6d
+OpenAI,"Full Stack Software Engineer, ChatGPT Finances",2026-06-15T18:16:20.513+00:00,2026-07-06T03:08:27+00:00,https://jobs.ashbyhq.com/openai/39e06ef9-5e62-425d-81e2-e8690188011f
+OpenAI,"Software Engineer, Scaled Abuse",2026-06-08T16:15:58.343+00:00,2026-07-06T03:08:27+00:00,https://jobs.ashbyhq.com/openai/3c67f712-697d-48d8-b05c-01be896e61da
+OpenAI,Regulatory Operations Analyst,2026-06-30T17:49:13.323+00:00,2026-07-06T03:08:27+00:00,https://jobs.ashbyhq.com/openai/a03cd69e-8384-48aa-9c5e-fb50975b5164
+Databricks,Software Engineer - GenAI inference,2026-07-01T18:31:25-04:00,2026-07-06T03:08:26+00:00,https://databricks.com/company/careers/open-positions/job?gh_jid=8202670002
+Databricks,"Software Engineer, Web Products",2026-07-01T18:31:39-04:00,2026-07-06T03:08:26+00:00,https://databricks.com/company/careers/open-positions/job?gh_jid=8560779002
+Databricks,Software Engineer - Database Engine Internals,2026-07-01T18:31:21-04:00,2026-07-06T03:08:26+00:00,https://databricks.com/company/careers/open-positions/job?gh_jid=8012658002
 Databricks,Software Engineer - Backend,2026-07-01T18:31:15-04:00,2026-07-06T03:08:26+00:00,https://databricks.com/company/careers/open-positions/job?gh_jid=8029666002
 Databricks,Software Engineer - Backend,2026-07-01T18:31:21-04:00,2026-07-06T03:08:26+00:00,https://databricks.com/company/careers/open-positions/job?gh_jid=8012650002
 Databricks,Software Engineer (Backend - SDE 2),2026-07-01T18:31:10-04:00,2026-07-06T03:08:26+00:00,https://databricks.com/company/careers/open-positions/job?gh_jid=7955594002
@@ -35,18 +51,22 @@ Databricks,Software Engineer - Distributed Data Systems,2026-07-01T18:31:21-04:0
 Databricks,Software Engineer - Fullstack,2026-07-01T18:31:15-04:00,2026-07-06T03:08:26+00:00,https://databricks.com/company/careers/open-positions/job?gh_jid=8029677002
 Databricks,Software Engineer- Fullstack- Singapore,2026-07-01T18:31:28-04:00,2026-07-06T03:08:26+00:00,https://databricks.com/company/careers/open-positions/job?gh_jid=8341810002
 Databricks,Software Engineer- Fullstack- Tokyo,2026-07-01T18:31:28-04:00,2026-07-06T03:08:26+00:00,https://databricks.com/company/careers/open-positions/job?gh_jid=8345074002
+Databricks,AI Engineer - FDE (Forward Deployed Engineer),2026-07-08T12:17:12-04:00,2026-07-06T03:08:25+00:00,https://databricks.com/company/careers/open-positions/job?gh_jid=8099751002
 Databricks,AI Engineer - FDE (Forward Deployed Engineer),2026-07-01T23:59:14-04:00,2026-07-06T03:08:25+00:00,https://databricks.com/company/careers/open-positions/job?gh_jid=8574655002
 Databricks,AI Engineer - FDE (Forward Deployed Engineer),2026-07-01T18:31:27-04:00,2026-07-06T03:08:25+00:00,https://databricks.com/company/careers/open-positions/job?gh_jid=8330188002
 Databricks,AI Engineer - FDE (Forward Deployed Engineer),2026-07-01T18:31:27-04:00,2026-07-06T03:08:25+00:00,https://databricks.com/company/careers/open-positions/job?gh_jid=8298792002
+Anthropic,Data Engineer,2026-07-01T10:46:39-04:00,2026-07-06T03:08:24+00:00,https://job-boards.greenhouse.io/anthropic/jobs/4956672008
+Anthropic,"Data Scientist, GTM",2026-07-01T14:07:16-04:00,2026-07-06T03:08:24+00:00,https://job-boards.greenhouse.io/anthropic/jobs/5196852008
+Anthropic,"Data Scientist, Safeguards",2026-07-07T00:36:51-04:00,2026-07-06T03:08:24+00:00,https://job-boards.greenhouse.io/anthropic/jobs/5209196008
+Anthropic,"Data Scientist, Marketing",2026-06-25T12:29:59-04:00,2026-07-06T03:08:24+00:00,https://job-boards.greenhouse.io/anthropic/jobs/5161402008
+Anthropic,"Data Scientist, Policy",2026-06-25T12:30:17-04:00,2026-07-06T03:08:24+00:00,https://job-boards.greenhouse.io/anthropic/jobs/5232055008
+Anthropic,"Data Scientist, Supply",2026-07-10T00:14:03-04:00,2026-07-06T03:08:24+00:00,https://job-boards.greenhouse.io/anthropic/jobs/5212119008
+Anthropic,"IT Systems Engineer, Client Platform Engineer",2026-06-12T16:01:23-04:00,2026-07-06T03:08:24+00:00,https://job-boards.greenhouse.io/anthropic/jobs/5255853008
+Anthropic,"[P] Data Engineer, Safeguards",2026-07-01T16:27:17-04:00,2026-07-06T03:08:24+00:00,https://job-boards.greenhouse.io/anthropic/jobs/5240422008
 Anthropic,"Software Engineer, Safeguards Foundations (Internal Tooling)",2026-06-16T14:49:57-04:00,2026-07-06T03:08:24+00:00,https://job-boards.greenhouse.io/anthropic/jobs/5191433008
-Cursor,"Software Engineer, Storage",2026-06-28T21:38:54.013+00:00,2026-07-06T03:08:28+00:00,https://jobs.ashbyhq.com/cursor/299ce422-0281-4282-aadd-bc22553be0b5
-Cursor,"Software Engineer, Services Platform",2026-06-28T21:38:56.671+00:00,2026-07-06T03:08:28+00:00,https://jobs.ashbyhq.com/cursor/6eef7144-f2cc-48a8-b065-01f04e4c70ff
-OpenAI,"Software Engineer, Private Computing",2026-06-12T17:06:23.120+00:00,2026-07-06T03:08:27+00:00,https://jobs.ashbyhq.com/openai/0f887fe6-39f4-44f6-8ee5-230c3002f0d7
-OpenAI,"Data Scientist, Identity",2026-06-22T22:33:26.193+00:00,2026-07-06T03:08:27+00:00,https://jobs.ashbyhq.com/openai/1f9c3666-82c8-45a7-8d4b-633a265ce996
-OpenAI,"Trust & Safety Operations Analyst, Ads",2026-06-22T19:56:34.514+00:00,2026-07-06T03:08:27+00:00,https://jobs.ashbyhq.com/openai/26e8c199-7dcb-4144-b263-f35220421a6d
-OpenAI,"Full Stack Software Engineer, ChatGPT Finances",2026-06-15T18:16:20.513+00:00,2026-07-06T03:08:27+00:00,https://jobs.ashbyhq.com/openai/39e06ef9-5e62-425d-81e2-e8690188011f
-OpenAI,"Software Engineer, Scaled Abuse",2026-06-08T16:15:58.343+00:00,2026-07-06T03:08:27+00:00,https://jobs.ashbyhq.com/openai/3c67f712-697d-48d8-b05c-01be896e61da
-OpenAI,Regulatory Operations Analyst,2026-06-30T17:49:13.323+00:00,2026-07-06T03:08:27+00:00,https://jobs.ashbyhq.com/openai/a03cd69e-8384-48aa-9c5e-fb50975b5164
+Numa,Junior Data Analyst,2026-07-03T08:43:06+00:00,2026-07-06T02:19:05+00:00,https://remoteOK.com/remote-jobs/remote-junior-data-analyst-numa-1134429
 New Flyer,Data Scientist,2026-07-01T18:47:01+00:00,2026-07-06T02:19:05+00:00,https://remoteOK.com/remote-jobs/remote-data-scientist-new-flyer-1134357
 Software Engineering Weber GmbH,Embedded Software Developer - FREELANCE GESUCHT,2026-07-04T07:30:33+00:00,2026-07-06T02:19:04+00:00,https://www.arbeitnow.com/jobs/companies/software-engineering-weber-gmbh/embedded-software-developer-freelance-gesucht-kempten-5816
 MY Humancapital GmbH,IT Business Analyst (m/w/d),2026-07-03T17:00:31+00:00,2026-07-06T02:19:04+00:00,https://www.arbeitnow.com/jobs/companies/my-humancapital-gmbh/it-business-analyst-munich-49076
+Blockchain.com,Business Analyst,2026-07-03T20:53:35+00:00,2026-07-06T02:10:07+00:00,https://remoteOK.com/remote-jobs/remote-business-analyst-blockchain-com-1134457
+TextUs,Business Operations Analyst,2026-07-03T17:12:44+00:00,2026-07-06T02:10:07+00:00,https://remoteOK.com/remote-jobs/remote-business-operations-analyst-textus-1134500
