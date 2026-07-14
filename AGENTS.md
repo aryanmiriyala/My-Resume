@@ -108,32 +108,36 @@ Do not commit binary/generated artifacts unless Aryan explicitly asks. This incl
 ## Resume Rules
 
 - The resume must be exactly one page: not more than one page, and not less than one full page of serious content.
-- Use ATS-friendly bullets: action verb + technical keywords + scope + impact.
-- The bullet formula is a hard gate, not a suggestion. Every experience and project bullet must pass: action verb + what was built/changed + technology/method + scope/domain + impact/result. If a bullet does not satisfy all parts, rewrite it before compiling. If a verified metric is unavailable, use a truthful qualitative result such as improved reliability, reduced manual work, strengthened security, standardized data flow, improved traceability, or supported downstream workflows.
-- Do not finalize a resume with task-only, responsibility-only, keyword-only, or tool-list-only bullets. A bullet must explain what changed and why it mattered.
-- The first one or two bullets under the most relevant roles should visibly match the job description's highest-priority responsibilities and keywords.
+- Use ATS-friendly, outcome-oriented bullets following the **STAR/CAR** and **Google XYZ** formulas: **Action Verb + What was built/changed + How/Technology used + Scope/Context + Impact/Result**.
+- The bullet formula is a hard gate, not a suggestion. Every experience and project bullet must satisfy all parts of the formula:
+  - **Action Verb**: Begin with a strong, active, past-tense verb (e.g., *Architected, Engineered, Optimized, Migrated, Automated, Delivered*). Avoid passive phrases like "Responsible for," "Helped with," or "Worked on."
+  - **What**: Describe the specific system, feature, database, or pipeline that was built, automated, secured, or modernized.
+  - **How/Technology**: Name the exact language, framework, cloud service, or architectural pattern (e.g., *Next.js, PySpark, AWS Glue, JWT, role-based access control*).
+  - **Scope/Context**: Show the scale, user base, size, or domain context (e.g., *20+ TB of insurance data, 700+ member companies, 110 internal users*).
+  - **Impact/Result**: State the quantifiable business or technical outcome (e.g., *reducing cloud spend by 30%, decreasing latency, maintaining 24-hour data latency*). If a verified metric is unavailable, use a truthful qualitative result (e.g., *improving data reliability, strengthening form security, standardizing data flows, or reducing manual errors*).
+- **Strong vs. Weak Bullets Example**:
+  | Weak (Task-Oriented) | Strong (Impact & Technology-Oriented) |
+  | :--- | :--- |
+  | Worked on database validation and loaded data into S3 using AWS Lambda. | Automated database validation with AWS Lambda triggers that tokenized PII using hashlib/boto3 and ingested structured JSON into S3, securing data movement and maintaining 24-hour data latency. |
+  | Helped build a Next.js onboarding tracker and added SSO authentication. | Architected a full-stack Next.js onboarding tracker with PostgreSQL, Drizzle ORM, SSO, and auth middleware to centralize HR workflows and protect sensitive employee data. |
+- **Section-by-Section Guidance**:
+  - **Professional Summary**: Grounded in experience and limited to 2-3 lines max. Highlight years of experience, core domains (e.g., distributed systems, applied AI, data engineering), and a clear value proposition. Avoid generic buzzwords (e.g., "passionate," "fast learner") and do not repeat the skills section.
+  - **Education**: Show degrees, GPA (e.g., GPA: 4.00/4.00), graduation dates, and university name. Ensure it is prominently displayed.
+  - **Experience**: Place recent and most relevant experience in the top half. The first 1-2 bullets of relevant roles must align directly with the highest-priority responsibilities and keywords of the job description. Highlight systems thinking, architectural decisions, and working with constraints (e.g., scalability, reliability, security).
+  - **Projects**: Use projects to support the primary resume angle and cover skill gaps not shown in the professional experience. Emphasize actual implementation details and files in the repository.
+  - **Technical Skills**: Group into categorized lists (e.g., Languages, Frontend, Backend/API, Cloud/DevOps, Databases, AI/ML, Security). This is key for parser categorization. Do not list broad responsibilities (e.g., "troubleshooting") as skills.
 - Do not invent metrics. Use exact numbers only when supported by the source material.
-- Prefer concrete technologies, systems, and business/domain context over vague claims.
-- Tailor keywords to the job description while keeping statements truthful.
-- Keywords must appear in context, not only in Technical Skills. A keyword is strongest when tied to what Aryan built, automated, secured, modeled, validated, analyzed, or shipped.
 - Preserve the existing LaTeX style unless Aryan asks for a redesign.
-- When adding new skills, confirm they are supported by experience, projects, or explicit user input.
-- Keep bullets concise enough to fit the one-page layout.
-- Do not enforce an arbitrary maximum number of bullets per role or projects per resume. Use as many as the one-page layout can support when the content is relevant, truthful, and materially improves fit.
+- Keep bullets concise enough to fit the one-page layout (usually 1-2 lines on the PDF page).
 - Experience takes precedence over Projects. All internship roles are core experience and should remain on tailored resumes by default, including less directly aligned internships, unless Aryan explicitly approves removing a specific role. If space is tight, cut or compress Projects, Skills, or lower-priority detail before removing an internship.
 - Do not leave a tailored resume looking sparse. If there is usable space, add high-signal experience bullets, a relevant project, or stronger technical detail before considering the resume complete.
 - During PDF review, explicitly check the lower half and bottom of the page for obvious unused whitespace. A final resume should feel like a complete, full one-page document with no visual gaps, while still remaining readable.
-- If the resume has meaningful open space, first add verified role-aligned substance: stronger bullets for existing roles, an additional relevant project, richer technical skills, or a concise summary. Do not stop at an artificially small number of bullets or projects when the job fit would improve.
 - Do not accept a visible blank band at the bottom of the rendered PDF if there is enough room for one or more readable lines of truthful, role-aligned content. Keep iterating until the page visually reads as full without clipping, overlap, or unreadable density.
 - The full-page rule is a hard requirement, but fullness must be achieved intelligently. If Experience or Projects becomes visually dense, keep the resume full by rewriting bullets for higher information density, using margins and spacing deliberately, moving detail between sections, adding stronger verified content where space exists, and removing or shortening weaker content only when it improves scanability.
 - Avoid aggressive negative spacing in Experience and Projects. Do not use negative project `itemsep` or large negative bullet `vspace` values just to force more content onto the page.
 - Prefer fewer, stronger projects with readable descriptions over many project one-liners stacked tightly, unless the additional projects can be included without hurting scanability. Projects should support the target role and remain scannable by a human reviewer.
 - The resume must be readable by a human reviewer. Do not solve length problems by making the document feel cramped or shrinking text into unreadable sizes.
 - Prefer margin/border and spacing adjustments before cutting meaningful experience, changing the Education structure, or reducing font size.
-- Use a professional summary only when it improves immediate role alignment. It must be 2-3 lines maximum, tailored to the job, grounded in verified experience, and written as what Aryan brings, not what Aryan wants.
-- Technical Skills should list actual tools, languages, frameworks, cloud/data platforms, and technical methods. Do not list broad responsibilities such as `operational data` or `troubleshooting` as standalone skills; put those in bullets with context.
-- Experience and project bullets must contain enough concrete detail for both ATS matching and human review. Keywords alone are not enough.
-- Before finalizing, scan for weak bullets that only describe responsibilities, use vague verbs, lack technologies, lack domain/scope, or do not explain why the work mattered. Rewrite those before compiling the final PDF.
 
 ## Alignment And ATS-Style Score
 
@@ -145,24 +149,24 @@ Target ATS-style score is 90/100 or higher for every finalized application packa
 
 Treat ATS alignment as structured parsing plus human review, not as magic. A strong package must be optimized for both the parser and the recruiter.
 
-- Use exact job-description language for critical terms when truthful. If the job says `REST-based API development`, `AI-generated outputs`, `telemetry`, `cloud storage`, or `Git`, use those exact phrases in context rather than only synonyms.
-- Put each high-priority keyword in evidence-bearing context whenever possible: a role bullet, project line, or skills category must show what Aryan built, validated, secured, automated, measured, or improved with that technology or method.
-- Keep standard section headings and a simple single-column structure: `Professional Summary`, `Education`, `Experience`, `Projects`, and `Technical Skills`. Do not use creative section names that could make parser categorization harder.
-- Avoid tables, images, icons, text boxes, multi-column layouts, hidden text, or decorative formatting in application resumes. The PDF must be text-extractable in reading order with `pdftotext`.
-- Put recent and most relevant experience in the top half of the page so both parser scoring and human skim behavior see the match quickly.
-- Mirror required qualifications first, then preferred qualifications. Required degree, location/eligibility constraints, core language requirements, and must-have tools should be visibly covered before nice-to-have tools.
-- Treat keyword frequency as secondary to keyword quality. Repeating a keyword without a defensible bullet is weaker than one strong action + technology + scope + result bullet.
-- Include adjacent truthful technologies only as adjacent evidence, not as substitutes. For example, AWS S3/DynamoDB can support `cloud storage` alignment, but cannot be labeled as Cosmos DB; Kafka can support messaging-pattern alignment, but cannot be labeled as Service Bus or Event Hub.
-- Do not claim or imply unsupported direct experience with a job's named tools. If an ATS-style score cannot reach 95 without unsupported skills, keep the truthful lower score and document the gap.
-- After compiling, extract resume text and scan it as an ATS would: confirm exact role title, required languages, cloud/platform terms, domain terms, and top responsibilities appear in readable order and in context.
+- **Single-Column Layout**: Always use a clean, single-column layout. Multi-column formats cause parsers to scramble text, leading to misinterpretation of experience.
+- **No Complex Elements**: Avoid tables, images, icons, text boxes, graphics, personal logos, or decorative formatting in application resumes. These elements hide or distort text for parsers. The PDF must be text-extractable in reading order with `pdftotext`.
+- **Exact Keyword Mirroring**: Use exact job-description language for critical terms when truthful. If the job description says `REST-based API development` or `AWS Glue`, use those exact phrases rather than synonyms.
+- **Context-Bound Keywords**: Put each high-priority keyword in evidence-bearing context (e.g., a role bullet or project line must show what was built, secured, or improved using that technology) instead of just dumping a list of tools.
+- **Standard Heading Titles**: Keep standard section headings: `Professional Summary`, `Education`, `Experience`, `Projects`, and `Technical Skills`. Creative section names confuse parser categorization.
+- **Relevance Placement**: Put recent and most relevant experience in the top half of the page so both parser scoring and human skim behavior see the match quickly.
+- **Mirror Qualification Hierarchy**: Mirror required qualifications first, then preferred qualifications. Required degree, location/eligibility constraints, core language requirements, and must-have tools should be visibly covered before nice-to-have tools.
+- **Avoid Keyword Stuffing**: Do not repeat keywords without a defensible context. AI screeners can detect hidden text or repetitive word blocks and may penalize the application.
+- **Adjacent Evidence**: Include adjacent truthful technologies only as supporting evidence, not as substitutes.
+- **After Compiling Verification**: Extract resume text with `pdftotext` and scan it as an ATS would: confirm exact role title, required languages, cloud/platform terms, and top responsibilities appear in readable order.
 
 Use this scoring model as a practical internal check, not as a guarantee of a real ATS result:
 
-- Keyword coverage: 40 points for truthful coverage of important job-title, skill, tool, platform, methodology, and domain keywords.
-- Experience relevance: 25 points for how strongly the selected experience/projects match the role's responsibilities and business context.
-- Impact and evidence: 15 points for quantified scope, concrete outcomes, and action + technology + impact bullets.
-- Formatting and ATS parsing: 10 points for one-page PDF, readable layout, extractable text, standard headings, and no graphics/tables that break parsing.
-- Risk and gap handling: 10 points for avoiding unsupported claims, identifying important missing skills, and flagging eligibility/location constraints.
+- **Keyword coverage**: 40 points for truthful coverage of important job-title, skill, tool, platform, methodology, and domain keywords.
+- **Experience relevance**: 25 points for how strongly the selected experience/projects match the role's responsibilities and business context.
+- **Impact and evidence**: 15 points for quantified scope, concrete outcomes, and action + technology + impact bullets.
+- **Formatting and ATS parsing**: 10 points for one-page PDF, readable layout, extractable text, standard headings, and no graphics/tables that break parsing.
+- **Risk and gap handling**: 10 points for avoiding unsupported claims, identifying important missing skills, and flagging eligibility/location constraints.
 
 Record the score in `tailoring-notes.md` with:
 
@@ -178,11 +182,11 @@ Do not inflate the score by adding unsupported keywords. A truthful 80/100 resum
 - Keep cover letters specific to the company and role.
 - Before drafting, ask Aryan about personal connection, motivation, and how he feels about the company.
 - Reuse verified facts from `profile/`.
-- Avoid generic filler and unsupported claims.
+- Avoid generic filler, flattery, and unsupported claims (e.g., "perfect fit," "passionate about coding").
 - Emphasize the strongest match between the job description and Aryan's experience.
-- Map the cover letter to the job description using one or two verified proof points. Important repeated job keywords may appear naturally, but only when they fit the story and are supported by Aryan's actual experience.
-- Prefer confident, direct language over exaggerated language.
-- Do not rehash the resume. Use the cover letter to add context, motivation, judgment, and personal fit.
+- Map the cover letter to the job description using **one or two deep technical proof points** showing how Aryan solved a similar problem, rather than rehashing the resume in paragraph format.
+- Prefer confident, direct, warm language over exaggerated language.
+- Use the cover letter to add context, motivation, judgment, and personal fit.
 - Keep the cover letter under one page.
 - Default to at most two full body paragraphs unless Aryan asks for a longer version.
 - For job submission, produce a PDF or DOCX cover-letter artifact, not only a Markdown draft.
@@ -198,17 +202,19 @@ Good cover letters should:
 - Stay concise, specific, and easy to read.
 
 Cover-letter guidance incorporated from a 2026 web check:
-
 - Yale Office of Career Strategy: tailor each letter to a specific job, connect skills to employer needs, use job-description keywords truthfully, write in confident active language, keep it to one page, and use a clear opening/body/closing structure.
 - Purdue OWL: use the cover letter to explain experience in a story-like format, go deeper on relevant skills, relate those skills to job requirements, show individualized tailoring, and demonstrate written communication quality.
 
-ATS/recruiter-screen guidance incorporated from a 2026 web check:
+## Job Search & Discovery Strategies (Getting Ahead of the Line)
 
-- Yale Office of Career Strategy: ATS review should compare the resume against the job description and identify specific keywords to improve noticeability; ATS-formatted templates matter.
-- MIT CAPD: use the position description to decide what to include, use familiar formatting, one page when appropriate, strong action verbs, specific technologies in context, and accomplishments rather than responsibilities.
-- University of Michigan Career Center: keep formatting easy to skim, use bullets rather than paragraphs, tailor to the application, and use Action Verb + What + How/Why/Impact.
-- Resume parsing research and vendor-style descriptions: parsers extract contact, education, work history, skills, and other fields into searchable databases; many systems support keyword and semantic matching against job descriptions.
-- Current recruiting reporting: ATS/AI tools commonly assist with keyword matching, knockout questions, analytics, and human review rather than guaranteeing automated rejection or selection, so resumes must satisfy both structured matching and recruiter readability.
+To maximize callback rates, Aryan needs to apply to roles extremely quickly—ideally within 24 to 48 hours of posting. The Job Discovery pipeline helps achieve this using a layered approach:
+
+1. **Direct ATS Feeds**: Keep `job-search/config/direct-ats-targets.json` updated with company tokens. Run `run-direct-ats` daily to fetch structured postings directly from Greenhouse, Lever, Ashby, and SmartRecruiters.
+2. **Recent Google Search Queries**:
+   - Run `generate-queries` to output search links for target roles and domains.
+   - Use Google Search operators with a 24-hour time filter (`qdr:d`) to find freshly indexed postings on company portals before they are listed on major job boards.
+3. **Domain Verification**: When paste-url discovery yields new Greenhouse/Lever/Ashby/SmartRecruiters URLs, run `discover-direct-ats-targets` to verify them and update the config file automatically.
+4. **Inbox Maintenance**: Regularly check `job-search/jobs-inbox.csv`. Keep it minimal (only company, position, posted_at, pulled_at, and url). Move approved roles into the Application Package Generation pipeline.
 
 ## Verification
 
