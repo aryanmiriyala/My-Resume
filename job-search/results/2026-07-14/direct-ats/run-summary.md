@@ -1,0 +1,87 @@
+# Job Search Run - 2026-07-14
+
+Generated at: `2026-07-14T03:35:10+00:00`
+
+Inbox: `/Users/aryanmiriyala/Desktop/Personal-Projects/career-ops/job-search/jobs-inbox.csv`
+Max posted age: `720 hours`
+Shortlist minimum fit score: `60`
+Review minimum fit score: `45`
+Shortlist limit: `50`
+Review limit: `100`
+Include negative matches: `False`
+Include unclassified roles: `False`
+Include location-review roles in shortlist: `False`
+
+## Provider Counts
+
+| Source | Fetched | Skipped |
+|---|---:|---:|
+| ashby | 835 | 820 |
+| greenhouse | 1196 | 1171 |
+
+## Shortlist Imported To CSV
+
+| Fit | Company | Role | Location | Source | Link | Flags |
+|---:|---|---|---|---|---|---|
+| 74 | Anthropic | Data Engineer | San Francisco, CA / New York City, NY / Seattle, WA | greenhouse | [Apply](https://job-boards.greenhouse.io/anthropic/jobs/4956672008) | no_early_career_signal |
+| 74 | Anthropic | Data Scientist, GTM | New York City, NY; San Francisco, CA / New York City, NY | greenhouse | [Apply](https://job-boards.greenhouse.io/anthropic/jobs/5196852008) | no_early_career_signal |
+| 74 | Anthropic | Data Scientist, Safeguards | New York City, NY; San Francisco, CA; Seattle, WA | greenhouse | [Apply](https://job-boards.greenhouse.io/anthropic/jobs/5209196008) | no_early_career_signal |
+| 72 | Anthropic | Data Scientist, Developer Productivity | San Francisco, CA / New York City, NY | greenhouse | [Apply](https://job-boards.greenhouse.io/anthropic/jobs/5197529008) | no_early_career_signal |
+| 72 | Anthropic | Data Scientist, Marketing | New York City, NY / Seattle, WA; San Francisco, CA | greenhouse | [Apply](https://job-boards.greenhouse.io/anthropic/jobs/5161402008) | no_early_career_signal |
+| 72 | Anthropic | Data Scientist, Policy | New York City, NY; San Francisco, CA / New York City, NY; Washington, DC | greenhouse | [Apply](https://job-boards.greenhouse.io/anthropic/jobs/5232055008) | no_early_career_signal |
+| 72 | Anthropic | Data Scientist, Supply | San Francisco, CA / New York City, NY / Seattle, WA | greenhouse | [Apply](https://job-boards.greenhouse.io/anthropic/jobs/5212119008) | no_early_career_signal |
+| 72 | Anthropic | Software Engineer, Research Infrastructure | San Francisco, CA / New York City, NY | greenhouse | [Apply](https://job-boards.greenhouse.io/anthropic/jobs/5283063008) | no_early_career_signal |
+| 72 | Databricks | AI Engineer - FDE (Forward Deployed Engineer) | Remote - United Kingdom | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8593713002) | no_early_career_signal |
+| 72 | Databricks | AI Engineer - FDE (Forward Deployed Engineer) | Remote - India | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8099751002) | no_early_career_signal |
+| 72 | Databricks | Applied AI Engineer, Learning Intelligence | United States | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8625462002) | no_early_career_signal |
+| 72 | Databricks | Software Engineer - GenAI inference | San Francisco, California | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8202670002) | no_early_career_signal |
+| 72 | Databricks | Software Engineer, Web Products | Mountain View, California | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8560779002) | no_early_career_signal |
+| 70 | OpenAI | Full Stack Software Engineer, API Experience | New York City | ashby | [Apply](https://jobs.ashbyhq.com/openai/66288824-8b77-4774-bc57-6825d3e6221e) | no_early_career_signal |
+| 70 | Cursor | Data Analyst, User Operations | Remote | ashby | [Apply](https://jobs.ashbyhq.com/cursor/c43bdded-80a1-4705-a0ec-8217d771528c) | no_early_career_signal |
+
+## Broader Review Candidates
+
+These are role-relevant public API matches that may need location, seniority, or fit review before applying.
+
+| Fit | Company | Role | Location | Source | Link | Flags |
+|---:|---|---|---|---|---|---|
+| 74 | Anthropic | Data Engineer | San Francisco, CA / New York City, NY / Seattle, WA | greenhouse | [Apply](https://job-boards.greenhouse.io/anthropic/jobs/4956672008) | no_early_career_signal |
+| 74 | Anthropic | Data Scientist, GTM | New York City, NY; San Francisco, CA / New York City, NY | greenhouse | [Apply](https://job-boards.greenhouse.io/anthropic/jobs/5196852008) | no_early_career_signal |
+| 74 | Anthropic | Data Scientist, Safeguards | New York City, NY; San Francisco, CA; Seattle, WA | greenhouse | [Apply](https://job-boards.greenhouse.io/anthropic/jobs/5209196008) | no_early_career_signal |
+| 72 | Anthropic | Data Scientist, Developer Productivity | San Francisco, CA / New York City, NY | greenhouse | [Apply](https://job-boards.greenhouse.io/anthropic/jobs/5197529008) | no_early_career_signal |
+| 72 | Anthropic | Data Scientist, Marketing | New York City, NY / Seattle, WA; San Francisco, CA | greenhouse | [Apply](https://job-boards.greenhouse.io/anthropic/jobs/5161402008) | no_early_career_signal |
+| 72 | Anthropic | Data Scientist, Policy | New York City, NY; San Francisco, CA / New York City, NY; Washington, DC | greenhouse | [Apply](https://job-boards.greenhouse.io/anthropic/jobs/5232055008) | no_early_career_signal |
+| 72 | Anthropic | Data Scientist, Supply | San Francisco, CA / New York City, NY / Seattle, WA | greenhouse | [Apply](https://job-boards.greenhouse.io/anthropic/jobs/5212119008) | no_early_career_signal |
+| 72 | Anthropic | Software Engineer, Research Infrastructure | San Francisco, CA / New York City, NY | greenhouse | [Apply](https://job-boards.greenhouse.io/anthropic/jobs/5283063008) | no_early_career_signal |
+| 72 | Databricks | AI Engineer - FDE (Forward Deployed Engineer) | Remote - United Kingdom | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8593713002) | no_early_career_signal |
+| 72 | Databricks | AI Engineer - FDE (Forward Deployed Engineer) | Remote - India | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8099751002) | no_early_career_signal |
+| 72 | Databricks | Applied AI Engineer, Learning Intelligence | United States | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8625462002) | no_early_career_signal |
+| 72 | Databricks | Software Engineer - GenAI inference | San Francisco, California | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8202670002) | no_early_career_signal |
+| 72 | Databricks | Software Engineer, Web Products | Mountain View, California | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8560779002) | no_early_career_signal |
+| 70 | OpenAI | Full Stack Software Engineer, API Experience | New York City | ashby | [Apply](https://jobs.ashbyhq.com/openai/66288824-8b77-4774-bc57-6825d3e6221e) | no_early_career_signal |
+| 70 | Cursor | Data Analyst, User Operations | Remote | ashby | [Apply](https://jobs.ashbyhq.com/cursor/c43bdded-80a1-4705-a0ec-8217d771528c) | no_early_career_signal |
+| 68 | Databricks | Software Engineer - Database Engine Internals | Belgrade, Serbia | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8012658002) | no_early_career_signal; location_needs_review |
+| 64 | OpenAI | Data Engineer, Scaling Analytics | San Francisco | ashby | [Apply](https://jobs.ashbyhq.com/openai/c59e2e83-59a6-45bc-82cd-665c6a8a5761) | no_early_career_signal; location_needs_review |
+| 62 | Databricks | AI Engineer - FDE (Forward Deployed Engineer) | Sydney, Australia | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8298792002) | no_early_career_signal; location_needs_review |
+| 62 | Databricks | AI Engineer - FDE (Forward Deployed Engineer) | Seoul, South Korea | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8574655002) | no_early_career_signal; location_needs_review |
+| 62 | Databricks | AI Engineer - FDE (Forward Deployed Engineer) | Melbourne, Australia | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8330188002) | no_early_career_signal; location_needs_review |
+| 62 | Databricks | AI Engineer - FDE (Forward Deployed Engineer) | Tokyo, Japan | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8611391002) | no_early_career_signal; location_needs_review |
+| 62 | Databricks | AI Engineer - FDE (Forward Deployed Engineer) | Singapore | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8569390002) | no_early_career_signal; location_needs_review |
+| 62 | Databricks | Software Engineer - Backend | Amsterdam, Netherlands | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8029666002) | no_early_career_signal; location_needs_review |
+| 62 | Databricks | Software Engineer - Backend | Belgrade, Serbia | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8012650002) | no_early_career_signal; location_needs_review |
+| 62 | Databricks | Software Engineer - Distributed Data Systems | Belgrade, Serbia | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8012691002) | no_early_career_signal; location_needs_review |
+| 62 | Databricks | Software Engineer - Fullstack | Amsterdam, Netherlands | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8029677002) | no_early_career_signal; location_needs_review |
+| 62 | Databricks | Software Engineer- Fullstack- Singapore | Singapore | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8341810002) | no_early_career_signal; location_needs_review |
+| 62 | Databricks | Software Engineer- Fullstack- Tokyo | Tokyo, Japan | greenhouse | [Apply](https://databricks.com/company/careers/open-positions/job?gh_jid=8345074002) | no_early_career_signal; location_needs_review |
+| 62 | OpenAI | Software Engineer, Codex -Enterprise Controls | San Francisco | ashby | [Apply](https://jobs.ashbyhq.com/openai/fff02c39-1185-427c-bf89-70d7eaa5e3db) | no_early_career_signal; location_needs_review |
+| 62 | OpenAI | Full Stack Software Engineer, Agent Enablement | San Francisco | ashby | [Apply](https://jobs.ashbyhq.com/openai/2d7f1028-ce9b-49c7-acc8-782714ca1cf4) | no_early_career_signal; location_needs_review |
+| 62 | OpenAI | Founding Full Stack Software Engineer, Legal | San Francisco | ashby | [Apply](https://jobs.ashbyhq.com/openai/fcb0ed1a-9329-4e8f-8aab-92bb626d8141) | no_early_career_signal; location_needs_review |
+| 62 | OpenAI | Software Engineer, ChatGPT Shopping | San Francisco | ashby | [Apply](https://jobs.ashbyhq.com/openai/ca54cd23-2bcc-4327-bcb6-46d81ed414a8) | no_early_career_signal; location_needs_review |
+| 62 | OpenAI | Software Engineer, Codex Security | San Francisco | ashby | [Apply](https://jobs.ashbyhq.com/openai/eefeb527-4e36-432e-a787-88e4672e29e1) | no_early_career_signal; location_needs_review |
+| 62 | OpenAI | Software Engineer, GPU Infrastructure- ChatGPT Engineering | London, UK | ashby | [Apply](https://jobs.ashbyhq.com/openai/f8b84ae5-743b-41c9-8432-02dff9993d6b) | no_early_career_signal; location_needs_review |
+| 62 | OpenAI | Software Engineer, Codex — User Activation | San Francisco | ashby | [Apply](https://jobs.ashbyhq.com/openai/d1c6cb87-a44d-4d04-92a8-dc40eccd090e) | no_early_career_signal; location_needs_review |
+| 60 | OpenAI | Full Stack Software Engineer, ChatGPT Finances | San Francisco | ashby | [Apply](https://jobs.ashbyhq.com/openai/39e06ef9-5e62-425d-81e2-e8690188011f) | no_early_career_signal; location_needs_review |
+| 60 | OpenAI | Trust & Safety Operations Analyst, Ads | San Francisco | ashby | [Apply](https://jobs.ashbyhq.com/openai/26e8c199-7dcb-4144-b263-f35220421a6d) | no_early_career_signal; location_needs_review |
+| 60 | OpenAI | Data Scientist, Identity | San Francisco | ashby | [Apply](https://jobs.ashbyhq.com/openai/1f9c3666-82c8-45a7-8d4b-633a265ce996) | no_early_career_signal; location_needs_review |
+| 60 | Cursor | Software Engineer, Storage | San Francisco | ashby | [Apply](https://jobs.ashbyhq.com/cursor/299ce422-0281-4282-aadd-bc22553be0b5) | no_early_career_signal; location_needs_review |
+| 60 | Cursor | Software Engineer, Services Platform | San Francisco | ashby | [Apply](https://jobs.ashbyhq.com/cursor/6eef7144-f2cc-48a8-b065-01f04e4c70ff) | no_early_career_signal; location_needs_review |
