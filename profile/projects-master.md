@@ -59,6 +59,56 @@ Full-stack health AI / Tech stack: React 18, Vite, JavaScript, CSS modules, HTML
 - Built a health-profile form and context-aware Mistral AI chatbot that used saved user health details to answer travel-health questions.
 - Generated downloadable vaccination checklist PDFs with `@react-pdf/renderer` based on country-specific vaccine-required disease data.
 
+## Fix-It-Flow - RocketHacks 2026
+
+Date: 2026
+Primary positioning: Hackathon sustainability AI application, voice-first repair assistant, multimodal inspection workflow, Next.js PWA
+Source: https://github.com/aryanmiriyala/rockethacks-2026
+
+### Platform-Ready Description
+
+Built a RocketHacks 2026 submission called Fix-It-Flow: a voice-first, AI-powered sustainability assistant that helps users diagnose household appliance issues, attempt repair, and avoid unnecessary e-waste. The Next.js 14 PWA supports an inspection flow where users describe a problem by voice while showing the item through the camera; Gemini Vision analyzes live frames, Featherless.AI/Llama reasoning combines visual context with the conversation, and the app recommends outcomes in sustainability order: repair, replace only the broken part, repurpose, donate, or recycle. The repair flow generates concise step-by-step instructions, reads them aloud with ElevenLabs text-to-speech, supports hands-free commands such as next, repeat, help, and end session, and persists repair/inspection sessions in AWS DynamoDB.
+
+### Handshake Description
+
+Built Fix-It-Flow for RocketHacks 2026: a Next.js 14 PWA that uses camera input, Web Speech API, Gemini Vision, Featherless.AI/Llama, ElevenLabs TTS, and AWS DynamoDB to diagnose appliance issues, guide hands-free repair steps, and prioritize repair/reuse/recycling decisions.
+
+### Features
+
+- Voice-first inspection mode using browser camera input and Web Speech API transcription.
+- Gemini Vision live-frame analysis for appliance/device identification, visible issue summaries, requested camera views, confidence, and safety warnings.
+- Featherless.AI reasoning with Llama/Qwen-style models to combine visual evidence, user transcript, prior conversation, and sustainability priorities into structured findings.
+- Sustainability recommendation policy prioritizing repair, part replacement, reuse/repurpose, donation, and recycling before buying new.
+- Repair mode with AI-generated step-by-step guidance capped to concise flows for hands-free use.
+- ElevenLabs text-to-speech streaming for spoken repair instructions and in-repair answers.
+- Voice commands for next/done, repeat, help, and end session.
+- Contextual Q&A during repair sessions so users can ask questions and then resume the current step.
+- Next.js App Router API routes for inspection sessions, inspection turns, device identification, repair-step generation, speech synthesis, chat, uploads, and session CRUD.
+- AWS DynamoDB persistence for session state, conversation history, frames, findings, repair steps, and status.
+- Modular TypeScript architecture with `features/camera`, `features/voice`, `features/repair`, `server/clients`, `server/services`, and shared typed interfaces.
+- PWA support, Tailwind CSS styling, and environment-driven configuration for Gemini, Featherless.AI, ElevenLabs, and AWS.
+
+### Tech Stack
+
+Voice-first sustainability AI / Tech stack: Next.js 14, React 18, TypeScript, Tailwind CSS, Next.js App Router, PWA, Web Speech API, browser camera APIs, Google Gemini Vision, Featherless.AI, Llama 3.1 / Qwen2.5-VL model calls, ElevenLabs text-to-speech, AWS DynamoDB, AWS SDK for JavaScript, AWS S3 / Rekognition client code, REST-style API routes, JSON parsing, session persistence, prompt engineering, multimodal reasoning, npm.
+
+### Positioning Angles
+
+- Voice-first AI product engineering
+- Multimodal AI workflow with camera, speech, LLM reasoning, and TTS
+- Sustainability/e-waste reduction application
+- Full-stack Next.js PWA development
+- Hands-free repair guidance
+- AWS-backed session persistence
+- Hackathon product architecture
+
+### Reusable Bullet Options
+
+- Built Fix-It-Flow for RocketHacks 2026, a Next.js 14/TypeScript PWA that uses camera input, voice commands, Gemini Vision, Featherless.AI/Llama reasoning, ElevenLabs TTS, and DynamoDB to guide appliance repair and recycling decisions.
+- Implemented a voice-first inspection workflow that combined live-frame analysis, spoken user context, conversation history, structured findings, confidence scores, requested camera views, and safety warnings to diagnose household item issues.
+- Designed hands-free repair guidance with AI-generated steps, ElevenLabs audio playback, contextual Q&A, and voice commands for next, repeat, help, and end session.
+- Built typed Next.js API routes and AWS-backed session persistence for inspection turns, repair sessions, device identification, text-to-speech, chat, uploads, findings, frames, and repair steps.
+
 ## Additional Project Slots
 
 Use this section to add future projects. Capture:
