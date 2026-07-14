@@ -19,8 +19,10 @@ This document records all known technologies and skill areas. Use it to tailor t
 
 - React
 - Next.js
+- Next.js App Router
 - Angular
 - Vite
+- PWA
 - React Native
 - Expo
 - Expo Router
@@ -42,6 +44,8 @@ This document records all known technologies and skill areas. Use it to tailor t
 - JavaScript form handling
 - Date/time picker UI
 - Responsive UI
+- Browser camera APIs
+- Web Speech API
 - Modal and tab UI patterns
 - Icons and tooltips
 - HTML5 date/time inputs
@@ -74,6 +78,9 @@ This document records all known technologies and skill areas. Use it to tailor t
 - AWS S3
 - AWS Lambda
 - AWS IAM
+- AWS DynamoDB
+- AWS SDK for JavaScript
+- AWS Rekognition client code
 - AWS-hosted application work
 - Docker
 - Docker Compose
@@ -135,6 +142,9 @@ This document records all known technologies and skill areas. Use it to tailor t
 - OpenAI API
 - Gemini API
 - ElevenLabs API
+- Featherless.AI
+- Llama 3.1
+- Qwen2.5-VL
 - LangChain
 - RAG
 - Mistral AI
@@ -154,6 +164,7 @@ This document records all known technologies and skill areas. Use it to tailor t
 - Semantic retrieval
 - Prompt engineering
 - LLM inference
+- Multimodal reasoning
 - Automated LLM evaluation
 - AI-assisted code review
 - AI-assisted implementation planning
