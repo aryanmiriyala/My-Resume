@@ -228,11 +228,12 @@ Recommended top projects for LinkedIn Featured / Projects:
 
 1. Diff-Grounded Pull Request Description Generation with Structured Evidence using Large Language Models
 2. DreamScape: AI-Powered Sleep Learning Companion
-3. FalconGraph Search: AI-Powered Campus Knowledge Search
-4. RocketGrader: Intelligent Assignment Feedback Platform
-5. HealthTrend: Healthcare Big Data Streaming Pipeline
-6. Travel Health Advisor - BGSU Hackathon 2025
-7. Self-Adaptive Parallelism via OpenMP Runtime Coordination
+3. Fix-It-Flow - RocketHacks 2026
+4. FalconGraph Search: AI-Powered Campus Knowledge Search
+5. RocketGrader: Intelligent Assignment Feedback Platform
+6. HealthTrend: Healthcare Big Data Streaming Pipeline
+7. Travel Health Advisor - BGSU Hackathon 2025
+8. Self-Adaptive Parallelism via OpenMP Runtime Coordination
 
 Copy each project into LinkedIn in this order:
 
@@ -267,6 +268,20 @@ Highlights:
 - Built a cross-platform React Native/Expo mobile app for sleep-based microlearning with AI-generated study cues, quizzes, text-to-speech audio, and local-first session tracking.
 - Integrated Gemini and ElevenLabs APIs to summarize documents, generate quizzes, synthesize learning cues, cache audio, and schedule simulated sleep-mode playback.
 - Designed typed Zustand/AsyncStorage stores for topics, flashcards, cues, sleep sessions, quiz results, and user settings in a local-first mobile architecture.
+
+### Fix-It-Flow - RocketHacks 2026
+
+Description:
+
+Built a RocketHacks 2026 submission called Fix-It-Flow: a voice-first, AI-powered sustainability assistant that helps users diagnose household appliance issues, attempt repair, and avoid unnecessary e-waste. The Next.js 14 PWA supports an inspection flow where users describe a problem by voice while showing the item through the camera; Gemini Vision analyzes live frames, Featherless.AI/Llama reasoning combines visual context with the conversation, and the app recommends outcomes in sustainability order: repair, replace only the broken part, repurpose, donate, or recycle. The repair flow generates concise step-by-step instructions, reads them aloud with ElevenLabs text-to-speech, supports hands-free commands such as next, repeat, help, and end session, and persists repair/inspection sessions in AWS DynamoDB.
+
+Voice-first sustainability AI / Tech stack: Next.js 14, React 18, TypeScript, Tailwind CSS, Next.js App Router, PWA, Web Speech API, browser camera APIs, Google Gemini Vision, Featherless.AI, Llama 3.1 / Qwen2.5-VL model calls, ElevenLabs text-to-speech, AWS DynamoDB, AWS SDK for JavaScript, AWS S3 / Rekognition client code, REST-style API routes, JSON parsing, session persistence, prompt engineering, multimodal reasoning, npm.
+
+Highlights:
+
+- Built Fix-It-Flow for RocketHacks 2026, a Next.js 14/TypeScript PWA that uses camera input, voice commands, Gemini Vision, Featherless.AI/Llama reasoning, ElevenLabs TTS, and DynamoDB to guide appliance repair and recycling decisions.
+- Implemented a voice-first inspection workflow that combined live-frame analysis, spoken user context, conversation history, structured findings, confidence scores, requested camera views, and safety warnings to diagnose household item issues.
+- Designed hands-free repair guidance with AI-generated steps, ElevenLabs audio playback, contextual Q&A, and voice commands for next, repeat, help, and end session.
 
 ### FalconGraph Search: AI-Powered Campus Knowledge Search
 
@@ -357,7 +372,7 @@ When asking about AI workflows in future, examples include:
 
 ## Missing Details To Add Later
 
-- Hackathon wins: event names, dates, project names, awards, team size, tech stack, and short outcome.
+- Hackathon awards/outcomes: add event names, awards, placement, and team size when known.
 - SmartSolve: more detail on QMS dependency register architecture once public/shareable.
 - SmartSolve: exact AI tools/workflows beyond Codex and Claude Code, if useful.
 - GRA: professor/lab/program name, if publicly appropriate.
