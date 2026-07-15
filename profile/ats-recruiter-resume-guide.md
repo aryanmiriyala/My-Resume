@@ -44,6 +44,8 @@ Default structure:
 
 Use this default structure:
 
+There is no fixed bullet-count target per role or project. Bullet count should follow the amount of distinct, relevant evidence available. Do not shorten a strong role to an arbitrary maximum, and do not add filler to make entries visually symmetrical. Every retained bullet must pass the contribution, context, and result audit below.
+
 `Action verb + what was built/changed + how/technology + scope/domain + impact/result`
 
 Strong software/data examples:

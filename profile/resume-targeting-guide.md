@@ -60,7 +60,9 @@ Rules:
 - Prefer bullets matching the job's required stack.
 - Put job keywords into bullets only when supported by real experience.
 - Preserve internship roles by default. A weakly relevant internship may be compressed or omitted when it would displace substantially stronger evidence or force unreadable formatting; record the decision in `tailoring-notes.md`.
+- Do not impose a fixed bullet maximum or require matching bullet counts across roles. Let the number of distinct, job-relevant accomplishments determine the count, subject to one-page readability.
 - Audit each selected bullet against the formula: action verb + what changed + technology/method + scope/domain + impact/result.
+- Rewrite, combine, or remove any bullet that does not provide a clear contribution, defensible context, and result; never retain a weak bullet for visual symmetry.
 - Keep the most recent experience strong.
 - Do not force unrelated skills into a bullet.
 - Do not invent metrics.
