@@ -14,9 +14,9 @@ Do not use the cover letter as a paragraph version of the resume. Use it to conn
 
 ## Non-Negotiable Rules
 
-- Ask personalization questions before drafting any cover letter.
+- Use verified context already in `profile/` and prior application notes. Ask personalization questions only when the letter would be materially weaker or risky without the answer.
 - Keep the letter under one page.
-- Default to at most two full body paragraphs, plus greeting and sign-off, unless Aryan explicitly asks for a longer version.
+- Use a concise opening, one or two evidence paragraphs, and a short closing; three or four short paragraphs are normally appropriate.
 - Tailor every letter to the company and job description.
 - Use role keywords naturally when they are supported by Aryan's experience.
 - Use confident, active language without exaggeration.
@@ -24,9 +24,10 @@ Do not use the cover letter as a paragraph version of the resume. Use it to conn
 - Prefer one deep technical example over a broad list of tools.
 - Do not invent metrics, company interest, product familiarity, or domain motivation.
 - Proofread carefully before generating final artifacts.
-- For submitted applications, generate a PDF or DOCX artifact. Markdown is acceptable as the editable source, but not as the only final submission file.
+- For submitted applications, follow the employer's file instructions and generate an accepted PDF or DOCX artifact. Markdown is acceptable as the editable source, but not as the only final submission file.
+- Use a readable 10--12 point font, 0.50--1.00 inch margins, and typography consistent with the resume.
 
-## Questions Before Drafting
+## Personalization Questions When Materially Needed
 
 Ask these before writing a new cover letter:
 
@@ -38,12 +39,12 @@ Ask these before writing a new cover letter:
 
 ## Persona + Technical Structure
 
-Use this two-paragraph structure by default:
+Use this concise structure by default:
 
 1. Paragraph 1: state the role, give the real reason the company/problem matters, and connect that motivation to Aryan's strongest matching experience.
 2. Paragraph 2: provide one or two technical proof points, name the relevant systems/tools/data/workflows, connect them to the employer's needs, and close with a concise invitation to talk.
 
-Use three short paragraphs only when the company-specific personal connection and technical proof both need space.
+Use three or four short paragraphs when separating motivation, evidence, and the closing improves clarity.
 
 ## Technical Story Angles
 

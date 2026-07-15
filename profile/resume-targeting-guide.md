@@ -59,7 +59,7 @@ Rules:
 - Use `bullet-bank.md` when the application needs job-family bullets across multiple roles.
 - Prefer bullets matching the job's required stack.
 - Put job keywords into bullets only when supported by real experience.
-- Preserve internship roles by default. If the one-page layout is tight, compress or remove projects before cutting an internship, unless Aryan explicitly approves removing that role.
+- Preserve internship roles by default. A weakly relevant internship may be compressed or omitted when it would displace substantially stronger evidence or force unreadable formatting; record the decision in `tailoring-notes.md`.
 - Audit each selected bullet against the formula: action verb + what changed + technology/method + scope/domain + impact/result.
 - Keep the most recent experience strong.
 - Do not force unrelated skills into a bullet.
@@ -106,5 +106,5 @@ After approval and edits:
 - Extract PDF text and inspect bullets.
 - Confirm the PDF text preserves section order and important keywords.
 - Visually inspect the PDF for readability, spacing, and cramped sections.
-- If the resume is slightly too long, try margin/border and spacing adjustments before shrinking content or changing the Education structure.
+- If the resume is too long, first tighten wording, remove repetition, and prioritize stronger evidence. Keep body text at 10 points or larger and every margin at 0.50 inches or larger.
 - Save tailoring notes.

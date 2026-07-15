@@ -22,7 +22,8 @@ REQUIRED_FILES = [
 TAILORING_NOTE_MARKERS = [
     "## Job Keyword Map",
     "## Bullet Audit",
-    "ATS-style score:",
+    "Job Alignment & Evidence Score:",
+    "Internal estimate only; not a predicted ATS score.",
     "Strong matches",
     "Gaps / intentionally omitted unsupported keywords",
     "Recommended improvements",
@@ -65,11 +66,14 @@ def check_tailoring_notes(app_dir: Path, errors: list[str]) -> None:
         if marker not in text:
             errors.append(f"tailoring-notes.md missing marker: {marker}")
 
-    score_match = re.search(r"ATS-style score:\s*(\d{1,3})/100", text)
+    score_match = re.search(r"Job Alignment & Evidence Score:\s*(\d{1,3})/100", text)
     if not score_match:
-        errors.append("tailoring-notes.md must record ATS-style score as `ATS-style score: X/100`")
+        errors.append(
+            "tailoring-notes.md must record the internal score as "
+            "`Job Alignment & Evidence Score: X/100`"
+        )
     elif not 0 <= int(score_match.group(1)) <= 100:
-        errors.append("ATS-style score must be between 0 and 100")
+        errors.append("Job Alignment & Evidence Score must be between 0 and 100")
 
     if re.search(r"\b(TODO|TBD|FIXME)\b", text, re.IGNORECASE):
         errors.append("tailoring-notes.md contains TODO/TBD/FIXME placeholder text")
