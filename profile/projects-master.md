@@ -16,6 +16,7 @@ This document stores detailed project material for tailoring resumes, cover lett
 Date: 2025  
 Primary positioning: Hackathon health AI application, full-stack React/Express prototype, interactive health data visualization, Mistral AI chatbot  
 Source: https://github.com/aryanmiriyala/BGSU-Hackathon-2025
+Recognition: BGSU Hackathon 2025 AI & ML Track Winner
 
 ### Platform-Ready Description
 
@@ -161,6 +162,7 @@ AI / Tech stack: Python, OpenAI API, LLM inference, prompt engineering, GitHub A
 ### DreamScape: AI-Powered Sleep Learning Companion
 
 Primary positioning: AI mobile app, React Native, local-first architecture, generative study tools
+Source: https://github.com/aryanmiriyala/MakeUC-DreamScape
 
 #### Platform-Ready Description
 
@@ -191,18 +193,20 @@ AI mobile / Tech stack: React Native, Expo SDK 54, Expo Router, TypeScript, Gemi
 ### FalconGraph Search: AI-Powered Campus Knowledge Search
 
 Primary positioning: RAG, campus search, graph interface, source-grounded answers
+Source: https://github.com/aryanmiriyala/BGSUHackathon
+Date: November 2025
 
 #### Platform-Ready Description
 
-Built an AI-powered campus search prototype for BGSU that combines lightweight RAG with live web search across stored and crawled university webpages, PDFs, and campus resources. The system ingests and stores crawled content, chunks documents into retrievable passages, retrieves relevant context for user questions, and calls LLM inference to generate grounded answers with source-aware summaries. Also worked on graph-search functionality, using page/resource relationships to power an interactive graph interface that helps users trace how answers connect back to original campus sources.
+Built an AI-powered campus answer engine for BGSU that turns disconnected university webpages, PDFs, and DOCX resources into a searchable link graph and source-grounded RAG experience. A multithreaded C++/OpenMP crawler uses a config-driven pipeline and thread-safe queues to collect resources; Python cleaning stages extract text and checkpoint normalized graph nodes and edges; Sentence Transformers/OpenAI embeddings and FAISS rank relevant chunks; and a FastAPI endpoint generates cited answers. A Next.js interface renders markdown responses, cited sources, and nearby graph context so users can trace answers to original campus resources.
 
 #### Handshake Description
 
-Built an AI-powered BGSU campus search prototype combining lightweight RAG, live web search, crawled webpages, PDFs, document chunking, retrieval, and LLM inference. Added graph-search functionality so users can trace source-grounded answers back to original campus resources.
+Built a BGSU campus answer engine with a multithreaded C++/OpenMP crawler, Python document cleaning, FAISS retrieval, FastAPI RAG, and a Next.js interface that returns cited answers with source graph context.
 
 #### Tech Stack
 
-RAG / Search / Tech stack: Python, Flask, OpenAI API, LLM inference, lightweight RAG, embeddings, vector retrieval, semantic search, live web search, web crawling, PDF parsing, document chunking, React, Next.js, Three.js, Tailwind CSS, C++, graph algorithms, pandas.
+RAG / Search / Tech stack: C++, OpenMP, Python, FastAPI, FAISS, Sentence Transformers, all-MiniLM-L6-v2, OpenAI API, text-embedding-3-small, RAG, embeddings, semantic retrieval, web crawling, HTML/PDF/DOCX parsing, document chunking, directed graphs, checkpointed data processing, Next.js, React, TypeScript, Tailwind CSS, DaisyUI.
 
 #### Positioning Angles
 
@@ -214,9 +218,9 @@ RAG / Search / Tech stack: Python, Flask, OpenAI API, LLM inference, lightweight
 
 #### Reusable Bullet Options
 
-- Built a BGSU campus search prototype combining lightweight RAG, live web search, crawled webpages, PDFs, and LLM inference to generate source-grounded answers.
-- Implemented document ingestion, chunking, vector retrieval, semantic search, and source-aware summarization across stored and crawled university resources.
-- Developed graph-search functionality and an interactive graph interface using page/resource relationships to trace generated answers back to original sources.
+- Built a BGSU campus answer engine that integrated a multithreaded C++/OpenMP crawler, Python document processing, FAISS retrieval, FastAPI RAG, and a Next.js interface into one config-driven pipeline.
+- Implemented checkpointed HTML/PDF/DOCX cleaning, graph-node and edge reconstruction, document chunking, Sentence Transformer/OpenAI embeddings, and semantic ranking across university resources.
+- Generated source-grounded answers with inline citations and graph context, enabling users to trace each response back to the original campus webpages and documents.
 
 ### HealthTrend: Healthcare Big Data Streaming Pipeline
 
@@ -250,6 +254,7 @@ Data engineering / Tech stack: Apache NiFi, Apache Kafka, Apache Zookeeper, Apac
 ### MarioRL: Super Mario Reinforcement Learning Agent Comparison
 
 Primary positioning: reinforcement learning, model comparison, PyTorch, experiment tracking
+Source: https://github.com/aryanmiriyala/ReinforcementLearning-SuperMario
 
 #### Platform-Ready Description
 
@@ -278,6 +283,7 @@ Reinforcement learning / Tech stack: Python, reinforcement learning, PPO, DQN, S
 ### RAG-Based Analysis of App Update Frequency and User Reviews
 
 Primary positioning: RAG research, NLP, review mining, software maintenance analytics
+Source: https://github.com/aryanmiriyala/RAG-Model-App-Review-Analysis
 
 #### Platform-Ready Description
 
@@ -303,9 +309,12 @@ RAG / NLP / Tech stack: Python, RAG, Sentence Transformers, ChromaDB, embeddings
 - Built a RAG research pipeline using Sentence Transformers and ChromaDB to analyze how mobile app update frequency relates to Google Play review feedback.
 - Applied semantic retrieval, vector search, sentiment analysis, and review mining to compare maintenance patterns, recurring user concerns, and app version histories.
 
-### RocketGrader: Intelligent Assignment Feedback Platform
+### RocketGrades: Intelligent Assignment Feedback Platform
 
 Primary positioning: full-stack AI education platform, secure LMS, file parsing, AI grading
+Source: https://github.com/aryanmiriyala/rockethacks25
+Date: March 2025
+Recognition: RocketHacks 2025 winner in two MLH tracks
 
 #### Platform-Ready Description
 
@@ -362,3 +371,343 @@ Systems / Parallel computing / Tech stack: C++, OpenMP, Python, PyQt, Docker, Ma
 - Built a C++/OpenMP adaptive runtime research system that used per-epoch telemetry and a UCB controller to tune scheduling policy, chunk size, and thread count.
 - Benchmarked adaptive scheduling against serial and fixed-policy baselines across Mandelbrot, heat diffusion, and reduction workloads.
 - Generated paper-ready performance summaries and plots for runtime, speedup, efficiency, Karp-Flatt behavior, and scheduler decisions.
+
+## GitHub And Local Repository Audit Projects
+
+The following entries were added or expanded after a July 2026 audit of Aryan's public GitHub account and locally available GitHub clones. Capabilities listed as implemented were verified in source code, manifests, configuration, or commit history. Roadmap items are labeled separately and must not be used as completed-work claims.
+
+### AI Project Management Tool: Explainable Execution-Planning Prototype
+
+Date: May 2026
+
+Primary positioning: B2B product prototype, technical project planning, explainable assignment recommendations, typed Next.js application architecture
+
+Source: Local GitHub clone of `aryanmiriyala/AI-Project-Management-Tool` (private or unavailable through the public API at audit time)
+
+Implementation status: Interactive front-end prototype with typed mock data; external AI, database, authentication, and GitHub ingestion are planned but not implemented
+
+#### Platform-Ready Description
+
+Built an interactive Next.js/TypeScript prototype for turning ambiguous software initiatives into reviewable execution plans. The application includes a planning workspace for project briefs and project types, generated task templates, typed project/task/collaborator models, project dashboards, risk and status views, skill requirements, and explainable owner recommendations containing confidence and rationale. Also documented a modular-monolith architecture for future requirement parsing, repository intelligence, task decomposition, workload-aware matching, audit logs, and human approval, while keeping those roadmap capabilities separate from the implemented prototype.
+
+#### Handshake Description
+
+Built a Next.js/TypeScript execution-planning prototype with project intake, generated task templates, typed project/task/collaborator models, risk dashboards, skill requirements, and explainable ownership recommendations containing confidence and rationale.
+
+#### Implemented Features
+
+- Next.js App Router landing page and multi-route planning workspace.
+- Project intake fields for project name, type, and brief.
+- Template-driven generation of reviewable plan tasks for platform, feature, and integration work.
+- Typed domain models for projects, tasks, collaborators, statuses, skills, risks, and assignment recommendations.
+- Workspace dashboard showing active projects, collaborators, timelines, statuses, and at-risk work.
+- Project detail views with goals, risks, task boards, required skills, recommended owners, confidence levels, and recommendation rationale.
+- npm workspace structure separating the web application from future shared packages.
+- Product and architecture documentation covering users, success signals, boundaries, security requirements, and scaling phases.
+
+#### Planned Architecture — Do Not Present as Implemented
+
+- OpenAI Responses API with structured outputs for requirement parsing and project decomposition.
+- PostgreSQL, Drizzle ORM, and pgvector for relational workflow data and retrieval.
+- GitHub App/webhooks for repository and contributor intelligence.
+- Inngest background workflows, organization tenancy, RBAC, audit logs, Sentry/OpenTelemetry, Vitest, and Playwright.
+
+#### Tech Stack
+
+Implemented product prototype / Tech stack: Next.js 15, React 19, TypeScript 5.8, App Router, CSS, npm workspaces, typed domain models, mock-data services, responsive application UI, product architecture documentation.
+
+#### Positioning Angles
+
+- Product-minded software engineering
+- Explainable AI/human-in-the-loop interface design
+- Technical project planning and task decomposition
+- Typed frontend architecture
+- Risk and workload visualization
+- Translating an ambiguous product concept into an implementable MVP boundary
+
+#### Reusable Bullet Options
+
+- Built a Next.js 15/TypeScript execution-planning prototype that transformed project briefs into reviewable task plans and displayed skills, risks, statuses, and explainable owner recommendations.
+- Designed typed models and multi-route dashboards for projects, tasks, collaborators, assignment confidence, recommendation rationale, timelines, and delivery risks.
+- Scoped a modular-monolith roadmap for repository-aware planning and human-approved AI recommendations while keeping unimplemented AI and data services clearly separated from the working prototype.
+
+### Personal Engineering Portfolio: Star-Chart Case-Study Platform
+
+Date: 2026
+
+Primary positioning: frontend engineering, design systems, interactive data storytelling, accessible motion, technical case studies
+
+Source: Local GitHub clone of `aryanmiriyala/my-personal-website` (private or unavailable through the public API at audit time)
+
+#### Platform-Ready Description
+
+Built a responsive engineering portfolio with Next.js 15, React 19, TypeScript, and Tailwind CSS 4 around a custom star-chart visual system. The site combines a canvas starfield, animated project constellation, semantic experience/research/project content, statically generated case-study routes, and scroll-driven architecture walkthroughs. GSAP and Lenis coordinate motion while `prefers-reduced-motion`, focus states, semantic landmarks, fluid typography, sitemap/robots metadata, and responsive navigation preserve accessibility and search visibility. Project, publication, experience, volunteering, and skills content is maintained through typed data modules rather than duplicated page markup.
+
+#### Handshake Description
+
+Built a responsive Next.js/TypeScript engineering portfolio with a custom star-chart design system, canvas visuals, GSAP/Lenis motion, statically generated project case studies, scroll-driven architecture walkthroughs, typed content modules, SEO metadata, and reduced-motion accessibility.
+
+#### Features
+
+- Canvas-based cosmic background and animated constellation for featured projects.
+- Statically generated `/work/<slug>` case studies with problem, architecture, engineering decisions, and outcomes.
+- Scroll-driven architecture visualization using GSAP ScrollTrigger.
+- Typed content modules for projects, publications, experience, volunteering, skills, and contact information.
+- Custom typography and design tokens using Bricolage Grotesque, Hanken Grotesk, and IBM Plex Mono.
+- Responsive navigation, fluid typography, focus states, semantic landmarks, and reduced-motion behavior.
+- Contact form integration, Vercel Analytics, sitemap, robots metadata, favicon assets, and Google site-verification file.
+- Exactly pinned dependency versions and lockfile for reproducible installs.
+
+#### Tech Stack
+
+Portfolio / Tech stack: Next.js 15, React 19, TypeScript 5.9, Tailwind CSS 4, App Router, static generation, Canvas API, GSAP 3, ScrollTrigger, Lenis, custom CSS design tokens, Vercel Analytics, responsive design, accessibility, SEO metadata, npm.
+
+#### Positioning Angles
+
+- Frontend and full-stack product engineering
+- Design-system implementation
+- Accessible motion and interaction design
+- Technical storytelling and case-study architecture
+- Responsive and SEO-aware web development
+- Reproducible dependency management
+
+#### Reusable Bullet Options
+
+- Built a responsive Next.js 15/TypeScript engineering portfolio with a custom star-chart design system, canvas visuals, GSAP/Lenis motion, and statically generated technical case studies.
+- Implemented scroll-driven architecture walkthroughs and typed content modules for projects, publications, experience, volunteering, and skills, keeping technical narratives structured and reusable.
+- Added responsive navigation, semantic landmarks, focus states, reduced-motion behavior, sitemap/robots metadata, analytics, and pinned dependencies to improve accessibility, discoverability, and reproducibility.
+
+### FindYourFlame: Campus Matchmaking Interface Prototype
+
+Date: November--December 2025
+
+Primary positioning: Next.js product prototype, Supabase authentication, campus-community UX, responsive frontend
+
+Source: Local GitHub clone of `aryanmiriyala/bgsu-matchmaking` (private or unavailable through the public API at audit time)
+
+Implementation status: Marketing experience and `.edu` Supabase authentication are implemented; matchmaking, chat, AI icebreakers, moderation, and database schemas remain roadmap concepts
+
+#### Platform-Ready Description
+
+Built a responsive campus-matchmaking interface prototype with Next.js 16, React 19, TypeScript, Tailwind CSS, DaisyUI, and Supabase authentication. The implemented product includes a branded landing experience, animated intro and typewriter hero, campus-focused feature and FAQ sections, sign-up/sign-in mode switching, `.edu` email validation, password validation, Supabase email confirmation and password authentication, persisted browser sessions, loading/error/success feedback, and responsive navigation. The repository also documents future matching modes and AI-assisted icebreakers, but those capabilities are not yet implemented.
+
+#### Handshake Description
+
+Built a responsive Next.js/TypeScript campus-matchmaking prototype with Tailwind/DaisyUI, animated onboarding, `.edu` email validation, and Supabase sign-up/sign-in flows with confirmation, persisted sessions, and user feedback states.
+
+#### Implemented Features
+
+- Responsive marketing page for campus-only social matching.
+- Animated letter intro and timed typewriter hero components.
+- Campus-focused product sections, experience concepts, onboarding steps, FAQ, and waitlist interface.
+- Sign-up and sign-in modes with controlled React form state.
+- Client-side `.edu` email and minimum-password validation.
+- Supabase email/password authentication, confirmation redirect, session persistence, and automatic token refresh.
+- Loading, success, and error states plus post-login navigation.
+
+#### Roadmap — Do Not Present as Implemented
+
+- Matchmaking algorithms, interest vectors, availability matching, realtime chat, blind-spark reveals, prompt roulette, AI-generated icebreakers, and automated moderation.
+
+#### Tech Stack
+
+Campus product prototype / Tech stack: Next.js 16, React 19, TypeScript, App Router, Tailwind CSS 3.4, DaisyUI 5, Supabase JavaScript client, Supabase Auth, React state management, responsive UI, CSS animation, npm.
+
+#### Positioning Angles
+
+- Consumer product prototyping
+- Authentication and onboarding UX
+- Responsive Next.js frontend development
+- Campus/community software concepts
+- Honest MVP and roadmap scoping
+
+#### Reusable Bullet Options
+
+- Built a responsive Next.js 16/TypeScript campus-matchmaking prototype with Tailwind CSS, DaisyUI, animated onboarding, and campus-focused product flows.
+- Implemented `.edu` email validation and Supabase sign-up/sign-in flows with email confirmation, password validation, persistent sessions, automatic token refresh, and user feedback states.
+- Separated implemented authentication and interface functionality from planned matchmaking, chat, moderation, and AI features to maintain an honest MVP boundary.
+
+### PDFsplitter: Installable PDF Command-Line Utility
+
+Date: March 2026
+
+Primary positioning: developer tooling, Node.js CLI, file processing, defensive input validation
+
+Source: https://github.com/aryanmiriyala/PDFsplitter
+
+#### Platform-Ready Description
+
+Built an installable Node.js command-line utility that divides a PDF into two output files at a user-selected page. The `pdfsplit` executable validates argument presence, positive integer input, source-file existence, PDF extension, and split-page bounds; loads and copies pages with `pdf-lib`; preserves the input directory and base filename; names both outputs by their page ranges; and returns clear success or failure messages with nonzero exit codes for invalid usage.
+
+#### Handshake Description
+
+Built an installable Node.js CLI with `pdf-lib` that validates input files and split bounds, divides a PDF at a requested page, preserves the source path and filename, and creates two clearly named page-range outputs with actionable error handling.
+
+#### Features
+
+- Globally installable `pdfsplit` binary declared through `package.json`.
+- PDF loading, page copying, document creation, and serialization using `pdf-lib`.
+- Validation for missing arguments, non-integer or negative pages, absent files, non-PDF extensions, and out-of-range split points.
+- Automatic output naming such as `report-1-3.pdf` and `report-4-10.pdf`.
+- Error handling with human-readable CLI messages and nonzero process exit codes.
+
+#### Tech Stack
+
+Developer tooling / Tech stack: JavaScript, Node.js, CommonJS, pdf-lib, filesystem APIs, path APIs, CLI argument parsing, binary file processing, npm package binaries.
+
+#### Positioning Angles
+
+- Node.js developer tooling
+- Command-line interface design
+- File and document processing
+- Defensive input validation
+- Small end-to-end utility ownership
+
+#### Reusable Bullet Options
+
+- Built an installable Node.js CLI with `pdf-lib` that split source PDFs into two page-range files at a user-selected boundary.
+- Implemented defensive validation for missing arguments, invalid page numbers, missing files, non-PDF inputs, and out-of-range splits, returning actionable errors and process exit codes.
+- Automated path-preserving output generation with page-range filenames to make split documents immediately identifiable.
+
+### Yoda: BGSU Campus Navigator
+
+Date: March 2023
+
+Primary positioning: Flutter mobile development, Google Maps integration, campus navigation, hackathon delivery
+
+Source: https://github.com/aryanmiriyala/CS23_YODA
+
+Recognition: Second Prize, BGSU Hackathon 2023
+
+Evidence source: Typed portfolio project data; repository was not available through the public GitHub API during the July 2026 audit
+
+#### Platform-Ready Description
+
+Built a Flutter/Dart campus-navigation application for BGSU students with origin and destination selection, building information cards, campus images and metadata, Google Maps markers, and a straight-line route preview between selected locations. Delivered the application during the BGSU Hackathon and earned second prize.
+
+#### Handshake Description
+
+Built a Flutter/Dart BGSU campus navigator with origin/destination selection, building cards and metadata, Google Maps markers, and route previews; delivered it during the 2023 BGSU Hackathon and earned second prize.
+
+#### Tech Stack
+
+Mobile / Navigation / Tech stack: Flutter, Dart, google_maps_flutter, Google Maps SDK, map markers, route visualization, mobile UI, campus building data.
+
+#### Positioning Angles
+
+- Cross-platform mobile development
+- Maps and location-based interfaces
+- Hackathon delivery
+- Student/community software
+- Early end-to-end application development
+
+#### Reusable Bullet Options
+
+- Built a Flutter/Dart BGSU campus navigator with building metadata, Google Maps markers, origin/destination controls, and route previews, earning second prize at the 2023 BGSU Hackathon.
+- Integrated `google_maps_flutter` with campus location data to help students select buildings and preview navigation between campus destinations.
+
+### Career Ops: Application and Job-Discovery Automation System
+
+Date: 2025--2026
+
+Primary positioning: workflow automation, Python CLI tooling, ATS integrations, document generation and validation, structured career data
+
+Source: https://github.com/aryanmiriyala/career-ops
+
+#### Platform-Ready Description
+
+Built a repository-centered career operations system that separates job discovery from application-package generation. A dependency-light Python CLI generates targeted ATS search queries, fetches structured postings from configured Greenhouse, Lever, Ashby, and SmartRecruiters endpoints, supplements them with public job-board APIs, discovers and validates ATS board identifiers, scores and filters early-career roles, maintains a minimal CSV inbox, and writes dated Markdown reports. A second workflow stores verified career source material, creates role-specific LaTeX resumes and cover letters, tracks applications, and validates required artifacts, one-page PDF output, text extraction, alignment notes, and build-artifact cleanup.
+
+#### Handshake Description
+
+Built a Python career-operations system with structured Greenhouse/Lever/Ashby/SmartRecruiters ingestion, role filtering, CSV/Markdown reporting, targeted LaTeX application packages, PDF text/page validation, and repository-based application tracking.
+
+#### Features
+
+- Explicit separation between broad job discovery and selected-role application generation.
+- Config-driven role buckets, source catalogs, ATS adapters, location/experience filters, and company watchlists.
+- Structured direct ATS ingestion for Greenhouse, Lever, Ashby, and SmartRecruiters.
+- Public-job-board supplements from Arbeitnow and RemoteOK.
+- ATS URL/token discovery and verification from collected search-result links.
+- Strict CSV inbox containing company, position, posted date, pull date, and URL, with noisy scoring details moved to dated reports.
+- Freshness tracking based on first discovery when providers omit reliable posting timestamps.
+- Role-fit scoring, strict shortlist and broader review-candidate outputs, and manual application approval.
+- Source-of-truth profile documents for experience, projects, skills, bullet banks, and writing guidance.
+- Targeted LaTeX resume/cover-letter generation with job keyword maps, truthful alignment notes, and application tracking.
+- Package validator checking required files, cover-letter artifacts, recorded alignment results, one-page resume PDFs, extractable text, and leftover LaTeX build artifacts.
+
+#### Tech Stack
+
+Workflow automation / Tech stack: Python 3, standard-library HTTP/JSON/CSV processing, CLI argument parsing, Greenhouse API, Lever API, Ashby API, SmartRecruiters API, Arbeitnow API, RemoteOK API, JSON configuration, CSV, Markdown, LaTeX, pdflatex, pdfinfo, pdftotext, Git, repository-based workflows.
+
+#### Positioning Angles
+
+- End-to-end workflow automation
+- API and ATS integration
+- Config-driven data ingestion and filtering
+- Developer productivity tooling
+- Document-generation pipelines
+- Validation and human-in-the-loop decision systems
+- Product judgment around data quality and source-of-truth design
+
+#### Reusable Bullet Options
+
+- Built a Python career-operations system that ingested structured postings from Greenhouse, Lever, Ashby, and SmartRecruiters, filtered early-career roles, and generated CSV and dated Markdown review outputs.
+- Designed separate job-discovery and application-generation pipelines with explicit handoff rules, structured profile data, targeted LaTeX documents, tracker updates, and human approval boundaries.
+- Implemented application-package validation for required artifacts, one-page PDF output, text extraction, alignment evidence, and generated-build cleanup, improving consistency across role-specific submissions.
+
+### Automated GitHub Profile README
+
+Date: 2026
+
+Primary positioning: GitHub Actions automation, API integration, generated documentation, resilient repository metadata workflows
+
+Source: https://github.com/aryanmiriyala/aryanmiriyala
+
+#### Platform-Ready Description
+
+Built a scheduled GitHub Actions workflow and Node.js generator that refreshes featured-project metadata in a profile README. The script reads a JSON project configuration, queries the GitHub REST API for repository language, star count, links, and activity timestamps, gracefully falls back to configured names and URLs when repositories are unavailable, generates Markdown cards, replaces only a marker-delimited README section, and commits changes only when the generated output differs.
+
+#### Handshake Description
+
+Built a scheduled GitHub Actions and Node.js workflow that queries repository metadata, generates featured-project Markdown, safely replaces marker-delimited README content, falls back for unavailable repositories, and commits only when output changes.
+
+#### Features
+
+- Weekly cron schedule plus manual workflow dispatch.
+- GitHub REST API client with authenticated headers, explicit errors, and optional 404 fallback behavior.
+- JSON-driven featured-project configuration.
+- Generated language, star-count, repository-link, and last-updated metadata.
+- Marker-based README replacement that fails safely when expected boundaries are absent.
+- Automated commit, rebase, and push only when staged content changed.
+- Node.js 20 GitHub Actions runtime with repository-scoped contents permission.
+
+#### Tech Stack
+
+Developer automation / Tech stack: JavaScript, Node.js, ES modules, GitHub REST API, GitHub Actions, YAML, JSON, Markdown generation, filesystem APIs, scheduled workflows, Git automation.
+
+#### Positioning Angles
+
+- GitHub Actions and CI automation
+- API-driven documentation generation
+- Resilient fallback and error handling
+- Repository maintenance tooling
+- Small automation ownership
+
+#### Reusable Bullet Options
+
+- Built a scheduled GitHub Actions and Node.js workflow that queried repository metadata and regenerated featured-project Markdown for a developer profile.
+- Implemented marker-delimited README replacement, unavailable-repository fallbacks, and change-aware commits to prevent destructive or unnecessary automated updates.
+- Integrated GitHub REST API data for repository language, stars, links, and activity timestamps through a JSON-configured generation pipeline.
+
+## Repository Audit: Not Yet Resume-Ready
+
+Keep these repositories in the inventory so future work can be recognized, but do not use them as authored project evidence until substantive implementation or contribution history exists.
+
+- `Damn-Vulnerable-RESTaurant-API-Game`: a clone/template of an upstream FastAPI/PostgreSQL security-training application. The audited code and authorship metadata belong to the upstream project; no Aryan-authored modification was verified. It may support a learning narrative only if Aryan documents vulnerabilities completed, fixes implemented, or a separate write-up.
+- `SolarSystemSim`: contains only a one-line README describing an intended solar-system simulation; no implementation was present in the local clone.
+- `FalconGames`: public repository with a collaborative browser-game description but no committed source code.
+- `beach-game`: public repository with a Three.js learning description but no committed source code.
+- `clinker`: fork of the upstream gene-cluster comparison project. Do not claim the upstream implementation; add only if Aryan's own commits or contributions are identified.
+- `FindYourFlame` roadmap features: matching algorithms, realtime chat, AI icebreakers, moderation, and production data models are planned, not implemented.
+- `AI Project Management Tool` roadmap features: external AI generation, repository ingestion, PostgreSQL/Drizzle persistence, authentication, background jobs, and production observability are planned, not implemented.
