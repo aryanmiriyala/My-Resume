@@ -106,5 +106,5 @@ After approval and edits:
 - Extract PDF text and inspect bullets.
 - Confirm the PDF text preserves section order and important keywords.
 - Visually inspect the PDF for readability, spacing, and cramped sections.
-- If the resume is too long, first tighten wording, remove repetition, and prioritize stronger evidence. Keep body text at 10 points or larger and every margin at 0.50 inches or larger.
+- If the resume is too long, first tighten wording, remove repetition, and prioritize stronger evidence. Keep the canonical application-resume geometry and 11-point typography unchanged rather than creating application-specific spacing.
 - Save tailoring notes.

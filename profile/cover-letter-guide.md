@@ -25,7 +25,7 @@ Do not use the cover letter as a paragraph version of the resume. Use it to conn
 - Do not invent metrics, company interest, product familiarity, or domain motivation.
 - Proofread carefully before generating final artifacts.
 - For submitted applications, follow the employer's file instructions and generate an accepted PDF or DOCX artifact. Markdown is acceptable as the editable source, but not as the only final submission file.
-- Use a readable 10--12 point font, 0.50--1.00 inch margins, and typography consistent with the resume.
+- Use the canonical application-letter layout: 11-point Computer Modern typography, approximately 0.80-inch left/right and 0.70-inch top/bottom margins, and the same header/date/addressee/signature hierarchy used by recent accepted letters.
 
 ## Personalization Questions When Materially Needed
 

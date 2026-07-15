@@ -109,11 +109,14 @@ Do not commit binary/generated artifacts unless Aryan explicitly asks. This incl
 
 ## Resume Rules
 
-- For Aryan's current early-career applications, the resume must be exactly one page unless the employer explicitly requests a CV or a longer format. One page is a length limit, not a requirement to fill every line to the bottom edge.
-- Use a readable 10--12 point font; prefer approximately 10.5--11 points for body text. Do not shrink below 10 points to preserve content.
-- Use margins of at least 0.50 inches on every side; prefer approximately 0.55--0.75 inches. Never reduce margins below the minimum to force content onto one page.
-- Maintain balanced white space and clear visual hierarchy. A modest blank area at the bottom is acceptable when the page is substantive and readable; excessive empty space should be addressed with stronger verified content, not artificial spacing or repetition.
+- For Aryan's current early-career applications, the resume must be exactly one page unless the employer explicitly requests a CV or a longer format. It must also use the page efficiently: serious, readable, role-aligned content should extend into the bottom portion rather than leaving a large unused band.
+- Use the repository's canonical application-resume visual system: US Letter, 11-point `article` class, Computer Modern typography, approximately 0.22-inch left/right margins and 0.10-inch top/bottom margins, approximately 0.92 line spread, centered name/contact block, small-caps ruled section headings, and solid round bullets. Do not create a new geometry, font size, heading treatment, or bullet system for an individual application.
+- Maintain clear hierarchy while using the available page area efficiently. A finalized application resume should normally carry serious, readable content into the bottom portion of the page, consistent with the established application resumes. If a visible blank band remains, add stronger verified evidence or improve information density before finalizing.
+- The 11-point font is a readability floor for the canonical application layout. Do not shrink text to add content. Narrow canonical page borders are permitted only because the layout remains single-column, text-only, and visually verified; do not reduce them further on a one-off basis.
 - Use one consistent, ordinary solid bullet symbol throughout all application resumes. Do not mix solid bullets, hollow bullets, dashes, or decorative symbols.
+- **Visual Consistency Gate**: Before compiling a new application resume, compare its LaTeX preamble and layout macros against the latest accepted application-resume pattern. Reuse the same document class, geometry, font, header structure, section styling, bullet label, role/date hierarchy, and skills formatting. Tailoring should change evidence and ordering, not visual identity.
+- **Side-by-Side Review Gate**: Render the new resume beside at least two recent accepted application resumes. Confirm that outer borders, name/contact placement, section rules, bullet size, role/date alignment, density, and bottom-page usage look like the same document family. Record this comparison in `tailoring-notes.md`.
+- If an established visual pattern uses an ATS-risky implementation such as `tabular`, reproduce the appearance with plain text and `\hfill`; consistency of appearance does not override the parser rules below.
 - Use ATS-friendly, outcome-oriented bullets following the **STAR/CAR** and **Google XYZ** concepts: **Action Verb + What was built/changed + Method/Technology when relevant + Scope/Context + Impact/Result**.
 - The bullet formula is an evidence gate, not a demand that every bullet contain a technology or numerical metric. Every experience and project bullet must clearly show the contribution, context, and result:
   - **Action Verb and Tense**: Begin with a strong active verb (e.g., *Architected, Engineer, Optimized, Migrated, Automate, Delivered*). Use present tense for ongoing responsibilities or results and past tense for completed work. Avoid passive phrases like "Responsible for," "Helped with," or "Worked on."
@@ -133,15 +136,15 @@ Do not commit binary/generated artifacts unless Aryan explicitly asks. This incl
   - **Projects**: Use projects to support the primary resume angle and cover skill gaps not shown in the professional experience. Emphasize actual implementation details and files in the repository.
   - **Technical Skills**: Group into categorized lists (e.g., Languages, Frontend, Backend/API, Cloud/DevOps, Databases, AI/ML, Security). This is key for parser categorization. Do not list broad responsibilities (e.g., "troubleshooting") as skills.
 - Do not invent metrics. Use exact numbers only when supported by the source material.
-- Preserve the canonical LaTeX visual identity unless Aryan asks for a redesign, but never preserve a formatting construct that conflicts with the parser, margin, font-size, or readability rules in this file.
+- Preserve the canonical LaTeX visual identity unless Aryan asks for a repository-wide redesign. Never redesign only one application package. Any approved visual-system change must update this file and the relevant guides before it is used for future packages.
 - Keep bullets concise enough to fit the one-page layout (usually 1-2 lines on the PDF page).
 - Experience generally takes precedence over Projects. Preserve internship roles by default because they are core early-career evidence, but this is a repository preference rather than an industry mandate. A weakly relevant internship may be compressed or omitted when retaining it would displace substantially stronger evidence or force unreadable formatting; document that decision in `tailoring-notes.md`.
 - Do not leave a tailored resume genuinely sparse. If there is substantial usable space, add a high-signal verified experience bullet, relevant project, or stronger technical detail. Do not add filler, duplicate claims, or manipulate spacing solely to reach the bottom edge.
-- During PDF review, inspect the entire page for balance, including the lower half and bottom. The page should look substantive and intentionally composed, with enough white space for a fast recruiter scan and no clipping, overlap, or unreadable density.
+- During PDF review, inspect the entire page for balance, including the lower half and bottom. The page should look substantive and intentionally composed, match recent accepted resumes, and avoid clipping, overlap, unreadable density, or a large unused bottom band.
 - Avoid aggressive negative spacing in Experience and Projects. Do not use negative project `itemsep` or large negative bullet `vspace` values just to force more content onto the page.
 - Prefer fewer, stronger projects with readable descriptions over many project one-liners stacked tightly, unless the additional projects can be included without hurting scanability. Projects should support the target role and remain scannable by a human reviewer.
 - The resume must be readable by a human reviewer. Do not solve length problems by making the document feel cramped or shrinking text into unreadable sizes.
-- When a resume is too long, first tighten wording, remove repetition, and prioritize the strongest role-aligned evidence. Adjust spacing only within the readable standards above. Never cross the 0.50-inch margin or 10-point font floors.
+- When a resume is too long, first tighten wording, remove repetition, and prioritize the strongest role-aligned evidence. Keep the canonical 11-point font and standard geometry unchanged; solve fit through content decisions rather than one-off layout changes.
 
 ## Alignment And Evidence Scoring
 
@@ -192,11 +195,12 @@ Do not inflate the score by adding unsupported keywords. A lower truthful score 
 - Map the cover letter to the job description using **one or two deep technical proof points** showing how Aryan solved a similar problem, rather than rehashing the resume in paragraph format.
 - Prefer confident, direct, warm language over exaggerated language.
 - Use the cover letter to add context, motivation, judgment, and personal fit.
-- Keep the cover letter to one page using a readable 10--12 point font and 0.50--1.00 inch margins.
+- Keep the cover letter to one page using the canonical cover-letter layout: 11-point Computer Modern text, approximately 0.80-inch left/right margins and 0.70-inch top/bottom margins, the same name/contact hierarchy used across application letters, and no decorative graphics.
 - Use a concise opening, one or two evidence paragraphs, and a short closing; three or four short paragraphs are normally appropriate. Do not impose a two-paragraph limit when it harms clarity.
 - For job submission, produce a PDF or DOCX cover-letter artifact, not only a Markdown draft.
 - Follow the employer's requested file type and naming instructions. Use PDF by default only when the application accepts it; use DOCX when specifically requested.
 - Match the resume's typography and professional visual identity without adding graphics or decorative elements.
+- **Cover-Letter Consistency Gate**: Reuse the latest accepted cover-letter preamble, header, date/addressee order, paragraph spacing, salutation, and signature treatment. Compare the rendered letter with at least one recent accepted cover letter before finalizing. Company-specific content may change; the visual system should not.
 - Use a warm, professional, human tone.
 - Mention company-specific research and personal connection when truthful.
 - Treat AI-assisted writing as a drafting and revision aid only. Manually edit every letter for specific details, natural voice, factual accuracy, and employer relevance; never submit generic generated prose.
@@ -244,9 +248,9 @@ After approved resume changes:
 
 1. Compile the LaTeX file with `pdflatex -interaction=nonstopmode -halt-on-error resume.tex`.
 2. Confirm the PDF page count with `pdfinfo resume.pdf`. It must be exactly 1 page.
-3. Confirm body text is at least 10 points, every page margin is at least 0.50 inches, bullet symbols are consistent, and the source contains no `tabular`, `tabular*`, images, icons, or text boxes.
+3. Confirm the resume uses the canonical 11-point application layout and standard geometry, bullet symbols are consistent, and the source contains no `tabular`, `tabular*`, images, icons, or text boxes.
 4. Extract text with `pdftotext resume.pdf -` and confirm contact details, headings, dates, roles, and bullets appear in the intended reading order.
-5. Visually inspect the rendered PDF for balanced white space, fast scanability, clipping, overlap, cramped sections, and excessive unused space. Do not use bottom-edge fullness as a pass criterion.
+5. Render the resume beside at least two recent accepted application resumes and inspect border consistency, name/contact placement, section styling, bullet appearance, role/date hierarchy, density, bottom-page usage, clipping, and overlap. A visibly inconsistent or substantially underfilled layout fails this check.
 6. Run the resume-vs-job-description alignment pass and record the Job Alignment & Evidence Score and its internal-estimate disclaimer in `tailoring-notes.md`.
 7. Confirm mandatory qualifications and the highest-priority truthful keywords appear in evidence-bearing context; record unsupported requirements as gaps rather than adding them.
 8. Run `python3 automation/validate_application_package.py application-packages/<Company>/<Role>` and address any failures.

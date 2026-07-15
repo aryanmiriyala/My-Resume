@@ -6,7 +6,7 @@ Use this guide when tailoring resumes for applicant tracking systems, recruiter 
 
 - Truth first: every keyword, tool, metric, and claim must be grounded in `experience-master.md`, `projects-master.md`, `skills-master.md`, or a verified repository/source.
 - One page for the standard software resume unless Aryan explicitly approves a longer specialized version.
-- One page does not mean visually full to the bottom edge. Keep body text at 10--12 points, use at least 0.50-inch margins on every side, and preserve balanced white space rather than forcing marginal content onto the page.
+- Use the repository's established one-page application layout: 11-point body text, narrow but fixed canonical borders, single-column text, standard headings, and solid bullets. Use the extra page area for stronger verified evidence; do not create one-off geometry or font changes for a particular application.
 - Tailor every resume to the job description instead of using a generic all-purpose resume.
 - Use a clean, consistent, ATS-readable layout with conventional section names: `Education`, `Experience`, `Projects`, and `Technical Skills`.
 - Use bullets, not paragraphs, for experience and project descriptions.
@@ -94,7 +94,7 @@ Recruiters often scan quickly, so the resume must make relevance visible immedia
 - Do not use aggressive negative spacing in Experience or Projects to satisfy the one-page rule. A full page should still have readable line spacing, clear section transitions, and enough breathing room for a recruiter scan.
 - Prefer fewer high-signal projects over a crowded project list when each project is reduced to a dense one-line block.
 - Do not compress Education into an awkward format unless Aryan approves it.
-- When a resume is over one page, first tighten wording, remove repetition, and prioritize the strongest role-aligned evidence. Adjust spacing only within the 0.50-inch margin and 10-point font floors.
+- When a resume is over one page, first tighten wording, remove repetition, and prioritize the strongest role-aligned evidence. Keep the canonical 11-point typography and geometry fixed so application resumes remain visually consistent.
 - Keep enough detail in Experience and Projects for a human reviewer to understand what was built, how it worked, and why it mattered.
 - Technical Skills should contain actual technologies and methods, not broad responsibilities. Put responsibilities such as troubleshooting, operational support, and data investigation into bullets where they have context.
 
