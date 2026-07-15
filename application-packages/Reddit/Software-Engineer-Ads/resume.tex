@@ -1,7 +1,6 @@
 \documentclass[letterpaper,11pt]{article}
 
 \usepackage[letterpaper,left=0.22in,right=0.22in,top=0.10in,bottom=0.08in]{geometry}
-\usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage[english]{babel}
@@ -14,22 +13,23 @@
 \linespread{0.92}
 \pdfgentounicode=1
 
-\titleformat{\section}{\large\scshape\raggedright}{}{0em}{}[\titlerule]
-\titlespacing*{\section}{0pt}{2pt}{3pt}
+\newcommand{\resumesection}[1]{%
+  \par\vspace{2pt}%
+  {\large\scshape #1}\par\vspace{1pt}%
+  \hrule height 0.4pt\vspace{2pt}%
+}
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-1pt}
   \textbf{#1} \hfill #2\\
-  \textit{#3} \hfill \textit{#4}\vspace{-1pt}
+  \textit{#3} \hfill \textit{#4}
 }
 
 \newcommand{\projectHeading}[2]{
-  \vspace{-1pt}
   \textbf{#1} \hfill #2
 }
 
 \newlist{tightitemize}{itemize}{1}
-\setlist[tightitemize]{leftmargin=0.20in,itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt,label=\textbullet}
+\setlist[tightitemize]{leftmargin=0.20in,itemsep=0pt,topsep=1pt,parsep=0pt,partopsep=0pt,label=\textbullet,after=\vspace{1pt}}
 
 \begin{document}
 
@@ -42,10 +42,10 @@
   \href{https://github.com/aryanmiriyala}{github.com/aryanmiriyala}
 \end{center}\vspace{-10pt}
 
-\section{Professional Summary}
-Backend and data software engineer building production Python pipelines, APIs, and distributed systems with Spark, Kafka, PostgreSQL, Docker, and C++. Experienced in end-to-end ownership, operational stability, real-time processing, validation, runtime telemetry, and performance visualization.
+\resumesection{Professional Summary}
+Backend and data software engineer building Python APIs and distributed systems with Spark, Kafka, PostgreSQL, and Docker. Owns reliable real-time processing, validation, telemetry, and performance analysis end to end.
 
-\section{Education}
+\resumesection{Education}
 \resumeSubheading
 {Bowling Green State University}{Bowling Green, OH}
 {M.S. in Computer Science, GPA: 4.00/4.00}{Aug. 2024 -- Aug. 2026}
@@ -54,7 +54,7 @@ Backend and data software engineer building production Python pipelines, APIs, a
 {Bowling Green State University}{Bowling Green, OH}
 {B.S. in Computer Science, GPA: 4.00/4.00}{Jan. 2021 -- Apr. 2024}
 
-\section{Experience}
+\resumesection{Experience}
 \resumeSubheading
 {Artificial Intelligence \& Computer Science Intern}{May 2026 -- Present}
 {SmartSolve Industries}{Bowling Green, OH}
@@ -90,7 +90,7 @@ Backend and data software engineer building production Python pipelines, APIs, a
   \item Reworked transplant logistics and Matchgrid workflows with reusable UI components and validation fixes, preventing duplicate-antigen crashes and improving clinical data handling.
 \end{tightitemize}
 
-\section{Projects}
+\resumesection{Projects}
 \projectHeading{HealthTrend - Healthcare Big Data Streaming Pipeline}{Python, Spark, Kafka, Docker}
 \begin{tightitemize}
   \item Built a Dockerized batch and streaming pipeline with Kafka, Hadoop HDFS, Spark/PySpark, and NiFi to validate patient records and process simulated real-time health events for downstream analytics.
@@ -103,7 +103,7 @@ Backend and data software engineer building production Python pipelines, APIs, a
   \item Benchmarked adaptive execution against serial and fixed-policy baselines across Mandelbrot, heat diffusion, and reduction workloads, exposing performance tradeoffs through reproducible Python plots.
 \end{tightitemize}
 
-\section{Technical Skills}
+\resumesection{Technical Skills}
 \textbf{Languages:} Python, C++, SQL, TypeScript/JavaScript, C, C\#, PHP, Lucee/CFML\\
 \textbf{Backend, APIs \& Databases:} REST APIs, Node.js, Express.js, Next.js, PostgreSQL, MySQL, Oracle, MongoDB, JWT, RBAC, SSO\\
 \textbf{Data \& Distributed Systems:} Spark, PySpark, Kafka, Hadoop HDFS, AWS Glue, NiFi, ETL, real-time streaming, data validation, JDBC\\

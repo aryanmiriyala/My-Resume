@@ -51,6 +51,8 @@ Connect Reddit's community orientation to Aryan's personal experience founding t
 
 Every experience and project bullet was checked for action verb, concrete system or change, named technology, verified scope or domain context, and impact/result.
 
+No fixed bullet count was applied. Each role and project keeps the number of distinct, relevant accomplishments supported by the source material; bullets were not added or removed merely to make entries visually symmetrical.
+
 - SmartSolve bullets name the onboarding system, Next.js/TypeScript/PostgreSQL stack, protected HR context, and standardized Docker environment.
 - AAIS Data Engineering bullets name Python/PySpark/Glue/S3/IAM, production insurance context, 20+ TB and 700+ member-company scale, 160+ migrations, maintainability, controlled access, and 24-hour latency.
 - AAIS Software Engineering bullets name Python/JSON, SQL databases, React/Node, JWT/RBAC, Lambda/S3, and verified 1,000+ table, 10+ insurance-line, and approximately 110-user scope.
@@ -102,7 +104,8 @@ Internal estimate only; not a predicted ATS score.
 - Resume and cover letter compiled successfully with `pdflatex -interaction=nonstopmode -halt-on-error` after the consistency revision.
 - `pdfinfo` confirmed that `resume.pdf` and `cover-letter.pdf` are each exactly one US Letter page.
 - `pdftotext` confirmed searchable text, standard heading order, conventional bullet extraction, and complete contact, experience, project, and skills content.
-- Poppler renders were visually compared with the Claude Corps and GlobalFoundries application resumes. The revised resume now uses the same 11-point Computer Modern family, narrow outer borders, centered name/contact block, small-caps ruled headings, solid bullets, role/date hierarchy, and full-page density.
+- Poppler renders were visually compared with the Claude Corps and GlobalFoundries application resumes. The revised resume now uses the same 11-point Computer Modern family, narrow outer borders, centered name/contact block, small-caps headings, solid bullets, role/date hierarchy, and full-page density.
+- Section headings now use one explicit reusable macro with identical 0.4-point full-width rules and fixed before/after spacing. Experience and project lists use one shared spacing definition, eliminating the uneven divider placement and role-block gaps produced by the previous automatic heading package.
 - The revised resume adds verified QMS scoping, 160+ table/25-domain profiling, Kafka real-time processing paths, and adaptive-runtime benchmarking evidence instead of leaving unused page space.
 - The latest render has no clipping, overlap, inconsistent bullets, or blank bottom band. The cover letter uses the canonical 11-point typography, 0.80-inch horizontal borders, and two evidence-bearing body paragraphs.
 - Generated LaTeX and PNG intermediates were removed after visual review; only submission sources and final PDFs remain.
