@@ -6,7 +6,7 @@ Use this guide when tailoring resumes for applicant tracking systems, recruiter 
 
 - Truth first: every keyword, tool, metric, and claim must be grounded in `experience-master.md`, `projects-master.md`, `skills-master.md`, or a verified repository/source.
 - One page for the standard software resume unless Aryan explicitly approves a longer specialized version.
-- Use the repository's established one-page application layout: 11-point body text, narrow but fixed canonical borders, single-column text, standard headings, and solid bullets. Use the extra page area for stronger verified evidence; do not create one-off geometry or font changes for a particular application.
+- Use the repository's established one-page application layout: 11-point body text, narrow but fixed canonical borders, single-column text, standard headings, raised 10-point solid bullet markers, and a visible 2-point gap between section headings and divider rules. Use the extra page area for stronger verified evidence; do not create one-off geometry or font changes for a particular application.
 - Tailor every resume to the job description instead of using a generic all-purpose resume.
 - Use a clean, consistent, ATS-readable layout with conventional section names: `Education`, `Experience`, `Projects`, and `Technical Skills`.
 - Use bullets, not paragraphs, for experience and project descriptions.
