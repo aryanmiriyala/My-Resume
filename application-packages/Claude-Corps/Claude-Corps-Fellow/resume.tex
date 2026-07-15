@@ -1,107 +1,142 @@
-\documentclass[letterpaper,10pt]{article}
+\documentclass[letterpaper,11pt]{article}
 
-\usepackage[letterpaper, left=0.52in, right=0.52in, top=0.32in, bottom=0.3in]{geometry}
+\usepackage{latexsym}
+\usepackage[letterpaper, left=0.20in, right=0.20in, top=0.08in, bottom=0.08in]{geometry}
 \usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
+\usepackage{tabularx}
 \input{glyphtounicode}
 
 \pagestyle{fancy}
 \fancyhf{}
+\fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
+
 \urlstyle{same}
+\raggedbottom
 \raggedright
-\setlength{\parindent}{0pt}
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-5pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-6pt}]
+
 \pdfgentounicode=1
 
-\titleformat{\section}{\large\scshape\raggedright}{}{0em}{}[\titlerule]
-\titlespacing*{\section}{0pt}{5pt}{2pt}
-
-\newcommand{\resumeSubheading}[4]{
-  \vspace{1pt}
-  \textbf{#1} \hfill #2\\
-  \textit{#3} \hfill \textit{#4}\par
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-1pt}}
+  }
 }
 
-\newlist{tightitemize}{itemize}{1}
-\setlist[tightitemize]{leftmargin=0.18in, itemsep=0.5pt, topsep=1pt, parsep=0pt, label=\textbullet}
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-3pt}
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.16in, itemsep=0pt, topsep=1pt, parsep=0pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
 
 \begin{document}
 
 \begin{center}
-  {\LARGE \textbf{Aryan Miriyala}}\\
-  \vspace{1pt}
-  +1 419-315-0444 $|$
-  \href{mailto:aryanmiriyala@gmail.com}{aryanmiriyala@gmail.com} $|$
-  \href{https://www.linkedin.com/in/aryan-miriyala-7788a21b6/}{linkedin.com/in/aryan-miriyala} $|$
-  \href{https://github.com/aryanmiriyala}{github.com/aryanmiriyala}
+    \textbf{\LARGE \scshape Aryan Miriyala} \\ \vspace{-2pt}
+    \small +1 419-315-0444 $|$
+    \href{mailto:aryanmiriyala@gmail.com}{\underline{aryanmiriyala@gmail.com}} $|$
+    \href{https://www.linkedin.com/in/aryan-miriyala-7788a21b6/}{\underline{linkedin.com/in/aryan-miriyala}} $|$
+    \href{https://github.com/aryanmiriyala}{\underline{\textbf{github.com/aryanmiriyala}}}
 \end{center}
+\vspace{-18pt}
 
 \section{Professional Summary}
-Applied AI and software builder experienced in shipping internal tools, automations, LLM evaluation workflows, and health- and education-focused systems. Combines Claude-assisted development and full-stack engineering with technical training, stakeholder-aware security, source-grounded AI judgment, and clear documentation for mixed audiences.
+\small{Applied AI and software engineer experienced in scoping and shipping \textbf{internal tools}, automations, \textbf{LLM evaluation} workflows, and health- and education-focused systems. Combines \textbf{Claude Code}, full-stack and data engineering, technical training, source-grounded AI judgment, security, and documentation for mixed audiences.}
+\vspace{-5pt}
 
 \section{Education}
-\resumeSubheading
-{Bowling Green State University}{Bowling Green, OH}
-{M.S. in Computer Science, \textbf{GPA: 4.00/4.00}}{Aug. 2024 -- Aug. 2026}
-\resumeSubheading
-{Bowling Green State University}{Bowling Green, OH}
-{B.S. in Computer Science, \textbf{GPA: 4.00/4.00}}{Jan. 2021 -- Apr. 2024}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Bowling Green State University}{Bowling Green, OH}
+    {Master of Science in Computer Science, \textbf{GPA: 4.00/4.00}}{Aug. 2024 -- Aug. 2026}
+  \resumeSubheading
+    {Bowling Green State University}{Bowling Green, OH}
+    {Bachelor of Science in Computer Science, \textbf{GPA: 4.00/4.00}}{Jan. 2021 -- Apr. 2024}
+\resumeSubHeadingListEnd
 
 \section{Experience}
-\resumeSubheading
-{Artificial Intelligence \& Computer Science Intern}{May 2026 -- Present}
-{SmartSolve Industries}{Bowling Green, OH}
-\begin{tightitemize}
-  \item Architected a full-stack onboarding tracker with \textbf{Next.js}, \textbf{TypeScript}, \textbf{PostgreSQL}, Drizzle ORM, SSO, and auth middleware to centralize new-hire workflows and protect sensitive employee data.
-  \item Built a cross-platform \textbf{Docker} devcontainer for WSL2 and Colima, creating a reproducible environment that isolated \textbf{Claude Code} and Codex workflows around proprietary source code.
-  \item Scoped an AI-enabled QMS dependency register by modeling relationships among quality documents, clarifying an ambiguous internal knowledge-management need before implementation.
-\end{tightitemize}
+  \resumeSubHeadingListStart
 
-\resumeSubheading
-{Graduate Research Assistant I}{Aug. 2024 -- May 2026}
-{Bowling Green State University}{Bowling Green, OH}
-\begin{tightitemize}
-  \item Developed hands-on cybersecurity labs, workshops, and instructor materials using CyberGuardian, NICE/CAE-CD, Kali Linux, and security tooling, translating complex topics into usable education workflows.
-  \item Led \textbf{10 undergraduate students} in delivering a middle-school CyberCamp with phishing demos, password exercises, cryptography labs, and cyber escape-room activities, making security concepts accessible to non-technical learners.
-\end{tightitemize}
+    \resumeSubheading
+      {Artificial Intelligence \& Computer Science Intern}{May 2026 -- Present}
+      {SmartSolve Industries}{Bowling Green, OH}
+      \resumeItemListStart
+        \resumeItem{Architected a full-stack onboarding tracker with \textbf{Next.js}, \textbf{TypeScript}, \textbf{PostgreSQL}, Drizzle ORM, \textbf{SSO}, and auth middleware to centralize new-hire workflows and protect sensitive employee data.}
+        \resumeItem{Developed a sandboxed \textbf{Claude Code} workflow with \textbf{Docker} devcontainers, tmux, and git worktrees to isolate parallel AI agents, compare approaches, and validate generated code before merging.}
+        \resumeItem{Scoped an AI-enabled \textbf{QMS dependency register} by modeling relationships among quality documents and using Claude Code/Codex for planning, debugging, and review, clarifying an ambiguous internal need before implementation.}
+      \resumeItemListEnd
 
-\resumeSubheading
-{Data Engineering Intern}{May 2025 -- Aug. 2025}
-{American Association of Insurance Services}{Lisle, IL}
-\begin{tightitemize}
-  \item Automated a fully manual SQL billing workflow with \textbf{Python}, \textbf{PySpark}, and \textbf{AWS Glue}, processing \textbf{20+ TB} of production insurance data to calculate charges for \textbf{700+} member companies.
-  \item Built reverse-ETL and validation workflows with \textbf{S3} and custom \textbf{AWS IAM} roles, enabling controlled self-service data access while maintaining 24-hour latency across new MDM domains.
-\end{tightitemize}
+    \resumeSubheading
+      {Graduate Research Assistant I}{Aug. 2024 -- May 2026}
+      {Bowling Green State University}{Bowling Green, OH}
+      \resumeItemListStart
+        \resumeItem{Developed hands-on cybersecurity labs, workshops, and instructor materials using CyberGuardian, the NICE Framework/CAE-CD, Kali Linux, and security tooling, translating complex topics into usable education workflows.}
+        \resumeItem{Led \textbf{10 undergraduate students} in delivering a middle-school CyberCamp with phishing demos, password exercises, cryptography labs, and cyber escape-room activities for non-technical learners.}
+      \resumeItemListEnd
 
-\resumeSubheading
-{Software Engineering Intern}{May 2023 -- May 2024}
-{American Association of Insurance Services}{Lisle, IL}
-\begin{tightitemize}
-  \item Engineered Python/JSON data-model automation that generated \textbf{1,000+} production SQL tables across MySQL, Oracle, PostgreSQL, and \textbf{10+} insurance lines, standardizing repeatable schema creation.
-  \item Implemented \textbf{React}/Node.js RBAC and JWT patterns for roughly \textbf{110 users}, replacing broad employee-wide visibility with role-specific access to internal insurance data.
-\end{tightitemize}
+    \resumeSubheading
+      {Data Engineering Intern}{May 2025 -- Aug. 2025}
+      {American Association of Insurance Services}{Lisle, IL}
+      \resumeItemListStart
+        \resumeItem{Automated a manual \textbf{MySQL}/SQL billing workflow with \textbf{Python}, \textbf{PySpark}, and \textbf{AWS Glue}, processing \textbf{20+ TB} of production insurance data for \textbf{700+} member companies.}
+        \resumeItem{Profiled \textbf{160+} MySQL/Oracle/Impala tables with Python, Pandas, SQL, and JDBC to map source-system similarities and define \textbf{25} MDM domains for cloud ETL migration.}
+        \resumeItem{Built reverse-ETL and validation workflows with \textbf{S3} and custom \textbf{AWS IAM} roles, enabling controlled self-service data access while maintaining 24-hour latency across new MDM domains.}
+      \resumeItemListEnd
 
-\resumeSubheading
-{Software Engineering Intern}{May 2022 -- Aug. 2022}
-{Alliance for Paired Kidney Donation}{Toledo, OH}
-\begin{tightitemize}
-  \item Improved an AWS-hosted Lucee/CFML kidney-donation operations platform through anti-CSRF protection, audit logging, access-control flows, and transplant-logistics fixes, strengthening secure and reliable clinical workflows.
-\end{tightitemize}
+    \resumeSubheading
+      {Software Engineering Intern}{May 2023 -- May 2024}
+      {American Association of Insurance Services}{Lisle, IL}
+      \resumeItemListStart
+        \resumeItem{Engineered Python/JSON data-model automation generating \textbf{1,000+} production SQL tables across MySQL, Oracle, PostgreSQL, and \textbf{10+} insurance lines, standardizing repeatable schema creation.}
+        \resumeItem{Implemented \textbf{React}/Node.js \textbf{RBAC} and \textbf{JWT} patterns for roughly \textbf{110 users}, replacing broad employee-wide visibility with role-specific access to internal insurance data.}
+        \resumeItem{Automated database validation with \textbf{AWS Lambda} triggers that tokenized PII using hashlib/boto3 and ingested structured JSON into \textbf{S3} for downstream standardization workflows.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Software Engineering Intern}{May 2022 -- Aug. 2022}
+      {Alliance for Paired Kidney Donation}{Toledo, OH}
+      \resumeItemListStart
+        \resumeItem{Secured and stabilized an AWS-hosted \textbf{Lucee}/CFML kidney-donation platform through anti-CSRF protection, audit logging, access routing, logistics defaults, and data-import fixes, strengthening clinical workflow security and reliability.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
 
 \section{Projects}
-\begin{tightitemize}
-  \item \textbf{Diff-Grounded PR Description Generation} $|$ \emph{Python, OpenAI API, GitHub API, LLM evaluation}: Built an ICSME-published pipeline that generated PR descriptions from repository evidence and automatically evaluated them against code changes, outperforming two baselines in correctness, coverage, and clarity.
-  \item \textbf{Travel Health Advisor} $|$ \emph{React, Express, MongoDB, Mistral AI}: Built an end-to-end health AI prototype combining country-level disease data, a health-profile-grounded chatbot, risk and vaccine guidance, and downloadable vaccination checklists.
-\end{tightitemize}
+\begin{itemize}[leftmargin=0.15in, label={}, itemsep=1pt, topsep=1pt, parsep=0pt]
+  \item\small{\textbf{Diff-Grounded PR Description Generation} $|$ \emph{Python, OpenAI API, GitHub API, LLM Evaluation}: Built an ICSME-published pipeline that generated descriptions from repository evidence and outperformed two baselines in correctness, coverage, and clarity.}
+  \item\small{\textbf{Travel Health Advisor} $|$ \emph{React, Express, MongoDB, Mistral AI}: Built an end-to-end health AI tool combining disease data, a health-profile-grounded chatbot, risk/vaccine guidance, and downloadable vaccination checklists.}
+\end{itemize}\vspace{-7pt}
 
 \section{Technical Skills}
-\textbf{AI \& Evaluation:} Claude Code, Codex, OpenAI API, Mistral AI, LangChain, RAG, prompt engineering, source-grounded generation, automated LLM evaluation\\
-\textbf{Software \& Integrations:} Python, TypeScript/JavaScript, React, Next.js, Node.js, Express, REST APIs, PostgreSQL, MySQL, MongoDB, Oracle\\
-\textbf{Cloud, Data \& Delivery:} AWS Glue, Lambda, S3, IAM, PySpark, SQL, Docker, Git, Linux\\
-\textbf{Security:} SSO, JWT, RBAC, anti-CSRF, audit logging, auth middleware, PII tokenization
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{AI \& Evaluation}{: Claude Code, Codex, OpenAI API, Mistral AI, LangChain, RAG, prompt engineering, source-grounded generation, automated LLM evaluation} \\
+     \textbf{Software \& Integrations}{: Python, TypeScript/JavaScript, React, Next.js, Node.js, Express, REST APIs, PostgreSQL, MySQL, MongoDB, Oracle} \\
+     \textbf{Cloud, Data \& Delivery}{: AWS Glue, Lambda, S3, IAM, PySpark, SQL, Docker, devcontainers, tmux, git worktrees, Git, Linux} \\
+     \textbf{Security \& Enablement}{: SSO, JWT, RBAC, anti-CSRF, audit logging, auth middleware, PII tokenization, technical documentation, training demos}
+    }}
+ \end{itemize}
 
 \end{document}

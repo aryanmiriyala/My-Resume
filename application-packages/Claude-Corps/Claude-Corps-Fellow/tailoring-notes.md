@@ -81,9 +81,11 @@ Connect Claude Corps' build-teach-handoff model to three verified themes: softwa
 - BGSU training: action (Developed), what (labs/workshops/materials), how (CyberGuardian/NICE/CAE-CD/Kali/security tooling), scope (student and instructor workflows), result (translated complex topics into usable instruction).
 - BGSU CyberCamp: action (Led), what (10-person delivery team and camp), how (demos/exercises/labs), scope (middle-school learners), result (made security concepts accessible).
 - AAIS data: action (Automated), what (manual billing workflow), how (Python/PySpark/AWS Glue), scope (20+ TB and 700+ companies), result (repeatable production calculation).
+- AAIS profiling: action (Profiled), what (cross-system source tables), how (Python/Pandas/SQL/JDBC), scope (160+ tables and 25 MDM domains), result (defined the cloud ETL migration taxonomy).
 - AAIS validation: action (Built), what (reverse-ETL and validation workflows), how (S3/IAM), scope (MDM domains), result (controlled self-service access and 24-hour latency).
 - AAIS software: action (Engineered), what (schema automation), how (Python/JSON/SQL/databases), scope (1,000+ tables and 10+ insurance lines), result (standardized repeatable creation).
 - AAIS access: action (Implemented), what (RBAC/JWT patterns), how (React/Node.js), scope (roughly 110 users), result (role-specific access).
+- AAIS Lambda: action (Automated), what (database validation and downstream ingestion), how (AWS Lambda/hashlib/boto3/S3), scope (PII-bearing structured records), result (tokenized downstream standardization flow).
 - APKD: action (Improved), what (kidney-donation platform), how (Lucee/CFML/AWS/security and workflow fixes), scope (transplant operations), result (stronger secure and reliable workflows).
 - Diff-Grounded project: action (Built), what (LLM pipeline/evaluation), how (Python/OpenAI/GitHub APIs and repository evidence), scope (published research and two baselines), result (better correctness, coverage, and clarity).
 - Travel Health project: action (Built), what (end-to-end health AI prototype), how (React/Express/MongoDB/Mistral AI), scope (country disease and user health data), result (risk/vaccine guidance and downloadable checklists).
@@ -121,7 +123,9 @@ Recommended improvements:
 - Resume compiled successfully from `resume.tex` with `pdflatex`.
 - `pdfinfo` confirmed the resume is exactly one US Letter page.
 - `pdftotext -layout` confirmed standard heading order, both education entries, all internship roles, and job-critical Claude, evaluation, teaching, health, automation, and security terms are extractable in readable order.
-- Rendered resume PNG was visually inspected at 144 DPI. It fills the page without a visible blank bottom band, clipping, overlap, broken glyphs, or unreadable density.
+- Resume was migrated to the established recent-application format: 11pt document text, 0.20-inch side margins, 0.08-inch top/bottom margins, matching section rules, matching tiny centered experience bullets, and unbulleted project entries.
+- Reclaimed width was used for additional verified role-aligned evidence: parallel Claude Code workflows, QMS scoping, NICE/CAE-CD enablement, 160+ table/25-domain profiling, Lambda/PII automation, and nonprofit healthcare reliability.
+- Rendered resume PNG was visually compared with the Microsoft and Libbey application resumes at 144 DPI. It fills the page without a visible blank bottom band, clipping, overlap, broken glyphs, or unreadable density.
 - Cover letter compiled successfully from `cover-letter.tex` and `pdfinfo` confirmed it is exactly one US Letter page.
 - Rendered cover-letter PNG was visually inspected at 144 DPI with consistent margins, typography, paragraph spacing, and no clipping or overlap.
 - `python3 automation/validate_application_package.py application-packages/Claude-Corps/Claude-Corps-Fellow` returned `PASS` after cleanup.
