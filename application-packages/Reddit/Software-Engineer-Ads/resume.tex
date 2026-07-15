@@ -1,6 +1,6 @@
-\documentclass[letterpaper,10pt]{article}
+\documentclass[letterpaper,11pt]{article}
 
-\usepackage[letterpaper,left=0.55in,right=0.55in,top=0.55in,bottom=0.55in]{geometry}
+\usepackage[letterpaper,left=0.22in,right=0.22in,top=0.10in,bottom=0.08in]{geometry}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
@@ -11,38 +11,39 @@
 \urlstyle{same}
 \raggedright
 \setlength{\parindent}{0pt}
+\linespread{0.92}
 \pdfgentounicode=1
 
 \titleformat{\section}{\large\scshape\raggedright}{}{0em}{}[\titlerule]
-\titlespacing*{\section}{0pt}{4pt}{2pt}
+\titlespacing*{\section}{0pt}{2pt}{3pt}
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{0pt}
+  \vspace{-1pt}
   \textbf{#1} \hfill #2\\
-  \textit{#3} \hfill \textit{#4}
+  \textit{#3} \hfill \textit{#4}\vspace{-1pt}
 }
 
 \newcommand{\projectHeading}[2]{
-  \vspace{0pt}
+  \vspace{-1pt}
   \textbf{#1} \hfill #2
 }
 
 \newlist{tightitemize}{itemize}{1}
-\setlist[tightitemize]{leftmargin=0.18in,itemsep=1.5pt,topsep=2pt,parsep=0pt,label=\textbullet}
+\setlist[tightitemize]{leftmargin=0.20in,itemsep=0pt,topsep=0pt,parsep=0pt,partopsep=0pt,label=\textbullet}
 
 \begin{document}
 
 \begin{center}
-  {\LARGE \textbf{Aryan Miriyala}}\\
-  \vspace{2pt}
+  {\LARGE \textbf{Aryan Miriyala}}\\[-1pt]
+  \small
   +1 419-315-0444 $|$
   \href{mailto:aryanmiriyala@gmail.com}{aryanmiriyala@gmail.com} $|$
   \href{https://www.linkedin.com/in/aryan-miriyala-7788a21b6/}{linkedin.com/in/aryan-miriyala} $|$
   \href{https://github.com/aryanmiriyala}{github.com/aryanmiriyala}
-\end{center}
+\end{center}\vspace{-10pt}
 
 \section{Professional Summary}
-Backend and data software engineer experienced in Python, C++, Spark, Kafka, PostgreSQL, Docker, APIs, and distributed data workflows. Built production systems across insurance, quality management, and nonprofit healthcare, with a focus on ownership, reliability, validation, and measurable operational outcomes.
+Backend and data software engineer building production Python pipelines, APIs, and distributed systems with Spark, Kafka, PostgreSQL, Docker, and C++. Experienced in end-to-end ownership, operational stability, real-time processing, validation, runtime telemetry, and performance visualization.
 
 \section{Education}
 \resumeSubheading
@@ -60,6 +61,7 @@ Backend and data software engineer experienced in Python, C++, Spark, Kafka, Pos
 \begin{tightitemize}
   \item Architected a full-stack onboarding tracker with Next.js, TypeScript, PostgreSQL, Drizzle ORM, SSO, and auth middleware, centralizing HR workflows while protecting sensitive new-hire data.
   \item Built a Docker devcontainer for WSL2 and Colima to standardize cross-platform setup and isolate AI-assisted development around proprietary quality-management source code.
+  \item Scoped an AI-enabled QMS dependency register by modeling relationships among quality documents, translating an ambiguous internal need into an extensible implementation plan.
 \end{tightitemize}
 
 \resumeSubheading
@@ -67,8 +69,8 @@ Backend and data software engineer experienced in Python, C++, Spark, Kafka, Pos
 {American Association of Insurance Services}{Lisle, IL}
 \begin{tightitemize}
   \item Automated a manual billing workflow with Python, PySpark, and AWS Glue, processing 20+ TB of production insurance data to calculate charges for 700+ member companies.
-  \item Replaced 160+ legacy Pentaho jobs with partitioned AWS Glue and S3 pipelines for Semarchy MDM, standardizing cloud data movement and improving maintainability.
-  \item Built reverse-ETL and validation workflows with Python, SQL, S3, and IAM to enable controlled self-service access while maintaining 24-hour data latency.
+  \item Profiled 160+ MySQL, Oracle, and Impala tables with Python, Pandas, SQL, and JDBC to map source-system relationships and define a unified taxonomy across 25 MDM domains.
+  \item Replaced 160+ legacy Pentaho jobs with partitioned AWS Glue/S3 pipelines and validation workflows for Semarchy MDM, improving maintainability and controlled access while maintaining 24-hour data latency.
 \end{tightitemize}
 
 \resumeSubheading
@@ -92,18 +94,19 @@ Backend and data software engineer experienced in Python, C++, Spark, Kafka, Pos
 \projectHeading{HealthTrend - Healthcare Big Data Streaming Pipeline}{Python, Spark, Kafka, Docker}
 \begin{tightitemize}
   \item Built a Dockerized batch and streaming pipeline with Kafka, Hadoop HDFS, Spark/PySpark, and NiFi to validate patient records and process simulated real-time health events for downstream analytics.
+  \item Routed structured patient files through HDFS and JSON health events through Kafka, creating separate batch and real-time processing paths for heart rate, oxygen, and temperature data.
 \end{tightitemize}
 
 \projectHeading{Self-Adaptive Parallelism via OpenMP Runtime Coordination}{C++, OpenMP, Python}
 \begin{tightitemize}
   \item Engineered a telemetry-driven C++/OpenMP runtime with a UCB controller to tune scheduling, chunk size, and thread count across three workloads, generating runtime, speedup, efficiency, and scheduler-decision visualizations.
+  \item Benchmarked adaptive execution against serial and fixed-policy baselines across Mandelbrot, heat diffusion, and reduction workloads, exposing performance tradeoffs through reproducible Python plots.
 \end{tightitemize}
 
 \section{Technical Skills}
-\textbf{Languages:} Python, C++, SQL, TypeScript, JavaScript, C, C\#, PHP, Lucee/CFML\\
-\textbf{Backend \& APIs:} Node.js, Express.js, REST APIs, Next.js, JWT, RBAC, SSO, Drizzle ORM, boto3\\
-\textbf{Data \& Distributed Systems:} Spark, PySpark, Kafka, Hadoop HDFS, AWS Glue, NiFi, ETL, data validation, JDBC\\
-\textbf{Databases:} PostgreSQL, MySQL, Oracle, MongoDB, Semarchy MDM\\
-\textbf{Cloud \& DevOps:} Docker, Docker Compose, AWS S3, AWS Lambda, AWS IAM, Git, Linux, Make
+\textbf{Languages:} Python, C++, SQL, TypeScript/JavaScript, C, C\#, PHP, Lucee/CFML\\
+\textbf{Backend, APIs \& Databases:} REST APIs, Node.js, Express.js, Next.js, PostgreSQL, MySQL, Oracle, MongoDB, JWT, RBAC, SSO\\
+\textbf{Data \& Distributed Systems:} Spark, PySpark, Kafka, Hadoop HDFS, AWS Glue, NiFi, ETL, real-time streaming, data validation, JDBC\\
+\textbf{Cloud, Reliability \& DevOps:} Docker, Docker Compose, AWS S3, Lambda, IAM, Git, Linux, Make, runtime telemetry, performance benchmarking, data visualization
 
 \end{document}

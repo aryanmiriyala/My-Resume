@@ -60,26 +60,27 @@ Every experience and project bullet was checked for action verb, concrete system
 
 ## Alignment Pass
 
-Job Alignment & Evidence Score: 79/100
+Job Alignment & Evidence Score: 90/100
 
 Internal estimate only; not a predicted ATS score.
 
 ### Score Breakdown
 
-- Keyword coverage: 27/40
-- Experience relevance: 19/25
-- Impact and evidence: 14/15
+- Keyword coverage: 35/40
+- Experience relevance: 22/25
+- Impact and evidence: 15/15
 - Formatting and ATS parsing: 10/10
-- Risk and gap handling: 9/10
+- Risk and gap handling: 8/10
 
 ### Strong matches
 
-- Exact team-stack matches: Python, C++, Spark, Kafka, PostgreSQL, and Docker.
+- Exact team-stack matches: Python, C++, Spark, Kafka, PostgreSQL, and Docker. The posting presents Go/Python/Scala as team languages and requires experience in one listed general-purpose language, so unsupported alternatives are not treated as separate mandatory failures.
 - Data-intensive backend evidence: production Python/PySpark workflows over 20+ TB for 700+ organizations and automation generating 1,000+ SQL tables.
-- Operational stability evidence: data validation, secure ingestion, audit logging, crash prevention, standardized development environments, and maintainability improvements.
-- Real-time/distributed adjacent evidence: Kafka/Spark/HDFS health-event pipeline, Dockerized infrastructure, OpenMP runtime telemetry, and adaptive scheduling.
-- Ownership and execution: independently built working systems across internships and end-to-end projects with verified technical and organizational scope.
-- ATS-readable format: single column, standard headings, text-only contact details, conventional bullets, searchable PDF text, and margins of at least 0.5 inch.
+- Operational stability evidence: data validation, secure ingestion, audit logging, crash prevention, standardized development environments, maintainability improvements, runtime telemetry, benchmarking, and data visualization.
+- Real-time/distributed evidence: Kafka/Spark/HDFS batch and streaming paths, separate JSON event processing, Dockerized infrastructure, OpenMP runtime telemetry, and adaptive scheduling.
+- Extensible-component and scoping evidence: the SmartSolve QMS dependency-register work translated an ambiguous internal need and document relationships into an implementation plan.
+- Ownership and execution: independently built working systems across internships and end-to-end projects with verified technical and organizational scope, including 160+ source tables, 25 MDM domains, and 160+ legacy pipeline replacements.
+- ATS-readable format: single column, standard headings, text-only contact details, conventional bullets, searchable PDF text, and the repository's visually verified canonical borders.
 
 ### Gaps / intentionally omitted unsupported keywords
 
@@ -87,6 +88,7 @@ Internal estimate only; not a predicted ATS score.
 - Direct Ads-domain and advertiser-customer experience is not supported.
 - Go, Scala, Thrift, Baseplate, BigQuery, Redis, Druid, Kubernetes, and Argo are intentionally omitted because direct experience is not verified.
 - Production microservices and formal on-call ownership are not claimed. API, backend automation, distributed data, reliability, and infrastructure-adjacent work are stated at their verified scope.
+- The 90/100 score reflects document alignment and evidence coverage, not eligibility certainty. The explicit tenure requirement remains capable of causing a recruiter or knockout-screen rejection.
 
 ### Recommended improvements
 
@@ -97,9 +99,11 @@ Internal estimate only; not a predicted ATS score.
 
 ## Verification
 
-- Resume and cover letter compiled successfully with `pdflatex -interaction=nonstopmode -halt-on-error`.
+- Resume and cover letter compiled successfully with `pdflatex -interaction=nonstopmode -halt-on-error` after the consistency revision.
 - `pdfinfo` confirmed that `resume.pdf` and `cover-letter.pdf` are each exactly one US Letter page.
 - `pdftotext` confirmed searchable text, standard heading order, conventional bullet extraction, and complete contact, experience, project, and skills content.
-- Poppler PNG renders were visually inspected at 144 DPI. The resume uses balanced 0.55-inch borders, fills the page without clipping or a blank bottom band, and keeps solid bullet symbols consistent. The cover letter is clean, legible, and uses two body paragraphs.
+- Poppler renders were visually compared with the Claude Corps and GlobalFoundries application resumes. The revised resume now uses the same 11-point Computer Modern family, narrow outer borders, centered name/contact block, small-caps ruled headings, solid bullets, role/date hierarchy, and full-page density.
+- The revised resume adds verified QMS scoping, 160+ table/25-domain profiling, Kafka real-time processing paths, and adaptive-runtime benchmarking evidence instead of leaving unused page space.
+- The latest render has no clipping, overlap, inconsistent bullets, or blank bottom band. The cover letter uses the canonical 11-point typography, 0.80-inch horizontal borders, and two evidence-bearing body paragraphs.
 - Generated LaTeX and PNG intermediates were removed after visual review; only submission sources and final PDFs remain.
 - `automation/validate_application_package.py` passed the completed package.
