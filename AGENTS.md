@@ -122,10 +122,16 @@ Do not commit binary/generated artifacts unless Aryan explicitly asks. This incl
 - Use ATS-friendly, outcome-oriented bullets following the **STAR/CAR** and **Google XYZ** concepts: **Action Verb + What was built/changed + Method/Technology when relevant + Scope/Context + Impact/Result**.
 - The bullet formula is an evidence gate, not a demand that every bullet contain a technology or numerical metric. Every experience and project bullet must clearly show the contribution, context, and result:
   - **Action Verb and Tense**: Begin with a strong active verb (e.g., *Architected, Engineer, Optimized, Migrated, Automate, Delivered*). Use present tense for ongoing responsibilities or results and past tense for completed work. Avoid passive phrases like "Responsible for," "Helped with," or "Worked on."
+  - **Individual Contribution**: Make Aryan's own contribution clear. Team context is useful, but the bullet cannot hide behind group ownership. If using verbs like *Collaborated, Contributed, Supported, Partnered,* or *Assisted*, specify the concrete piece Aryan personally built, analyzed, fixed, led, designed, tested, automated, documented, or delivered.
   - **What**: Describe the specific system, feature, database, or pipeline that was built, automated, secured, or modernized.
   - **Method/Technology**: Explain how the work was completed. Name the exact language, framework, cloud service, architectural pattern, operating method, or collaboration approach when it adds truthful evidence. Do not force a technology into teaching, stakeholder, leadership, or operational bullets where it is not relevant.
   - **Scope/Context**: Show the scale, user base, size, or domain context (e.g., *20+ TB of insurance data, 700+ member companies, 110 internal users*).
   - **Impact/Result**: State the quantifiable business or technical outcome (e.g., *reducing cloud spend by 30%, decreasing latency, maintaining 24-hour data latency*). If a verified metric is unavailable, use a truthful qualitative result (e.g., *improving data reliability, strengthening form security, standardizing data flows, or reducing manual errors*).
+  - **Metric Context**: When using a metric, include context when possible: baseline, before/after comparison, user count, data size, time window, operational constraint, or system scale. A smaller verified metric with context is stronger than a large number that cannot be explained.
+- Show broad skills through evidence instead of labels. Do not merely claim teamwork, communication, problem-solving, adaptability, ownership, leadership, or learning ability. Demonstrate them through the problem, stakeholders, constraints, decisions, personal contribution, and result.
+- Project bullets must explain the project's purpose, user/problem or technical challenge, implementation method, and working result. Do not use projects as tech-stack dumps. A project bullet that only lists frameworks, languages, or APIs without explaining what the system does or why it matters must be rewritten.
+- Every final bullet must be interview-defensible. Aryan should be able to explain the technical decisions, tradeoffs, tools used, personal contribution, result, and what he would improve if asked in an interview.
+- AI-assisted bullets must be manually edited until they are specific, grounded, and defensible. Reject bullets that are grammatically polished but vague, inflated, buzzword-heavy, emotionally generic, or not traceable to `profile/`, `master-documents/`, project repositories, or prior verified application notes.
 - **Strict Bullet Audit**: Before compilation, review every bullet individually. A bullet that lacks a clear action/contribution, defensible context, and result must be rewritten, combined with a related bullet, or removed. Do not preserve a weak bullet merely to keep bullet counts even across roles.
 - **Strong vs. Weak Bullets Example**:
   | Weak (Task-Oriented) | Strong (Impact & Technology-Oriented) |
@@ -233,6 +239,8 @@ When changing the governing resume or cover-letter rules:
 5. Recheck the standards at least annually or when major ATS/employer guidance changes.
 
 The July 2026 standards audit used guidance from Greenhouse, NACE, SHRM, LinkedIn Talent Solutions, MIT CAPD, Harvard Career Services, Yale Office of Career Strategy, UC Berkeley Career Engagement, the University of Michigan Career Center, and Purdue OWL.
+
+The July 16, 2026 bullet-quality audit used Harvard Career Services, Yale Office of Career Strategy, and NACE guidance to strengthen the experience/project bullet rules around individual contribution, evidence-backed skills, project purpose and result, metric context, interview defensibility, and manual cleanup of AI-assisted bullet drafts.
 
 ## Job Search & Discovery Strategies (Getting Ahead of the Line)
 
