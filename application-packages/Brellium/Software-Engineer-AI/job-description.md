@@ -1,70 +1,79 @@
-# Brellium - Software Engineer - AI
+# Brellium - Software Engineer
 
-Company: Brellium  
-Role: Software Engineer - AI  
-Compensation: $140,000 - $200,000  
-Work model: Hybrid work schedule, 4 days onsite, 3 if located more than 1 hour away  
-Company site: https://www.brellium.com/
+Company: Brellium
+
+Role: Software Engineer
+
+Location: New York City
+
+Employment type: Full time
+
+Location type: Hybrid
+
+Department: Engineering
+
+Compensation: $140,000 - $200,000 plus equity
+
+Overview: https://jobs.ashbyhq.com/brellium/8209ac68-d966-4d5f-a925-3b277f8583c3
+
+Application: https://jobs.ashbyhq.com/brellium/8209ac68-d966-4d5f-a925-3b277f8583c3/application
 
 ## About Brellium
 
-Brellium's mission is to improve the standard of care across the US healthcare system. Brellium has built AI-powered technology that helps healthcare providers deliver safer, higher-quality care, starting with a real-time medical review platform built to fix clinical and compliance risks before they impact patients.
+Brellium's mission is to improve the standard of care across the US healthcare system. The company has built AI-powered technology that helps healthcare providers deliver safer, higher-quality care, beginning with a real-time medical review platform designed to identify clinical and compliance risks before they affect patients.
 
-Each year, 1 in 20 people in the U.S. experiences a medical diagnostic or compliance-related mistake. Most providers lack the time, staffing, and tools to mitigate these issues, so they go unnoticed, impacting care quality and increasing clinical and financial risk.
+The posting states that 1 in 20 people in the United States experiences a medical diagnostic or compliance-related mistake each year. Brellium is building an AI-powered platform that helps providers mitigate risk early and align patient visits with clinical best practices.
 
-Brellium is building the AI-powered platform that helps providers deliver safer, more consistent care by mitigating risk early and aligning patient visits with clinical best practices. The company's goal is to give every provider in the U.S. the tools to deliver clinically excellent, data-driven care at scale.
-
-Brellium was founded in 2021. Since then, the company has grown to serve over 250,000 providers across all 50 states who use Brellium to take better care of their patients and ensure data-driven, compliant care. Brellium is a Series A company with over $30MM in funding from First Round Capital, Left Lane Capital, and Menlo Ventures.
+Brellium was founded in 2021 and reports serving more than 250,000 providers across all 50 states. It is a Series A company with more than $30 million in funding from First Round Capital, Left Lane Capital, and Menlo Ventures.
 
 ## About the Role
 
-Brellium is looking for a Software Engineer - AI to help build and scale the core systems that power Brellium's platform. For this role, Brellium values prior experience deploying or integrating AI models into real-world applications. The person will play a key role in shaping technology that supports the AI-driven medical review platform and contributes directly to improving patient care across the U.S.
+Brellium is looking for a backend or full-stack developer to help build and scale the core systems behind its AI-driven medical review platform. The engineer will shape technology that supports the platform and contributes directly to improving patient care across the United States.
 
-## What You Will Do at Brellium
+## What You Will Do
 
 - Work closely with Product to integrate modern LLMs into real-world applications.
-- Design and build systems end-to-end, touching everything from data pipelines to user interfaces.
-- Design and build AI-centric systems end-to-end, optimized for performance and reliability.
-- Build evaluation pipelines and define metrics to measure AI agents and workflows, ensuring robustness and continuous improvement.
+- Design and build systems end-to-end, spanning data pipelines through user interfaces.
 - Deliver high-quality features quickly through strong execution, collaboration, and adaptability.
-- Contribute to a fast-moving, highly collaborative environment where ideas directly impact how care is delivered.
+- Contribute to a fast-moving, highly collaborative environment where engineering ideas affect how care is delivered.
 
-## You Will Be Great for This Role If You
+## Qualifications and Preferred Background
 
-- Have 0-6 years of experience as a Software Engineer. Bonus if holding a master's degree with a focus on AI or a related field.
-- Are proficient in Python and TypeScript.
-- Have a track record of developing AI applications and architecting AI-centric systems that deliver real-world impact.
-- Are proficient with modern AI frameworks and APIs, such as LangChain and LlamaIndex.
-- Keep up to date with new models and tools and their application to real-world, high-impact use cases.
-- Have strong problem-solving skills and a bias toward action, tackling ambiguous challenges head-on.
-- Are proficient with SQL and relational databases, and comfortable owning end-to-end data workflows.
-- Are experienced with AWS deployments and have experience with modern LLMs. React/Next.js is a bonus.
-- Thrive in fast-paced, high-impact startup environments.
-- Communicate effectively and collaborate across teams.
-- Are excited to grow with an early-stage company over the next several years, taking on increasing responsibility, helping shape the team, and contributing directly to the company's success.
+- 0-6 years of experience as a Software Engineer.
+- Master's degree is a bonus.
+- Proficiency in Python and TypeScript.
+- Strong problem-solving skills and a bias toward action when facing ambiguous challenges.
+- Proficiency with SQL and relational databases.
+- Comfort owning end-to-end data workflows.
+- Experience with AWS deployments.
+- Experience with modern LLMs.
+- React and Next.js experience is a bonus.
+- Ability to thrive in a fast-paced, high-impact startup environment.
+- Effective communication and cross-team collaboration.
+- Interest in growing with an early-stage company, taking on increasing responsibility, helping shape the team, and contributing directly to company success.
 
 ## Benefits
 
-- 401(k) Retirement Savings Plan.
+- 401(k) retirement savings plan.
 - Equity compensation.
-- Dinner via DoorDash and stocked kitchen for New York employees.
-- Medical, dental, and vision coverage of up to 100% premiums for employee and family.
-- HSA / FSA.
+- Dinner via DoorDash and a stocked kitchen for New York employees.
+- Medical, dental, and vision coverage of up to 100% of premiums for employees and their families.
+- HSA and FSA.
 - 11 paid holidays each year.
 - Unlimited PTO.
 - Training and professional development.
-- Hybrid work schedule.
+- Hybrid schedule of four days onsite, or three days onsite for employees located more than one hour away.
 
-## Values
+## Company Values
 
-- Bias to Action.
-- Thinks for Themselves.
-- Negative Maintenance.
-- Expect Excellence.
-- Communicate with Clarity.
+- Bias to Action: make reversible decisions quickly, learn, and adjust.
+- Thinks for Themselves: question assumptions and pursue better solutions regardless of the status quo.
+- Negative Maintenance: remain poised, self-motivated, self-improving, disciplined, self-aware, and non-defensive.
+- Expect Excellence: maintain high standards while balancing speed, quality, and thoughtful tradeoffs.
+- Communicate with Clarity: communicate concisely, directly, and purposefully.
 
-## Company Research Notes
+## Intake Risks
 
-- Brellium's official homepage describes its clinical AI as reviewing 100% of documentation and coding, catching compliance risks before clawbacks, and surfacing earned but unbilled revenue.
-- Brellium's about page describes the company as a New York team building the compliance layer for American healthcare so providers can focus on patients instead of paperwork.
-- Brellium's security page states that Brellium is HIPAA and SOC 2 compliant, encrypts data in transit and at rest, stores data in the USA in the cloud, uses secure AWS/Azure environments, and writes audit results to a secure database powered by AWS RDS.
+- New York hybrid attendance is required. Aryan's ability to meet the three- or four-day onsite schedule has not been confirmed.
+- The posting does not state work-authorization or sponsorship requirements.
+- The package is saved in the existing `Software-Engineer-AI` folder to avoid creating a duplicate for the same Brellium opening, but the exact posting title is `Software Engineer`.
