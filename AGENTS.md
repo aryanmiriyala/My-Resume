@@ -26,6 +26,8 @@ When Aryan provides a job description, treat it as a request to run the complete
 
 Supplying a job description is approval to perform the full pipeline and generate tailored application artifacts. Do not stop at a proposal unless Aryan explicitly asks to review proposed changes first. If the job description has serious blockers, unsupported requirements, or unclear fit, proceed with truthful materials while flagging those risks in `tailoring-notes.md` and the final response.
 
+When Aryan asks to create a resume and cover letter for a specific application, treat that application as `Applied` in `operations/application-tracker.md` unless Aryan explicitly requests another status. Do not leave a completed requested package at `Ready` by default.
+
 Every final application response must include the ready artifact paths, one-page PDF verification, application validator result, and the `Job Alignment & Evidence Score`. Describe this score as an internal alignment estimate, never as a prediction of an employer's ATS decision. Do not leave Aryan to ask separately whether the resume is aligned or whether the package passed validation.
 
 Make incremental commits for small, coherent changes so the repository stays easy to review and push to GitHub. Do not bundle unrelated resume, cover-letter, application, tracker, and source-material updates into one large commit.
