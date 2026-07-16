@@ -6,8 +6,8 @@ Question: Why do you want to work at Notion?
 
 Answer:
 
-I want to work at Notion because I like tools that make people feel less scattered. A lot of work today is split across too many places. Notes live in one app, tasks in another, project context gets buried, and AI tools often sit off to the side instead of being part of the actual workflow. What I like about Notion is that it is trying to bring those pieces together in a way that feels useful and human.
+I want to work at Notion because I keep running into the same problem in the tools I build and use: the work itself is usually less confusing than the places where the work is stored. A task gets separated from the notes that explain it. A decision lives in someone else's head. A useful AI conversation disappears after it solves one small thing. Notion is interesting to me because it is trying to make that context easier to keep and reuse.
 
-That connects with the kind of work I have enjoyed most. At SmartSolve, I have been building internal tools where the hard part is not just writing code. It is understanding how people actually work, where the process breaks down, and how to make the tool clear enough that someone else can use it without needing me next to them. I have also been using Codex and Claude Code in a similar way to how Notion talks about AI, as something that helps me think, plan, debug, and move faster while I still own the result.
+That feels close to what I have been doing at SmartSolve. I have been building an onboarding tracker with Next.js, PostgreSQL, SSO, and auth middleware. The technical part matters, but the harder part has been understanding the actual handoff. Who needs to update what? What should be visible? What has to be protected? Those questions are what make the tool useful or not.
 
-I think Notion would be a good place for me because I care about product details, not just shipping code. I like building systems that organize messy information and make work easier to continue. That is the kind of engineering I want to keep getting better at.
+I also like Notion's attitude toward AI. I use Codex and Claude Code as planning and debugging partners, but I still have to check the work and make the final call. I want to build products in that direction. Not AI as decoration, but software that helps people keep track of their work and continue it.
