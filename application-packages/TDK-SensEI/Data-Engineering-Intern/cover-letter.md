@@ -1,0 +1,21 @@
+# Cover Letter - TDK SensEI Data Engineering Intern
+
+Aryan Miriyala  
+aryanmiriyala@gmail.com | +1 419-315-0444 | LinkedIn | GitHub
+
+July 16, 2026
+
+TDK SensEI Hiring Team
+
+Dear TDK SensEI Hiring Team,
+
+I am applying for the Data Engineering Intern role because the work sits very close to the kind of data engineering I want to keep doing: building reliable pipelines for messy, high-volume data that eventually supports analytics and machine learning. TDK SensEI's focus on sensor data, edge systems, and industrial AI stood out to me because the data is not abstract. It comes from real equipment and real operating environments, where quality, monitoring, and reliability matter.
+
+At AAIS, I built production AWS data workflows using Python, SQL, PySpark, AWS Glue, S3, Lambda, and IAM. One project automated a manual billing workflow over 20+ TB of insurance data for 700+ member companies. Another involved profiling 160+ MySQL, Oracle, and Impala tables, mapping source-system relationships, and helping standardize data into MDM domains. Those projects taught me that data engineering is not only moving data from one place to another. The harder work is understanding source systems, validating assumptions, and making the pipeline dependable enough for downstream users.
+
+I also have project experience that maps well to TDK SensEI's sensor and operational-data focus. In HealthTrend, I built a Dockerized pipeline that routed structured patient records into HDFS and JSON health events into Kafka, then processed them with Spark/PySpark for validation and analytics. It was a school project, but it gave me useful practice with semi-structured event data, batch and streaming paths, and the kind of data-preparation work needed before analytics or ML models can be trusted.
+
+I would bring strong Python and SQL fundamentals, AWS data-pipeline experience, and a careful approach to data quality. I am especially interested in learning from software and machine learning engineers while contributing to production-ready systems that turn sensor data into usable intelligence.
+
+Sincerely,  
+Aryan Miriyala
