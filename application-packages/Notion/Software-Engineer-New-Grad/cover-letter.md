@@ -3,7 +3,7 @@
 Aryan Miriyala  
 aryanmiriyala@gmail.com | +1 419-315-0444 | LinkedIn | GitHub
 
-July 15, 2026
+July 16, 2026
 
 Notion Early Career Engineering Team
 
