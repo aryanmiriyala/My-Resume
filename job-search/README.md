@@ -37,6 +37,8 @@ python3 job-search/src/job_discovery.py run-broad-ats --dry-run --company-limit 
 
 The Phase 1 broad scan covers Greenhouse, Lever, Ashby, and Workday where public company-directory data and no-auth endpoints are available. SmartRecruiters remains supported through configured direct ATS targets. Use `--dry-run` first to write reports without updating `jobs-inbox.csv`; remove it once the output quality looks useful. By default, only roles with explicit early-career signals are eligible for the shortlist/CSV, while broader matches stay in review reports. Add `--write-review-to-inbox` only if you intentionally want broader review candidates in the CSV. Add `--refresh-cache` when you want to refresh the local company-directory cache.
 
+Open `job-search/job-viewer.html` in a browser to interactively review dated Markdown reports or CSV files. It can load `shortlist.md`, `review-candidates.md`, `jobs-inbox.csv`, or future dated `jobs.csv` files through the browser file picker.
+
 Discover and verify new direct ATS targets from pasted Google/search-result URLs:
 
 ```bash

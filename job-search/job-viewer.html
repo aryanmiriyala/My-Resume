@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Career Ops Job Viewer</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7fb;
+      --panel: #ffffff;
+      --text: #172033;
+      --muted: #667085;
+      --line: #d9dee8;
+      --accent: #2557d6;
+      --accent-soft: #edf2ff;
+      --warn: #8a5a00;
+      --warn-soft: #fff5d6;
+      --bad: #9d1c1c;
+      --bad-soft: #ffe7e7;
+      --good: #166534;
+      --good-soft: #e8f7ed;
+      --shadow: 0 12px 30px rgb(16 24 40 / 8%);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+
+    header {
+      padding: 28px clamp(18px, 4vw, 48px) 18px;
+      background: linear-gradient(135deg, #0f172a, #223b85);
+      color: white;
+    }
+
+    header h1 {
+      margin: 0 0 6px;
+      font-size: clamp(26px, 4vw, 42px);
+      letter-spacing: -0.03em;
+    }
+
+    header p {
+      margin: 0;
+      max-width: 920px;
+      color: rgb(255 255 255 / 78%);
+    }
+
+    main {
+      padding: 22px clamp(18px, 4vw, 48px) 42px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    input,
+    select,
+    button {
+      min-height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      padding: 9px 11px;
+      background: white;
+      color: var(--text);
+      font: inherit;
+    }
+
+    input[type="file"] {
+      padding: 8px;
+    }
+
+    button {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: white;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    button.secondary {
+      background: white;
+      color: var(--accent);
+    }
+
+    .span-2 { grid-column: span 2; }
+    .span-3 { grid-column: span 3; }
+    .span-4 { grid-column: span 4; }
+    .span-5 { grid-column: span 5; }
+    .span-6 { grid-column: span 6; }
+    .span-8 { grid-column: span 8; }
+    .span-12 { grid-column: span 12; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .stat {
+      padding: 16px;
+      border-radius: 16px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 26px;
+      letter-spacing: -0.04em;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .jobs {
+      display: grid;
+      gap: 12px;
+    }
+
+    .job {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: 0 8px 22px rgb(16 24 40 / 5%);
+    }
+
+    .job h2 {
+      margin: 0 0 5px;
+      font-size: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border-radius: 999px;
+      padding: 4px 8px;
+      background: #f1f3f8;
+      color: #344054;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .pill.good {
+      background: var(--good-soft);
+      color: var(--good);
+    }
+
+    .pill.warn {
+      background: var(--warn-soft);
+      color: var(--warn);
+    }
+
+    .pill.bad {
+      background: var(--bad-soft);
+      color: var(--bad);
+    }
+
+    .score {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 20px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: flex-end;
+      margin-top: 12px;
+    }
+
+    .actions a {
+      color: var(--accent);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .empty {
+      padding: 36px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .help {
+      margin: 0 0 18px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid #c7d7fe;
+      background: var(--accent-soft);
+      color: #243b7f;
+    }
+
+    .help code {
+      background: rgb(255 255 255 / 70%);
+      padding: 2px 5px;
+      border-radius: 5px;
+    }
+
+    @media (max-width: 900px) {
+      .controls,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .span-2,
+      .span-3,
+      .span-4,
+      .span-5,
+      .span-6,
+      .span-8,
+      .span-12 {
+        grid-column: span 1;
+      }
+
+      .job {
+        grid-template-columns: 1fr;
+      }
+
+      .score {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Career Ops Job Viewer</h1>
+    <p>Open a dated job-search report or CSV, filter candidates, and jump directly to application URLs. This page runs locally in your browser and does not upload files anywhere.</p>
+  </header>
+
+  <main>
+    <p class="help">
+      Start with files like <code>job-search/results/YYYY-MM-DD/broad-ats/review-candidates.md</code>,
+      <code>shortlist.md</code>, or a future dated <code>jobs.csv</code>.
+    </p>
+
+    <section class="controls panel" aria-label="Job controls">
+      <div class="field span-5">
+        <label for="fileInput">Open report or CSV</label>
+        <input id="fileInput" type="file" accept=".md,.csv,.txt">
+      </div>
+
+      <div class="field span-4">
+        <label for="searchInput">Search</label>
+        <input id="searchInput" type="search" placeholder="company, title, location, source, flags">
+      </div>
+
+      <div class="field span-3">
+        <label for="minScoreInput">Minimum score</label>
+        <input id="minScoreInput" type="number" min="0" max="100" value="0">
+      </div>
+
+      <div class="field span-3">
+        <label for="sourceSelect">Source</label>
+        <select id="sourceSelect">
+          <option value="">All sources</option>
+        </select>
+      </div>
+
+      <div class="field span-3">
+        <label for="flagSelect">Flag</label>
+        <select id="flagSelect">
+          <option value="">All flags</option>
+        </select>
+      </div>
+
+      <div class="field span-3">
+        <label for="sortSelect">Sort</label>
+        <select id="sortSelect">
+          <option value="score-desc">Score high to low</option>
+          <option value="score-asc">Score low to high</option>
+          <option value="company-asc">Company A-Z</option>
+          <option value="title-asc">Role A-Z</option>
+          <option value="source-asc">Source A-Z</option>
+        </select>
+      </div>
+
+      <div class="field span-3">
+        <label>&nbsp;</label>
+        <button id="exportButton" class="secondary" type="button">Export visible CSV</button>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Job stats">
+      <div class="stat"><strong id="totalCount">0</strong><span>Total loaded</span></div>
+      <div class="stat"><strong id="visibleCount">0</strong><span>Visible after filters</span></div>
+      <div class="stat"><strong id="avgScore">0</strong><span>Average score</span></div>
+      <div class="stat"><strong id="sourceCount">0</strong><span>Sources</span></div>
+      <div class="stat"><strong id="flaggedCount">0</strong><span>Flagged jobs</span></div>
+    </section>
+
+    <section id="jobs" class="jobs" aria-live="polite">
+      <div class="empty panel">Open a Markdown report or CSV file to view jobs.</div>
+    </section>
+  </main>
+
+  <script>
+    const state = {
+      jobs: [],
+      visible: [],
+      fileName: ""
+    };
+
+    const fileInput = document.getElementById("fileInput");
+    const searchInput = document.getElementById("searchInput");
+    const minScoreInput = document.getElementById("minScoreInput");
+    const sourceSelect = document.getElementById("sourceSelect");
+    const flagSelect = document.getElementById("flagSelect");
+    const sortSelect = document.getElementById("sortSelect");
+    const exportButton = document.getElementById("exportButton");
+    const jobsEl = document.getElementById("jobs");
+
+    fileInput.addEventListener("change", handleFile);
+    searchInput.addEventListener("input", render);
+    minScoreInput.addEventListener("input", render);
+    sourceSelect.addEventListener("change", render);
+    flagSelect.addEventListener("change", render);
+    sortSelect.addEventListener("change", render);
+    exportButton.addEventListener("click", exportVisibleCsv);
+
+    function handleFile(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        state.fileName = file.name;
+        state.jobs = parseJobs(String(reader.result || ""), file.name);
+        populateSelects();
+        render();
+      };
+      reader.readAsText(file);
+    }
+
+    function parseJobs(text, fileName) {
+      if (/\.csv$/i.test(fileName)) {
+        return parseCsv(text).map(normalizeCsvRow).filter(job => job.url || job.title || job.company);
+      }
+      return parseMarkdownTable(text);
+    }
+
+    function parseMarkdownTable(text) {
+      const rows = [];
+      const lines = text.split(/\r?\n/);
+
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (!trimmed.startsWith("|") || !trimmed.endsWith("|")) continue;
+        if (/^\|\s*-+/.test(trimmed)) continue;
+
+        const cells = splitMarkdownRow(trimmed);
+        if (cells.length < 5) continue;
+        if (/^fit$/i.test(cells[0]) || /^company$/i.test(cells[0])) continue;
+
+        const linkMatch = cells[5]?.match(/\[([^\]]+)\]\(([^)]+)\)/);
+        rows.push({
+          score: toNumber(cells[0]),
+          company: stripMarkdown(cells[1]),
+          title: stripMarkdown(cells[2]),
+          location: stripMarkdown(cells[3]),
+          source: stripMarkdown(cells[4]),
+          url: linkMatch ? linkMatch[2] : stripMarkdown(cells[5] || ""),
+          flags: stripMarkdown(cells[6] || "")
+        });
+      }
+
+      return rows.filter(job => job.title || job.company || job.url);
+    }
+
+    function splitMarkdownRow(line) {
+      const raw = line.replace(/^\|/, "").replace(/\|$/, "");
+      const cells = [];
+      let cell = "";
+      let bracketDepth = 0;
+      let parenDepth = 0;
+
+      for (const char of raw) {
+        if (char === "[") bracketDepth += 1;
+        if (char === "]") bracketDepth = Math.max(0, bracketDepth - 1);
+        if (char === "(" && bracketDepth === 0) parenDepth += 1;
+        if (char === ")" && parenDepth > 0) parenDepth -= 1;
+        if (char === "|" && bracketDepth === 0 && parenDepth === 0) {
+          cells.push(cell.trim());
+          cell = "";
+        } else {
+          cell += char;
+        }
+      }
+      cells.push(cell.trim());
+      return cells;
+    }
+
+    function parseCsv(text) {
+      const rows = [];
+      let row = [];
+      let cell = "";
+      let inQuotes = false;
+
+      for (let i = 0; i < text.length; i += 1) {
+        const char = text[i];
+        const next = text[i + 1];
+
+        if (char === '"' && inQuotes && next === '"') {
+          cell += '"';
+          i += 1;
+        } else if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === "," && !inQuotes) {
+          row.push(cell);
+          cell = "";
+        } else if ((char === "\n" || char === "\r") && !inQuotes) {
+          if (char === "\r" && next === "\n") i += 1;
+          row.push(cell);
+          if (row.some(value => value.trim())) rows.push(row);
+          row = [];
+          cell = "";
+        } else {
+          cell += char;
+        }
+      }
+
+      row.push(cell);
+      if (row.some(value => value.trim())) rows.push(row);
+      if (!rows.length) return [];
+
+      const headers = rows.shift().map(value => value.trim().toLowerCase());
+      return rows.map(values => {
+        const out = {};
+        headers.forEach((header, index) => {
+          out[header] = values[index] || "";
+        });
+        return out;
+      });
+    }
+
+    function normalizeCsvRow(row) {
+      return {
+        score: toNumber(row.fit_score || row.score || row.fit || ""),
+        company: row.company || "",
+        title: row.position || row.title || row.role || "",
+        location: row.location || "",
+        source: row.source || "",
+        url: row.url || row.link || "",
+        flags: row.flags || row.status || ""
+      };
+    }
+
+    function populateSelects() {
+      const sources = unique(state.jobs.map(job => job.source).filter(Boolean));
+      const flags = unique(
+        state.jobs
+          .flatMap(job => splitFlags(job.flags))
+          .filter(Boolean)
+      );
+
+      sourceSelect.innerHTML = `<option value="">All sources</option>` + sources.map(source => {
+        return `<option value="${escapeAttr(source)}">${escapeHtml(source)}</option>`;
+      }).join("");
+
+      flagSelect.innerHTML = `<option value="">All flags</option>` + flags.map(flag => {
+        return `<option value="${escapeAttr(flag)}">${escapeHtml(flag)}</option>`;
+      }).join("");
+    }
+
+    function render() {
+      const query = searchInput.value.trim().toLowerCase();
+      const minScore = Number(minScoreInput.value || 0);
+      const source = sourceSelect.value;
+      const flag = flagSelect.value;
+
+      let jobs = state.jobs.filter(job => {
+        const haystack = [job.company, job.title, job.location, job.source, job.flags, job.url].join(" ").toLowerCase();
+        if (query && !haystack.includes(query)) return false;
+        if ((job.score || 0) < minScore) return false;
+        if (source && job.source !== source) return false;
+        if (flag && !splitFlags(job.flags).includes(flag)) return false;
+        return true;
+      });
+
+      jobs = sortJobs(jobs, sortSelect.value);
+      state.visible = jobs;
+      updateStats();
+
+      if (!jobs.length) {
+        jobsEl.innerHTML = `<div class="empty panel">No jobs match the current filters.</div>`;
+        return;
+      }
+
+      jobsEl.innerHTML = jobs.map(renderJob).join("");
+    }
+
+    function renderJob(job) {
+      const flags = splitFlags(job.flags);
+      const scoreClass = job.score >= 75 ? "good" : job.score >= 60 ? "warn" : "";
+      const flagPills = flags.map(flag => {
+        const kind = flag.startsWith("negative:") ? "bad" : "warn";
+        return `<span class="pill ${kind}">${escapeHtml(flag)}</span>`;
+      }).join("");
+
+      return `
+        <article class="job">
+          <div>
+            <h2>${escapeHtml(job.title || "Untitled role")}</h2>
+            <div class="meta">
+              <span class="pill">${escapeHtml(job.company || "Unknown company")}</span>
+              ${job.location ? `<span class="pill">${escapeHtml(job.location)}</span>` : ""}
+              ${job.source ? `<span class="pill">${escapeHtml(job.source)}</span>` : ""}
+              ${flagPills}
+            </div>
+            <div class="actions">
+              ${job.url ? `<a href="${escapeAttr(job.url)}" target="_blank" rel="noopener noreferrer">Open job posting →</a>` : `<span class="pill bad">No URL found</span>`}
+            </div>
+          </div>
+          <div class="score ${scoreClass}" title="Heuristic fit score">${job.score || 0}</div>
+        </article>
+      `;
+    }
+
+    function updateStats() {
+      const visible = state.visible;
+      const scores = visible.map(job => job.score || 0);
+      const avg = scores.length ? Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length) : 0;
+      document.getElementById("totalCount").textContent = String(state.jobs.length);
+      document.getElementById("visibleCount").textContent = String(visible.length);
+      document.getElementById("avgScore").textContent = String(avg);
+      document.getElementById("sourceCount").textContent = String(unique(visible.map(job => job.source).filter(Boolean)).length);
+      document.getElementById("flaggedCount").textContent = String(visible.filter(job => splitFlags(job.flags).length).length);
+    }
+
+    function sortJobs(jobs, mode) {
+      const copy = [...jobs];
+      const textCompare = key => (a, b) => String(a[key] || "").localeCompare(String(b[key] || ""));
+      if (mode === "score-asc") return copy.sort((a, b) => (a.score || 0) - (b.score || 0));
+      if (mode === "company-asc") return copy.sort(textCompare("company"));
+      if (mode === "title-asc") return copy.sort(textCompare("title"));
+      if (mode === "source-asc") return copy.sort(textCompare("source"));
+      return copy.sort((a, b) => (b.score || 0) - (a.score || 0));
+    }
+
+    function exportVisibleCsv() {
+      const rows = [["score", "company", "title", "location", "source", "flags", "url"], ...state.visible.map(job => [
+        job.score || 0,
+        job.company || "",
+        job.title || "",
+        job.location || "",
+        job.source || "",
+        job.flags || "",
+        job.url || ""
+      ])];
+      const csv = rows.map(row => row.map(csvCell).join(",")).join("\n");
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      const base = state.fileName.replace(/\.[^.]+$/, "") || "jobs";
+      link.href = url;
+      link.download = `${base}-filtered.csv`;
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function csvCell(value) {
+      const text = String(value ?? "");
+      if (/[",\n\r]/.test(text)) {
+        return `"${text.replace(/"/g, '""')}"`;
+      }
+      return text;
+    }
+
+    function splitFlags(value) {
+      return String(value || "")
+        .split(";")
+        .map(flag => flag.trim())
+        .filter(Boolean);
+    }
+
+    function unique(values) {
+      return [...new Set(values)].sort((a, b) => String(a).localeCompare(String(b)));
+    }
+
+    function stripMarkdown(value) {
+      return String(value || "")
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1")
+        .replace(/`([^`]+)`/g, "$1")
+        .replace(/\*\*([^*]+)\*\*/g, "$1")
+        .trim();
+    }
+
+    function toNumber(value) {
+      const parsed = Number(String(value || "").replace(/[^\d.-]/g, ""));
+      return Number.isFinite(parsed) ? parsed : 0;
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function escapeAttr(value) {
+      return escapeHtml(value).replace(/`/g, "&#096;");
+    }
+  </script>
+</body>
+</html>
