@@ -292,9 +292,14 @@
     </p>
 
     <section class="controls panel" aria-label="Job controls">
-      <div class="field span-5">
-        <label for="fileInput">Open report or CSV</label>
-        <input id="fileInput" type="file" accept=".md,.csv,.txt">
+      <div class="field span-4">
+        <label for="fileInput">Open CSV/report files</label>
+        <input id="fileInput" type="file" accept=".md,.csv,.txt" multiple>
+      </div>
+
+      <div class="field span-4">
+        <label for="folderInput">Open results folder</label>
+        <input id="folderInput" type="file" webkitdirectory multiple>
       </div>
 
       <div class="field span-4">
@@ -311,6 +316,24 @@
         <label for="sourceSelect">Source</label>
         <select id="sourceSelect">
           <option value="">All sources</option>
+        </select>
+      </div>
+
+      <div class="field span-3">
+        <label for="dateSelect">Fetched date</label>
+        <select id="dateSelect">
+          <option value="">All dates</option>
+        </select>
+      </div>
+
+      <div class="field span-3">
+        <label for="postedWindowSelect">Posted/discovered within</label>
+        <select id="postedWindowSelect">
+          <option value="">Any time</option>
+          <option value="6">6 hours</option>
+          <option value="12">12 hours</option>
+          <option value="24">24 hours</option>
+          <option value="48">48 hours</option>
         </select>
       </div>
 
@@ -332,7 +355,7 @@
         </select>
       </div>
 
-      <div class="field span-3">
+      <div class="field span-2">
         <label>&nbsp;</label>
         <button id="exportButton" class="secondary" type="button">Export visible CSV</button>
       </div>
@@ -358,47 +381,195 @@
       fileName: ""
     };
 
+    const TARGET_PROFILE = {
+      roleBuckets: {
+        software: [
+          "Software Engineer",
+          "Software Developer",
+          "Backend Engineer",
+          "Full Stack Engineer",
+          "Full-Stack Engineer",
+          "Platform Engineer",
+          "Cloud Engineer",
+          "DevOps Engineer",
+          "Application Developer"
+        ],
+        data: [
+          "Data Engineer",
+          "Analytics Engineer",
+          "ETL Developer",
+          "Data Platform Engineer",
+          "BI Engineer",
+          "Business Intelligence Engineer"
+        ],
+        ai_ml: [
+          "Machine Learning Engineer",
+          "ML Engineer",
+          "AI Engineer",
+          "Applied AI Engineer",
+          "MLOps Engineer",
+          "Data Scientist",
+          "NLP Engineer",
+          "LLM Engineer"
+        ],
+        analyst: [
+          "Data Analyst",
+          "Business Analyst",
+          "BI Analyst",
+          "Business Intelligence Analyst",
+          "Product Analyst",
+          "Operations Analyst",
+          "Reporting Analyst",
+          "Technical Analyst"
+        ]
+      },
+      earlyCareerTerms: [
+        "Intern",
+        "Internship",
+        "Co-op",
+        "New Grad",
+        "New Graduates",
+        "New Graduate",
+        "Entry Level",
+        "Entry-level",
+        "Early Career",
+        "Associate",
+        "Junior",
+        "University Grad",
+        "Recent Graduate",
+        "Recent Grad",
+        "Recent Grads",
+        "Campus",
+        "Graduate"
+      ],
+      locationTerms: [
+        "United States",
+        "USA",
+        "Remote",
+        "Hybrid",
+        "Ohio",
+        "Michigan",
+        "Illinois",
+        "New York",
+        "California",
+        "Texas",
+        "Washington",
+        "Massachusetts",
+        "North Carolina"
+      ],
+      positiveSkillTerms: [
+        "Python",
+        "TypeScript",
+        "JavaScript",
+        "React",
+        "Next.js",
+        "Node.js",
+        "SQL",
+        "PostgreSQL",
+        "MongoDB",
+        "AWS",
+        "Glue",
+        "Lambda",
+        "S3",
+        "PySpark",
+        "Spark",
+        "ETL",
+        "Docker",
+        "Kubernetes",
+        "AI",
+        "ML",
+        "LLM",
+        "RAG",
+        "Data Pipeline",
+        "Analytics"
+      ],
+      negativeTerms: [
+        "talent pool",
+        "talent pipeline",
+        "candidate pipeline",
+        "hiring pipeline",
+        "evergreen",
+        "future openings",
+        "join our network",
+        "senior",
+        "ph.d",
+        "phd",
+        "sr.",
+        "sr",
+        "staff",
+        "principal",
+        "manager",
+        "director",
+        "team lead",
+        "lead",
+        "architect",
+        "10+ years",
+        "8+ years",
+        "7+ years",
+        "5+ years",
+        "clearance required"
+      ],
+      preferredSources: ["greenhouse", "lever", "ashby", "smartrecruiters", "workday"]
+    };
+
     const fileInput = document.getElementById("fileInput");
+    const folderInput = document.getElementById("folderInput");
     const searchInput = document.getElementById("searchInput");
     const minScoreInput = document.getElementById("minScoreInput");
     const sourceSelect = document.getElementById("sourceSelect");
+    const dateSelect = document.getElementById("dateSelect");
+    const postedWindowSelect = document.getElementById("postedWindowSelect");
     const flagSelect = document.getElementById("flagSelect");
     const sortSelect = document.getElementById("sortSelect");
     const exportButton = document.getElementById("exportButton");
     const jobsEl = document.getElementById("jobs");
 
-    fileInput.addEventListener("change", handleFile);
+    fileInput.addEventListener("change", event => handleFiles(event.target.files));
+    folderInput.addEventListener("change", event => handleFiles(event.target.files));
     searchInput.addEventListener("input", render);
     minScoreInput.addEventListener("input", render);
     sourceSelect.addEventListener("change", render);
+    dateSelect.addEventListener("change", render);
+    postedWindowSelect.addEventListener("change", render);
     flagSelect.addEventListener("change", render);
     sortSelect.addEventListener("change", render);
     exportButton.addEventListener("click", exportVisibleCsv);
 
-    function handleFile(event) {
-      const file = event.target.files[0];
-      if (!file) return;
+    async function handleFiles(fileList) {
+      const files = [...fileList].filter(file => /\.(csv|md|txt)$/i.test(file.name));
+      if (!files.length) return;
 
-      const reader = new FileReader();
-      reader.onload = () => {
-        state.fileName = file.name;
-        state.jobs = parseJobs(String(reader.result || ""), file.name);
-        populateSelects();
-        render();
-      };
-      reader.readAsText(file);
+      const parsedSets = await Promise.all(files.map(readJobFile));
+      state.fileName = files.length === 1 ? files[0].name : `${files.length}-files`;
+      state.jobs = dedupeJobs(parsedSets.flat());
+      populateSelects();
+      render();
     }
 
-    function parseJobs(text, fileName) {
-      if (/\.csv$/i.test(fileName)) {
-        return parseCsv(text).map(normalizeCsvRow).filter(job => job.url || job.title || job.company);
+    function readJobFile(file) {
+      return new Promise(resolve => {
+        const reader = new FileReader();
+        const sourcePath = file.webkitRelativePath || file.name;
+        reader.onload = () => {
+          const rows = parseJobs(String(reader.result || ""), sourcePath).map(job => enrichJob(job, sourcePath));
+          resolve(rows);
+        };
+        reader.onerror = () => resolve([]);
+        reader.readAsText(file);
+      });
+    }
+
+    function parseJobs(text, sourcePath) {
+      if (/\.csv$/i.test(sourcePath)) {
+        return parseCsv(text).map(row => normalizeCsvRow(row, sourcePath)).filter(job => job.url || job.title || job.company);
       }
-      return parseMarkdownTable(text);
+      return parseMarkdownTable(text, sourcePath);
     }
 
-    function parseMarkdownTable(text) {
+    function parseMarkdownTable(text, sourcePath) {
       const rows = [];
       const lines = text.split(/\r?\n/);
+      const scanDate = inferScanDate(sourcePath);
 
       for (const line of lines) {
         const trimmed = line.trim();
@@ -417,7 +588,12 @@
           location: stripMarkdown(cells[3]),
           source: stripMarkdown(cells[4]),
           url: linkMatch ? linkMatch[2] : stripMarkdown(cells[5] || ""),
-          flags: stripMarkdown(cells[6] || "")
+          flags: stripMarkdown(cells[6] || ""),
+          postedAt: "",
+          pulledAt: "",
+          scanDate,
+          sourceFile: sourcePath,
+          scoreIsEstimated: false
         });
       }
 
@@ -490,20 +666,51 @@
       });
     }
 
-    function normalizeCsvRow(row) {
-      return {
-        score: toNumber(row.fit_score || row.score || row.fit || ""),
+    function normalizeCsvRow(row, sourcePath) {
+      const explicitScore = row.fit_score || row.score || row.fit || "";
+      const job = {
+        score: explicitScore === "" ? null : toNumber(explicitScore),
         company: row.company || "",
         title: row.position || row.title || row.role || "",
         location: row.location || "",
-        source: row.source || "",
+        source: row.source || inferSourceFromUrl(row.url || row.link || ""),
         url: row.url || row.link || "",
-        flags: row.flags || row.status || ""
+        flags: row.flags || row.status || "",
+        postedAt: row.posted_at || row.posted || row.date_posted || "",
+        pulledAt: row.pulled_at || row.first_discovered_at || row.discovered_at || row.last_seen_at || "",
+        scanDate: inferScanDate(sourcePath),
+        sourceFile: sourcePath,
+        scoreIsEstimated: explicitScore === ""
       };
+      if (job.score === null) {
+        const scored = estimateScore(job);
+        job.score = scored.score;
+        job.flags = mergeFlags(job.flags, scored.flags.join("; "));
+        job.scoreIsEstimated = true;
+      }
+      if (!job.scanDate) {
+        job.scanDate = dateOnly(parseJobDate(job.pulledAt) || parseJobDate(job.postedAt)) || "unknown";
+      }
+      return job;
+    }
+
+    function enrichJob(job, sourcePath) {
+      const copy = { ...job };
+      copy.sourceFile = copy.sourceFile || sourcePath;
+      copy.scanDate = copy.scanDate || inferScanDate(sourcePath) || dateOnly(parseJobDate(copy.pulledAt) || parseJobDate(copy.postedAt)) || "unknown";
+      copy.source = copy.source || inferSourceFromUrl(copy.url);
+      if (copy.score === null || copy.score === undefined || Number.isNaN(copy.score)) {
+        const scored = estimateScore(copy);
+        copy.score = scored.score;
+        copy.flags = mergeFlags(copy.flags, scored.flags.join("; "));
+        copy.scoreIsEstimated = true;
+      }
+      return copy;
     }
 
     function populateSelects() {
       const sources = unique(state.jobs.map(job => job.source).filter(Boolean));
+      const dates = unique(state.jobs.map(job => job.scanDate).filter(Boolean)).sort().reverse();
       const flags = unique(
         state.jobs
           .flatMap(job => splitFlags(job.flags))
@@ -512,6 +719,10 @@
 
       sourceSelect.innerHTML = `<option value="">All sources</option>` + sources.map(source => {
         return `<option value="${escapeAttr(source)}">${escapeHtml(source)}</option>`;
+      }).join("");
+
+      dateSelect.innerHTML = `<option value="">All dates</option>` + dates.map(date => {
+        return `<option value="${escapeAttr(date)}">${escapeHtml(date)}</option>`;
       }).join("");
 
       flagSelect.innerHTML = `<option value="">All flags</option>` + flags.map(flag => {
@@ -523,13 +734,17 @@
       const query = searchInput.value.trim().toLowerCase();
       const minScore = Number(minScoreInput.value || 0);
       const source = sourceSelect.value;
+      const scanDate = dateSelect.value;
+      const postedWindowHours = Number(postedWindowSelect.value || 0);
       const flag = flagSelect.value;
 
       let jobs = state.jobs.filter(job => {
-        const haystack = [job.company, job.title, job.location, job.source, job.flags, job.url].join(" ").toLowerCase();
+        const haystack = [job.company, job.title, job.location, job.source, job.flags, job.url, job.sourceFile, job.scanDate].join(" ").toLowerCase();
         if (query && !haystack.includes(query)) return false;
         if ((job.score || 0) < minScore) return false;
         if (source && job.source !== source) return false;
+        if (scanDate && job.scanDate !== scanDate) return false;
+        if (postedWindowHours && !isWithinPostedWindow(job, postedWindowHours)) return false;
         if (flag && !splitFlags(job.flags).includes(flag)) return false;
         return true;
       });
@@ -562,13 +777,17 @@
               <span class="pill">${escapeHtml(job.company || "Unknown company")}</span>
               ${job.location ? `<span class="pill">${escapeHtml(job.location)}</span>` : ""}
               ${job.source ? `<span class="pill">${escapeHtml(job.source)}</span>` : ""}
+              ${job.scanDate ? `<span class="pill">fetched ${escapeHtml(job.scanDate)}</span>` : ""}
+              ${job.postedAt ? `<span class="pill">posted ${escapeHtml(job.postedAt)}</span>` : ""}
+              ${job.pulledAt && !job.postedAt ? `<span class="pill">discovered ${escapeHtml(job.pulledAt)}</span>` : ""}
+              ${job.scoreIsEstimated ? `<span class="pill warn">estimated score</span>` : ""}
               ${flagPills}
             </div>
             <div class="actions">
               ${job.url ? `<a href="${escapeAttr(job.url)}" target="_blank" rel="noopener noreferrer">Open job posting →</a>` : `<span class="pill bad">No URL found</span>`}
             </div>
           </div>
-          <div class="score ${scoreClass}" title="Heuristic fit score">${job.score || 0}</div>
+          <div class="score ${scoreClass}" title="${job.scoreIsEstimated ? "Estimated heuristic fit score" : "Recorded heuristic fit score"}">${job.score || 0}</div>
         </article>
       `;
     }
@@ -595,14 +814,19 @@
     }
 
     function exportVisibleCsv() {
-      const rows = [["score", "company", "title", "location", "source", "flags", "url"], ...state.visible.map(job => [
+      const rows = [["score", "score_is_estimated", "company", "title", "location", "source", "posted_at", "pulled_at", "fetched_date", "flags", "url", "source_file"], ...state.visible.map(job => [
         job.score || 0,
+        job.scoreIsEstimated ? "yes" : "no",
         job.company || "",
         job.title || "",
         job.location || "",
         job.source || "",
+        job.postedAt || "",
+        job.pulledAt || "",
+        job.scanDate || "",
         job.flags || "",
-        job.url || ""
+        job.url || "",
+        job.sourceFile || ""
       ])];
       const csv = rows.map(row => row.map(csvCell).join(",")).join("\n");
       const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
@@ -621,6 +845,142 @@
         return `"${text.replace(/"/g, '""')}"`;
       }
       return text;
+    }
+
+    function estimateScore(job) {
+      const text = normalizeForMatch([job.title, job.company, job.location, job.source, job.url].join(" "));
+      const titleText = normalizeForMatch(job.title || "");
+      let score = 40;
+      const flags = [];
+
+      const hasBucket = Object.values(TARGET_PROFILE.roleBuckets).some(terms => {
+        return terms.some(term => containsTerm(titleText, term));
+      });
+      if (hasBucket) {
+        score += 15;
+      } else {
+        flags.push("no_role_bucket_match");
+      }
+
+      if (TARGET_PROFILE.earlyCareerTerms.some(term => containsTerm(text, term))) {
+        score += 15;
+      } else {
+        flags.push("no_early_career_signal");
+      }
+
+      if (TARGET_PROFILE.locationTerms.some(term => containsTerm(text, term))) {
+        score += 10;
+      } else {
+        flags.push("location_needs_review");
+      }
+
+      const matchedSkills = TARGET_PROFILE.positiveSkillTerms.filter(term => containsTerm(text, term));
+      score += Math.min(20, matchedSkills.length * 2);
+
+      if (TARGET_PROFILE.preferredSources.includes(String(job.source || "").toLowerCase())) {
+        score += 5;
+      }
+
+      for (const term of TARGET_PROFILE.negativeTerms) {
+        if (containsTerm(text, term)) {
+          score -= 15;
+          flags.push(`negative:${term}`);
+        }
+      }
+
+      return {
+        score: Math.max(0, Math.min(100, score)),
+        flags
+      };
+    }
+
+    function containsTerm(text, term) {
+      const normalizedText = normalizeForMatch(text);
+      const needle = normalizeForMatch(term);
+      if (/[a-z0-9]/.test(needle)) {
+        const pattern = new RegExp(`(^|[^a-z0-9])${escapeRegExp(needle)}([^a-z0-9]|$)`, "i");
+        return pattern.test(normalizedText);
+      }
+      return normalizedText.includes(needle);
+    }
+
+    function normalizeForMatch(value) {
+      return String(value || "").toLowerCase().replace(/\s+/g, " ").trim();
+    }
+
+    function escapeRegExp(value) {
+      return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    }
+
+    function mergeFlags(...values) {
+      return unique(values.flatMap(splitFlags)).join("; ");
+    }
+
+    function inferScanDate(path) {
+      const match = String(path || "").match(/(?:^|\/)(20\d{2}-\d{2}-\d{2})(?:\/|$)/);
+      return match ? match[1] : "";
+    }
+
+    function inferSourceFromUrl(url) {
+      const text = String(url || "").toLowerCase();
+      if (text.includes("greenhouse.io") || text.includes("boards.greenhouse")) return "greenhouse";
+      if (text.includes("jobs.lever.co")) return "lever";
+      if (text.includes("ashbyhq.com")) return "ashby";
+      if (text.includes("smartrecruiters.com")) return "smartrecruiters";
+      if (text.includes("myworkdayjobs.com")) return "workday";
+      return "";
+    }
+
+    function isWithinPostedWindow(job, hours) {
+      const referenceDate = parseJobDate(job.postedAt) || parseJobDate(job.pulledAt);
+      if (!referenceDate) return false;
+      const ageMs = Date.now() - referenceDate.getTime();
+      return ageMs >= 0 && ageMs <= hours * 60 * 60 * 1000;
+    }
+
+    function parseJobDate(value) {
+      const text = String(value || "").trim();
+      if (!text) return null;
+
+      const direct = new Date(text);
+      if (!Number.isNaN(direct.getTime())) return direct;
+
+      const lower = text.toLowerCase();
+      if (lower === "today" || lower === "posted today") return new Date();
+      if (lower === "yesterday" || lower === "posted yesterday") {
+        return new Date(Date.now() - 24 * 60 * 60 * 1000);
+      }
+
+      const relative = lower.match(/(?:posted\s*)?(\d+)\s*(minute|minutes|hour|hours|day|days)\s*ago/);
+      if (relative) {
+        const amount = Number(relative[1]);
+        const unit = relative[2];
+        const multiplier = unit.startsWith("minute")
+          ? 60 * 1000
+          : unit.startsWith("hour")
+            ? 60 * 60 * 1000
+            : 24 * 60 * 60 * 1000;
+        return new Date(Date.now() - amount * multiplier);
+      }
+
+      return null;
+    }
+
+    function dateOnly(date) {
+      if (!(date instanceof Date) || Number.isNaN(date.getTime())) return "";
+      return date.toISOString().slice(0, 10);
+    }
+
+    function dedupeJobs(jobs) {
+      const seen = new Map();
+      for (const job of jobs) {
+        const key = job.url || `${job.company}|${job.title}|${job.location}|${job.sourceFile}`;
+        const previous = seen.get(key);
+        if (!previous || (job.score || 0) > (previous.score || 0)) {
+          seen.set(key, job);
+        }
+      }
+      return [...seen.values()];
     }
 
     function splitFlags(value) {

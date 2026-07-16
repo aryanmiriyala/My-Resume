@@ -34,6 +34,21 @@ BROAD_ATS_CACHE_DIR = ROOT / "cache" / "broad-ats-companies"
 URL_PATTERN = re.compile(r'https?://[^\s<>)\"\']+')
 
 CSV_FIELDS = ["company", "position", "posted_at", "pulled_at", "url"]
+RESULT_JOB_FIELDS = [
+    "fit_score",
+    "status",
+    "company",
+    "title",
+    "location",
+    "source",
+    "posted_at",
+    "pulled_at",
+    "first_discovered_at",
+    "last_seen_at",
+    "flags",
+    "url",
+    "notes",
+]
 BROAD_ATS_DATASET_BASE = "https://raw.githubusercontent.com/Feashliaa/job-board-aggregator/main/data"
 BROAD_ATS_DATASETS = {
     "greenhouse": f"{BROAD_ATS_DATASET_BASE}/greenhouse_companies.json",
@@ -255,6 +270,51 @@ def write_jobs(path: Path, rows: list[dict[str, str]]) -> None:
         writer.writeheader()
         for row in rows:
             writer.writerow(csv_row_from_job(row))
+
+
+def result_job_csv_row(job: dict[str, str]) -> dict[str, str]:
+    return {
+        "fit_score": (job.get("fit_score") or job.get("score") or "").strip(),
+        "status": (job.get("status") or "").strip(),
+        "company": (job.get("company") or "").strip(),
+        "title": (job.get("title") or job.get("position") or "").strip(),
+        "location": (job.get("location") or "").strip(),
+        "source": (job.get("source") or "").strip(),
+        "posted_at": (job.get("posted_at") or "").strip(),
+        "pulled_at": (job.get("pulled_at") or job.get("first_discovered_at") or "").strip(),
+        "first_discovered_at": (job.get("first_discovered_at") or job.get("pulled_at") or "").strip(),
+        "last_seen_at": (job.get("last_seen_at") or "").strip(),
+        "flags": (job.get("flags") or "").strip(),
+        "url": (job.get("url") or "").strip(),
+        "notes": (job.get("notes") or "").strip(),
+    }
+
+
+def write_result_jobs_csv(path: Path, rows: list[dict[str, str]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=RESULT_JOB_FIELDS)
+        writer.writeheader()
+        for row in rows:
+            writer.writerow(result_job_csv_row(row))
+
+
+def result_jobs_for_export(result: dict[str, Any]) -> list[dict[str, str]]:
+    jobs_by_url: dict[str, dict[str, str]] = {}
+
+    for row in result.get("review_candidates", []):
+        job = {**row}
+        job["status"] = job.get("status") or "review"
+        key = job.get("url") or f"{job.get('company')}|{job.get('title')}|{job.get('location')}"
+        jobs_by_url[key] = job
+
+    for row in result.get("imported", []):
+        job = {**row}
+        job["status"] = job.get("status") or "shortlist"
+        key = job.get("url") or f"{job.get('company')}|{job.get('title')}|{job.get('location')}"
+        jobs_by_url[key] = job
+
+    return sorted(jobs_by_url.values(), key=lambda item: int_or_zero(item.get("fit_score", "")), reverse=True)
 
 
 def make_job_record(args: argparse.Namespace) -> dict[str, str]:
@@ -986,6 +1046,7 @@ def render_broad_ats_summary(result: dict[str, Any], args: argparse.Namespace) -
 def write_broad_ats_outputs(result: dict[str, Any], args: argparse.Namespace) -> None:
     results_dir = Path(args.results_dir)
     results_dir.mkdir(parents=True, exist_ok=True)
+    write_result_jobs_csv(results_dir / "jobs.csv", result_jobs_for_export(result))
     write_output(render_broad_ats_summary(result, args), str(results_dir / "run-summary.md"))
     write_output("# Review Candidates\n\n" + "\n".join(render_job_table(result["review_candidates"])), str(results_dir / "review-candidates.md"))
     write_output("# Shortlist\n\n" + "\n".join(render_job_table(result["imported"])), str(results_dir / "shortlist.md"))
@@ -1052,6 +1113,7 @@ def fetch_direct_ats_jobs(args: argparse.Namespace) -> dict[str, Any]:
 def write_run_outputs(result: dict[str, Any], args: argparse.Namespace) -> None:
     results_dir = Path(args.results_dir)
     results_dir.mkdir(parents=True, exist_ok=True)
+    write_result_jobs_csv(results_dir / "jobs.csv", result_jobs_for_export(result))
     write_output(render_run_summary(result, args), str(results_dir / "run-summary.md"))
     write_output("# Review Candidates\n\n" + "\n".join(render_job_table(result["review_candidates"])), str(results_dir / "review-candidates.md"))
     write_output(render_report(argparse.Namespace(inbox=args.inbox, output="", now="")), str(results_dir / "recent-jobs.md"))

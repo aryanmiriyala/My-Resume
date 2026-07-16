@@ -8,7 +8,8 @@ The workflow is intentionally targeted and dependency-free:
 - Fetches public no-key job-board API leads from Arbeitnow and RemoteOK.
 - Fetches configured direct ATS targets from Greenhouse, Lever, Ashby, and SmartRecruiters.
 - Scans broad public ATS company directories for Greenhouse, Lever, Ashby, and Workday in dry-run or inbox-update mode.
-- Stores discovered jobs in `jobs-inbox.csv`, which can be opened and edited directly in VS Code.
+- Writes date-partitioned job CSVs under `results/YYYY-MM-DD/<pipeline>/jobs.csv` for review and visualization.
+- Keeps `jobs-inbox.csv` as a minimal manually curated inbox when jobs are intentionally imported.
 - Scores jobs against Aryan's target profile.
 - Writes dated run outputs under `results/YYYY-MM-DD/`.
 - Leaves final application decisions manual. Chosen jobs should then enter the main `AGENTS.md` resume and cover-letter pipeline.
@@ -37,7 +38,7 @@ python3 job-search/src/job_discovery.py run-broad-ats --dry-run --company-limit 
 
 The Phase 1 broad scan covers Greenhouse, Lever, Ashby, and Workday where public company-directory data and no-auth endpoints are available. SmartRecruiters remains supported through configured direct ATS targets. Use `--dry-run` first to write reports without updating `jobs-inbox.csv`; remove it once the output quality looks useful. By default, only roles with explicit early-career signals are eligible for the shortlist/CSV, while broader matches stay in review reports. Add `--write-review-to-inbox` only if you intentionally want broader review candidates in the CSV. Add `--refresh-cache` when you want to refresh the local company-directory cache.
 
-Open `job-search/job-viewer.html` in a browser to interactively review dated Markdown reports or CSV files. It can load `shortlist.md`, `review-candidates.md`, `jobs-inbox.csv`, or future dated `jobs.csv` files through the browser file picker.
+Open `job-search/job-viewer.html` in a browser to interactively review dated Markdown reports or CSV files. It can load one file, multiple files, or an entire local results folder through the browser file picker without uploading anything. Use it with `results/YYYY-MM-DD/<pipeline>/jobs.csv`, `shortlist.md`, `review-candidates.md`, or `jobs-inbox.csv`. The viewer shows fit scores, job links, source files, fetched dates, and posted/discovered recency filters for 6, 12, 24, and 48 hours.
 
 Discover and verify new direct ATS targets from pasted Google/search-result URLs:
 
@@ -54,11 +55,13 @@ This avoids polluting the active CSV with junk while still showing you more than
 
 This updates `job-search/jobs-inbox.csv` and writes:
 
+- `job-search/results/YYYY-MM-DD/jobs.csv`
 - `job-search/results/YYYY-MM-DD/run-summary.md`
 - `job-search/results/YYYY-MM-DD/review-candidates.md`
 - `job-search/results/YYYY-MM-DD/recent-jobs.md`
 - `job-search/results/YYYY-MM-DD/search-links.md`
-- `job-search/results/YYYY-MM-DD/direct-ats/` for direct ATS runs
+- `job-search/results/YYYY-MM-DD/direct-ats/jobs.csv` for direct ATS runs
+- `job-search/results/YYYY-MM-DD/broad-ats/jobs.csv` for broad ATS runs
 
 Generate search links only:
 
