@@ -7,6 +7,7 @@ The workflow is intentionally targeted and dependency-free:
 - Generates high-signal Google search URLs for ATS-hosted jobs.
 - Fetches public no-key job-board API leads from Arbeitnow and RemoteOK.
 - Fetches configured direct ATS targets from Greenhouse, Lever, Ashby, and SmartRecruiters.
+- Scans broad public ATS company directories for Greenhouse, Lever, Ashby, and Workday in dry-run or inbox-update mode.
 - Stores discovered jobs in `jobs-inbox.csv`, which can be opened and edited directly in VS Code.
 - Scores jobs against Aryan's target profile.
 - Writes dated run outputs under `results/YYYY-MM-DD/`.
@@ -27,6 +28,14 @@ Run direct ATS targets:
 ```bash
 python3 job-search/src/job_discovery.py run-direct-ats
 ```
+
+Run a broad public ATS scan across cached/direct company directories:
+
+```bash
+python3 job-search/src/job_discovery.py run-broad-ats --dry-run --company-limit 25
+```
+
+The Phase 1 broad scan covers Greenhouse, Lever, Ashby, and Workday where public company-directory data and no-auth endpoints are available. SmartRecruiters remains supported through configured direct ATS targets. Use `--dry-run` first to write reports without updating `jobs-inbox.csv`; remove it once the output quality looks useful. By default, only roles with explicit early-career signals are eligible for the shortlist/CSV, while broader matches stay in review reports. Add `--write-review-to-inbox` only if you intentionally want broader review candidates in the CSV. Add `--refresh-cache` when you want to refresh the local company-directory cache.
 
 Discover and verify new direct ATS targets from pasted Google/search-result URLs:
 

@@ -12,6 +12,7 @@ Cover-Letter-*.docx
 .DS_Store
 __pycache__/
 *.pyc
+job-search/cache/
 
 # LaTeX build artifacts
 *.aux

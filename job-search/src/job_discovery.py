@@ -14,6 +14,7 @@ import csv
 import html
 import json
 import re
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -29,9 +30,18 @@ ROLE_BUCKETS_PATH = ROOT / "config" / "role-buckets.json"
 ATS_SOURCES_PATH = ROOT / "config" / "ats-sources.json"
 FILTERS_PATH = ROOT / "config" / "filters.json"
 DIRECT_ATS_TARGETS_PATH = ROOT / "config" / "direct-ats-targets.json"
+BROAD_ATS_CACHE_DIR = ROOT / "cache" / "broad-ats-companies"
 URL_PATTERN = re.compile(r'https?://[^\s<>)\"\']+')
 
 CSV_FIELDS = ["company", "position", "posted_at", "pulled_at", "url"]
+BROAD_ATS_DATASET_BASE = "https://raw.githubusercontent.com/Feashliaa/job-board-aggregator/main/data"
+BROAD_ATS_DATASETS = {
+    "greenhouse": f"{BROAD_ATS_DATASET_BASE}/greenhouse_companies.json",
+    "lever": f"{BROAD_ATS_DATASET_BASE}/lever_companies.json",
+    "ashby": f"{BROAD_ATS_DATASET_BASE}/ashby_companies.json",
+    "workday": f"{BROAD_ATS_DATASET_BASE}/workday_companies.json",
+}
+SLUG_PATTERN = re.compile(r"^[A-Za-z0-9._-]+$")
 
 
 def utc_now() -> datetime:
@@ -60,8 +70,11 @@ def load_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def fetch_json(url: str) -> Any:
-    request = Request(url, headers={"User-Agent": "career-ops-job-search"})
+def fetch_json(url: str, data: bytes | None = None, method: str | None = None) -> Any:
+    headers = {"User-Agent": "career-ops-job-search", "Accept": "application/json"}
+    if data is not None:
+        headers["Content-Type"] = "application/json"
+    request = Request(url, data=data, headers=headers, method=method)
     with urlopen(request, timeout=30) as response:
         return json.load(response)
 
@@ -621,6 +634,363 @@ def fetch_direct_ats_target(target: dict[str, Any]) -> list[dict[str, str]]:
     return jobs
 
 
+def extract_dataset_slug(source: str, item: Any) -> str:
+    if isinstance(item, str):
+        return item.strip()
+    if not isinstance(item, dict):
+        return ""
+    for key in ("slug", "token", "company", "name", "id", "subdomain", "organization"):
+        value = item.get(key)
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+    url = item.get("url") or item.get("jobs_url") or item.get("careers_url")
+    if isinstance(url, str):
+        return ats_slug_from_url(source, url)
+    return ""
+
+
+def ats_slug_from_url(source: str, url: str) -> str:
+    parsed = urlparse(url)
+    host = (parsed.hostname or "").lower()
+    parts = [part for part in parsed.path.split("/") if part]
+    if source == "greenhouse" and parts:
+        return parts[0]
+    if source == "lever" and parts:
+        return parts[0]
+    if source == "ashby" and parts:
+        return parts[0]
+    if source == "smartrecruiters" and parts:
+        return parts[0]
+    if source == "workday" and "myworkdayjobs.com" in host:
+        return workday_key_from_url(url)
+    return ""
+
+
+def workday_key_from_url(url: str) -> str:
+    parsed = urlparse(url)
+    host = (parsed.hostname or "").lower()
+    parts = [part for part in parsed.path.split("/") if part]
+    if "myworkdayjobs.com" not in host or not parts:
+        return ""
+    site = parts[0]
+    subdomain = host.removesuffix(".myworkdayjobs.com")
+    host_parts = subdomain.split(".")
+    if len(host_parts) < 2:
+        return ""
+    tenant = host_parts[0]
+    instance = ".".join(host_parts[1:])
+    return f"{tenant}|{instance}|{site}"
+
+
+def company_name_from_dataset_item(source: str, slug: str, item: Any) -> str:
+    if isinstance(item, dict):
+        for key in ("company_name", "company", "name", "organization", "display_name"):
+            value = item.get(key)
+            if isinstance(value, str) and value.strip():
+                return clean_text(value, 120)
+    if source == "workday" and "|" in slug:
+        return humanize_token(slug.split("|", 1)[0])
+    return humanize_token(slug)
+
+
+def load_broad_ats_company_entries(
+    source: str,
+    cache_dir: Path,
+    refresh_cache: bool = False,
+) -> list[dict[str, str]]:
+    if source not in BROAD_ATS_DATASETS:
+        raise ValueError(f"Unsupported broad ATS source: {source}")
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    cache_path = cache_dir / f"{source}.json"
+    if refresh_cache or not cache_path.exists():
+        payload = fetch_json(BROAD_ATS_DATASETS[source])
+        cache_path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+    else:
+        payload = json.loads(cache_path.read_text(encoding="utf-8"))
+
+    if isinstance(payload, dict):
+        raw_items = payload.get("companies") or payload.get("data") or payload.get("items") or []
+        if not raw_items and all(isinstance(value, (str, dict)) for value in payload.values()):
+            raw_items = [{"slug": key, **value} if isinstance(value, dict) else value for key, value in payload.items()]
+    elif isinstance(payload, list):
+        raw_items = payload
+    else:
+        raw_items = []
+
+    entries: dict[str, dict[str, str]] = {}
+    for item in raw_items:
+        slug = extract_dataset_slug(source, item)
+        if not slug:
+            continue
+        if source != "workday" and not SLUG_PATTERN.fullmatch(slug):
+            continue
+        if source == "workday" and "|" not in slug:
+            continue
+        entries.setdefault(
+            slug.lower(),
+            {
+                "source": source,
+                "token": slug,
+                "company": company_name_from_dataset_item(source, slug, item),
+            },
+        )
+    return sorted(entries.values(), key=lambda item: item["company"].lower())
+
+
+def fetch_workday_company(entry: dict[str, str], limit: int = 20) -> list[dict[str, str]]:
+    token = entry["token"]
+    try:
+        tenant, instance, site = token.split("|", 2)
+    except ValueError:
+        return []
+    base_url = f"https://{tenant}.{instance}.myworkdayjobs.com"
+    endpoint = f"{base_url}/wday/cxs/{tenant}/{site}/jobs"
+    payload = {
+        "appliedFacets": {},
+        "limit": limit,
+        "offset": 0,
+        "searchText": "",
+    }
+    data = json.dumps(payload).encode("utf-8")
+    response = fetch_json(endpoint, data=data, method="POST")
+    items = response.get("jobPostings") or []
+    jobs: list[dict[str, str]] = []
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        path = str(item.get("externalPath") or "").strip()
+        url = f"{base_url}{path}" if path.startswith("/") else path
+        posted = clean_text(item.get("postedOn") or item.get("startDate") or "")
+        jobs.append(
+            {
+                "url": url,
+                "title": clean_text(item.get("title")),
+                "company": entry["company"],
+                "location": clean_text(item.get("locationsText") or item.get("location") or ""),
+                "source": "workday",
+                "snippet": clean_text(" ".join(str(part) for part in item.get("bulletFields", []) if part)),
+                "posted_at": posted,
+            }
+        )
+    return [job for job in jobs if job["url"] and job["title"] and job["company"]]
+
+
+def broad_entry_to_direct_target(entry: dict[str, str]) -> dict[str, str]:
+    return {
+        "source": entry["source"],
+        "company": entry["company"],
+        "token": entry["token"],
+    }
+
+
+def fetch_broad_ats_company(entry: dict[str, str]) -> tuple[dict[str, str], list[dict[str, str]], str]:
+    try:
+        if entry["source"] == "workday":
+            return entry, fetch_workday_company(entry), ""
+        return entry, fetch_direct_ats_target(broad_entry_to_direct_target(entry)), ""
+    except Exception as exc:
+        return entry, [], str(exc)
+
+
+def posted_at_is_recent_or_unknown(job: dict[str, str], now: datetime, max_age_hours: int, include_undated: bool) -> bool:
+    posted_at = job.get("posted_at", "")
+    if not posted_at:
+        return include_undated
+    try:
+        parsed = parse_dt(posted_at)
+    except (ValueError, TypeError):
+        return include_undated
+    return (now - parsed).total_seconds() <= max_age_hours * 3600
+
+
+def broad_seniority_risk(title: str) -> bool:
+    text = normalize_text(title)
+    risky_patterns = [
+        r"(?<![a-z0-9])iii(?![a-z0-9])",
+        r"(?<![a-z0-9])iv(?![a-z0-9])",
+        r"(?<![a-z0-9])v(?![a-z0-9])",
+        r"(?<![a-z0-9])expert(?![a-z0-9])",
+        r"(?<![a-z0-9])lead(?![a-z0-9])",
+        r"(?<![a-z0-9])senior(?![a-z0-9])",
+        r"(?<![a-z0-9])sr(?![a-z0-9])",
+        r"(?<![a-z0-9])staff(?![a-z0-9])",
+        r"(?<![a-z0-9])principal(?![a-z0-9])",
+    ]
+    return any(re.search(pattern, text) for pattern in risky_patterns)
+
+
+def passes_broad_shortlist_filters(record: dict[str, str], args: argparse.Namespace) -> bool:
+    flags = flag_set(record)
+    if "no_early_career_signal" in flags and not args.include_no_early_career_in_shortlist:
+        return False
+    if broad_seniority_risk(record["title"]) and not args.include_seniority_review:
+        return False
+    return passes_shortlist_filters(record, args)
+
+
+def run_broad_ats_scan(args: argparse.Namespace) -> dict[str, Any]:
+    now = utc_now()
+    role_buckets = load_json(ROLE_BUCKETS_PATH)
+    filters = load_json(FILTERS_PATH)
+    ats_sources = load_json(ATS_SOURCES_PATH)
+    selected_sources = args.sources or ["greenhouse", "lever", "ashby", "workday"]
+    cache_dir = Path(args.cache_dir)
+
+    source_stats: dict[str, dict[str, int]] = {}
+    errors: list[dict[str, str]] = []
+    shortlist: list[dict[str, str]] = []
+    review_candidates: list[dict[str, str]] = []
+
+    for source in selected_sources:
+        source_stats[source] = {
+            "companies_loaded": 0,
+            "companies_scanned": 0,
+            "company_errors": 0,
+            "jobs_fetched": 0,
+            "jobs_skipped": 0,
+        }
+        entries = load_broad_ats_company_entries(source, cache_dir, args.refresh_cache)
+        source_stats[source]["companies_loaded"] = len(entries)
+        if args.company_limit:
+            entries = entries[: args.company_limit]
+        if args.source_company_limit:
+            entries = entries[: args.source_company_limit]
+        if not entries:
+            continue
+
+        with ThreadPoolExecutor(max_workers=args.workers) as executor:
+            futures = {executor.submit(fetch_broad_ats_company, entry): entry for entry in entries}
+            for future in as_completed(futures):
+                entry, jobs, error = future.result()
+                source_stats[source]["companies_scanned"] += 1
+                if error:
+                    source_stats[source]["company_errors"] += 1
+                    if len(errors) < args.error_limit:
+                        errors.append(
+                            {
+                                "source": source,
+                                "company": entry["company"],
+                                "token": entry["token"],
+                                "error": error,
+                            }
+                        )
+                    continue
+                source_stats[source]["jobs_fetched"] += len(jobs)
+                for job in jobs:
+                    if not posted_at_is_recent_or_unknown(job, now, args.max_age_hours, args.include_undated):
+                        source_stats[source]["jobs_skipped"] += 1
+                        continue
+                    record = make_job_record(build_namespace(job, notes=f"Imported from broad {source} ATS scan"))
+                    score = score_job(
+                        title=record["title"],
+                        company=record["company"],
+                        location=record["location"],
+                        source=record["source"],
+                        snippet=record["snippet"],
+                        role_buckets=role_buckets,
+                        filters=filters,
+                        ats_sources=ats_sources,
+                    )
+                    record["fit_score"] = str(score.score)
+                    record["role_bucket"] = score.bucket
+                    record["flags"] = "; ".join(score.flags)
+                    if passes_review_filters(record, args):
+                        review_candidates.append(record)
+                    else:
+                        source_stats[source]["jobs_skipped"] += 1
+                        continue
+                    if passes_broad_shortlist_filters(record, args):
+                        shortlist.append(record)
+                        if not args.dry_run:
+                            upsert_job_csv(Path(args.inbox), record)
+                    elif not args.dry_run and args.write_review_to_inbox:
+                        review_record = {**record, "status": "needs_review"}
+                        review_record["notes"] = "Broad ATS match; review location, seniority, and fit before applying"
+                        upsert_job_csv(Path(args.inbox), review_record)
+
+    shortlist = sorted(shortlist, key=lambda item: int_or_zero(item["fit_score"]), reverse=True)[: args.limit]
+    review_candidates = sorted(review_candidates, key=lambda item: int_or_zero(item["fit_score"]), reverse=True)[: args.review_limit]
+    return {
+        "generated_at": now.replace(microsecond=0).isoformat(),
+        "sources": selected_sources,
+        "source_stats": source_stats,
+        "imported_count": 0 if args.dry_run else len(shortlist),
+        "review_count": len(review_candidates),
+        "imported": shortlist,
+        "review_candidates": review_candidates,
+        "errors": errors,
+        "dry_run": args.dry_run,
+    }
+
+
+def render_broad_ats_summary(result: dict[str, Any], args: argparse.Namespace) -> str:
+    lines = [
+        f"# Broad ATS Scan - {utc_now().date().isoformat()}",
+        "",
+        f"Generated at: `{result['generated_at']}`",
+        f"Inbox: `{Path(args.inbox).as_posix()}`",
+        f"Dry run: `{args.dry_run}`",
+        f"Max posted age: `{args.max_age_hours} hours`",
+        f"Include undated postings: `{args.include_undated}`",
+        f"Shortlist minimum fit score: `{args.min_score}`",
+        f"Review minimum fit score: `{args.review_min_score}`",
+        f"Company limit per source: `{args.source_company_limit or args.company_limit or 'none'}`",
+        f"Require early-career signal for shortlist: `{not args.include_no_early_career_in_shortlist}`",
+        f"Write review candidates to CSV: `{args.write_review_to_inbox and not args.dry_run}`",
+        "",
+        "## Provider Counts",
+        "",
+        "| Source | Companies Loaded | Companies Scanned | Company Errors | Jobs Fetched | Jobs Skipped |",
+        "|---|---:|---:|---:|---:|---:|",
+    ]
+    for source in result["sources"]:
+        stats = result["source_stats"].get(source, {})
+        lines.append(
+            "| {source} | {loaded} | {scanned} | {errors} | {fetched} | {skipped} |".format(
+                source=source,
+                loaded=stats.get("companies_loaded", 0),
+                scanned=stats.get("companies_scanned", 0),
+                errors=stats.get("company_errors", 0),
+                fetched=stats.get("jobs_fetched", 0),
+                skipped=stats.get("jobs_skipped", 0),
+            )
+        )
+    lines.extend(["", "## Shortlist", ""])
+    if args.dry_run:
+        lines.append("Dry run: these were not written to the CSV inbox.")
+        lines.append("")
+    else:
+        lines.append("These were written to the CSV inbox.")
+        lines.append("")
+    lines.extend(render_job_table(result["imported"]))
+    lines.extend(["", "## Broader Review Candidates", ""])
+    lines.append("These matched the role filters but may need location, seniority, or fit review before applying.")
+    lines.append("")
+    lines.extend(render_job_table(result["review_candidates"]))
+    if result["errors"]:
+        lines.extend(["", "## Sample Provider Errors", ""])
+        lines.append("| Source | Company | Token | Error |")
+        lines.append("|---|---|---|---|")
+        for error in result["errors"]:
+            lines.append(
+                "| {source} | {company} | {token} | {message} |".format(
+                    source=md_cell(error["source"]),
+                    company=md_cell(error["company"]),
+                    token=md_cell(error["token"]),
+                    message=md_cell(error["error"][:220]),
+                )
+            )
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def write_broad_ats_outputs(result: dict[str, Any], args: argparse.Namespace) -> None:
+    results_dir = Path(args.results_dir)
+    results_dir.mkdir(parents=True, exist_ok=True)
+    write_output(render_broad_ats_summary(result, args), str(results_dir / "run-summary.md"))
+    write_output("# Review Candidates\n\n" + "\n".join(render_job_table(result["review_candidates"])), str(results_dir / "review-candidates.md"))
+    write_output("# Shortlist\n\n" + "\n".join(render_job_table(result["imported"])), str(results_dir / "shortlist.md"))
+
+
 def fetch_direct_ats_jobs(args: argparse.Namespace) -> dict[str, Any]:
     now = utc_now()
     payload = load_json(Path(args.targets))
@@ -1050,6 +1420,29 @@ def build_parser() -> argparse.ArgumentParser:
     direct.add_argument("--include-unclassified", action="store_true")
     direct.add_argument("--include-location-review", action="store_true")
     direct.add_argument("--results-dir", default=str(DEFAULT_RESULTS_DIR / utc_now().date().isoformat() / "direct-ats"))
+
+    broad = sub.add_parser("run-broad-ats", help="Scan broad public ATS company directories, write review reports, and optionally update inbox")
+    broad.add_argument("--sources", nargs="*", choices=sorted(BROAD_ATS_DATASETS), default=["greenhouse", "lever", "ashby", "workday"])
+    broad.add_argument("--limit", type=int, default=50, help="Maximum strict shortlist jobs")
+    broad.add_argument("--review-limit", type=int, default=150, help="Maximum broader candidates written to review-candidates.md")
+    broad.add_argument("--min-score", type=int, default=60, help="Strict shortlist minimum score")
+    broad.add_argument("--review-min-score", type=int, default=45, help="Broader review-candidate minimum score")
+    broad.add_argument("--max-age-hours", type=int, default=168)
+    broad.add_argument("--include-undated", action="store_true", help="Include postings whose ATS feed has no parseable posted date")
+    broad.add_argument("--include-negative", action="store_true")
+    broad.add_argument("--include-unclassified", action="store_true")
+    broad.add_argument("--include-location-review", action="store_true")
+    broad.add_argument("--include-no-early-career-in-shortlist", action="store_true", help="Allow broad-scan shortlist entries without explicit early-career/new-grad/intern signals")
+    broad.add_argument("--include-seniority-review", action="store_true", help="Allow seniority-risk titles such as III, Expert, Lead, Senior into the shortlist")
+    broad.add_argument("--write-review-to-inbox", action="store_true", help="Also write non-shortlist review candidates to jobs-inbox.csv")
+    broad.add_argument("--dry-run", action="store_true", help="Write reports without updating jobs-inbox.csv")
+    broad.add_argument("--workers", type=int, default=8, help="Concurrent company fetches per source")
+    broad.add_argument("--company-limit", type=int, default=0, help="Global company cap per source for quick tests")
+    broad.add_argument("--source-company-limit", type=int, default=0, help="Alias for --company-limit")
+    broad.add_argument("--error-limit", type=int, default=25, help="Maximum provider errors shown in the report")
+    broad.add_argument("--cache-dir", default=str(BROAD_ATS_CACHE_DIR), help="Local company-directory cache")
+    broad.add_argument("--refresh-cache", action="store_true", help="Refresh broad ATS company-directory caches")
+    broad.add_argument("--results-dir", default=str(DEFAULT_RESULTS_DIR / utc_now().date().isoformat() / "broad-ats"))
     return parser
 
 
@@ -1078,6 +1471,9 @@ def main() -> None:
     elif args.command == "run-direct-ats":
         result = fetch_direct_ats_jobs(args)
         write_run_outputs(result, args)
+    elif args.command == "run-broad-ats":
+        result = run_broad_ats_scan(args)
+        write_broad_ats_outputs(result, args)
 
 
 if __name__ == "__main__":
