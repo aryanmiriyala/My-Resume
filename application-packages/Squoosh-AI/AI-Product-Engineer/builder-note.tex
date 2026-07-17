@@ -1,0 +1,53 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[letterpaper,left=0.75in,right=0.75in,top=0.55in,bottom=0.55in]{geometry}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[english]{babel}
+\input{glyphtounicode}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlist[enumerate]{leftmargin=0.24in,itemsep=3pt,topsep=3pt,parsep=0pt,partopsep=0pt}
+\pdfgentounicode=1
+
+\newcommand{\notesection}[1]{%
+  \vspace{2pt}{\large\scshape #1}\par\vspace{1pt}%
+  \hrule height 0.4pt\vspace{3pt}%
+}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\textbf{Aryan Miriyala}}\\[-1pt]
+  \small Builder Note $|$ Squoosh.AI AI Product Engineer
+\end{center}\vspace{-6pt}
+
+\notesection{One thing I built}
+
+\href{https://github.com/aryanmiriyala/rockethacks-2026}{\textbf{Fix-It-Flow}} is a voice-first repair assistant I built for RocketHacks 2026. A user can show an appliance through a camera, describe the problem aloud, and receive repair guidance before defaulting to replacement. The product combines Gemini Vision, Llama-style reasoning through Featherless.AI, ElevenLabs speech, and DynamoDB-backed session state in a Next.js application.
+
+\notesection{What I owned}
+
+I owned the application flow that turned several AI services into one usable product. That included typed Next.js API routes, inspection turns, conversation and frame context, structured findings, safety warnings, repair-step generation, spoken instructions, and persisted sessions. The difficult part was not making one model call. It was keeping enough state for the next call to make sense, constraining outputs into shapes the interface could use, and giving a person a clear path when the system was uncertain.
+
+\notesection{A recent technical rabbit hole}
+
+I recently went deep on whether an OpenMP program could adjust its own runtime strategy instead of using one fixed schedule. I built a C++ runtime that recorded per-epoch telemetry and used a UCB controller to explore scheduling policy, chunk size, and thread count across Mandelbrot, heat-diffusion, and reduction workloads. I compared it with serial and fixed-policy baselines and generated plots for runtime, speedup, efficiency, and scheduler decisions.
+
+The interesting lesson was that finding a fast configuration is not the same as proving an adaptive policy is better. Exploration has a cost, workload phases can mislead the controller, and a promising result can disappear when the run budget changes. That pushed me to look at convergence behavior and repeated trials instead of selecting the nicest speedup number.
+
+\notesection{How I would sanity-check an AI result}
+
+I would use several independent layers.
+
+\begin{enumerate}
+  \item \textbf{Define the claim and invariants first.} Record inputs, the expected output schema, traffic assumptions, and conditions that make the result invalid.
+  \item \textbf{Replay and run deterministic checks.} Test state isolation, reproducibility, missing data, impossible values, and sensitivity to small prompt or input changes.
+  \item \textbf{Check approved primary sources.} For web-grounded claims, retrieve official platform documentation, manufacturer material, or government guidance, preserve URLs and snapshots, and require citations a reviewer can reopen.
+  \item \textbf{Use an independent judge ensemble.} Separate models or prompts review product logic, statistical reasoning, and safety. Calibrate them on known good and bad examples, hide the generating model's identity, and treat disagreement as a review signal. This is a practical mixture-of-experts check, not a vote that turns uncertainty into truth.
+  \item \textbf{Keep a human decision boundary.} High-impact, low-confidence, novel, or conflicting results do not ship automatically. Surface evidence, judge rationales, counterexamples, and uncertainty for a final human decision.
+\end{enumerate}
+
+\end{document}

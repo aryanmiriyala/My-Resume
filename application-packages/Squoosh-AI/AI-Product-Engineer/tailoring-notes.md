@@ -73,6 +73,15 @@ Unsupported terms to avoid:
 - State the browser automation, ecommerce, and causal-inference gaps directly rather than implying experience.
 - The human-application writing skill led to plain language, a specific technical reason for applying, an honest limitation, and removal of generic startup praise. The letter contains no semicolons, colons, or em dashes.
 
+## Builder Note Strategy
+
+- Link Fix-It-Flow because it is the strongest public, product-facing example of Aryan connecting several AI services, typed APIs, interface state, and persistent sessions into a usable workflow.
+- Describe ownership through the application flow, typed Next.js routes, inspection turns, context handoffs, structured findings, safety warnings, repair guidance, speech, and DynamoDB session state. Do not claim sole ownership of every project component.
+- Use Self-Adaptive Parallelism as the recent technical rabbit hole because it directly demonstrates instrumentation, benchmarking, concurrency, adaptive scheduling, and skepticism about attractive but unstable results.
+- Explain AI sanity checking as a layered method using predefined invariants, deterministic replay, trusted primary-source retrieval, an independently calibrated judge ensemble, disagreement escalation, and a final human decision boundary.
+- Present the judge ensemble as a practical mixture-of-experts review process rather than claiming that model agreement establishes truth.
+- The human-application writing skill kept the note direct and personal, removed generic claims, and ensured the proposed evaluation method remained distinct from already implemented project work.
+
 ## Job Keywords Used
 
 - AI product engineer
@@ -186,3 +195,4 @@ Recommended improvements
 - Cover-letter consistency review: Pass against the recent Brellium cover letter. Header, date and addressee order, paragraph spacing, salutation, signature treatment, typography, and margins match the accepted family.
 - Bullet audit: Pass. Every retained experience and project bullet identifies a specific contribution, system or problem, grounded method, context, and result.
 - Application validator: Pass. `python3 automation/validate_application_package.py application-packages/Squoosh-AI/AI-Product-Engineer` completed after artifact cleanup.
+- Builder Note verification: Pass. `builder-note.tex` compiled to exactly one US Letter page with no overfull or underfull box warnings. `pdftotext` preserved the title, four required sections, numbered evaluation layers, and reading order. The rendered page showed consistent typography, clear hierarchy, balanced page usage, and no clipping, overlap, or broken glyphs. The Fix-It-Flow project name links to `https://github.com/aryanmiriyala/rockethacks-2026`.

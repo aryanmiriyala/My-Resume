@@ -16,6 +16,8 @@ Employment type: Full-time
 
 Date saved: July 17, 2026
 
+Additional application requirement: Upload a one-page Builder Note linking one thing Aryan built and explaining what he owned, a recent technical rabbit hole, and how he would sanity-check an AI result.
+
 ## Posting Text
 
 ### What we're building
