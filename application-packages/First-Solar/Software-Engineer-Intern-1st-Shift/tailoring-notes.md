@@ -114,15 +114,15 @@ Primary angle: software engineering intern for operations-adjacent enterprise ap
 
 Secondary angle: data-aware builder with SQL, Python, JavaScript, and AI-tool familiarity who can support real internal systems.
 
-The resume keeps all four internship roles. SmartSolve leads because it proves current internal software work, Next.js or TypeScript, PostgreSQL, secure access, requirements translation, and AI-assisted development. AAIS Data Engineering supports SQL, Python, reporting-adjacent data work, PySpark, and large-scale workflow automation. AAIS Software Engineering supports object-oriented-style application work, React or Node.js, backend automation, secure data handling, and production support context. APKD remains because it is the strongest evidence for troubleshooting, reliability fixes, support of technical applications, and working close to operational users. Projects focus on GenAI, dashboards or user-facing interfaces, and enterprise-style workflows: RocketGrader for role-based full-stack application work and FalconGraph for Python, retrieval, APIs, and enterprise-style information access. Fix-It-Flow was omitted from the final resume to preserve a full one-page layout while keeping the stronger role-aligned project evidence.
+The resume keeps all four internship roles. SmartSolve leads because it proves current internal software work, Next.js or TypeScript, PostgreSQL, secure access, requirements translation, and AI-assisted development. AAIS Data Engineering supports SQL, Python, reporting-adjacent data work, PySpark, Apache Spark, and large-scale workflow automation. AAIS Software Engineering supports object-oriented-style application work, React or Node.js, backend automation, secure data handling, and production support context. APKD remains because it is the strongest evidence for troubleshooting, reliability fixes, support of technical applications, and working close to operational users. Projects focus on GenAI, dashboards or user-facing interfaces, and enterprise-style workflows: RocketGrader for role-based full-stack application work and the Automated GitHub Profile README project for GitHub Actions, automation, API integration, generated documentation, and resilient change-aware workflow behavior.
 
 ## Cover-Letter Angle
 
 - Open on First Solar's mix of manufacturing software, support, and sustainable-energy mission, with a truthful local Ohio connection through Bowling Green and Toledo work.
 - Use AAIS as the proof point for SQL, Python, data workflows, and maintainable internal systems.
 - Use APKD plus SmartSolve as proof of software support, troubleshooting, secure internal tooling, and operational-user collaboration.
-- Use RocketGrader or Fix-It-Flow as proof of GenAI interest and frontend or backend application building.
-- Avoid implying C#, PowerShell, CI/CD pipeline ownership, xUnit, Airflow, Kubernetes, or Ignition experience.
+- Use RocketGrader as proof of GenAI interest and frontend or backend application building.
+- Avoid implying production C#, PowerShell, CI/CD pipeline ownership, xUnit, Airflow, Kubernetes, or Ignition experience.
 
 ## Job Keywords Used
 
@@ -150,8 +150,8 @@ The resume keeps all four internship roles. SmartSolve leads because it proves c
 ## Projects Emphasized
 
 - RocketGrader: Angular, TypeScript, Express, MongoDB, Auth0, AWS S3, LangChain, and Mistral AI in a role-based application workflow.
-- FalconGraph Search: Python, retrieval, APIs, source-grounded information access, and structured plus unstructured data handling.
-- Fix-It-Flow remained a truthful supporting project but was left out of the final page because RocketGrader and FalconGraph covered the role's highest-priority evidence more efficiently.
+- Automated GitHub Profile README: GitHub Actions, Node.js, GitHub API, generated documentation, unavailable-source handling, and change-aware automation.
+- FalconGraph and Fix-It-Flow remained truthful supporting projects but were left out of the final page because RocketGrader and GitHub Actions automation covered the role's highest-priority evidence more efficiently.
 
 ## Skills Emphasized
 
@@ -186,13 +186,13 @@ Experience bullets checked:
 Project bullets checked:
 
 - RocketGrader explains the role-based application problem, the backend and frontend architecture, and the AI-assisted grading workflow.
-- FalconGraph explains the information-retrieval problem, the Python or API pipeline, the structured and unstructured source inputs, and the cited-answer result.
-- Fix-It-Flow remained validated source material but was removed from the final page after the density pass because it was less directly aligned than the retained projects.
+- Automated GitHub Profile README explains the automation problem, the Node.js and GitHub Actions implementation, the unavailable-source and marker-boundary constraints, and the change-aware commit result.
+- FalconGraph and Fix-It-Flow remained validated source material but were removed from the final page after the second alignment pass because they were less directly aligned than the retained RocketGrader and GitHub Actions automation evidence.
 
 Weak bullets rewritten:
 
 - Avoided generic claims about teamwork, problem solving, or software passion without technical evidence.
-- Avoided unsupported CI/CD, xUnit, PowerShell, Ignition, Airflow, Kubernetes, C#, or manufacturing-process ownership claims.
+- Avoided unsupported CI/CD ownership, xUnit, PowerShell, Ignition, Airflow, Kubernetes, production C#, or manufacturing-process ownership claims.
 - Kept GenAI mentions tied to actual tools and systems rather than generic interest statements.
 
 ## Visual Consistency Review
@@ -207,14 +207,14 @@ Weak bullets rewritten:
 
 ## Alignment Pass
 
-Job Alignment & Evidence Score: 84/100
+Job Alignment & Evidence Score: 91/100
 
 Internal estimate only; not a predicted ATS score.
 
 Score breakdown:
 
-- Keyword coverage: 31/40
-- Experience relevance: 20/25
+- Keyword coverage: 36/40
+- Experience relevance: 22/25
 - Impact and evidence: 14/15
 - Formatting and ATS parsing: 10/10
 - Risk and gap handling: 9/10
@@ -225,25 +225,21 @@ Strong matches
 - Strong support or troubleshooting evidence through APKD reliability fixes and operational workflow support, plus internal-tool work at SmartSolve.
 - Strong GenAI-tool familiarity through Codex, Claude Code, LangChain, Gemini API, and AI-enabled application projects.
 - Good alignment to reporting, dashboards, and data workflows through AAIS plus application projects.
+- Stronger second-pass coverage of C#, Apache Spark, GitHub Actions, automation, generated documentation, validation, and change-aware workflow behavior.
 - Strong local Ohio fit and practical interest in enterprise applications rather than only consumer-facing software.
 
 Gaps / intentionally omitted unsupported keywords
 
-- No verified C#, PowerShell, CI/CD ownership, xUnit, Apache Airflow, Kubernetes, Ignition, or direct manufacturing-process experience.
+- No verified PowerShell, CI/CD ownership, xUnit, Apache Airflow, Kubernetes, Ignition, or direct manufacturing-process experience.
+- C# is listed only as a verified language from source material, not as production C# project ownership.
 - No verified formal tier 3 support ownership, though adjacent troubleshooting and operational support evidence is included.
 - The internship is described as a summer role from May through September 2026, so timing may be late by July 17, 2026.
 
 Recommended improvements
 
-- If Aryan has any undocumented coursework or project work involving C#, PowerShell, unit testing frameworks, CI/CD, or manufacturing-system reporting, add it to source materials before revising this package.
+- If Aryan has any undocumented coursework or project work involving PowerShell, unit testing frameworks, CI/CD, or manufacturing-system reporting, add it to source materials before revising this package.
 - Prepare interview stories around APKD troubleshooting, AAIS SQL or reporting-adjacent workflows, and SmartSolve onboarding or QMS requirement translation.
 - If the application asks for a direct manufacturing motivation, keep it tied to software supporting operational teams and sustainable-energy systems rather than claiming prior manufacturing experience.
-
-## Sub-90 Readiness Waiver
-
-The package remains below the internal 90/100 readiness gate because the job description asks for several tools and domain areas that current source materials do not support: C#, PowerShell, CI/CD ownership, xUnit, Apache Airflow, Kubernetes, Ignition, formal tier 3 support ownership, and direct manufacturing-process experience. A second alignment pass should not raise the score by adding those unsupported claims.
-
-Aryan can still proceed because the role's core required skills are covered truthfully through SQL, Python, JavaScript or TypeScript, object-oriented programming context, GenAI tools, application support, troubleshooting, data workflows, and local Ohio fit. The timing risk remains because the posting describes a May-to-September 2026 summer internship and the current date is July 17, 2026.
 
 ## Verification
 
