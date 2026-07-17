@@ -81,6 +81,12 @@ Recommended improvements:
 
 - 
 
+## Sub-90 Readiness Waiver
+
+- Use only when the Job Alignment & Evidence Score is below 90/100 after a truthful second alignment pass.
+- Explain why the score cannot be raised without unsupported claims.
+- State whether Aryan still wants to proceed with the application.
+
 ## Verification
 
 - LaTeX compiled:

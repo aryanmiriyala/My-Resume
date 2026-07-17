@@ -161,7 +161,11 @@ Do not commit binary/generated artifacts unless Aryan explicitly asks. This incl
 
 Every finalized application resume should include an alignment pass against the saved `job-description.md`.
 
-The `Job Alignment & Evidence Score` is a transparent internal rubric, not an employer ATS score, pass probability, or guarantee of an interview. Do not claim or imply that a universal ATS cutoff exists. There is no mandatory numerical threshold for readiness. A package is ready when mandatory qualifications are truthfully addressed or clearly flagged, important job language is supported by evidence, the parser and visual checks pass, and no unsupported claims were added. Use the numerical score to identify improvement opportunities, not to manufacture a target result.
+The `Job Alignment & Evidence Score` is a transparent internal rubric, not an employer ATS score, pass probability, or guarantee of an interview. Do not claim or imply that a universal employer ATS cutoff exists.
+
+Application packages have an internal readiness gate of `90/100` or higher. Before finalizing a package below `90/100`, run another truthful alignment pass and improve the resume, cover letter, project selection, skills section, or keyword placement where the repo source material supports it. If the score still remains below `90/100` because of unsupported tools, eligibility constraints, location constraints, domain gaps, or other requirements Aryan cannot truthfully claim, the package may proceed only with an explicit `Sub-90 Readiness Waiver` section in `tailoring-notes.md` explaining why the score cannot be raised without inventing claims and whether Aryan still wants to apply. Do not use the waiver to avoid ordinary tailoring work.
+
+A package is ready when the score is at least `90/100`, or when a documented sub-90 waiver is present, mandatory qualifications are truthfully addressed or clearly flagged, important job language is supported by evidence, the parser and visual checks pass, and no unsupported claims were added. Use the numerical score to identify improvement opportunities, not to manufacture a target result.
 
 ## ATS Parser And Recruiter Screen Rules
 
@@ -193,6 +197,7 @@ Record the score in `tailoring-notes.md` with:
 - `Strong matches`
 - `Gaps / intentionally omitted unsupported keywords`
 - `Recommended improvements`
+- `Sub-90 Readiness Waiver` when the score is below `90/100`
 
 Do not inflate the score by adding unsupported keywords. A lower truthful score is better than a higher score built on claims Aryan cannot defend.
 

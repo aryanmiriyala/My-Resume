@@ -239,10 +239,16 @@ Recommended improvements
 - Prepare interview stories around APKD troubleshooting, AAIS SQL or reporting-adjacent workflows, and SmartSolve onboarding or QMS requirement translation.
 - If the application asks for a direct manufacturing motivation, keep it tied to software supporting operational teams and sustainable-energy systems rather than claiming prior manufacturing experience.
 
+## Sub-90 Readiness Waiver
+
+The package remains below the internal 90/100 readiness gate because the job description asks for several tools and domain areas that current source materials do not support: C#, PowerShell, CI/CD ownership, xUnit, Apache Airflow, Kubernetes, Ignition, formal tier 3 support ownership, and direct manufacturing-process experience. A second alignment pass should not raise the score by adding those unsupported claims.
+
+Aryan can still proceed because the role's core required skills are covered truthfully through SQL, Python, JavaScript or TypeScript, object-oriented programming context, GenAI tools, application support, troubleshooting, data workflows, and local Ohio fit. The timing risk remains because the posting describes a May-to-September 2026 summer internship and the current date is July 17, 2026.
+
 ## Verification
 
-- LaTeX compiled:
-- PDF page count:
-- PDF text checked:
-- Visual PDF reviewed:
-- Application validator run:
+- LaTeX compiled: Pass. `pdflatex -interaction=nonstopmode -halt-on-error` completed successfully for `resume.tex` and `cover-letter.tex`.
+- PDF page count: Pass. `pdfinfo` reports exactly 1 page for both `resume.pdf` and `cover-letter.pdf`.
+- PDF text checked: Pass. `pdftotext` preserved the contact block, standard section order, SmartSolve, American Association of Insurance Services, Alliance for Paired Kidney Donation, projects, technical skills, and cover-letter reading order.
+- Visual PDF reviewed: Pass. Poppler renders showed readable one-page layouts with no clipping, overlap, broken glyphs, inconsistent bullets, or an obvious empty bottom band.
+- Application validator run: Pass. `python3 automation/validate_application_package.py application-packages/First-Solar/Software-Engineer-Intern-1st-Shift` completed after build-artifact cleanup.

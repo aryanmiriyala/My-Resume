@@ -39,6 +39,8 @@ RESUME_TEXT_MARKERS = [
 ]
 
 BUILD_ARTIFACT_SUFFIXES = {".aux", ".log", ".out", ".toc", ".fls", ".fdb_latexmk", ".synctex.gz"}
+MIN_ALIGNMENT_SCORE = 90
+SUB_90_WAIVER_MARKER = "Sub-90 Readiness Waiver"
 
 
 def run_command(command: list[str]) -> tuple[int, str, str]:
@@ -74,6 +76,13 @@ def check_tailoring_notes(app_dir: Path, errors: list[str]) -> None:
         )
     elif not 0 <= int(score_match.group(1)) <= 100:
         errors.append("Job Alignment & Evidence Score must be between 0 and 100")
+    else:
+        score = int(score_match.group(1))
+        if score < MIN_ALIGNMENT_SCORE and SUB_90_WAIVER_MARKER not in text:
+            errors.append(
+                "Job Alignment & Evidence Score below 90 requires a "
+                "`Sub-90 Readiness Waiver` section in tailoring-notes.md"
+            )
 
     if re.search(r"\b(TODO|TBD|FIXME)\b", text, re.IGNORECASE):
         errors.append("tailoring-notes.md contains TODO/TBD/FIXME placeholder text")

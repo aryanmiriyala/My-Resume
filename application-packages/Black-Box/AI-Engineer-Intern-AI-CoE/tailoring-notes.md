@@ -239,6 +239,12 @@ Recommended improvements
 - If Aryan has undocumented Azure, LangChain, FastAPI, or enterprise-integration work, add it to source materials before revising this package.
 - Prepare a concise explanation of why FalconGraph, RocketGrader, and SmartSolve are the strongest applied-AI proof points despite the internship-eligibility mismatch.
 
+## Sub-90 Readiness Waiver
+
+The package remains below the internal 90/100 readiness gate because the job description includes several requirements that cannot be truthfully added from current source materials: Azure, ServiceNow, SAP, Salesforce, Power Platform, n8n, formal AI governance ownership, at least 6 months remaining in the master's program at joining, and a 6-to-12-month full-time on-site Plano internship. A second alignment pass should not raise the score by adding these unsupported terms.
+
+Aryan can still proceed only as a reach application if he accepts the eligibility and logistics risk. The resume and cover letter already use the strongest truthful applied-AI, RAG, API, LangChain, data-pipeline, and full-stack evidence available in the repo.
+
 ## Verification
 
 - LaTeX compiled: Pass. `pdflatex -interaction=nonstopmode -halt-on-error` completed successfully for `resume.tex` and `cover-letter.tex`.
