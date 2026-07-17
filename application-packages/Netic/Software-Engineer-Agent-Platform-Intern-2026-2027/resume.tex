@@ -1,0 +1,114 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[letterpaper,left=0.22in,right=0.22in,top=0.10in,bottom=0.08in]{geometry}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[english]{babel}
+\input{glyphtounicode}
+
+\pagestyle{empty}
+\urlstyle{same}
+\raggedright
+\setlength{\parindent}{0pt}
+\linespread{0.92}
+\pdfgentounicode=1
+
+\newcommand{\resumesection}[1]{%
+  \par\vspace{2pt}%
+  {\large\scshape #1}\par\vspace{2pt}%
+  \hrule height 0.4pt\vspace{2pt}%
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \textbf{#1} \hfill #2\\
+  \textit{#3} \hfill \textit{#4}
+}
+
+\newcommand{\projectHeading}[2]{
+  \textbf{#1} \hfill #2
+}
+
+\newlist{tightitemize}{itemize}{1}
+\setlist[tightitemize]{leftmargin=0.20in,itemsep=0pt,topsep=1pt,parsep=0pt,partopsep=0pt,label={\raisebox{0.15ex}{\small\textbullet}},after=\vspace{1pt}}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE \textbf{Aryan Miriyala}}\\[-1pt]
+  \small
+  +1 419-315-0444 $|$
+  \href{mailto:aryanmiriyala@gmail.com}{aryanmiriyala@gmail.com} $|$
+  \href{https://www.linkedin.com/in/aryan-miriyala-7788a21b6/}{linkedin.com/in/aryan-miriyala} $|$
+  \href{https://github.com/aryanmiriyala}{github.com/aryanmiriyala}
+\end{center}\vspace{-10pt}
+
+\resumesection{Professional Summary}
+Applied AI software engineer building TypeScript/Python products, APIs, data models, RAG systems, LLM evaluation workflows, and stateful AI applications. Background includes React/Next.js, Node/Express, FastAPI, LangChain, LLM APIs, Docker, AWS, Codex, and Claude Code.
+
+\resumesection{Education}
+\resumeSubheading
+{Bowling Green State University}{Bowling Green, OH}
+{M.S. in Computer Science, GPA: 4.00/4.00}{Aug. 2024 -- Aug. 2026}
+
+\resumeSubheading
+{Bowling Green State University}{Bowling Green, OH}
+{B.S. in Computer Science, GPA: 4.00/4.00}{Jan. 2021 -- Apr. 2024}
+
+\resumesection{Experience}
+\resumeSubheading
+{Artificial Intelligence \& Computer Science Intern}{May 2026 -- Present}
+{SmartSolve Industries}{Bowling Green, OH}
+\begin{tightitemize}
+  \item Applied Codex and Claude Code to implementation planning, debugging, code review, and self-review while validating generated changes around proprietary internal software.
+  \item Architected a full-stack onboarding tracker with Next.js, TypeScript, PostgreSQL, Drizzle ORM, SSO, and auth middleware, centralizing new-hire workflows while protecting sensitive employee data.
+  \item Scoped an AI-enabled QMS dependency register by modeling relationships among quality documents, turning ambiguous operational requirements into a reviewable implementation plan.
+  \item Built a Docker devcontainer for WSL2 and Colima to standardize cross-platform setup and isolate AI-assisted development workflows around proprietary source code.
+\end{tightitemize}
+
+\resumeSubheading
+{Data Engineering Intern}{May 2025 -- Aug. 2025}
+{American Association of Insurance Services}{Lisle, IL}
+\begin{tightitemize}
+  \item Automated a manual SQL billing workflow with Python, PySpark, and AWS Glue, processing 20+ TB of production insurance data to calculate charges for 700+ member companies.
+  \item Profiled 160+ MySQL, Oracle, and Impala tables with Python, Pandas, SQL, and JDBC, mapping source-system relationships into a 25-domain taxonomy for maintainable migration.
+\end{tightitemize}
+
+\resumeSubheading
+{Software Engineering Intern}{May 2023 -- May 2024}
+{American Association of Insurance Services}{Lisle, IL}
+\begin{tightitemize}
+  \item Engineered Python/JSON automation that generated 1,000+ production SQL tables across MySQL, Oracle, PostgreSQL, and 10+ insurance lines, scaling repeatable data-model delivery.
+  \item Implemented RBAC and JWT patterns in a React/Node.js modernization, replacing broad internal access with role-specific controls for about 110 users.
+  \item Automated AWS Lambda validation that tokenized PII with hashlib/boto3 and delivered structured JSON to S3, strengthening secure downstream data processing.
+\end{tightitemize}
+
+\resumeSubheading
+{Software Engineering Intern}{May 2022 -- Aug. 2022}
+{Alliance for Paired Kidney Donation}{Toledo, OH}
+\begin{tightitemize}
+  \item Stabilized an AWS-hosted Lucee/CFML healthcare platform with anti-CSRF protection, audit logging, access routing, import-ordering fixes, data-entry safeguards, and duplicate-antigen crash handling.
+\end{tightitemize}
+
+\resumesection{Projects}
+\projectHeading{Diff-Grounded PR Generation}{Python, OpenAI API, GitHub API}
+\begin{tightitemize}
+  \item Built an ICSME-published LLM pipeline that generated evidence-grounded pull request descriptions from commits, diffs, linked issues, and repository metadata, then evaluated outputs against raw code-change evidence.
+\end{tightitemize}
+
+\projectHeading{Fix-It-Flow - Voice-First Repair PWA}{Next.js, TypeScript, Gemini, DynamoDB}
+\begin{tightitemize}
+  \item Built a stateful AI workflow with typed Next.js API routes, camera input, voice commands, Gemini Vision, Featherless.AI/Llama reasoning, ElevenLabs TTS, and DynamoDB session persistence.
+  \item Designed repair guidance with structured findings, confidence scores, requested camera views, safety warnings, contextual Q\&A, and voice controls for next, repeat, help, and end session.
+\end{tightitemize}
+
+\projectHeading{FalconGraph Search - Source-Grounded RAG}{Python, FastAPI, FAISS, Next.js}
+\begin{tightitemize}
+  \item Built a campus answer engine integrating a C++/OpenMP crawler, Python document cleaning, FAISS retrieval, FastAPI RAG, and a Next.js interface that returned cited answers with source graph context.
+\end{tightitemize}
+
+\resumesection{Technical Skills}
+\textbf{Languages \& Product:} Python, TypeScript/JavaScript, SQL, C++, React, Next.js, Angular, Node.js, Express, FastAPI, REST APIs\\
+\textbf{AI \& Agents:} Codex, Claude Code, OpenAI API, Gemini API, Mistral AI, LangChain, RAG, LLM inference, automated LLM evaluation, embeddings, vector search, FAISS\\
+\textbf{Data, Cloud \& Tools:} PostgreSQL, MySQL, MongoDB, Docker, Git, AWS Lambda, S3, DynamoDB, AWS Glue, PySpark
+
+\end{document}
