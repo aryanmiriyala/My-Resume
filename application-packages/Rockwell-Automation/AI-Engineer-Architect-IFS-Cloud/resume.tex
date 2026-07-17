@@ -1,0 +1,110 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[letterpaper,left=0.22in,right=0.22in,top=0.10in,bottom=0.08in]{geometry}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[english]{babel}
+\input{glyphtounicode}
+
+\pagestyle{empty}
+\urlstyle{same}
+\raggedright
+\setlength{\parindent}{0pt}
+\linespread{0.92}
+\pdfgentounicode=1
+
+\newcommand{\resumesection}[1]{%
+  \par\vspace{2pt}%
+  {\large\scshape #1}\par\vspace{2pt}%
+  \hrule height 0.4pt\vspace{2pt}%
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \textbf{#1} \hfill #2\\
+  \textit{#3} \hfill \textit{#4}
+}
+
+\newcommand{\projectHeading}[2]{
+  \textbf{#1} \hfill #2
+}
+
+\newlist{tightitemize}{itemize}{1}
+\setlist[tightitemize]{leftmargin=0.20in,itemsep=0pt,topsep=1pt,parsep=0pt,partopsep=0pt,label={\raisebox{0.15ex}{\small\textbullet}},after=\vspace{1pt}}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE \textbf{Aryan Miriyala}}\\[-1pt]
+  \small
+  +1 419-315-0444 $|$
+  \href{mailto:aryanmiriyala@gmail.com}{aryanmiriyala@gmail.com} $|$
+  \href{https://www.linkedin.com/in/aryan-miriyala-7788a21b6/}{linkedin.com/in/aryan-miriyala} $|$
+  \href{https://github.com/aryanmiriyala}{github.com/aryanmiriyala}
+\end{center}\vspace{-10pt}
+
+\resumesection{Professional Summary}
+AI and software engineer with experience designing secure internal workflows, cloud data pipelines, role-based application access, and AI-enabled systems across enterprise and healthcare-adjacent environments. Built TypeScript/Python applications, AWS data workflows, structured integrations, and maintainable operational tooling with emphasis on data integrity, security, and reviewable outcomes.
+
+\resumesection{Education}
+\resumeSubheading
+{Bowling Green State University}{Bowling Green, OH}
+{M.S. in Computer Science, GPA: 4.00/4.00}{Aug. 2024 -- Aug. 2026}
+
+\resumeSubheading
+{Bowling Green State University}{Bowling Green, OH}
+{B.S. in Computer Science, GPA: 4.00/4.00}{Jan. 2021 -- Apr. 2024}
+
+\resumesection{Experience}
+\resumeSubheading
+{Artificial Intelligence \& Computer Science Intern}{May 2026 -- Present}
+{SmartSolve Industries}{Bowling Green, OH}
+\begin{tightitemize}
+  \item Architected a Next.js/TypeScript onboarding tracker with PostgreSQL, Drizzle ORM, SSO, and auth middleware, centralizing sensitive employee workflows into a secured internal system.
+  \item Scoped an AI-enabled QMS dependency register by modeling relationships among quality documents, translating ambiguous operational requirements into a maintainable implementation plan.
+  \item Built Docker devcontainers for WSL2 and Colima to standardize development environments and isolate AI-assisted workflows around proprietary source code.
+\end{tightitemize}
+
+\resumeSubheading
+{Data Engineering Intern}{May 2025 -- Aug. 2025}
+{American Association of Insurance Services}{Lisle, IL}
+\begin{tightitemize}
+  \item Automated a manual SQL billing workflow with Python, PySpark, SQL, and AWS Glue, processing 20+ TB of production insurance data to calculate charges for 700+ member companies.
+  \item Profiled 160+ MySQL, Oracle, and Impala tables with Python, Pandas, SQL, and JDBC, defining a 25-domain taxonomy that supported maintainable data integration planning.
+  \item Built reverse-ETL and validation workflows with custom AWS IAM roles, reducing manual entry while maintaining controlled self-service access and 24-hour data latency.
+\end{tightitemize}
+
+\resumeSubheading
+{Software Engineering Intern}{May 2023 -- May 2024}
+{American Association of Insurance Services}{Lisle, IL}
+\begin{tightitemize}
+  \item Engineered Python/JSON automation that generated 1,000+ production SQL tables across MySQL, Oracle, PostgreSQL, and 10+ insurance lines, scaling repeatable enterprise data-model delivery.
+  \item Implemented RBAC and JWT patterns in a React/Node.js modernization, replacing broad application access with role-specific controls for about 110 internal users.
+  \item Automated AWS Lambda validation that tokenized PII with hashlib/boto3 and delivered structured JSON to S3, strengthening secure downstream data processing.
+\end{tightitemize}
+
+\resumeSubheading
+{Software Engineering Intern}{May 2022 -- Aug. 2022}
+{Alliance for Paired Kidney Donation}{Toledo, OH}
+\begin{tightitemize}
+  \item Secured and stabilized an AWS-hosted Lucee/CFML healthcare workflow platform with anti-CSRF protection, audit logging, access routing, import-ordering fixes, and duplicate-antigen crash handling.
+\end{tightitemize}
+
+\resumesection{Projects}
+\projectHeading{RocketGrader - Intelligent Assignment Feedback Platform}{Angular, TypeScript, Express, MongoDB}
+\begin{tightitemize}
+  \item Built a role-based AI feedback platform with Angular, Express REST APIs, MongoDB, Auth0, AWS S3, and LangChain/Mistral AI to manage assignments and return structured grading guidance.
+  \item Implemented document-upload and parsing workflows for PDF, DOCX, HTML, and text submissions, connecting protected user flows to traceable scores, strengths, and improvement feedback.
+\end{tightitemize}
+
+\projectHeading{HealthTrend - Healthcare Big Data Streaming Pipeline}{NiFi, Kafka, HDFS, Spark, PySpark}
+\begin{tightitemize}
+  \item Built a Dockerized batch-and-stream healthcare data platform that routed patient CSV records into HDFS and IoT health events into Kafka, then processed both sources with Spark for downstream analytics.
+\end{tightitemize}
+
+\resumesection{Technical Skills}
+\textbf{Languages:} TypeScript/JavaScript, Python, SQL, C++, C, C\#, Lucee/CFML\\
+\textbf{Enterprise Web \& Data:} React, Next.js, Angular, Node.js, Express.js, REST APIs, PostgreSQL, MySQL, MongoDB, Oracle, Drizzle ORM, Mongoose\\
+\textbf{Cloud \& Data Platforms:} AWS Glue, AWS S3, AWS Lambda, AWS IAM, AWS DynamoDB, PySpark, Spark, Apache NiFi, Apache Kafka, Hadoop HDFS, Docker, Git, Linux\\
+\textbf{AI \& Security:} OpenAI API, Gemini API, Mistral AI, LangChain, RAG, prompt engineering, LLM inference, SSO, JWT, RBAC, auth middleware, anti-CSRF, audit logging
+
+\end{document}
