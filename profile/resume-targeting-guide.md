@@ -63,6 +63,7 @@ Rules:
 - Do not impose a fixed bullet maximum or require matching bullet counts across roles. Let the number of distinct, job-relevant accomplishments determine the count, subject to one-page readability.
 - Audit each selected bullet against the formula: action verb + what changed + technology/method + scope/domain + impact/result.
 - Rewrite, combine, or remove any bullet that does not provide a clear contribution, defensible context, and result; never retain a weak bullet for visual symmetry.
+- When the resume is underfilled, add evidence by quality order: a stronger verified experience bullet, a deeper project bullet explaining purpose/method/result, a missing truthful must-have keyword in context, or a compact skills category. Do not add filler, duplicate claims, broad soft-skill labels, or unsupported technologies just to occupy space.
 - Keep the most recent experience strong.
 - Do not force unrelated skills into a bullet.
 - Do not invent metrics.
@@ -107,6 +108,6 @@ After approval and edits:
 - Confirm the resume PDF is exactly one page.
 - Extract PDF text and inspect bullets.
 - Confirm the PDF text preserves section order and important keywords.
-- Visually inspect the PDF for readability, spacing, and cramped sections.
+- Visually inspect the PDF for readability, spacing, cramped sections, canonical layout consistency, and bottom-page usage. A large unused bottom band fails this step when verified role-aligned evidence is still available.
 - If the resume is too long, first tighten wording, remove repetition, and prioritize stronger evidence. Keep the canonical application-resume geometry and 11-point typography unchanged rather than creating application-specific spacing.
 - Save tailoring notes.

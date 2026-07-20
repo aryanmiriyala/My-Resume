@@ -67,7 +67,9 @@ Weak bullets rewritten:
 
 ## Alignment Pass
 
-ATS-style score:
+Job Alignment & Evidence Score:
+
+Internal estimate only; not a predicted ATS score.
 
 Strong matches:
 
@@ -92,5 +94,7 @@ Recommended improvements:
 - LaTeX compiled:
 - PDF page count:
 - PDF text checked:
-- Visual PDF reviewed:
+- ATS source gate checked:
+- Visual consistency gate checked:
+- Page utilization gate checked:
 - Application validator run:

@@ -8,6 +8,7 @@ import re
 import shutil
 import subprocess
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 
@@ -22,6 +23,9 @@ REQUIRED_FILES = [
 TAILORING_NOTE_MARKERS = [
     "## Job Keyword Map",
     "## Bullet Audit",
+    "ATS source gate checked:",
+    "Visual consistency gate checked:",
+    "Page utilization gate checked:",
     "Job Alignment & Evidence Score:",
     "Internal estimate only; not a predicted ATS score.",
     "Strong matches",
@@ -41,6 +45,23 @@ RESUME_TEXT_MARKERS = [
 BUILD_ARTIFACT_SUFFIXES = {".aux", ".log", ".out", ".toc", ".fls", ".fdb_latexmk", ".synctex.gz"}
 MIN_ALIGNMENT_SCORE = 90
 SUB_90_WAIVER_MARKER = "Sub-90 Readiness Waiver"
+MAX_UNUSED_BOTTOM_POINTS = 90.0
+WARN_UNUSED_BOTTOM_POINTS = 72.0
+
+FORBIDDEN_RESUME_SOURCE_PATTERNS = [
+    (r"\\begin\{tabular\*?\}", "LaTeX tabular/tabular* constructs are not ATS-safe for application resumes"),
+    (r"\\usepackage(?:\[[^\]]*\])?\{tabularx\}", "tabularx is not allowed in application resume source"),
+    (r"\\includegraphics\b", "images/graphics are not allowed in application resumes"),
+    (r"\\usepackage(?:\[[^\]]*\])?\{graphicx\}", "graphicx is not allowed in application resume source"),
+    (r"\\begin\{multicols\}", "multi-column resume layouts are not allowed"),
+    (r"\\twocolumn\b", "two-column resume layouts are not allowed"),
+    (r"\\begin\{textblock\*?\}", "text boxes/positioned text blocks are not allowed"),
+    (r"\\usepackage(?:\[[^\]]*\])?\{textpos\}", "textpos/text boxes are not allowed in application resume source"),
+    (r"\\usepackage(?:\[[^\]]*\])?\{fontawesome5?\}", "icons are not allowed in application resumes"),
+    (r"\\usepackage(?:\[[^\]]*\])?\{fancyhdr\}", "resume content must not rely on headers or footers"),
+    (r"\\pagestyle\{fancy\}", "resume content must not rely on headers or footers"),
+    (r"\\fancy(?:head|foot)\b", "resume content must not rely on headers or footers"),
+]
 
 
 def run_command(command: list[str]) -> tuple[int, str, str]:
@@ -86,6 +107,75 @@ def check_tailoring_notes(app_dir: Path, errors: list[str]) -> None:
 
     if re.search(r"\b(TODO|TBD|FIXME)\b", text, re.IGNORECASE):
         errors.append("tailoring-notes.md contains TODO/TBD/FIXME placeholder text")
+
+
+def check_resume_source(app_dir: Path, errors: list[str]) -> None:
+    resume_tex = app_dir / "resume.tex"
+    if not resume_tex.is_file():
+        return
+
+    text = resume_tex.read_text(encoding="utf-8", errors="replace")
+    for pattern, message in FORBIDDEN_RESUME_SOURCE_PATTERNS:
+        if re.search(pattern, text):
+            errors.append(f"resume.tex ATS source gate failed: {message}")
+
+
+def local_name(tag: str) -> str:
+    return tag.rsplit("}", 1)[-1]
+
+
+def check_resume_page_utilization(app_dir: Path, errors: list[str], warnings: list[str]) -> None:
+    resume_pdf = app_dir / "resume.pdf"
+    if not resume_pdf.is_file() or not shutil.which("pdftotext"):
+        return
+
+    code, stdout, stderr = run_command(["pdftotext", "-bbox", str(resume_pdf), "-"])
+    if code != 0:
+        warnings.append(f"pdftotext -bbox failed for resume.pdf; skipped page-utilization check: {stderr.strip()}")
+        return
+
+    try:
+        root = ET.fromstring(stdout)
+    except ET.ParseError as exc:
+        warnings.append(f"Could not parse pdftotext -bbox output; skipped page-utilization check: {exc}")
+        return
+
+    pages = [element for element in root.iter() if local_name(element.tag) == "page"]
+    if not pages:
+        warnings.append("pdftotext -bbox output had no page nodes; skipped page-utilization check")
+        return
+
+    page = pages[0]
+    try:
+        page_height = float(page.attrib["height"])
+    except (KeyError, ValueError):
+        warnings.append("pdftotext -bbox output had no usable page height; skipped page-utilization check")
+        return
+
+    max_y = 0.0
+    for word in page.iter():
+        if local_name(word.tag) != "word":
+            continue
+        try:
+            max_y = max(max_y, float(word.attrib["yMax"]))
+        except (KeyError, ValueError):
+            continue
+
+    if max_y <= 0:
+        warnings.append("pdftotext -bbox output had no word positions; skipped page-utilization check")
+        return
+
+    unused_bottom = page_height - max_y
+    if unused_bottom > MAX_UNUSED_BOTTOM_POINTS:
+        errors.append(
+            "resume.pdf appears substantially underfilled: "
+            f"about {unused_bottom / 72:.1f} inches of unused bottom space"
+        )
+    elif unused_bottom > WARN_UNUSED_BOTTOM_POINTS:
+        warnings.append(
+            "resume.pdf may be underfilled: "
+            f"about {unused_bottom / 72:.1f} inches of unused bottom space"
+        )
 
 
 def check_resume_pdf(app_dir: Path, errors: list[str], warnings: list[str]) -> None:
@@ -137,7 +227,9 @@ def validate(app_dir: Path) -> int:
 
     check_cover_letter_artifact(app_dir, errors)
     check_tailoring_notes(app_dir, errors)
+    check_resume_source(app_dir, errors)
     check_resume_pdf(app_dir, errors, warnings)
+    check_resume_page_utilization(app_dir, errors, warnings)
     check_build_artifacts(app_dir, errors)
 
     for warning in warnings:

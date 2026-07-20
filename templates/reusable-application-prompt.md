@@ -13,7 +13,7 @@ I will provide one specific job description below. Treat that as approval to run
 2. Save the posting as job-description.md.
 3. Review profile/, master-documents/, templates/, and AGENTS.md before writing.
 4. Build a keyword/alignment map from the job description.
-5. Create tailoring-notes.md with the resume strategy, cover-letter angle, keyword targets, risks/gaps, and ATS-style alignment notes.
+5. Create tailoring-notes.md with the resume strategy, cover-letter angle, keyword targets, risks/gaps, bullet audit, ATS source gate, visual consistency gate, page utilization gate, and internal alignment notes.
 6. Generate a tailored one-page resume.tex and resume.pdf.
 7. Generate a concise, personal, role-aligned cover-letter.md and a submission-ready cover-letter.pdf or cover-letter.docx.
 8. Keep every resume and cover-letter claim grounded in the repo source materials. Do not invent metrics, tools, employers, or experience.
@@ -24,11 +24,11 @@ I will provide one specific job description below. Treat that as approval to run
 13. Manually edit AI-assisted bullets until they are specific, grounded, and defensible. Reject polished but vague, inflated, buzzword-heavy, or unsupported bullets.
 14. Make the resume exactly one full readable page, with no obvious blank band at the bottom and no cramped unreadable sections.
 15. Preserve all internship roles by default; experience takes precedence over projects if space is tight.
-16. Run the ATS-style alignment pass and record the score in tailoring-notes.md.
+16. Run the resume-vs-job-description alignment pass and record `Job Alignment & Evidence Score: X/100` in tailoring-notes.md with the internal-estimate disclaimer.
 17. Run python3 automation/validate_application_package.py application-packages/<Company>/<Role> and fix failures.
 18. Clean generated LaTeX artifacts.
 19. Make a small coherent commit and push to main.
-20. In the final response, include artifact paths, one-page PDF verification, validator result, ATS-style score, and commit hash.
+20. In the final response, include artifact paths, one-page PDF verification, validator result, Job Alignment & Evidence Score, and commit hash.
 
 Job description:
 
@@ -45,7 +45,7 @@ Optional context if useful:
 ## Short Version
 
 ```text
-I am applying to the role below. Read AGENTS.md first and run only the Application Package Generation pipeline. Create the application package, tailor the one-page resume and cover letter, generate PDFs, run validation and ATS-style alignment, update the tracker, commit, and push. Keep all claims grounded in profile/ and master-documents/. Audit every experience and project bullet for individual contribution, specific system/problem, method/technology when relevant, scope/context, impact/result, and interview defensibility.
+I am applying to the role below. Read AGENTS.md first and run only the Application Package Generation pipeline. Create the application package, tailor the one-page resume and cover letter, generate PDFs, run validation and the internal resume-vs-job-description alignment pass, update the tracker, commit, and push. Keep all claims grounded in profile/ and master-documents/. Audit every experience and project bullet for individual contribution, specific system/problem, method/technology when relevant, scope/context, impact/result, and interview defensibility.
 
 Job description:
 [paste JD]

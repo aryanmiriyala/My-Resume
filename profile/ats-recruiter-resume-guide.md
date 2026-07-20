@@ -91,7 +91,7 @@ Recruiters often scan quickly, so the resume must make relevance visible immedia
 
 - Use a readable font size. MIT CAPD recommends no smaller than 10pt; this repo should prefer readability over squeezing in marginal content.
 - Keep the resume visually scannable in 30-60 seconds.
-- Treat visual density as a failure mode during PDF review. A modest blank area at the bottom is acceptable when the page is substantive and readable; do not use bottom-edge fullness as a pass criterion.
+- Treat visual density as a failure mode during PDF review, but do not confuse healthy white space with an underfilled resume. A small bottom margin is acceptable; a large blank band is not. If the final text stops well above the bottom of the page, first add stronger verified role-aligned evidence, deepen a thin project bullet, or restore a relevant experience detail before considering the package complete.
 - Preserve internship experience by default before project breadth. A weakly relevant internship may be compressed or omitted when it would displace substantially stronger evidence or force unreadable formatting; document that decision in `tailoring-notes.md`.
 - Do not use aggressive negative spacing in Experience or Projects to satisfy the one-page rule. A full page should still have readable line spacing, clear section transitions, and enough breathing room for a recruiter scan.
 - Prefer fewer high-signal projects over a crowded project list when each project is reduced to a dense one-line block.
@@ -134,8 +134,8 @@ For healthcare or compliance-adjacent roles:
 8. Audit every experience and project bullet against the bullet checklist.
 9. Compile LaTeX and confirm the PDF is exactly one page.
 10. Extract PDF text and verify ATS readability.
-11. Visually inspect the PDF for human readability before considering it done.
-12. Save `tailoring-notes.md` with keywords used, experience emphasized, and verification results.
+11. Visually inspect the PDF for human readability, canonical visual consistency, and bottom-page usage before considering it done.
+12. Save `tailoring-notes.md` with keywords used, experience emphasized, bullet audit notes, the visual consistency gate, the page utilization gate, and verification results.
 
 ## Common Failure Modes
 
@@ -143,6 +143,7 @@ For healthcare or compliance-adjacent roles:
 - Unsupported keywords added only to satisfy ATS matching.
 - Bullets that list tasks without impact.
 - Dense bullets that hide the main technology or result.
+- Underfilled one-page resumes where the bottom portion is visibly unused even though verified role-aligned evidence is available.
 - Summary sections that consume space without adding role alignment.
 - Skills sections that contain responsibilities instead of supported technologies.
 - Too many unrelated skills, making the target role unclear.
@@ -153,6 +154,8 @@ For healthcare or compliance-adjacent roles:
 
 - Yale Office of Career Strategy recommends comparing resumes against a job description, checking ATS visibility, and using specific keywords to improve noticeability.
 - Yale OCS states its resume templates are formatted to work with Applicant Tracking Systems.
+- Greenhouse support documentation identifies resume formatting issues that can break parsing, including graphics, photos, word art, image-based resumes, complex tables, headers, footers, text boxes, columned layouts, unclear sections, and incomplete job titles.
+- UC Berkeley Career Engagement recommends a simple one-page format for students and standard ATS-friendly formatting with standard fonts/headings, clear work-history structure, and no headers, footers, text boxes, tables, colors, pictures, or graphics.
 - MIT CAPD recommends using the position description to decide what to include, targeting each resume to the employer/position, using consistent standard formatting, strong action verbs, specific technologies, accomplishments, and quantified impact where possible.
 - MIT CAPD notes employers may use keyword scanning and recommends using relevant industry/position keywords.
 - University of Michigan Career Center lists a resume summary as optional and more common with experienced professionals, but available to students when useful.
@@ -162,5 +165,7 @@ For healthcare or compliance-adjacent roles:
 ## Sources
 
 - Yale Office of Career Strategy, Resumes: https://ocs.yale.edu/channels/resumes/
+- Greenhouse Support, Unsuccessful Resume Parse: https://support.greenhouse.io/hc/en-us/articles/200989175-Unsuccessful-resume-parse
+- UC Berkeley Career Engagement, Resumes: https://www.career.berkeley.edu/prepare-for-success/resumes/
 - MIT Career Advising & Professional Development, Resumes: https://capd.mit.edu/resources/resumes/
 - University of Michigan Career Center, Resume Resources: https://careercenter.umich.edu/article/resume-resources
