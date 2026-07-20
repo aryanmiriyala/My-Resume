@@ -10,6 +10,7 @@ The workflow is intentionally targeted and dependency-free:
 - Scans broad public ATS company directories for Greenhouse, Lever, Ashby, and Workday in dry-run or inbox-update mode.
 - Writes date-partitioned job CSVs under `results/YYYY-MM-DD/<pipeline>/jobs.csv` for review and visualization.
 - Keeps `jobs-inbox.csv` as a minimal manually curated inbox when jobs are intentionally imported.
+- Maintains `data/scan-history.tsv` for first-seen/last-seen tracking, normalized company-role dedupe, and new-vs-seen run counts.
 - Scores jobs against Aryan's target profile.
 - Writes dated run outputs under `results/YYYY-MM-DD/`.
 - Leaves final application decisions manual. Chosen jobs should then enter the main `AGENTS.md` resume and cover-letter pipeline.
@@ -39,6 +40,8 @@ python3 job-search/src/job_discovery.py run-pipeline --refresh-cache
 ```
 
 The standard pipeline covers Greenhouse, Lever, Ashby, and Workday where public company-directory data and no-auth endpoints are available. SmartRecruiters remains supported through configured direct ATS targets. By default, only roles with explicit early-career signals and U.S. location fit are eligible for the shortlist/CSV. India-based roles are allowed into review reports. Other non-U.S./non-India roles are excluded from standard review. Review-only matches stay in dated Markdown/CSV reports instead of being added to `jobs-inbox.csv`.
+
+The standard run also updates `job-search/data/scan-history.tsv`. This file preserves first-seen and last-seen timestamps across runs and lets reports distinguish genuinely new jobs from previously seen jobs without adding noisy columns to `jobs-inbox.csv`.
 
 Open `job-search/job-viewer.html` in a browser to interactively review dated Markdown reports or CSV files. It can load one file, multiple files, or an entire local results folder through the browser file picker without uploading anything. Use it with `results/YYYY-MM-DD/<pipeline>/jobs.csv`, `shortlist.md`, `review-candidates.md`, or `jobs-inbox.csv`. The viewer shows fit scores, job links, source files, fetched dates, and posted/discovered recency filters for 6, 12, 24, and 48 hours.
 
@@ -115,7 +118,21 @@ The CSV intentionally contains only the fields needed for manual review:
 
 Fit scoring, source details, flags, and review notes belong in dated Markdown reports, not the CSV inbox.
 
+`job-search/data/scan-history.tsv` is the generated discovery ledger. It can contain URL, normalized company-role identity, first-seen time, last-seen time, source, posted time, location, latest status, fit score, and flags. Use it for dedupe and run-quality analysis, not as the manual application inbox.
+
 Dated run outputs stay under `job-search/results/YYYY-MM-DD/`. The CSV inbox is the source of truth; regenerate the report whenever the inbox changes.
+
+## Santifer Career-Ops Ideas Adopted
+
+The current pipeline keeps Aryan's simpler Python workflow, but adopts a few durable ideas from `santifer/career-ops`:
+
+- One normal scan command should do the routine work; lower-level commands are for debugging and maintenance.
+- Provider/API fetching should stay deterministic and low-cost before any AI review.
+- Scan history should be separate from the application inbox so reruns preserve first-seen/last-seen context.
+- Job identity should use both URL and normalized company-role keys so reposts or URL moves are easier to spot.
+- Reports should expose review metadata and source quality without turning the inbox into a noisy scoring table.
+
+Ideas deliberately left as future backlog: Playwright liveness verification, portal health ledgers, trust/legitimacy scoring, repost clustering, and a terminal dashboard.
 
 
 ## Discovery Strategy

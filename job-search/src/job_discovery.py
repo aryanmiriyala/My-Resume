@@ -26,6 +26,7 @@ from urllib.request import Request, urlopen
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INBOX = ROOT / "jobs-inbox.csv"
 DEFAULT_RESULTS_DIR = ROOT / "results"
+DEFAULT_SCAN_HISTORY = ROOT / "data" / "scan-history.tsv"
 ROLE_BUCKETS_PATH = ROOT / "config" / "role-buckets.json"
 ATS_SOURCES_PATH = ROOT / "config" / "ats-sources.json"
 FILTERS_PATH = ROOT / "config" / "filters.json"
@@ -48,6 +49,20 @@ RESULT_JOB_FIELDS = [
     "flags",
     "url",
     "notes",
+]
+SCAN_HISTORY_FIELDS = [
+    "url",
+    "identity_key",
+    "first_seen_at",
+    "last_seen_at",
+    "company",
+    "title",
+    "source",
+    "posted_at",
+    "location",
+    "last_status",
+    "fit_score",
+    "flags",
 ]
 BROAD_ATS_DATASET_BASE = "https://raw.githubusercontent.com/Feashliaa/job-board-aggregator/main/data"
 BROAD_ATS_DATASETS = {
@@ -200,6 +215,72 @@ def contains_term(text: str, term: str) -> bool:
         pattern = r"(?<![a-z0-9])" + re.escape(needle) + r"(?![a-z0-9])"
         return re.search(pattern, text) is not None
     return needle in text
+
+
+ROLE_LOCATION_SUFFIXES = {
+    "amer",
+    "americas",
+    "apac",
+    "austin",
+    "bengaluru",
+    "bangalore",
+    "boston",
+    "california",
+    "canada",
+    "chicago",
+    "dallas",
+    "hyderabad",
+    "india",
+    "new york",
+    "nyc",
+    "remote",
+    "remote india",
+    "remote us",
+    "remote usa",
+    "san francisco",
+    "seattle",
+    "texas",
+    "united states",
+    "us",
+    "usa",
+}
+
+
+def normalize_key_text(value: str | None) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", str(value or "").lower()).strip()
+
+
+def normalize_company_for_dedup(company: str | None) -> str:
+    text = normalize_key_text(company)
+    text = re.sub(r"\b(inc|llc|ltd|corp|corporation|company|co)\b", "", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def role_suffix_is_location(value: str) -> bool:
+    normalized = normalize_key_text(value)
+    if not normalized:
+        return False
+    parts = re.split(r"\s+(?:or|and)\s+|[,/|;]+", normalized)
+    parts = [part.strip() for part in parts if part.strip()]
+    return bool(parts) and all(part in ROLE_LOCATION_SUFFIXES for part in parts)
+
+
+def normalize_role_for_dedup(title: str | None) -> str:
+    text = str(title or "").lower().strip()
+    while True:
+        match = re.search(r"\s*[\[(]([^[\]()]+)[\])]\s*$", text)
+        if not match or not role_suffix_is_location(match.group(1)):
+            break
+        text = text[: match.start()].rstrip()
+    return normalize_key_text(text)
+
+
+def job_identity_key(job: dict[str, str]) -> str:
+    company = normalize_company_for_dedup(job.get("company"))
+    title = normalize_role_for_dedup(job.get("title") or job.get("position"))
+    if not company or not title:
+        return ""
+    return f"{company}::{title}"
 
 
 def location_policy(filters: dict[str, Any]) -> dict[str, list[str]]:
@@ -366,18 +447,157 @@ def write_result_jobs_csv(path: Path, rows: list[dict[str, str]]) -> None:
             writer.writerow(result_job_csv_row(row))
 
 
+def scan_history_path(args: argparse.Namespace) -> Path:
+    return Path(getattr(args, "scan_history", DEFAULT_SCAN_HISTORY))
+
+
+def read_scan_history(path: Path) -> list[dict[str, str]]:
+    if not path.exists():
+        return []
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle, delimiter="\t")
+        rows = []
+        for row in reader:
+            normalized = {field: (row.get(field) or "").strip() for field in SCAN_HISTORY_FIELDS}
+            if normalized["url"] or normalized["identity_key"]:
+                rows.append(normalized)
+        return rows
+
+
+def write_scan_history(path: Path, rows: list[dict[str, str]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    rows = sorted(rows, key=lambda item: item.get("last_seen_at", ""), reverse=True)
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=SCAN_HISTORY_FIELDS, delimiter="\t")
+        writer.writeheader()
+        for row in rows:
+            writer.writerow({field: (row.get(field) or "").strip() for field in SCAN_HISTORY_FIELDS})
+
+
+def find_scan_history_index(
+    rows: list[dict[str, str]],
+    by_url: dict[str, int],
+    by_identity: dict[str, int],
+    job: dict[str, str],
+) -> int | None:
+    url = (job.get("url") or "").strip()
+    identity = job_identity_key(job)
+    if url and url in by_url:
+        return by_url[url]
+    if identity and identity in by_identity:
+        return by_identity[identity]
+    return None
+
+
+def rebuild_scan_history_indexes(rows: list[dict[str, str]]) -> tuple[dict[str, int], dict[str, int]]:
+    by_url: dict[str, int] = {}
+    by_identity: dict[str, int] = {}
+    for index, row in enumerate(rows):
+        url = (row.get("url") or "").strip()
+        identity = (row.get("identity_key") or "").strip()
+        if url:
+            by_url[url] = index
+        if identity:
+            by_identity[identity] = index
+    return by_url, by_identity
+
+
+def apply_scan_history(
+    args: argparse.Namespace,
+    tagged_jobs: list[tuple[str, list[dict[str, str]]]],
+    now: datetime,
+) -> dict[str, Any]:
+    path = scan_history_path(args)
+    rows = read_scan_history(path)
+    initial_urls = {(row.get("url") or "").strip() for row in rows if row.get("url")}
+    initial_identities = {(row.get("identity_key") or "").strip() for row in rows if row.get("identity_key")}
+    by_url, by_identity = rebuild_scan_history_indexes(rows)
+    seen_this_run: set[str] = set()
+    new_count = 0
+    seen_count = 0
+    now_iso = now.replace(microsecond=0).isoformat()
+
+    for status, jobs in tagged_jobs:
+        for job in jobs:
+            url = (job.get("url") or "").strip()
+            identity = job_identity_key(job)
+            run_key = identity or url
+            history_index = find_scan_history_index(rows, by_url, by_identity, job)
+            existed_before = bool((url and url in initial_urls) or (identity and identity in initial_identities))
+
+            if history_index is None:
+                first_seen = job.get("first_discovered_at") or now_iso
+                history_row = {
+                    "url": url,
+                    "identity_key": identity,
+                    "first_seen_at": first_seen,
+                    "last_seen_at": now_iso,
+                    "company": (job.get("company") or "").strip(),
+                    "title": (job.get("title") or job.get("position") or "").strip(),
+                    "source": (job.get("source") or "").strip(),
+                    "posted_at": (job.get("posted_at") or "").strip(),
+                    "location": (job.get("location") or "").strip(),
+                    "last_status": status,
+                    "fit_score": (job.get("fit_score") or "").strip(),
+                    "flags": (job.get("flags") or "").strip(),
+                }
+                rows.append(history_row)
+                by_url, by_identity = rebuild_scan_history_indexes(rows)
+            else:
+                history_row = rows[history_index]
+                first_seen = history_row.get("first_seen_at") or job.get("first_discovered_at") or now_iso
+                history_row.update(
+                    {
+                        "url": url or history_row.get("url", ""),
+                        "identity_key": identity or history_row.get("identity_key", ""),
+                        "first_seen_at": first_seen,
+                        "last_seen_at": now_iso,
+                        "company": (job.get("company") or history_row.get("company") or "").strip(),
+                        "title": (job.get("title") or job.get("position") or history_row.get("title") or "").strip(),
+                        "source": (job.get("source") or history_row.get("source") or "").strip(),
+                        "posted_at": (job.get("posted_at") or history_row.get("posted_at") or "").strip(),
+                        "location": (job.get("location") or history_row.get("location") or "").strip(),
+                        "last_status": status,
+                        "fit_score": (job.get("fit_score") or history_row.get("fit_score") or "").strip(),
+                        "flags": (job.get("flags") or history_row.get("flags") or "").strip(),
+                    }
+                )
+                by_url, by_identity = rebuild_scan_history_indexes(rows)
+
+            job["first_discovered_at"] = first_seen
+            job["last_seen_at"] = now_iso
+            job["status"] = status
+            if run_key and run_key not in seen_this_run:
+                if existed_before:
+                    seen_count += 1
+                else:
+                    new_count += 1
+                seen_this_run.add(run_key)
+
+    if rows and not getattr(args, "dry_run", False):
+        write_scan_history(path, rows)
+
+    return {
+        "path": path.as_posix(),
+        "new": new_count,
+        "seen_before": seen_count,
+        "written": bool(rows and not getattr(args, "dry_run", False)),
+        "dry_run": getattr(args, "dry_run", False),
+    }
+
+
 def result_jobs_for_export(result: dict[str, Any]) -> list[dict[str, str]]:
     jobs_by_url: dict[str, dict[str, str]] = {}
 
     for row in result.get("review_candidates", []):
         job = {**row}
-        job["status"] = job.get("status") or "review"
+        job["status"] = "review"
         key = job.get("url") or f"{job.get('company')}|{job.get('title')}|{job.get('location')}"
         jobs_by_url[key] = job
 
     for row in result.get("imported", []):
         job = {**row}
-        job["status"] = job.get("status") or "shortlist"
+        job["status"] = "shortlist"
         key = job.get("url") or f"{job.get('company')}|{job.get('title')}|{job.get('location')}"
         jobs_by_url[key] = job
 
@@ -1086,6 +1306,11 @@ def run_broad_ats_scan(args: argparse.Namespace) -> dict[str, Any]:
 
     shortlist = sorted(shortlist, key=lambda item: int_or_zero(item["fit_score"]), reverse=True)[: args.limit]
     review_candidates = sorted(review_candidates, key=lambda item: int_or_zero(item["fit_score"]), reverse=True)[: args.review_limit]
+    history_stats = apply_scan_history(
+        args,
+        [("review", review_candidates), ("shortlist", shortlist)],
+        now,
+    )
     return {
         "generated_at": now.replace(microsecond=0).isoformat(),
         "sources": selected_sources,
@@ -1095,6 +1320,7 @@ def run_broad_ats_scan(args: argparse.Namespace) -> dict[str, Any]:
         "imported": shortlist,
         "review_candidates": review_candidates,
         "errors": errors,
+        "history_stats": history_stats,
         "dry_run": args.dry_run,
     }
 
@@ -1115,6 +1341,13 @@ def render_broad_ats_summary(result: dict[str, Any], args: argparse.Namespace) -
         "Recency grouping: 0-6, 6-12, 12-24, and 24-48 hours.",
         f"Require early-career signal for shortlist: `{not args.include_no_early_career_in_shortlist}`",
         f"Write review candidates to CSV: `{args.write_review_to_inbox and not args.dry_run}`",
+        "",
+        "## Scan History",
+        "",
+        f"History file: `{result.get('history_stats', {}).get('path', DEFAULT_SCAN_HISTORY.as_posix())}`",
+        f"New candidates in this layer: `{result.get('history_stats', {}).get('new', 0)}`",
+        f"Previously seen candidates in this layer: `{result.get('history_stats', {}).get('seen_before', 0)}`",
+        f"History updated: `{result.get('history_stats', {}).get('written', False)}`",
         "",
         "## Provider Counts",
         "",
@@ -1215,6 +1448,11 @@ def fetch_direct_ats_jobs(args: argparse.Namespace) -> dict[str, Any]:
 
     shortlist = sorted(shortlist, key=lambda item: int_or_zero(item["fit_score"]), reverse=True)[: args.limit]
     review_candidates = sorted(review_candidates, key=lambda item: int_or_zero(item["fit_score"]), reverse=True)[: args.review_limit]
+    history_stats = apply_scan_history(
+        args,
+        [("review", review_candidates), ("shortlist", shortlist)],
+        now,
+    )
     return {
         "generated_at": now.replace(microsecond=0).isoformat(),
         "sources": sorted(fetched_by_source),
@@ -1224,6 +1462,7 @@ def fetch_direct_ats_jobs(args: argparse.Namespace) -> dict[str, Any]:
         "review_count": len(review_candidates),
         "imported": shortlist,
         "review_candidates": review_candidates,
+        "history_stats": history_stats,
         "dry_run": getattr(args, "dry_run", False),
     }
 
@@ -1278,18 +1517,21 @@ def render_pipeline_summary(result: dict[str, Any], args: argparse.Namespace) ->
         "- India roles are kept in review reports by default.",
         "- Other non-U.S./non-India roles are excluded by default.",
         "- Review-only matches stay in dated reports instead of `jobs-inbox.csv`.",
+        "- Scan history preserves first-seen and last-seen timestamps across runs.",
         "",
         "## Pipeline Outputs",
         "",
-        "| Layer | Shortlist | Review | Results |",
-        "|---|---:|---:|---|",
+        "| Layer | Shortlist | Review | New | Seen Before | Results |",
+        "|---|---:|---:|---:|---:|---|",
     ]
     for layer in result["layers"]:
         lines.append(
-            "| {name} | {shortlist} | {review} | {path} |".format(
+            "| {name} | {shortlist} | {review} | {new} | {seen} | {path} |".format(
                 name=md_cell(layer["name"]),
                 shortlist=layer["shortlist_count"],
                 review=layer["review_count"],
+                new=layer["history_new"],
+                seen=layer["history_seen_before"],
                 path=md_cell(layer["results_dir"]),
             )
         )
@@ -1355,18 +1597,24 @@ def run_standard_pipeline(args: argparse.Namespace) -> dict[str, Any]:
                 "name": "direct-ats",
                 "shortlist_count": len(direct_result["imported"]),
                 "review_count": len(direct_result["review_candidates"]),
+                "history_new": direct_result.get("history_stats", {}).get("new", 0),
+                "history_seen_before": direct_result.get("history_stats", {}).get("seen_before", 0),
                 "results_dir": Path(direct_args.results_dir).as_posix(),
             },
             {
                 "name": "broad-ats",
                 "shortlist_count": len(broad_result["imported"]),
                 "review_count": len(broad_result["review_candidates"]),
+                "history_new": broad_result.get("history_stats", {}).get("new", 0),
+                "history_seen_before": broad_result.get("history_stats", {}).get("seen_before", 0),
                 "results_dir": Path(broad_args.results_dir).as_posix(),
             },
             {
                 "name": "public-search",
                 "shortlist_count": len(public_result["imported"]),
                 "review_count": len(public_result["review_candidates"]),
+                "history_new": public_result.get("history_stats", {}).get("new", 0),
+                "history_seen_before": public_result.get("history_stats", {}).get("seen_before", 0),
                 "results_dir": Path(public_args.results_dir).as_posix(),
             },
         ],
@@ -1471,6 +1719,11 @@ def fetch_public_jobs(args: argparse.Namespace) -> dict[str, Any]:
 
     shortlist = sorted(shortlist, key=lambda item: int_or_zero(item["fit_score"]), reverse=True)[: args.limit]
     review_candidates = sorted(review_candidates, key=lambda item: int_or_zero(item["fit_score"]), reverse=True)[: args.review_limit]
+    history_stats = apply_scan_history(
+        args,
+        [("review", review_candidates), ("shortlist", shortlist)],
+        now,
+    )
 
     return {
         "generated_at": now.replace(microsecond=0).isoformat(),
@@ -1482,6 +1735,7 @@ def fetch_public_jobs(args: argparse.Namespace) -> dict[str, Any]:
         "imported": shortlist,
         "review_candidates": review_candidates,
         "errors": errors,
+        "history_stats": history_stats,
         "dry_run": getattr(args, "dry_run", False),
     }
 
@@ -1523,6 +1777,13 @@ def render_run_summary(result: dict[str, Any], args: argparse.Namespace) -> str:
         f"Review limit: `{args.review_limit}`",
         "Location policy: U.S. roles can enter the shortlist; India roles stay in review; other foreign roles are excluded by default.",
         "Recency grouping: 0-6, 6-12, 12-24, and 24-48 hours.",
+        "",
+        "## Scan History",
+        "",
+        f"History file: `{result.get('history_stats', {}).get('path', DEFAULT_SCAN_HISTORY.as_posix())}`",
+        f"New candidates in this layer: `{result.get('history_stats', {}).get('new', 0)}`",
+        f"Previously seen candidates in this layer: `{result.get('history_stats', {}).get('seen_before', 0)}`",
+        f"History updated: `{result.get('history_stats', {}).get('written', False)}`",
         "",
         "## Provider Counts",
         "",

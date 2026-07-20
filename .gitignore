@@ -13,6 +13,7 @@ Cover-Letter-*.docx
 __pycache__/
 *.pyc
 job-search/cache/
+job-search/data/scan-history.tsv
 
 # LaTeX build artifacts
 *.aux
