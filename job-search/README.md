@@ -36,7 +36,7 @@ Run a broad public ATS scan across cached/direct company directories:
 python3 job-search/src/job_discovery.py run-broad-ats --dry-run --company-limit 25
 ```
 
-The Phase 1 broad scan covers Greenhouse, Lever, Ashby, and Workday where public company-directory data and no-auth endpoints are available. SmartRecruiters remains supported through configured direct ATS targets. Use `--dry-run` first to write reports without updating `jobs-inbox.csv`; remove it once the output quality looks useful. By default, only roles with explicit early-career signals are eligible for the shortlist/CSV, while broader matches stay in review reports. Add `--write-review-to-inbox` only if you intentionally want broader review candidates in the CSV. Add `--refresh-cache` when you want to refresh the local company-directory cache.
+The Phase 1 broad scan covers Greenhouse, Lever, Ashby, and Workday where public company-directory data and no-auth endpoints are available. SmartRecruiters remains supported through configured direct ATS targets. Use `--dry-run` first to write reports without updating `jobs-inbox.csv`; remove it once the output quality looks useful. By default, only roles with explicit early-career signals and U.S. location fit are eligible for the shortlist/CSV. India-based roles are allowed into review reports and can be promoted with `--include-india-in-shortlist` when Aryan wants to consider them. Other non-U.S./non-India roles are excluded from review unless `--include-foreign-review` is passed. Add `--write-review-to-inbox` only if you intentionally want broader review candidates in the CSV. Add `--refresh-cache` when you want to refresh the local company-directory cache.
 
 Open `job-search/job-viewer.html` in a browser to interactively review dated Markdown reports or CSV files. It can load one file, multiple files, or an entire local results folder through the browser file picker without uploading anything. Use it with `results/YYYY-MM-DD/<pipeline>/jobs.csv`, `shortlist.md`, `review-candidates.md`, or `jobs-inbox.csv`. The viewer shows fit scores, job links, source files, fetched dates, and posted/discovered recency filters for 6, 12, 24, and 48 hours.
 
@@ -132,7 +132,7 @@ Key source configs:
 - `config/ats-sources.json`: ATS domains and preferred sources.
 - `config/filters.json`: early-career terms, location terms, positive skill terms, exclusions, and report buckets.
 
-Default `run-public-search` thresholds: `--min-score 60` for the strict CSV shortlist, `--review-min-score 50` for broader review candidates, and `--max-age-hours 168`. Use `--max-age-hours 24` when you want only the last day of provider-posted jobs.
+Default public, direct ATS, and broad ATS runs use `--max-age-hours 48` so reports focus on jobs posted in the last two days. Review reports bucket jobs into 0-6, 6-12, 12-24, and 24-48 hour windows when posted timestamps or relative posted strings are parseable. Default `run-public-search` thresholds are `--min-score 60` for the strict CSV shortlist and `--review-min-score 50` for broader review candidates.
 
 ## Research Notes
 

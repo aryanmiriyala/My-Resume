@@ -265,9 +265,10 @@ To maximize callback rates, Aryan needs to apply to roles extremely quickly—id
 1. **Direct ATS Feeds**: Keep `job-search/config/direct-ats-targets.json` updated with company tokens. Run `run-direct-ats` daily to fetch structured postings directly from Greenhouse, Lever, Ashby, and SmartRecruiters.
 2. **Recent Google Search Queries**:
    - Run `generate-queries` to output search links for target roles and domains.
-   - Use Google Search operators with a 24-hour time filter (`qdr:d`) to find freshly indexed postings on company portals before they are listed on major job boards.
+   - Use Google Search operators for 6-hour, 12-hour, 24-hour, and 48-hour windows (`qdr:h6`, `qdr:h12`, `qdr:d`, and `qdr:d2`) to find freshly indexed postings on company portals before they are listed on major job boards.
 3. **Domain Verification**: When paste-url discovery yields new Greenhouse/Lever/Ashby/SmartRecruiters URLs, run `discover-direct-ats-targets` to verify them and update the config file automatically.
-4. **Inbox Maintenance**: Regularly check `job-search/jobs-inbox.csv`. Keep it minimal (only company, position, posted_at, pulled_at, and url). Move approved roles into the Application Package Generation pipeline.
+4. **Location Scope**: Default job discovery should prioritize U.S.-based and U.S.-remote roles. India-based roles may appear in review reports and can be promoted intentionally when Aryan wants to consider them. Other non-U.S./non-India roles should be excluded by default unless Aryan explicitly asks for broader international review.
+5. **Inbox Maintenance**: Regularly check `job-search/jobs-inbox.csv`. Keep it minimal (only company, position, posted_at, pulled_at, and url). Move approved roles into the Application Package Generation pipeline.
 
 ## Verification
 

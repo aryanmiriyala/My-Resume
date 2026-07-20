@@ -16,7 +16,7 @@ import json
 import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlencode, urlparse
@@ -75,6 +75,39 @@ def parse_dt(value: str) -> datetime:
     if dt.tzinfo is None:
         dt = dt.replace(tzinfo=timezone.utc)
     return dt.astimezone(timezone.utc)
+
+
+def parse_posted_datetime(value: str, now: datetime | None = None) -> datetime | None:
+    """Parse ISO timestamps and common ATS relative posted-date strings."""
+    text = clean_text(value, max_length=120)
+    if not text:
+        return None
+    now = now or utc_now()
+    lowered = text.lower()
+    lowered = re.sub(r"^\s*posted\s+", "", lowered).strip()
+
+    if lowered in {"today", "just posted", "posted today"}:
+        return now
+    if lowered in {"yesterday", "posted yesterday"}:
+        return now - timedelta(days=1)
+
+    relative = re.search(r"(\d+)\+?\s*(minute|minutes|hour|hours|day|days|week|weeks)\s+ago", lowered)
+    if relative:
+        amount = int(relative.group(1))
+        unit = relative.group(2)
+        if unit.startswith("minute"):
+            return now - timedelta(minutes=amount)
+        if unit.startswith("hour"):
+            return now - timedelta(hours=amount)
+        if unit.startswith("day"):
+            return now - timedelta(days=amount)
+        if unit.startswith("week"):
+            return now - timedelta(weeks=amount)
+
+    try:
+        return parse_dt(text)
+    except (TypeError, ValueError):
+        return None
 
 
 def parse_epoch(value: Any) -> datetime:
@@ -168,6 +201,33 @@ def contains_term(text: str, term: str) -> bool:
     return needle in text
 
 
+def location_policy(filters: dict[str, Any]) -> dict[str, list[str]]:
+    return filters.get("location_policy") or {}
+
+
+def classify_location(location: str, filters: dict[str, Any]) -> tuple[str, list[str]]:
+    text = normalize_text(location)
+    policy = location_policy(filters)
+    us_terms = policy.get("us_terms", [])
+    india_terms = policy.get("india_terms", [])
+    remote_ambiguous_terms = policy.get("remote_ambiguous_terms", [])
+    foreign_terms = policy.get("foreign_exclusion_terms", [])
+
+    if not text:
+        return "unknown", ["location_needs_review"]
+    if any(contains_term(text, term) for term in us_terms):
+        return "us", []
+    if any(contains_term(text, term) for term in india_terms):
+        return "india", ["location_india_review"]
+    if any(contains_term(text, term) for term in foreign_terms):
+        return "foreign", ["location_foreign"]
+    if any(contains_term(text, term) for term in remote_ambiguous_terms):
+        return "remote_ambiguous", ["location_needs_review"]
+    if re.search(r"\b\d+\s+locations?\b", text):
+        return "unknown", ["location_needs_review"]
+    return "unknown", ["location_needs_review"]
+
+
 @dataclass
 class ScoreResult:
     score: int
@@ -208,10 +268,16 @@ def score_job(
     else:
         flags.append("no_early_career_signal")
 
-    if any(contains_term(text, term) for term in filters["location_terms"]):
+    location_class, location_flags = classify_location(location, filters)
+    flags.extend(location_flags)
+    if location_class == "us":
         score += 10
-    else:
-        flags.append("location_needs_review")
+    elif location_class == "india":
+        score += 6
+    elif location_class == "remote_ambiguous":
+        score += 4
+    elif location_class == "foreign":
+        score -= 25
 
     matched_skills = [term for term in filters["positive_skill_terms"] if contains_term(text, term)]
     score += min(20, len(matched_skills) * 2)
@@ -856,9 +922,8 @@ def posted_at_is_recent_or_unknown(job: dict[str, str], now: datetime, max_age_h
     posted_at = job.get("posted_at", "")
     if not posted_at:
         return include_undated
-    try:
-        parsed = parse_dt(posted_at)
-    except (ValueError, TypeError):
+    parsed = parse_posted_datetime(posted_at, now)
+    if not parsed:
         return include_undated
     return (now - parsed).total_seconds() <= max_age_hours * 3600
 
@@ -996,6 +1061,8 @@ def render_broad_ats_summary(result: dict[str, Any], args: argparse.Namespace) -
         f"Review minimum fit score: `{args.review_min_score}`",
         f"Company limit per source: `{args.source_company_limit or args.company_limit or 'none'}`",
         f"Require early-career signal for shortlist: `{not args.include_no_early_career_in_shortlist}`",
+        f"Include India roles in shortlist: `{args.include_india_in_shortlist}`",
+        f"Include other foreign roles in review: `{args.include_foreign_review}`",
         f"Write review candidates to CSV: `{args.write_review_to_inbox and not args.dry_run}`",
         "",
         "## Provider Counts",
@@ -1117,7 +1184,7 @@ def write_run_outputs(result: dict[str, Any], args: argparse.Namespace) -> None:
     write_output(render_run_summary(result, args), str(results_dir / "run-summary.md"))
     write_output("# Review Candidates\n\n" + "\n".join(render_job_table(result["review_candidates"])), str(results_dir / "review-candidates.md"))
     write_output(render_report(argparse.Namespace(inbox=args.inbox, output="", now="")), str(results_dir / "recent-jobs.md"))
-    write_output(generate_queries(argparse.Namespace(windows=["0-6h", "0-12h", "0-18h", "0-24h"])), str(results_dir / "search-links.md"))
+    write_output(generate_queries(argparse.Namespace(windows=["0-6h", "0-12h", "0-24h", "0-48h"])), str(results_dir / "search-links.md"))
 
 
 def build_namespace(job: dict[str, str], status: str = "new", notes: str = "") -> argparse.Namespace:
@@ -1137,9 +1204,8 @@ def build_namespace(job: dict[str, str], status: str = "new", notes: str = "") -
 
 
 def is_recent_post(job: dict[str, str], now: datetime, max_age_hours: int) -> bool:
-    try:
-        posted_at = parse_dt(job["posted_at"])
-    except (KeyError, ValueError):
+    posted_at = parse_posted_datetime(job.get("posted_at", ""), now)
+    if not posted_at:
         return True
     return (now - posted_at).total_seconds() <= max_age_hours * 3600
 
@@ -1156,6 +1222,8 @@ def passes_review_filters(record: dict[str, str], args: argparse.Namespace) -> b
     flags = flag_set(record)
     if has_negative_flag(flags) and not args.include_negative:
         return False
+    if "location_foreign" in flags and not getattr(args, "include_foreign_review", False):
+        return False
     if "no_role_bucket_match" in flags and not args.include_unclassified:
         return False
     return int_or_zero(record["fit_score"]) >= args.review_min_score
@@ -1164,6 +1232,10 @@ def passes_review_filters(record: dict[str, str], args: argparse.Namespace) -> b
 def passes_shortlist_filters(record: dict[str, str], args: argparse.Namespace) -> bool:
     flags = flag_set(record)
     if not passes_review_filters(record, args):
+        return False
+    if "location_foreign" in flags:
+        return False
+    if "location_india_review" in flags and not getattr(args, "include_india_in_shortlist", False):
         return False
     if "location_needs_review" in flags and not args.include_location_review:
         return False
@@ -1257,6 +1329,8 @@ def render_run_summary(result: dict[str, Any], args: argparse.Namespace) -> str:
         f"Include negative matches: `{args.include_negative}`",
         f"Include unclassified roles: `{args.include_unclassified}`",
         f"Include location-review roles in shortlist: `{args.include_location_review}`",
+        f"Include India roles in shortlist: `{getattr(args, 'include_india_in_shortlist', False)}`",
+        f"Include other foreign roles in review: `{getattr(args, 'include_foreign_review', False)}`",
         "",
         "## Provider Counts",
         "",
@@ -1324,21 +1398,33 @@ def import_json(args: argparse.Namespace) -> int:
     return count
 
 
-def fetch_recent_jobs(rows: list[dict[str, str]], now: datetime) -> list[dict[str, str]]:
-    cutoff = now.timestamp() - 24 * 60 * 60
+def row_recency_datetime(row: dict[str, str], now: datetime) -> datetime | None:
+    posted = parse_posted_datetime(row.get("posted_at", ""), now)
+    if posted:
+        return posted
+    try:
+        return parse_dt(row["pulled_at"])
+    except (KeyError, ValueError):
+        return None
+
+
+def fetch_recent_jobs(rows: list[dict[str, str]], now: datetime, max_age_hours: int) -> list[dict[str, str]]:
+    cutoff = now.timestamp() - max_age_hours * 60 * 60
     recent = []
     for row in rows:
-        try:
-            pulled = parse_dt(row["pulled_at"])
-        except (KeyError, ValueError):
+        recency_dt = row_recency_datetime(row, now)
+        if not recency_dt:
             continue
-        if pulled.timestamp() >= cutoff:
+        if recency_dt.timestamp() >= cutoff:
             recent.append(row)
-    return sorted(recent, key=lambda item: item.get("pulled_at", ""), reverse=True)
+    return sorted(recent, key=lambda item: row_recency_datetime(item, now) or datetime.min.replace(tzinfo=timezone.utc), reverse=True)
 
 
 def age_hours(row: dict[str, str], now: datetime) -> float:
-    return (now - parse_dt(row["pulled_at"])).total_seconds() / 3600
+    recency_dt = row_recency_datetime(row, now)
+    if not recency_dt:
+        return float("inf")
+    return (now - recency_dt).total_seconds() / 3600
 
 
 def row_bucket(row: dict[str, str], now: datetime, filters: dict[str, Any]) -> str | None:
@@ -1361,7 +1447,8 @@ def md_cell(value: str) -> str:
 def render_report(args: argparse.Namespace) -> str:
     filters = load_json(FILTERS_PATH)
     now = parse_dt(args.now) if args.now else utc_now()
-    rows = fetch_recent_jobs(read_jobs(Path(args.inbox)), now)
+    max_report_hours = max(int(bucket["max_hours"]) for bucket in filters["report_buckets"])
+    rows = fetch_recent_jobs(read_jobs(Path(args.inbox)), now, max_report_hours)
     grouped: dict[str, list[dict[str, str]]] = {bucket["label"]: [] for bucket in filters["report_buckets"]}
     for row in rows:
         label = row_bucket(row, now, filters)
@@ -1375,7 +1462,7 @@ def render_report(args: argparse.Namespace) -> str:
         "",
         f"Source inbox: `{Path(args.inbox).as_posix()}`",
         "",
-        "Jobs are bucketed by `pulled_at`, which records when this repo first pulled the posting into the CSV.",
+        "Jobs are bucketed by `posted_at` when the source provides a parseable posted time; `pulled_at` is used only as a fallback.",
         "",
     ]
 
@@ -1404,7 +1491,7 @@ def render_report(args: argparse.Namespace) -> str:
     lines.append("")
     lines.append("Use these when the inbox is empty or when doing a manual sweep:")
     lines.append("")
-    lines.append(generate_queries(argparse.Namespace(windows=["0-6h", "0-12h", "0-18h", "0-24h"])))
+    lines.append(generate_queries(argparse.Namespace(windows=["0-6h", "0-12h", "0-24h", "0-48h"])))
     return "\n".join(lines).rstrip() + "\n"
 
 
@@ -1426,7 +1513,7 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("init-inbox", help="Create the CSV inbox with headers")
 
     q = sub.add_parser("generate-queries", help="Generate recent ATS Google search links")
-    q.add_argument("--windows", nargs="*", default=None, help="Window keys such as 0-6h 0-12h 0-18h 0-24h")
+    q.add_argument("--windows", nargs="*", default=None, help="Window keys such as 0-6h 0-12h 0-24h 0-48h")
     q.add_argument("--output", help="Optional Markdown output path")
 
     add = sub.add_parser("add-job", help="Add or update one discovered job in the CSV inbox")
@@ -1455,10 +1542,12 @@ def build_parser() -> argparse.ArgumentParser:
     run.add_argument("--review-limit", type=int, default=50, help="Maximum broader candidates written to review-candidates.md")
     run.add_argument("--min-score", type=int, default=60, help="Strict shortlist minimum score")
     run.add_argument("--review-min-score", type=int, default=50, help="Broader review-candidate minimum score")
-    run.add_argument("--max-age-hours", type=int, default=168)
+    run.add_argument("--max-age-hours", type=int, default=48)
     run.add_argument("--include-negative", action="store_true")
     run.add_argument("--include-unclassified", action="store_true")
     run.add_argument("--include-location-review", action="store_true")
+    run.add_argument("--include-india-in-shortlist", action="store_true", help="Allow India-based roles into the strict shortlist instead of review only")
+    run.add_argument("--include-foreign-review", action="store_true", help="Keep non-US/non-India roles in review reports")
     run.add_argument("--results-dir", default=str(DEFAULT_RESULTS_DIR / utc_now().date().isoformat()))
 
 
@@ -1477,10 +1566,12 @@ def build_parser() -> argparse.ArgumentParser:
     direct.add_argument("--review-limit", type=int, default=100, help="Maximum broader candidates written to review-candidates.md")
     direct.add_argument("--min-score", type=int, default=60, help="Strict shortlist minimum score")
     direct.add_argument("--review-min-score", type=int, default=45, help="Broader review-candidate minimum score")
-    direct.add_argument("--max-age-hours", type=int, default=720)
+    direct.add_argument("--max-age-hours", type=int, default=48)
     direct.add_argument("--include-negative", action="store_true")
     direct.add_argument("--include-unclassified", action="store_true")
     direct.add_argument("--include-location-review", action="store_true")
+    direct.add_argument("--include-india-in-shortlist", action="store_true", help="Allow India-based roles into the strict shortlist instead of review only")
+    direct.add_argument("--include-foreign-review", action="store_true", help="Keep non-US/non-India roles in review reports")
     direct.add_argument("--results-dir", default=str(DEFAULT_RESULTS_DIR / utc_now().date().isoformat() / "direct-ats"))
 
     broad = sub.add_parser("run-broad-ats", help="Scan broad public ATS company directories, write review reports, and optionally update inbox")
@@ -1489,11 +1580,13 @@ def build_parser() -> argparse.ArgumentParser:
     broad.add_argument("--review-limit", type=int, default=150, help="Maximum broader candidates written to review-candidates.md")
     broad.add_argument("--min-score", type=int, default=60, help="Strict shortlist minimum score")
     broad.add_argument("--review-min-score", type=int, default=45, help="Broader review-candidate minimum score")
-    broad.add_argument("--max-age-hours", type=int, default=168)
+    broad.add_argument("--max-age-hours", type=int, default=48)
     broad.add_argument("--include-undated", action="store_true", help="Include postings whose ATS feed has no parseable posted date")
     broad.add_argument("--include-negative", action="store_true")
     broad.add_argument("--include-unclassified", action="store_true")
     broad.add_argument("--include-location-review", action="store_true")
+    broad.add_argument("--include-india-in-shortlist", action="store_true", help="Allow India-based roles into the strict shortlist instead of review only")
+    broad.add_argument("--include-foreign-review", action="store_true", help="Keep non-US/non-India roles in review reports")
     broad.add_argument("--include-no-early-career-in-shortlist", action="store_true", help="Allow broad-scan shortlist entries without explicit early-career/new-grad/intern signals")
     broad.add_argument("--include-seniority-review", action="store_true", help="Allow seniority-risk titles such as III, Expert, Lead, Senior into the shortlist")
     broad.add_argument("--write-review-to-inbox", action="store_true", help="Also write non-shortlist review candidates to jobs-inbox.csv")

@@ -21,8 +21,16 @@
   "location_terms": [
     "United States",
     "USA",
-    "Remote",
-    "Hybrid",
+    "US Remote",
+    "Remote US",
+    "Remote, US",
+    "Remote USA",
+    "Remote, USA",
+    "Remote United States",
+    "Remote, United States",
+    "Hybrid US",
+    "Hybrid United States",
+    "Hybrid India",
     "Ohio",
     "Michigan",
     "Illinois",
@@ -31,8 +39,124 @@
     "Texas",
     "Washington",
     "Massachusetts",
-    "North Carolina"
+    "North Carolina",
+    "India",
+    "Bengaluru",
+    "Bangalore",
+    "Hyderabad",
+    "Pune",
+    "Chennai"
   ],
+  "location_policy": {
+    "primary_region": "United States",
+    "secondary_regions": [
+      "India"
+    ],
+    "us_terms": [
+      "United States",
+      "USA",
+      "U.S.",
+      "US",
+      "Remote US",
+      "Remote, US",
+      "Remote USA",
+      "Remote, USA",
+      "Remote United States",
+      "Remote, United States",
+      "Ohio",
+      "Michigan",
+      "Illinois",
+      "New York",
+      "California",
+      "Texas",
+      "Washington",
+      "Massachusetts",
+      "North Carolina",
+      "Atlanta",
+      "Austin",
+      "Boston",
+      "Charlotte",
+      "Chicago",
+      "Columbus",
+      "Dallas",
+      "Detroit",
+      "New York City",
+      "Plano",
+      "San Francisco",
+      "San Jose",
+      "Seattle",
+      "Sunnyvale"
+    ],
+    "india_terms": [
+      "India",
+      "Bengaluru",
+      "Bangalore",
+      "Hyderabad",
+      "Pune",
+      "Chennai",
+      "Mumbai",
+      "Delhi",
+      "Gurgaon",
+      "Gurugram",
+      "Noida"
+    ],
+    "remote_ambiguous_terms": [
+      "Remote",
+      "Anywhere",
+      "Global",
+      "Worldwide"
+    ],
+    "foreign_exclusion_terms": [
+      "Canada",
+      "Toronto",
+      "Vancouver",
+      "Mexico",
+      "Brazil",
+      "Argentina",
+      "Colombia",
+      "United Kingdom",
+      "UK",
+      "London",
+      "Ireland",
+      "Dublin",
+      "France",
+      "Paris",
+      "Germany",
+      "Berlin",
+      "Munich",
+      "Netherlands",
+      "Amsterdam",
+      "Spain",
+      "Madrid",
+      "Poland",
+      "Krakow",
+      "Gdynia",
+      "Romania",
+      "Bucharest",
+      "Bulgaria",
+      "Sofia",
+      "Serbia",
+      "Hungary",
+      "Budapest",
+      "Singapore",
+      "Japan",
+      "Tokyo",
+      "Australia",
+      "Melbourne",
+      "Sydney",
+      "New Zealand",
+      "Israel",
+      "Ra'anana",
+      "Thailand",
+      "Bangkok",
+      "Malaysia",
+      "Kuala Lumpur",
+      "Philippines",
+      "Vietnam",
+      "Nepal",
+      "Skopje"
+    ]
+  },
   "positive_skill_terms": [
     "Python",
     "TypeScript",
@@ -88,8 +212,8 @@
   "search_windows": {
     "0-6h": "qdr:h6",
     "0-12h": "qdr:h12",
-    "0-18h": "qdr:h18",
-    "0-24h": "qdr:d"
+    "0-24h": "qdr:d",
+    "0-48h": "qdr:d2"
   },
   "report_buckets": [
     {
@@ -103,14 +227,14 @@
       "max_hours": 12
     },
     {
-      "label": "12-18 Hours",
+      "label": "12-24 Hours",
       "min_hours": 12,
-      "max_hours": 18
+      "max_hours": 24
     },
     {
-      "label": "18-24 Hours",
-      "min_hours": 18,
-      "max_hours": 24
+      "label": "24-48 Hours",
+      "min_hours": 24,
+      "max_hours": 48
     }
   ]
 }
