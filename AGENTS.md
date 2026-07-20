@@ -49,6 +49,7 @@ Do not mark an application package complete until all required outputs exist and
 - Updated `operations/application-tracker.md`
 - Recorded Job Alignment & Evidence Score and alignment pass in `tailoring-notes.md`
 - Passing `automation/validate_application_package.py` result
+- Recorded verification gates in `tailoring-notes.md` with explicit `Pass` or allowed `Waived - <reason>` values; blank gate labels do not count
 - Cleaned generated LaTeX artifacts
 - Incremental commit and push
 
@@ -121,6 +122,7 @@ Do not commit binary/generated artifacts unless Aryan explicitly asks. This incl
 - **Visual Consistency Gate**: Before compiling a new application resume, compare its LaTeX preamble and layout macros against the latest accepted application-resume pattern. Reuse the same document class, geometry, font, header structure, section styling, bullet label, role/date hierarchy, and skills formatting. Tailoring should change evidence and ordering, not visual identity.
 - **Side-by-Side Review Gate**: Render the new resume beside at least two recent accepted application resumes. Confirm that outer borders, name/contact placement, section rules, bullet size, role/date alignment, density, and bottom-page usage look like the same document family. Record this comparison in `tailoring-notes.md`.
 - **Page Utilization Gate**: A one-page early-career resume is not complete merely because it has one page. If the final line of meaningful content leaves a visibly large unused bottom band, first add or restore verified role-aligned evidence, deepen a thin project bullet with purpose/method/result, or add a truthful missing must-have keyword in context. Do not add filler, duplicate claims, broad soft-skill labels, unsupported technologies, or one-off spacing tricks to fill the page.
+- **Canonical Source Gate**: Application resumes must use the canonical `letterpaper,11pt` article source structure, explicit `letterpaper` geometry, `glyphtounicode`, `\pdfgentounicode=1`, `\pagestyle{empty}`, `\linespread{0.92}`, and the canonical single-level `tightitemize` bullet list. If the latest accepted pattern changes, update this file, the guides, and the validator before using the new pattern.
 - If an established visual pattern uses an ATS-risky implementation such as `tabular`, reproduce the appearance with plain text and `\hfill`; consistency of appearance does not override the parser rules below.
 - Use ATS-friendly, outcome-oriented bullets following the **STAR/CAR** and **Google XYZ** concepts: **Action Verb + What was built/changed + Method/Technology when relevant + Scope/Context + Impact/Result**.
 - The bullet formula is an evidence gate, not a demand that every bullet contain a technology or numerical metric. Every experience and project bullet must clearly show the contribution, context, and result:
@@ -136,6 +138,7 @@ Do not commit binary/generated artifacts unless Aryan explicitly asks. This incl
 - Every final bullet must be interview-defensible. Aryan should be able to explain the technical decisions, tradeoffs, tools used, personal contribution, result, and what he would improve if asked in an interview.
 - AI-assisted bullets must be manually edited until they are specific, grounded, and defensible. Reject bullets that are grammatically polished but vague, inflated, buzzword-heavy, emotionally generic, or not traceable to `profile/`, `master-documents/`, project repositories, or prior verified application notes.
 - **Strict Bullet Audit**: Before compilation, review every bullet individually. A bullet that lacks a clear action/contribution, defensible context, and result must be rewritten, combined with a related bullet, or removed. Do not preserve a weak bullet merely to keep bullet counts even across roles.
+- **Weak Opener Ban**: No experience or project bullet may start with `Responsible for`, `Helped`, `Worked on`, or `Assisted`. If a collaborative contribution is important, start with the concrete action Aryan performed and name the artifact, system, method, and result.
 - **Strong vs. Weak Bullets Example**:
   | Weak (Task-Oriented) | Strong (Impact & Technology-Oriented) |
   | :--- | :--- |
@@ -216,6 +219,7 @@ Do not inflate the score by adding unsupported keywords. A lower truthful score 
 - Use a concise opening, one or two evidence paragraphs, and a short closing; three or four short paragraphs are normally appropriate. Do not impose a two-paragraph limit when it harms clarity.
 - For job submission, produce a PDF or DOCX cover-letter artifact, not only a Markdown draft.
 - Follow the employer's requested file type and naming instructions. Use PDF by default only when the application accepts it; use DOCX when specifically requested.
+- Keep final resume and cover-letter submission artifacts under 5 MB unless the employer explicitly allows a larger file. This conservative limit keeps artifacts compatible with common ATS upload constraints.
 - Match the resume's typography and professional visual identity without adding graphics or decorative elements.
 - **Cover-Letter Consistency Gate**: Reuse the latest accepted cover-letter preamble, header, date/addressee order, paragraph spacing, salutation, and signature treatment. Compare the rendered letter with at least one recent accepted cover letter before finalizing. Company-specific content may change; the visual system should not.
 - Use a warm, professional, human tone.
@@ -252,6 +256,8 @@ The July 16, 2026 bullet-quality audit used Harvard Career Services, Yale Office
 
 The July 20, 2026 enforcement audit used Greenhouse Support, Lever Developer documentation, Workday Developer documentation, UC Berkeley Career Engagement, Harvard Mignone Center for Career Success, MIT CAPD, University of Michigan Career Center, and NACE guidance to tighten ATS-safe source checks, bottom-page utilization checks, bullet-audit documentation, and the distinction between recruiter-readable white space and an underfilled one-page resume.
 
+The July 20, 2026 supplemental evidence audit added Lever Help Center, Workday Resume REST API documentation, Oracle Taleo attachment documentation, SAP SuccessFactors Recruiting documentation, iCIMS developer documentation, University of Pennsylvania Career Services, MIT CAPD cover-letter guidance, UC Berkeley cover-letter guidance, and NACE Job Outlook 2026 guidance. The resulting hard rules require parseable text PDFs or employer-requested DOCX files, no image-based resumes, canonical source validation, no blank verification gates, no placeholder text, no weak bullet openers, and a conservative 5 MB final artifact size unless employer instructions override it.
+
 ## Job Search & Discovery Strategies (Getting Ahead of the Line)
 
 To maximize callback rates, Aryan needs to apply to roles extremely quickly—ideally within 24 to 48 hours of posting. The Job Discovery pipeline helps achieve this using a layered approach:
@@ -275,6 +281,7 @@ After approved resume changes:
 6. Render the resume beside at least two recent accepted application resumes and inspect border consistency, name/contact placement, section styling, bullet appearance, role/date hierarchy, density, bottom-page usage, clipping, and overlap. A visibly inconsistent or substantially underfilled layout fails this check.
 7. Run the resume-vs-job-description alignment pass and record the Job Alignment & Evidence Score and its internal-estimate disclaimer in `tailoring-notes.md`.
 8. Confirm mandatory qualifications and the highest-priority truthful keywords appear in evidence-bearing context; record unsupported requirements as gaps rather than adding them.
-9. Run `python3 automation/validate_application_package.py application-packages/<Company>/<Role>` and address any failures.
-10. Report changed files, verification results, validator result, and the Job Alignment & Evidence Score with the disclaimer that it is not a predicted ATS result.
-11. Remove generated LaTeX build artifacts. Keep submission PDFs only when Aryan asks for final application artifacts or when the application package needs a ready-to-submit PDF.
+9. Confirm `tailoring-notes.md` records `Pass` for `ATS source gate checked`, `Visual consistency gate checked`, `Cover-letter artifact checked`, and `Pass` or `Waived - <reason>` for `Page utilization gate checked`.
+10. Run `python3 automation/validate_application_package.py application-packages/<Company>/<Role>` and address any failures.
+11. Report changed files, verification results, validator result, and the Job Alignment & Evidence Score with the disclaimer that it is not a predicted ATS result.
+12. Remove generated LaTeX build artifacts. Keep submission PDFs only when Aryan asks for final application artifacts or when the application package needs a ready-to-submit PDF.

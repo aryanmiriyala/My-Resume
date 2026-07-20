@@ -94,7 +94,8 @@ Recommended improvements:
 - LaTeX compiled:
 - PDF page count:
 - PDF text checked:
-- ATS source gate checked:
-- Visual consistency gate checked:
-- Page utilization gate checked:
+- ATS source gate checked: Pass -
+- Visual consistency gate checked: Pass -
+- Page utilization gate checked: Pass -
+- Cover-letter artifact checked: Pass -
 - Application validator run:

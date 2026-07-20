@@ -7,6 +7,7 @@ Use this guide when tailoring resumes for applicant tracking systems, recruiter 
 - Truth first: every keyword, tool, metric, and claim must be grounded in `experience-master.md`, `projects-master.md`, `skills-master.md`, or a verified repository/source.
 - One page for the standard software resume unless Aryan explicitly approves a longer specialized version.
 - Use the repository's established one-page application layout: 11-point body text, narrow but fixed canonical borders, single-column text, standard headings, raised 10-point solid bullet markers, and a visible 2-point gap between section headings and divider rules. Use the extra page area for stronger verified evidence; do not create one-off geometry or font changes for a particular application.
+- Use the canonical LaTeX source structure required by the validator: `letterpaper,11pt` article class, explicit `letterpaper` geometry, `glyphtounicode`, `\pdfgentounicode=1`, `\pagestyle{empty}`, `\linespread{0.92}`, and the canonical single-level `tightitemize` list.
 - Tailor every resume to the job description instead of using a generic all-purpose resume.
 - Use a clean, consistent, ATS-readable layout with conventional section names: `Education`, `Experience`, `Projects`, and `Technical Skills`.
 - Use bullets, not paragraphs, for experience and project descriptions.
@@ -57,6 +58,7 @@ Strong software/data examples:
 Checklist for each bullet:
 
 - Starts with a strong action verb.
+- Does not start with `Responsible for`, `Helped`, `Worked on`, or `Assisted`.
 - States what was built, changed, automated, analyzed, secured, validated, or improved.
 - Names the actual technology used.
 - Shows scope, user, system, or domain context.
@@ -86,6 +88,7 @@ Recruiters often scan quickly, so the resume must make relevance visible immedia
 - Use standard section headings and chronological ordering.
 - Use normal punctuation and plain text for technologies where possible.
 - Generate a PDF from LaTeX, then extract and inspect the text to confirm the content is readable in order.
+- Keep final submission artifacts under 5 MB unless the employer explicitly permits a larger file.
 
 ## Human Readability Rules
 
@@ -155,6 +158,11 @@ For healthcare or compliance-adjacent roles:
 - Yale Office of Career Strategy recommends comparing resumes against a job description, checking ATS visibility, and using specific keywords to improve noticeability.
 - Yale OCS states its resume templates are formatted to work with Applicant Tracking Systems.
 - Greenhouse support documentation identifies resume formatting issues that can break parsing, including graphics, photos, word art, image-based resumes, complex tables, headers, footers, text boxes, columned layouts, unclear sections, and incomplete job titles.
+- Lever Help Center says parsing extracts readable information and cannot parse image files; it recommends testing whether document text can be highlighted.
+- Workday Resume REST API documentation supports DOCX and text-based PDFs for resume scanning and specifically excludes image-based PDFs.
+- Oracle Taleo, SAP SuccessFactors, and iCIMS documentation reinforce that recruiting systems store and process resume/attachment files through supported document formats rather than arbitrary visual layouts.
+- NACE Job Outlook 2026 guidance says employers want evidence of skills on resumes, not only listed skills; internship experience remains especially valuable in early-career screening.
+- University of Pennsylvania Career Services recommends simple ATS-compatible formatting, one-page resumes for undergraduates/recent graduates, objective measurable skills in skills sections, and soft skills illustrated through experience descriptions.
 - UC Berkeley Career Engagement recommends a simple one-page format for students and standard ATS-friendly formatting with standard fonts/headings, clear work-history structure, and no headers, footers, text boxes, tables, colors, pictures, or graphics.
 - MIT CAPD recommends using the position description to decide what to include, targeting each resume to the employer/position, using consistent standard formatting, strong action verbs, specific technologies, accomplishments, and quantified impact where possible.
 - MIT CAPD notes employers may use keyword scanning and recommends using relevant industry/position keywords.
@@ -166,6 +174,13 @@ For healthcare or compliance-adjacent roles:
 
 - Yale Office of Career Strategy, Resumes: https://ocs.yale.edu/channels/resumes/
 - Greenhouse Support, Unsuccessful Resume Parse: https://support.greenhouse.io/hc/en-us/articles/200989175-Unsuccessful-resume-parse
+- Lever Help Center, Understanding Resume Parsing: https://help.lever.co/hc/en-us/articles/20087345054749-Understanding-Resume-Parsing
+- Workday Developers, Resume REST API: https://developer.workday.com/documentation/GUID-f07adb7f-630e-42a2-9de9-a39652e34ec5-enHYPHENus/ResumeRESTAPI
+- Oracle Taleo, Attachment: https://docs.oracle.com/en/cloud/saas/taleo-enterprise/24c/otrcg/c-attachment.html
+- SAP SuccessFactors, Working with Resume Parsing: https://help.sap.com/docs/successfactors-recruiting/setting-up-and-maintaining-sap-successfactors-recruiting/working-with-resume-parsing
+- iCIMS Developer Resources, Binary Files: https://developer-community.icims.com/applications/applicant-tracking/binary-files
+- NACE, The High-Impact Skills College Students Should Showcase on Their Resumes: https://naceweb.org/about-us/press/2026/the-high-impact-skills-college-students-should-showcase-on-their-resumes
+- University of Pennsylvania Career Services, Write a Resume/CV: https://careerservices.upenn.edu/channels/resume/
 - UC Berkeley Career Engagement, Resumes: https://www.career.berkeley.edu/prepare-for-success/resumes/
 - MIT Career Advising & Professional Development, Resumes: https://capd.mit.edu/resources/resumes/
 - University of Michigan Career Center, Resume Resources: https://careercenter.umich.edu/article/resume-resources

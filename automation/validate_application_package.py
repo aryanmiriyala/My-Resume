@@ -23,9 +23,6 @@ REQUIRED_FILES = [
 TAILORING_NOTE_MARKERS = [
     "## Job Keyword Map",
     "## Bullet Audit",
-    "ATS source gate checked:",
-    "Visual consistency gate checked:",
-    "Page utilization gate checked:",
     "Job Alignment & Evidence Score:",
     "Internal estimate only; not a predicted ATS score.",
     "Strong matches",
@@ -47,6 +44,14 @@ MIN_ALIGNMENT_SCORE = 90
 SUB_90_WAIVER_MARKER = "Sub-90 Readiness Waiver"
 MAX_UNUSED_BOTTOM_POINTS = 90.0
 WARN_UNUSED_BOTTOM_POINTS = 72.0
+MAX_SUBMISSION_ARTIFACT_BYTES = 5 * 1024 * 1024
+
+TAILORING_GATE_RULES = [
+    ("ATS source gate checked", ("Pass",)),
+    ("Visual consistency gate checked", ("Pass",)),
+    ("Page utilization gate checked", ("Pass", "Waived")),
+    ("Cover-letter artifact checked", ("Pass",)),
+]
 
 FORBIDDEN_RESUME_SOURCE_PATTERNS = [
     (r"\\begin\{tabular\*?\}", "LaTeX tabular/tabular* constructs are not ATS-safe for application resumes"),
@@ -63,6 +68,35 @@ FORBIDDEN_RESUME_SOURCE_PATTERNS = [
     (r"\\fancy(?:head|foot)\b", "resume content must not rely on headers or footers"),
 ]
 
+REQUIRED_RESUME_SOURCE_PATTERNS = [
+    (r"\\documentclass\[[^\]]*\b11pt\b[^\]]*\]\{article\}", "resume.tex must use the canonical 11pt article class"),
+    (r"\\usepackage\[[^\]]*letterpaper[^\]]*\]\{geometry\}", "resume.tex must use explicit letterpaper geometry"),
+    (r"\\input\{glyphtounicode\}", "resume.tex must input glyphtounicode for text extraction"),
+    (r"\\pdfgentounicode=1", "resume.tex must enable unicode text extraction with \\pdfgentounicode=1"),
+    (r"\\pagestyle\{empty\}", "resume.tex must avoid PDF headers and footers with \\pagestyle{empty}"),
+    (r"\\linespread\{0\.92\}", "resume.tex must preserve the canonical application-resume line spread"),
+    (r"\\newlist\{tightitemize\}\{itemize\}\{1\}", "resume.tex must use the canonical single-level tightitemize list"),
+]
+
+WEAK_BULLET_OPENERS = re.compile(
+    r"\\item\s+(?:Responsible for|Helped(?:\s+with)?|Worked(?:\s+on)?|Assisted(?:\s+with)?)\b",
+    re.IGNORECASE,
+)
+
+PLACEHOLDER_PATTERNS = [
+    r"\bTODO\b",
+    r"\bTBD\b",
+    r"\bFIXME\b",
+    r"\[paste\b",
+    r"\[insert\b",
+    r"\[company\b",
+    r"\[role\b",
+]
+
+
+def contains_placeholder(text: str) -> bool:
+    return any(re.search(pattern, text, re.IGNORECASE) for pattern in PLACEHOLDER_PATTERNS)
+
 
 def run_command(command: list[str]) -> tuple[int, str, str]:
     proc = subprocess.run(command, text=True, capture_output=True, check=False)
@@ -75,8 +109,14 @@ def check_file_exists(app_dir: Path, rel_path: str, errors: list[str]) -> None:
 
 
 def check_cover_letter_artifact(app_dir: Path, errors: list[str]) -> None:
-    if not any((app_dir / name).is_file() for name in ("cover-letter.pdf", "cover-letter.docx")):
+    artifacts = [app_dir / name for name in ("cover-letter.pdf", "cover-letter.docx") if (app_dir / name).is_file()]
+    if not artifacts:
         errors.append("Missing cover-letter submission artifact: cover-letter.pdf or cover-letter.docx")
+        return
+
+    for artifact in artifacts:
+        if artifact.stat().st_size > MAX_SUBMISSION_ARTIFACT_BYTES:
+            errors.append(f"{artifact.name} exceeds the conservative 5 MB submission artifact limit")
 
 
 def check_tailoring_notes(app_dir: Path, errors: list[str]) -> None:
@@ -88,6 +128,21 @@ def check_tailoring_notes(app_dir: Path, errors: list[str]) -> None:
     for marker in TAILORING_NOTE_MARKERS:
         if marker not in text:
             errors.append(f"tailoring-notes.md missing marker: {marker}")
+
+    for gate_name, allowed_values in TAILORING_GATE_RULES:
+        gate_match = re.search(rf"^\s*-\s*{re.escape(gate_name)}:\s*(.+)$", text, re.MULTILINE)
+        if not gate_match:
+            errors.append(f"tailoring-notes.md missing verification gate: {gate_name}:")
+            continue
+
+        gate_value = gate_match.group(1).strip()
+        if not gate_value:
+            errors.append(f"tailoring-notes.md verification gate is blank: {gate_name}:")
+        elif not gate_value.startswith(allowed_values):
+            allowed_text = " or ".join(allowed_values)
+            errors.append(f"tailoring-notes.md verification gate `{gate_name}` must start with {allowed_text}")
+        elif gate_value.startswith("Waived") and len(gate_value.split()) < 4:
+            errors.append(f"tailoring-notes.md waiver for `{gate_name}` must include a concrete reason")
 
     score_match = re.search(r"Job Alignment & Evidence Score:\s*(\d{1,3})/100", text)
     if not score_match:
@@ -105,8 +160,20 @@ def check_tailoring_notes(app_dir: Path, errors: list[str]) -> None:
                 "`Sub-90 Readiness Waiver` section in tailoring-notes.md"
             )
 
-    if re.search(r"\b(TODO|TBD|FIXME)\b", text, re.IGNORECASE):
-        errors.append("tailoring-notes.md contains TODO/TBD/FIXME placeholder text")
+    if contains_placeholder(text):
+        errors.append("tailoring-notes.md contains placeholder text")
+
+
+def check_cover_letter_source(app_dir: Path, errors: list[str]) -> None:
+    cover_letter = app_dir / "cover-letter.md"
+    if not cover_letter.is_file():
+        return
+
+    text = cover_letter.read_text(encoding="utf-8", errors="replace")
+    if contains_placeholder(text):
+        errors.append("cover-letter.md contains placeholder text")
+    if len(text.strip()) < 900:
+        errors.append("cover-letter.md appears too thin to provide role-specific motivation and evidence")
 
 
 def check_resume_source(app_dir: Path, errors: list[str]) -> None:
@@ -115,9 +182,19 @@ def check_resume_source(app_dir: Path, errors: list[str]) -> None:
         return
 
     text = resume_tex.read_text(encoding="utf-8", errors="replace")
+    if contains_placeholder(text):
+        errors.append("resume.tex contains placeholder text")
     for pattern, message in FORBIDDEN_RESUME_SOURCE_PATTERNS:
         if re.search(pattern, text):
             errors.append(f"resume.tex ATS source gate failed: {message}")
+    for pattern, message in REQUIRED_RESUME_SOURCE_PATTERNS:
+        if not re.search(pattern, text):
+            errors.append(f"resume.tex canonical source gate failed: {message}")
+    if WEAK_BULLET_OPENERS.search(text):
+        errors.append(
+            "resume.tex contains a bullet starting with a weak opener "
+            "(Responsible for, Helped, Worked on, or Assisted)"
+        )
 
 
 def local_name(tag: str) -> str:
@@ -227,6 +304,7 @@ def validate(app_dir: Path) -> int:
 
     check_cover_letter_artifact(app_dir, errors)
     check_tailoring_notes(app_dir, errors)
+    check_cover_letter_source(app_dir, errors)
     check_resume_source(app_dir, errors)
     check_resume_pdf(app_dir, errors, warnings)
     check_resume_page_utilization(app_dir, errors, warnings)

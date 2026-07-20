@@ -25,6 +25,7 @@ Do not use the cover letter as a paragraph version of the resume. Use it to conn
 - Do not invent metrics, company interest, product familiarity, or domain motivation.
 - Proofread carefully before generating final artifacts.
 - For submitted applications, follow the employer's file instructions and generate an accepted PDF or DOCX artifact. Markdown is acceptable as the editable source, but not as the only final submission file.
+- Keep the final cover-letter artifact under 5 MB unless the employer explicitly permits a larger file.
 - Use the canonical application-letter layout: 11-point Computer Modern typography, approximately 0.80-inch left/right and 0.70-inch top/bottom margins, and the same header/date/addressee/signature hierarchy used by recent accepted letters.
 
 ## Personalization Questions When Materially Needed
@@ -73,8 +74,12 @@ Choose one primary angle per letter:
 
 - Yale Office of Career Strategy recommends tailoring each cover letter to a specific job, using confident active language, keeping it to one page, using job-description keywords, and structuring the letter around an opening, middle evidence paragraphs, and a concise close.
 - Purdue OWL describes cover letters as a way to explain experience in a story-like format, go deeper on important skills, relate those skills to job requirements, show individualized tailoring, and demonstrate written communication.
+- MIT CAPD recommends directing each cover letter to a specific position/company, using the job description and company research, sharing brief stories that demonstrate role-related qualifications, and keeping the letter to one page with 10-12 point font.
+- UC Berkeley Career Engagement recommends that cover letters expand on resume experience as it relates to the job description, explain interest in the specific employer, connect qualifications to employer needs, show knowledge of the position and company, and be concise and error-free.
 
 ## Sources
 
 - Yale Office of Career Strategy, Cover Letters & Correspondence: https://ocs.yale.edu/channels/cover-letters-correspondence/
 - Purdue OWL, What Is a Cover Letter?: https://owl.purdue.edu/owl/job_search_writing/job_search_letters/cover_letters_1_quick_tips/index.html
+- MIT CAPD, How to Write an Effective Cover Letter: https://capd.mit.edu/resources/how-to-write-an-effective-cover-letter/
+- UC Berkeley Career Engagement, Cover Letters: https://www.career.berkeley.edu/prepare-for-success/cover-letters/

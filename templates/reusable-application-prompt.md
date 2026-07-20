@@ -25,10 +25,11 @@ I will provide one specific job description below. Treat that as approval to run
 14. Make the resume exactly one full readable page, with no obvious blank band at the bottom and no cramped unreadable sections.
 15. Preserve all internship roles by default; experience takes precedence over projects if space is tight.
 16. Run the resume-vs-job-description alignment pass and record `Job Alignment & Evidence Score: X/100` in tailoring-notes.md with the internal-estimate disclaimer.
-17. Run python3 automation/validate_application_package.py application-packages/<Company>/<Role> and fix failures.
-18. Clean generated LaTeX artifacts.
-19. Make a small coherent commit and push to main.
-20. In the final response, include artifact paths, one-page PDF verification, validator result, Job Alignment & Evidence Score, and commit hash.
+17. Record explicit `Pass` values for the ATS source gate, visual consistency gate, page utilization gate, and cover-letter artifact gate in tailoring-notes.md; use `Waived - <reason>` only for page utilization when no additional verified role-aligned evidence should be added.
+18. Run python3 automation/validate_application_package.py application-packages/<Company>/<Role> and fix failures.
+19. Clean generated LaTeX artifacts.
+20. Make a small coherent commit and push to main.
+21. In the final response, include artifact paths, one-page PDF verification, validator result, Job Alignment & Evidence Score, and commit hash.
 
 Job description:
 
