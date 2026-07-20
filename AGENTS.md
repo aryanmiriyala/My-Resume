@@ -85,12 +85,12 @@ If the job description includes an eligibility, location, sponsorship, clearance
 
 For job-search and job-discovery requests, do not rely only on generic public boards. Use the layered job-search workflow in `job-search/`:
 
-1. Generate recent Google/search links for target roles and ATS domains.
-2. Use search results to collect ATS-hosted job URLs, especially Greenhouse, Lever, Ashby, and SmartRecruiters links.
-3. Run `discover-direct-ats-targets` on the collected URLs to extract, verify, and save company board tokens in `job-search/config/direct-ats-targets.json`.
-4. Run `run-direct-ats` to pull structured postings from verified ATS feeds into `job-search/jobs-inbox.csv` and dated reports.
-5. Use `run-public-search` as a supplemental source, not the main source.
-6. Keep Workday, iCIMS, Workable, Oracle, SAP SuccessFactors, ADP, BambooHR, Jobvite, and company-specific pages marked as adapter/backlog sources until reliable structured ingestion is implemented and verified.
+1. Run `python3 job-search/src/job_discovery.py run-pipeline` as the default command. It runs configured direct ATS targets, the broad ATS scan, supplemental public feeds, and search-link generation.
+2. Review the dated `jobs-by-window.md`, `shortlist.md`, `review-candidates.md`, and `jobs.csv` files under `job-search/results/YYYY-MM-DD/pipeline/`.
+3. Use generated search links to collect new ATS-hosted URLs, especially Greenhouse, Lever, Ashby, and SmartRecruiters links.
+4. Run `discover-direct-ats-targets` on collected URLs to extract, verify, and save company board tokens in `job-search/config/direct-ats-targets.json`.
+5. Use lower-level commands such as `run-direct-ats`, `run-broad-ats`, and `run-public-search` only for adapter debugging, source-specific checks, or intentionally scoped maintenance runs.
+6. Keep iCIMS, Workable, Oracle, SAP SuccessFactors, ADP, BambooHR, Jobvite, and company-specific pages marked as adapter/backlog sources until reliable structured ingestion is implemented and verified.
 
 The goal is breadth plus accuracy: search discovers new company boards, direct ATS APIs provide structured job data, and the CSV remains the manual-review source of truth.
 
@@ -262,13 +262,14 @@ The July 20, 2026 supplemental evidence audit added Lever Help Center, Workday R
 
 To maximize callback rates, Aryan needs to apply to roles extremely quickly—ideally within 24 to 48 hours of posting. The Job Discovery pipeline helps achieve this using a layered approach:
 
-1. **Direct ATS Feeds**: Keep `job-search/config/direct-ats-targets.json` updated with company tokens. Run `run-direct-ats` daily to fetch structured postings directly from Greenhouse, Lever, Ashby, and SmartRecruiters.
-2. **Recent Google Search Queries**:
+1. **Standard Pipeline Command**: Use `python3 job-search/src/job_discovery.py run-pipeline` as the default job-discovery command. It should run the configured discovery layers, group outputs by posted-time windows, and update `jobs-inbox.csv` only with strict shortlist matches.
+2. **Direct ATS Feeds**: Keep `job-search/config/direct-ats-targets.json` updated with company tokens. The standard pipeline pulls structured postings directly from Greenhouse, Lever, Ashby, and SmartRecruiters targets.
+3. **Recent Google Search Queries**:
    - Run `generate-queries` to output search links for target roles and domains.
    - Use Google Search operators for 6-hour, 12-hour, 24-hour, and 48-hour windows (`qdr:h6`, `qdr:h12`, `qdr:d`, and `qdr:d2`) to find freshly indexed postings on company portals before they are listed on major job boards.
-3. **Domain Verification**: When paste-url discovery yields new Greenhouse/Lever/Ashby/SmartRecruiters URLs, run `discover-direct-ats-targets` to verify them and update the config file automatically.
-4. **Location Scope**: Default job discovery should prioritize U.S.-based and U.S.-remote roles. India-based roles may appear in review reports and can be promoted intentionally when Aryan wants to consider them. Other non-U.S./non-India roles should be excluded by default unless Aryan explicitly asks for broader international review.
-5. **Inbox Maintenance**: Regularly check `job-search/jobs-inbox.csv`. Keep it minimal (only company, position, posted_at, pulled_at, and url). Move approved roles into the Application Package Generation pipeline.
+4. **Domain Verification**: When paste-url discovery yields new Greenhouse/Lever/Ashby/SmartRecruiters URLs, run `discover-direct-ats-targets` to verify them and update the config file automatically.
+5. **Location Scope**: Default job discovery should prioritize U.S.-based and U.S.-remote roles. India-based roles should appear in review reports by default. Other non-U.S./non-India roles should be excluded from the standard pipeline unless Aryan explicitly asks for broader international review.
+6. **Inbox Maintenance**: Regularly check `job-search/jobs-inbox.csv`. Keep it minimal (only company, position, posted_at, pulled_at, and url). Move approved roles into the Application Package Generation pipeline.
 
 ## Verification
 

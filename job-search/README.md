@@ -18,25 +18,27 @@ Freshness is based on `first_discovered_at`, not only an ATS-provided posted dat
 
 ## Quick Start
 
-Run a public job-search pass:
+Run the standard job-discovery pipeline:
 
 ```bash
-python3 job-search/src/job_discovery.py run-public-search
+python3 job-search/src/job_discovery.py run-pipeline
 ```
 
-Run direct ATS targets:
+This runs the configured direct ATS targets, broad ATS scan, supplemental public feeds, and search-link generation. The run writes separate reports under `job-search/results/YYYY-MM-DD/pipeline/` and automatically groups candidates by posted-time windows: 0-6, 6-12, 12-24, and 24-48 hours.
+
+Preview without updating `jobs-inbox.csv`:
 
 ```bash
-python3 job-search/src/job_discovery.py run-direct-ats
+python3 job-search/src/job_discovery.py run-pipeline --dry-run
 ```
 
-Run a broad public ATS scan across cached/direct company directories:
+Refresh cached broad ATS company directories when needed:
 
 ```bash
-python3 job-search/src/job_discovery.py run-broad-ats --dry-run --company-limit 25
+python3 job-search/src/job_discovery.py run-pipeline --refresh-cache
 ```
 
-The Phase 1 broad scan covers Greenhouse, Lever, Ashby, and Workday where public company-directory data and no-auth endpoints are available. SmartRecruiters remains supported through configured direct ATS targets. Use `--dry-run` first to write reports without updating `jobs-inbox.csv`; remove it once the output quality looks useful. By default, only roles with explicit early-career signals and U.S. location fit are eligible for the shortlist/CSV. India-based roles are allowed into review reports and can be promoted with `--include-india-in-shortlist` when Aryan wants to consider them. Other non-U.S./non-India roles are excluded from review unless `--include-foreign-review` is passed. Add `--write-review-to-inbox` only if you intentionally want broader review candidates in the CSV. Add `--refresh-cache` when you want to refresh the local company-directory cache.
+The standard pipeline covers Greenhouse, Lever, Ashby, and Workday where public company-directory data and no-auth endpoints are available. SmartRecruiters remains supported through configured direct ATS targets. By default, only roles with explicit early-career signals and U.S. location fit are eligible for the shortlist/CSV. India-based roles are allowed into review reports. Other non-U.S./non-India roles are excluded from standard review. Review-only matches stay in dated Markdown/CSV reports instead of being added to `jobs-inbox.csv`.
 
 Open `job-search/job-viewer.html` in a browser to interactively review dated Markdown reports or CSV files. It can load one file, multiple files, or an entire local results folder through the browser file picker without uploading anything. Use it with `results/YYYY-MM-DD/<pipeline>/jobs.csv`, `shortlist.md`, `review-candidates.md`, or `jobs-inbox.csv`. The viewer shows fit scores, job links, source files, fetched dates, and posted/discovered recency filters for 6, 12, 24, and 48 hours.
 
@@ -53,15 +55,22 @@ The default run now produces two layers:
 
 This avoids polluting the active CSV with junk while still showing you more than the final shortlist. To broaden a run further, add `--include-unclassified`, `--include-location-review`, or `--include-negative`.
 
-This updates `job-search/jobs-inbox.csv` and writes:
+The standard run updates `job-search/jobs-inbox.csv` only with strict shortlist matches and writes:
 
-- `job-search/results/YYYY-MM-DD/jobs.csv`
-- `job-search/results/YYYY-MM-DD/run-summary.md`
-- `job-search/results/YYYY-MM-DD/review-candidates.md`
-- `job-search/results/YYYY-MM-DD/recent-jobs.md`
-- `job-search/results/YYYY-MM-DD/search-links.md`
-- `job-search/results/YYYY-MM-DD/direct-ats/jobs.csv` for direct ATS runs
-- `job-search/results/YYYY-MM-DD/broad-ats/jobs.csv` for broad ATS runs
+- `job-search/results/YYYY-MM-DD/pipeline/run-summary.md`
+- `job-search/results/YYYY-MM-DD/pipeline/search-links.md`
+- `job-search/results/YYYY-MM-DD/pipeline/direct-ats/jobs.csv`
+- `job-search/results/YYYY-MM-DD/pipeline/direct-ats/jobs-by-window.md`
+- `job-search/results/YYYY-MM-DD/pipeline/direct-ats/shortlist.md`
+- `job-search/results/YYYY-MM-DD/pipeline/direct-ats/review-candidates.md`
+- `job-search/results/YYYY-MM-DD/pipeline/broad-ats/jobs.csv`
+- `job-search/results/YYYY-MM-DD/pipeline/broad-ats/jobs-by-window.md`
+- `job-search/results/YYYY-MM-DD/pipeline/broad-ats/shortlist.md`
+- `job-search/results/YYYY-MM-DD/pipeline/broad-ats/review-candidates.md`
+- `job-search/results/YYYY-MM-DD/pipeline/public-search/jobs.csv`
+- `job-search/results/YYYY-MM-DD/pipeline/public-search/jobs-by-window.md`
+- `job-search/results/YYYY-MM-DD/pipeline/public-search/shortlist.md`
+- `job-search/results/YYYY-MM-DD/pipeline/public-search/review-candidates.md`
 
 Generate search links only:
 

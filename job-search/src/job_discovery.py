@@ -56,6 +56,7 @@ BROAD_ATS_DATASETS = {
     "ashby": f"{BROAD_ATS_DATASET_BASE}/ashby_companies.json",
     "workday": f"{BROAD_ATS_DATASET_BASE}/workday_companies.json",
 }
+DEFAULT_SEARCH_WINDOWS = ["0-6h", "0-12h", "0-24h", "0-48h"]
 SLUG_PATTERN = re.compile(r"^[A-Za-z0-9._-]+$")
 
 
@@ -381,6 +382,56 @@ def result_jobs_for_export(result: dict[str, Any]) -> list[dict[str, str]]:
         jobs_by_url[key] = job
 
     return sorted(jobs_by_url.values(), key=lambda item: int_or_zero(item.get("fit_score", "")), reverse=True)
+
+
+def result_job_recency_datetime(job: dict[str, str], now: datetime) -> datetime | None:
+    posted = parse_posted_datetime(job.get("posted_at", ""), now)
+    if posted:
+        return posted
+    for key in ("first_discovered_at", "pulled_at"):
+        try:
+            return parse_dt(job.get(key, ""))
+        except (TypeError, ValueError):
+            continue
+    return None
+
+
+def result_job_bucket(job: dict[str, str], now: datetime, filters: dict[str, Any]) -> str | None:
+    recency_dt = result_job_recency_datetime(job, now)
+    if not recency_dt:
+        return "Undated / Review"
+    age = (now - recency_dt).total_seconds() / 3600
+    for bucket in filters["report_buckets"]:
+        if bucket["min_hours"] <= age < bucket["max_hours"]:
+            return bucket["label"]
+    return None
+
+
+def render_jobs_by_window(title: str, rows: list[dict[str, str]], now: datetime | None = None) -> str:
+    filters = load_json(FILTERS_PATH)
+    now = now or utc_now()
+    grouped: dict[str, list[dict[str, str]]] = {bucket["label"]: [] for bucket in filters["report_buckets"]}
+    grouped["Undated / Review"] = []
+
+    for row in rows:
+        bucket = result_job_bucket(row, now, filters)
+        if bucket:
+            grouped.setdefault(bucket, []).append(row)
+
+    lines = [
+        f"# {title}",
+        "",
+        f"Generated at: `{now.replace(microsecond=0).isoformat()}`",
+        "",
+        "Jobs are grouped by `posted_at` when available. `first_discovered_at` or `pulled_at` is used only when posted time is missing.",
+        "",
+    ]
+    for label, bucket_rows in grouped.items():
+        lines.append(f"## {label}")
+        lines.append("")
+        lines.extend(render_job_table(sorted(bucket_rows, key=lambda item: int_or_zero(item.get("fit_score", "")), reverse=True)))
+        lines.append("")
+    return "\n".join(lines).rstrip() + "\n"
 
 
 def make_job_record(args: argparse.Namespace) -> dict[str, str]:
@@ -1060,9 +1111,9 @@ def render_broad_ats_summary(result: dict[str, Any], args: argparse.Namespace) -
         f"Shortlist minimum fit score: `{args.min_score}`",
         f"Review minimum fit score: `{args.review_min_score}`",
         f"Company limit per source: `{args.source_company_limit or args.company_limit or 'none'}`",
+        "Location policy: U.S. roles can enter the shortlist; India roles stay in review; other foreign roles are excluded by default.",
+        "Recency grouping: 0-6, 6-12, 12-24, and 24-48 hours.",
         f"Require early-career signal for shortlist: `{not args.include_no_early_career_in_shortlist}`",
-        f"Include India roles in shortlist: `{args.include_india_in_shortlist}`",
-        f"Include other foreign roles in review: `{args.include_foreign_review}`",
         f"Write review candidates to CSV: `{args.write_review_to_inbox and not args.dry_run}`",
         "",
         "## Provider Counts",
@@ -1113,7 +1164,9 @@ def render_broad_ats_summary(result: dict[str, Any], args: argparse.Namespace) -
 def write_broad_ats_outputs(result: dict[str, Any], args: argparse.Namespace) -> None:
     results_dir = Path(args.results_dir)
     results_dir.mkdir(parents=True, exist_ok=True)
-    write_result_jobs_csv(results_dir / "jobs.csv", result_jobs_for_export(result))
+    export_rows = result_jobs_for_export(result)
+    write_result_jobs_csv(results_dir / "jobs.csv", export_rows)
+    write_output(render_jobs_by_window("Broad ATS Jobs By Posted Window", export_rows), str(results_dir / "jobs-by-window.md"))
     write_output(render_broad_ats_summary(result, args), str(results_dir / "run-summary.md"))
     write_output("# Review Candidates\n\n" + "\n".join(render_job_table(result["review_candidates"])), str(results_dir / "review-candidates.md"))
     write_output("# Shortlist\n\n" + "\n".join(render_job_table(result["imported"])), str(results_dir / "shortlist.md"))
@@ -1156,11 +1209,8 @@ def fetch_direct_ats_jobs(args: argparse.Namespace) -> dict[str, Any]:
                 continue
             if passes_shortlist_filters(record, args):
                 shortlist.append(record)
-                upsert_job_csv(Path(args.inbox), record)
-            else:
-                review_record = {**record, "status": "needs_review"}
-                review_record["notes"] = "Direct ATS match; review location, seniority, and fit before applying"
-                upsert_job_csv(Path(args.inbox), review_record)
+                if not getattr(args, "dry_run", False):
+                    upsert_job_csv(Path(args.inbox), record)
         skipped_by_source[source] = skipped_by_source.get(source, 0) + skipped
 
     shortlist = sorted(shortlist, key=lambda item: int_or_zero(item["fit_score"]), reverse=True)[: args.limit]
@@ -1170,21 +1220,159 @@ def fetch_direct_ats_jobs(args: argparse.Namespace) -> dict[str, Any]:
         "sources": sorted(fetched_by_source),
         "fetched_by_source": fetched_by_source,
         "skipped_by_source": skipped_by_source,
-        "imported_count": len(shortlist),
+        "imported_count": 0 if getattr(args, "dry_run", False) else len(shortlist),
         "review_count": len(review_candidates),
         "imported": shortlist,
         "review_candidates": review_candidates,
+        "dry_run": getattr(args, "dry_run", False),
     }
 
 
 def write_run_outputs(result: dict[str, Any], args: argparse.Namespace) -> None:
     results_dir = Path(args.results_dir)
     results_dir.mkdir(parents=True, exist_ok=True)
-    write_result_jobs_csv(results_dir / "jobs.csv", result_jobs_for_export(result))
+    export_rows = result_jobs_for_export(result)
+    write_result_jobs_csv(results_dir / "jobs.csv", export_rows)
+    write_output(render_jobs_by_window("Jobs By Posted Window", export_rows), str(results_dir / "jobs-by-window.md"))
     write_output(render_run_summary(result, args), str(results_dir / "run-summary.md"))
     write_output("# Review Candidates\n\n" + "\n".join(render_job_table(result["review_candidates"])), str(results_dir / "review-candidates.md"))
     write_output(render_report(argparse.Namespace(inbox=args.inbox, output="", now="")), str(results_dir / "recent-jobs.md"))
-    write_output(generate_queries(argparse.Namespace(windows=["0-6h", "0-12h", "0-24h", "0-48h"])), str(results_dir / "search-links.md"))
+    write_output(generate_queries(argparse.Namespace(windows=DEFAULT_SEARCH_WINDOWS)), str(results_dir / "search-links.md"))
+
+
+def standard_filter_args(args: argparse.Namespace, results_dir: Path) -> dict[str, Any]:
+    return {
+        "inbox": args.inbox,
+        "results_dir": str(results_dir),
+        "limit": 50,
+        "review_limit": 150,
+        "min_score": 60,
+        "review_min_score": 45,
+        "max_age_hours": 48,
+        "include_negative": False,
+        "include_unclassified": False,
+        "include_location_review": False,
+        "include_india_in_shortlist": False,
+        "include_foreign_review": False,
+        "dry_run": args.dry_run,
+    }
+
+
+def namespace_with(base: dict[str, Any], **overrides: Any) -> argparse.Namespace:
+    values = {**base, **overrides}
+    return argparse.Namespace(**values)
+
+
+def render_pipeline_summary(result: dict[str, Any], args: argparse.Namespace) -> str:
+    lines = [
+        f"# Job Discovery Pipeline - {utc_now().date().isoformat()}",
+        "",
+        f"Generated at: `{result['generated_at']}`",
+        f"Inbox: `{Path(args.inbox).as_posix()}`",
+        f"Dry run: `{args.dry_run}`",
+        "",
+        "## Standard Rules",
+        "",
+        "- Recency windows: 0-6, 6-12, 12-24, and 24-48 hours.",
+        "- U.S. roles are eligible for the strict inbox shortlist.",
+        "- India roles are kept in review reports by default.",
+        "- Other non-U.S./non-India roles are excluded by default.",
+        "- Review-only matches stay in dated reports instead of `jobs-inbox.csv`.",
+        "",
+        "## Pipeline Outputs",
+        "",
+        "| Layer | Shortlist | Review | Results |",
+        "|---|---:|---:|---|",
+    ]
+    for layer in result["layers"]:
+        lines.append(
+            "| {name} | {shortlist} | {review} | {path} |".format(
+                name=md_cell(layer["name"]),
+                shortlist=layer["shortlist_count"],
+                review=layer["review_count"],
+                path=md_cell(layer["results_dir"]),
+            )
+        )
+    lines.extend(
+        [
+            "",
+            f"Search links: `{result['search_links_path']}`",
+            "",
+            "Use each layer's `jobs.csv`, `shortlist.md`, and `review-candidates.md` with `job-search/job-viewer.html` for grouped review.",
+        ]
+    )
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def run_standard_pipeline(args: argparse.Namespace) -> dict[str, Any]:
+    results_dir = Path(args.results_dir)
+    results_dir.mkdir(parents=True, exist_ok=True)
+
+    direct_args = namespace_with(
+        standard_filter_args(args, results_dir / "direct-ats"),
+        targets=str(DIRECT_ATS_TARGETS_PATH),
+        sources=[],
+        companies=[],
+        review_limit=100,
+    )
+    direct_result = fetch_direct_ats_jobs(direct_args)
+    write_run_outputs(direct_result, direct_args)
+
+    broad_args = namespace_with(
+        standard_filter_args(args, results_dir / "broad-ats"),
+        sources=["greenhouse", "lever", "ashby", "workday"],
+        review_limit=150,
+        include_undated=False,
+        include_no_early_career_in_shortlist=False,
+        include_seniority_review=False,
+        write_review_to_inbox=False,
+        workers=8,
+        company_limit=0,
+        source_company_limit=0,
+        error_limit=25,
+        cache_dir=str(BROAD_ATS_CACHE_DIR),
+        refresh_cache=args.refresh_cache,
+    )
+    broad_result = run_broad_ats_scan(broad_args)
+    write_broad_ats_outputs(broad_result, broad_args)
+
+    public_args = namespace_with(
+        standard_filter_args(args, results_dir / "public-search"),
+        sources=["arbeitnow", "remoteok"],
+        review_limit=50,
+    )
+    public_result = fetch_public_jobs(public_args)
+    write_run_outputs(public_result, public_args)
+
+    search_links_path = results_dir / "search-links.md"
+    write_output(generate_queries(argparse.Namespace(windows=DEFAULT_SEARCH_WINDOWS)), str(search_links_path))
+
+    result = {
+        "generated_at": utc_now().replace(microsecond=0).isoformat(),
+        "search_links_path": search_links_path.as_posix(),
+        "layers": [
+            {
+                "name": "direct-ats",
+                "shortlist_count": len(direct_result["imported"]),
+                "review_count": len(direct_result["review_candidates"]),
+                "results_dir": Path(direct_args.results_dir).as_posix(),
+            },
+            {
+                "name": "broad-ats",
+                "shortlist_count": len(broad_result["imported"]),
+                "review_count": len(broad_result["review_candidates"]),
+                "results_dir": Path(broad_args.results_dir).as_posix(),
+            },
+            {
+                "name": "public-search",
+                "shortlist_count": len(public_result["imported"]),
+                "review_count": len(public_result["review_candidates"]),
+                "results_dir": Path(public_args.results_dir).as_posix(),
+            },
+        ],
+    }
+    write_output(render_pipeline_summary(result, args), str(results_dir / "run-summary.md"))
+    return result
 
 
 def build_namespace(job: dict[str, str], status: str = "new", notes: str = "") -> argparse.Namespace:
@@ -1247,11 +1435,18 @@ def fetch_public_jobs(args: argparse.Namespace) -> dict[str, Any]:
     sources = args.sources or ["arbeitnow", "remoteok"]
     fetched_by_source: dict[str, int] = {}
     skipped_by_source: dict[str, int] = {}
+    errors: list[dict[str, str]] = []
     shortlist: list[dict[str, str]] = []
     review_candidates: list[dict[str, str]] = []
 
     for source in sources:
-        jobs = fetch_provider_jobs(source)
+        try:
+            jobs = fetch_provider_jobs(source)
+        except Exception as exc:
+            fetched_by_source[source] = 0
+            skipped_by_source[source] = 0
+            errors.append({"source": source, "error": str(exc)})
+            continue
         fetched_by_source[source] = len(jobs)
         skipped = 0
         for job in jobs:
@@ -1266,11 +1461,8 @@ def fetch_public_jobs(args: argparse.Namespace) -> dict[str, Any]:
                 continue
             if passes_shortlist_filters(record, args):
                 shortlist.append(record)
-                upsert_job_csv(Path(args.inbox), record)
-            else:
-                review_record = {**record, "status": "needs_review"}
-                review_record["notes"] = "Broader public API match; review location, seniority, and fit before applying"
-                upsert_job_csv(Path(args.inbox), review_record)
+                if not getattr(args, "dry_run", False):
+                    upsert_job_csv(Path(args.inbox), record)
             if len(review_candidates) >= args.review_limit and len(shortlist) >= args.limit:
                 break
         skipped_by_source[source] = skipped
@@ -1285,10 +1477,12 @@ def fetch_public_jobs(args: argparse.Namespace) -> dict[str, Any]:
         "sources": sources,
         "fetched_by_source": fetched_by_source,
         "skipped_by_source": skipped_by_source,
-        "imported_count": len(shortlist),
+        "imported_count": 0 if getattr(args, "dry_run", False) else len(shortlist),
         "review_count": len(review_candidates),
         "imported": shortlist,
         "review_candidates": review_candidates,
+        "errors": errors,
+        "dry_run": getattr(args, "dry_run", False),
     }
 
 
@@ -1321,16 +1515,14 @@ def render_run_summary(result: dict[str, Any], args: argparse.Namespace) -> str:
         f"Generated at: `{result['generated_at']}`",
         "",
         f"Inbox: `{Path(args.inbox).as_posix()}`",
+        f"Dry run: `{getattr(args, 'dry_run', False)}`",
         f"Max posted age: `{args.max_age_hours} hours`",
         f"Shortlist minimum fit score: `{args.min_score}`",
         f"Review minimum fit score: `{args.review_min_score}`",
         f"Shortlist limit: `{args.limit}`",
         f"Review limit: `{args.review_limit}`",
-        f"Include negative matches: `{args.include_negative}`",
-        f"Include unclassified roles: `{args.include_unclassified}`",
-        f"Include location-review roles in shortlist: `{args.include_location_review}`",
-        f"Include India roles in shortlist: `{getattr(args, 'include_india_in_shortlist', False)}`",
-        f"Include other foreign roles in review: `{getattr(args, 'include_foreign_review', False)}`",
+        "Location policy: U.S. roles can enter the shortlist; India roles stay in review; other foreign roles are excluded by default.",
+        "Recency grouping: 0-6, 6-12, 12-24, and 24-48 hours.",
         "",
         "## Provider Counts",
         "",
@@ -1339,12 +1531,29 @@ def render_run_summary(result: dict[str, Any], args: argparse.Namespace) -> str:
     ]
     for source in result["sources"]:
         lines.append(f"| {source} | {result['fetched_by_source'].get(source, 0)} | {result['skipped_by_source'].get(source, 0)} |")
-    lines.extend(["", "## Shortlist Imported To CSV", ""])
+    lines.extend(["", "## Shortlist", ""])
+    if getattr(args, "dry_run", False):
+        lines.append("Dry run: these were not written to the CSV inbox.")
+        lines.append("")
+    else:
+        lines.append("These were written to the CSV inbox.")
+        lines.append("")
     lines.extend(render_job_table(result["imported"]))
     lines.extend(["", "## Broader Review Candidates", ""])
     lines.append("These are role-relevant public API matches that may need location, seniority, or fit review before applying.")
     lines.append("")
     lines.extend(render_job_table(result["review_candidates"]))
+    if result.get("errors"):
+        lines.extend(["", "## Provider Errors", ""])
+        lines.append("| Source | Error |")
+        lines.append("|---|---|")
+        for error in result["errors"]:
+            lines.append(
+                "| {source} | {message} |".format(
+                    source=md_cell(error["source"]),
+                    message=md_cell(error["error"][:220]),
+                )
+            )
     return "\n".join(lines).rstrip() + "\n"
 
 
@@ -1512,6 +1721,11 @@ def build_parser() -> argparse.ArgumentParser:
 
     sub.add_parser("init-inbox", help="Create the CSV inbox with headers")
 
+    pipeline = sub.add_parser("run-pipeline", help="Run the standard job-discovery pipeline with configured sources, locations, and recency windows")
+    pipeline.add_argument("--dry-run", action="store_true", help="Write reports without updating jobs-inbox.csv")
+    pipeline.add_argument("--refresh-cache", action="store_true", help="Refresh broad ATS company-directory caches")
+    pipeline.add_argument("--results-dir", default=str(DEFAULT_RESULTS_DIR / utc_now().date().isoformat() / "pipeline"))
+
     q = sub.add_parser("generate-queries", help="Generate recent ATS Google search links")
     q.add_argument("--windows", nargs="*", default=None, help="Window keys such as 0-6h 0-12h 0-24h 0-48h")
     q.add_argument("--output", help="Optional Markdown output path")
@@ -1607,6 +1821,8 @@ def main() -> None:
     if args.command == "init-inbox":
         ensure_inbox(Path(args.inbox))
         print(Path(args.inbox))
+    elif args.command == "run-pipeline":
+        run_standard_pipeline(args)
     elif args.command == "generate-queries":
         write_output(generate_queries(args), args.output)
     elif args.command == "add-job":
