@@ -4,7 +4,7 @@ Company: University of Texas at Austin / Texas McCombs
 
 Role: Software Engineer - Full Stack
 
-Date: July 18, 2026
+Date: July 20, 2026
 
 ## Target Angle
 
@@ -272,4 +272,8 @@ Recommended improvements
 - PDF page count: Pass. `pdfinfo` reports exactly 1 page for both `resume.pdf` and `cover-letter.pdf`.
 - PDF text checked: Pass. `pdftotext` preserved the contact block, standard section order, SmartSolve, American Association of Insurance Services, Alliance for Paired Kidney Donation, Graduate Research Assistant, projects, technical skills, and cover-letter reading order.
 - Visual PDF reviewed: Pass. Poppler render showed a readable one-page resume with no clipping, overlap, broken glyphs, inconsistent bullets, second-page spill, or obvious empty bottom band.
-- Application validator run: Pass. `python3 automation/validate_application_package.py application-packages/UT-Austin-Texas-McCombs/Software-Engineer-Full-Stack` completed after build-artifact cleanup.
+- ATS source gate checked: Pass - `resume.tex` uses the canonical 11-point single-column LaTeX source with `glyphtounicode`, `\pdfgentounicode=1`, no tables, no images, no icons, no multi-column constructs, no text boxes, no headers or footers, and one consistent solid bullet marker.
+- Visual consistency gate checked: Pass - rendered resume and cover letter were compared with the recent First Solar and Black Box application-resume family plus the recent First Solar cover letter; margins, typography, contact hierarchy, headings, bullets, role/date alignment, and density matched the accepted pattern.
+- Page utilization gate checked: Pass - rendered resume uses the lower page area with relevant evidence and `pdftotext -bbox` showed about 0.48 inches of unused bottom space, under the repository gate; cover letter is one page with normal professional letter whitespace.
+- Cover-letter artifact checked: Pass - `cover-letter.pdf` exists, renders as a one-page letter, extracts in readable order, and remains below the conservative 5 MB submission-artifact limit.
+- Application validator run: Pass - `python3 automation/validate_application_package.py application-packages/UT-Austin-Texas-McCombs/Software-Engineer-Full-Stack` completed after build-artifact cleanup.

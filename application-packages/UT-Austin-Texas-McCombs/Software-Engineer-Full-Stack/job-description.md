@@ -2,7 +2,7 @@
 
 Source: User-provided job description pasted from UT Austin / Texas McCombs Workday posting.
 
-Posted: 4 days before July 18, 2026
+Posted: 5 days before July 20, 2026
 
 Job requisition ID: R_00047327
 
