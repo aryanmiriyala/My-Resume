@@ -1,0 +1,208 @@
+\documentclass[letterpaper,10pt]{article}
+
+\usepackage[letterpaper, left=0.55in, right=0.55in, top=0.45in, bottom=0.5in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\urlstyle{same}
+\raggedright
+\setlength{\parindent}{0pt}
+\setlength{\tabcolsep}{0in}
+\pdfgentounicode=1
+
+\titleformat{\section}{\large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{7pt}{4pt}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{2pt}
+  \textbf{#1} \hfill #2\\
+  \textit{#3} \hfill \textit{#4}
+}
+
+\newcommand{\projectHeading}[2]{
+  \vspace{2pt}
+  \textbf{#1} \hfill #2
+}
+
+\newlist{tightitemize}{itemize}{1}
+\setlist[tightitemize]{leftmargin=0.18in, itemsep=1pt, topsep=2pt, parsep=0pt, label=\textbullet}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE \textbf{Aryan Miriyala}}\\
+  \vspace{2pt}
+  +1 419-315-0444 $|$
+  \href{mailto:aryanmiriyala@gmail.com}{aryanmiriyala@gmail.com} $|$
+  \href{https://www.linkedin.com/in/aryan-miriyala-7788a21b6/}{linkedin.com/in/aryan-miriyala} $|$
+  \href{https://github.com/aryanmiriyala}{github.com/aryanmiriyala}
+\end{center}
+
+\section{Professional Summary}
+Computer science graduate student and software engineer with experience across applied AI, full-stack product engineering, cloud data engineering, cybersecurity education, secure workflow modernization, and systems research. Built LLM/RAG workflows, AI-assisted products, AWS data pipelines, database automation, secure internal tools, healthcare workflow improvements, and C++/OpenMP runtime experiments using Python, TypeScript/JavaScript, SQL, React, Next.js, Angular, Node.js, PostgreSQL, MongoDB, MySQL, Docker, AWS, PySpark, LangChain, OpenAI API, Gemini API, Mistral AI, and ChromaDB.
+
+\section{Education}
+\resumeSubheading
+{Bowling Green State University}{Bowling Green, OH}
+{Master of Science in Computer Science, GPA: 4.00/4.00}{Aug. 2024 -- Aug. 2026}
+
+\resumeSubheading
+{Bowling Green State University}{Bowling Green, OH}
+{Bachelor of Science in Computer Science, GPA: 4.00/4.00}{Jan. 2021 -- Apr. 2024}
+
+\section{Experience}
+\resumeSubheading
+{Artificial Intelligence \& Computer Science Intern}{May 2026 -- Present}
+{SmartSolve Industries}{Bowling Green, OH}
+\begin{tightitemize}
+  \item Working on AI-enabled internal software across quality-management and operations workflows, combining full-stack engineering, secure workflow design, and AI-assisted development practices.
+  \item Architected a full-stack onboarding tracker with Next.js, TypeScript, PostgreSQL, Drizzle ORM, SSO, and auth middleware to centralize HR/new-hire workflows and protect sensitive employee data.
+  \item Supported planning for a QMS dependency register intended to connect related quality-management documents and make document relationships easier to understand.
+  \item Built a cross-platform Docker devcontainer for WSL2 and Colima, improving reproducible setup and isolating AI-assisted development workflows around proprietary source code.
+  \item Applied Codex and Claude Code for planning, implementation, debugging, code review, and self-review while keeping human validation central.
+\end{tightitemize}
+
+\resumeSubheading
+{Graduate Research Assistant I}{Aug. 2024 -- May 2026}
+{Bowling Green State University}{Bowling Green, OH}
+\begin{tightitemize}
+  \item Developed cybersecurity education materials, lab guides, workshops, and presentations across ethical hacking, OSINT, web security, email security, cryptography, secure key management, and cyber workforce topics.
+  \item Built hands-on instructional content using Kali Linux, Nmap/NSE, Metasploit, OpenVAS/Greenbone, Wireshark/tcpdump, Burp Suite, OWASP ZAP, Shodan, Netcat/Ncat, Snort, John the Ripper, Hydra, DVWA, Metasploitable2, Vulnserver, and PentesterLab.
+  \item Supported NICE Framework and CAE-CD curriculum analysis by mapping cybersecurity roles, knowledge areas, tools, and instructional requirements into student- and instructor-facing materials.
+  \item Created email security and forensics material covering phishing analysis, email headers, SPF/DKIM/DMARC, PGP/GnuPG, packet captures, and secure email communication.
+  \item Built cryptography and secure key-management content involving symmetric/asymmetric encryption, hashing, PKI, key storage, key recovery, Azure Key Vault lab material, and Shamir's Secret Sharing.
+  \item Led 10 undergraduate students in organizing a middle-school CyberCamp using CyberGuardian modules, cryptography activities, phishing demos, password-security exercises, and cyber escape-room material.
+\end{tightitemize}
+
+\resumeSubheading
+{Data Engineering Intern}{May 2025 -- Aug. 2025}
+{American Association of Insurance Services}{Lisle, IL}
+\begin{tightitemize}
+  \item Automated a fully manual SQL billing workflow by building a production PySpark job and AWS Glue Workflow, processing 20+ TB of golden-table insurance data to calculate charges for 700+ member companies.
+  \item Profiled 160+ MySQL, Oracle, and Impala tables using Python, Pandas, SQL, and JDBC to map source-system similarities and define a unified taxonomy across 25 MDM domains.
+  \item Replaced 160+ legacy Pentaho jobs with AWS Glue ETL workflows and partitioned S3 pipelines for Semarchy MDM, improving maintainability and standardizing cloud data movement.
+  \item Built reverse-ETL and data-validation workflows with custom AWS IAM roles to support controlled self-service data access, reduce manual entry, and maintain 24-hour data latency.
+  \item Worked across Python, PySpark, AWS Glue, Glue Workflows, S3, IAM, SQL, MySQL, Impala, Oracle, PostgreSQL, JDBC, Semarchy MDM/xDM, golden tables, billing workflows, and insurance data platforms.
+\end{tightitemize}
+
+\resumeSubheading
+{Software Engineering Intern}{May 2023 -- May 2024}
+{American Association of Insurance Services}{Lisle, IL}
+\begin{tightitemize}
+  \item Engineered openIDL/openIDS-aligned data-modeling workflows by parsing insurance taxonomies with Python/JSON logic and generating 1,000+ production SQL tables across MySQL, Oracle, PostgreSQL, and 10+ insurance lines.
+  \item Built Python data-processing workflows with Pandas, multiprocessing, fuzzy matching, and hashing to clean large CSV datasets and support insurance data-standardization pipelines.
+  \item Contributed to a full-stack React/Node.js modernization by implementing RBAC and JWT authentication patterns to replace broad employee-wide data access with role-specific controls for about 110 users.
+  \item Automated database validation with AWS Lambda triggers that tokenized PII using hashlib/boto3 and ingested structured JSON into S3 for downstream standardization workflows.
+  \item Worked across Python, JSON, Pandas, SQL, MySQL, Oracle, PostgreSQL, React, Node.js, JWT, RBAC, AWS Lambda, AWS S3, boto3, hashlib, large CSV processing, and insurance taxonomies.
+\end{tightitemize}
+
+\resumeSubheading
+{Software Engineering Intern}{May 2022 -- Aug. 2022}
+{Alliance for Paired Kidney Donation}{Toledo, OH}
+\begin{tightitemize}
+  \item Improved an AWS-hosted Lucee/CFML healthcare workflow platform for kidney-paired donation operations by strengthening form security, auditability, data-entry reliability, and internal clinical workflow usability.
+  \item Implemented global anti-CSRF form protection, IP-aware audit logging, protected access-denied routing, and clearer 404 behavior across internal workflows.
+  \item Modernized legacy ColdFusion/Lucee forms with HTML5 date/time pickers, themed CSS, JavaScript fallbacks, cfform script updates, and graceful degradation for manual input.
+  \item Improved transplant logistics and data reliability by adding center-level blood-tube defaults, logistics-sheet population, Matchgrid upload ordering, MFI file-location fixes, and duplicate-antigen MFI crash handling.
+  \item Refactored MatchRun, registration, offer, and combination interfaces into reusable modal/tab components with icons and tooltips to improve usability and maintainability.
+\end{tightitemize}
+
+\section{Projects}
+\projectHeading{Travel Health Advisor - BGSU Hackathon 2025}{2025}
+\begin{tightitemize}
+  \item Built a full-stack health AI prototype with React, Vite, Express, MongoDB/Mongoose, and Mistral AI for travel-health guidance.
+  \item Implemented an interactive country-selection map with react-simple-maps, retrieving disease records from an Express/MongoDB API and surfacing risk, vaccine availability, healthcare access, recovery-rate data, and travel recommendations.
+  \item Built a health-profile form and context-aware Mistral AI chatbot that used saved user health details to answer travel-health questions.
+  \item Generated downloadable vaccination checklist PDFs with @react-pdf/renderer based on country-specific vaccine-required disease data.
+\end{tightitemize}
+
+\projectHeading{Fix-It-Flow - RocketHacks 2026}{2026}
+\begin{tightitemize}
+  \item Built a Next.js 14/TypeScript PWA that uses camera input, voice commands, Gemini Vision, Featherless.AI/Llama reasoning, ElevenLabs TTS, and DynamoDB to guide appliance repair and recycling decisions.
+  \item Implemented a voice-first inspection workflow combining live-frame analysis, spoken user context, conversation history, structured findings, confidence scores, requested camera views, and safety warnings.
+  \item Designed hands-free repair guidance with AI-generated steps, ElevenLabs audio playback, contextual Q\&A, and voice commands for next, repeat, help, and end session.
+  \item Built typed Next.js API routes and AWS-backed session persistence for inspection turns, repair sessions, device identification, text-to-speech, chat, uploads, findings, frames, and repair steps.
+\end{tightitemize}
+
+\projectHeading{Diff-Grounded Pull Request Description Generation with Structured Evidence}{2026}
+\begin{tightitemize}
+  \item Built an ICSME-published LLM research pipeline that generated evidence-grounded GitHub pull request descriptions from commits, file diffs, linked issues, and repository metadata.
+  \item Developed structured PR-context construction, weak-commit-message improvement, file-level summarization, and grounding-constrained generation workflows using Python, OpenAI API, and GitHub API.
+  \item Built an automated LLM evaluation workflow comparing generated PR descriptions against raw code-change evidence, outperforming AIDev and PRSummarizer baselines in correctness, coverage, and clarity.
+  \item Used Python, OpenAI API, LLM inference, prompt engineering, GitHub API, retrieval-augmented context construction, knowledge graphs, software repository mining, NLP, pandas, and scikit-learn.
+\end{tightitemize}
+
+\projectHeading{DreamScape: AI-Powered Sleep Learning Companion}{}
+\begin{tightitemize}
+  \item Built a cross-platform React Native/Expo mobile app for sleep-based microlearning with AI-generated study cues, quizzes, text-to-speech audio, and local-first session tracking.
+  \item Integrated Gemini and ElevenLabs APIs to summarize PDF/TXT documents, generate quizzes, synthesize learning cues, cache audio, and schedule simulated sleep-mode playback.
+  \item Designed typed Zustand/AsyncStorage stores for topics, flashcards, cues, sleep sessions, quiz results, and user settings in a local-first mobile architecture.
+  \item Used Expo SDK 54, Expo Router, TypeScript, Gemini API, ElevenLabs API, Expo AV, Expo FileSystem, Expo Document Picker, Zod, and React Navigation.
+\end{tightitemize}
+
+\projectHeading{FalconGraph Search: AI-Powered Campus Knowledge Search}{}
+\begin{tightitemize}
+  \item Built an AI-powered BGSU campus search prototype combining lightweight RAG, live web search, crawled webpages, PDFs, and LLM inference to generate source-grounded answers.
+  \item Implemented document ingestion, chunking, vector retrieval, semantic search, and source-aware summarization across stored and crawled university resources.
+  \item Developed graph-search functionality and an interactive graph interface using page/resource relationships to trace generated answers back to original sources.
+  \item Used Python, Flask, OpenAI API, embeddings, vector retrieval, semantic search, web crawling, PDF parsing, React, Next.js, Three.js, Tailwind CSS, C++, graph algorithms, and pandas.
+\end{tightitemize}
+
+\projectHeading{HealthTrend: Healthcare Big Data Streaming Pipeline}{}
+\begin{tightitemize}
+  \item Built a Dockerized healthcare data pipeline using Apache NiFi, Kafka, Hadoop HDFS, and Spark to ingest structured patient records and stream IoT health events.
+  \item Routed CSV patient data into HDFS and JSON health events into Kafka, then processed both sources with Spark/PySpark for validation and downstream analytics.
+  \item Simulated a healthcare analytics architecture for patient records, heart rate, oxygen level, and temperature data inside an isolated Docker Compose environment.
+  \item Used Apache NiFi, Apache Kafka, Apache Zookeeper, Hadoop HDFS, Spark, PySpark, Docker Compose, Python, JSON, CSV, stream ingestion, batch storage, and distributed processing.
+\end{tightitemize}
+
+\projectHeading{MarioRL: Super Mario Reinforcement Learning Agent Comparison}{}
+\begin{tightitemize}
+  \item Built a reinforcement learning project comparing PPO and DQN agents on Super Mario Bros using Python, PyTorch, Stable-Baselines3, Gym, and TensorBoard.
+  \item Implemented environment preprocessing with frame skipping, resizing, grayscale conversion, and frame stacking.
+  \item Evaluated agents through checkpoints, training/testing scripts, generated clips, TensorBoard logs, and performance graphs comparing reward, episode length, and training speed.
+  \item Used gym-super-mario-bros, NES-Py, custom agent/network code, Jupyter Notebook, experiment artifacts, and reinforcement-learning evaluation workflows.
+\end{tightitemize}
+
+\projectHeading{RAG-Based Analysis of App Update Frequency and User Reviews}{}
+\begin{tightitemize}
+  \item Built a RAG research pipeline using Python, Sentence Transformers, ChromaDB, embeddings, vector search, and review mining to study how mobile app update frequency relates to Google Play review feedback.
+  \item Applied semantic retrieval, sentiment analysis, JSON preprocessing, and review-mining techniques to compare maintenance patterns, recurring user concerns, and app version histories.
+  \item Used Python, RAG, Sentence Transformers, ChromaDB, vector search, semantic retrieval, NLP, scikit-learn, JSON processing, data preprocessing, information retrieval, research evaluation, and LaTeX.
+\end{tightitemize}
+
+\projectHeading{RocketGrader: Intelligent Assignment Feedback Platform}{}
+\begin{tightitemize}
+  \item Built a full-stack AI assignment feedback platform with Angular, TypeScript, Express, MongoDB, Auth0, AWS S3, LangChain, and Mistral AI.
+  \item Designed REST APIs and MongoDB/Mongoose models for users, classes, assignments, submissions, files, and chat while supporting role-based teacher/student dashboards.
+  \item Implemented submission upload, parsing, and AI grading across PDF, DOCX, HTML, and text files, returning structured scores, feedback, strengths, improvements, and rubric breakdowns.
+  \item Used Angular 19, TypeScript, Auth0, Node.js, Express, MongoDB, Mongoose, REST APIs, JWT, bcrypt, AWS Amplify, Multer, Mammoth, JSDOM, Tailwind CSS, and DaisyUI.
+\end{tightitemize}
+
+\projectHeading{Self-Adaptive Parallelism via OpenMP Runtime Coordination}{}
+\begin{tightitemize}
+  \item Built a C++/OpenMP adaptive runtime research system that used per-epoch telemetry and a UCB controller to tune scheduling policy, chunk size, and thread count.
+  \item Benchmarked adaptive scheduling against serial and fixed-policy baselines across Mandelbrot, heat diffusion, and reduction workloads.
+  \item Generated paper-ready performance summaries and plots for runtime, speedup, efficiency, Karp-Flatt behavior, and scheduler decisions.
+  \item Used C++, OpenMP, Python, PyQt, Docker, Make, Linux, TCP servers, runtime instrumentation, UCB bandit optimization, adaptive scheduling, CSV telemetry pipelines, performance benchmarking, and data visualization.
+\end{tightitemize}
+
+\section{Technical Skills}
+\textbf{Languages:} Python, SQL, JavaScript, TypeScript, C++, C, C\#, PHP, Lucee/CFML, ColdFusion\\
+\textbf{Frontend:} React, Next.js, Next.js App Router, Angular, Vite, PWA, React Native, Expo, Expo Router, React Navigation, Tailwind CSS, DaisyUI, Bootstrap, HTML5, CSS, D3, TopoJSON, react-simple-maps, Framer Motion, Lucide React, React Icons, React Toastify, React Markdown, responsive UI, browser camera APIs, Web Speech API, modal/tab UI patterns\\
+\textbf{Backend, APIs \& Auth:} Node.js, Express.js, Flask, REST APIs, Axios, CORS, dotenv, auth middleware, JWT, RBAC, SSO, Auth0, Drizzle ORM, Mongoose, bcrypt, @react-pdf/renderer, Lucee/CFML backend workflows\\
+\textbf{Cloud, Data Engineering \& DevOps:} AWS Glue, AWS Glue Workflows, AWS S3, AWS Lambda, AWS IAM, AWS DynamoDB, AWS SDK for JavaScript, AWS Rekognition client code, PySpark, Spark, Apache NiFi, Apache Kafka, Apache Zookeeper, Hadoop HDFS, MapReduce, Impala, ETL, reverse ETL, data validation, data profiling, MDM, Semarchy MDM/xDM, partitioned S3 pipelines, golden tables, JDBC, Docker, Docker Compose, devcontainers, WSL2, Colima, Git, Linux, Make, Vercel, AWS Amplify\\
+\textbf{Databases:} PostgreSQL, MySQL, MongoDB, MongoDB Atlas, Oracle, ChromaDB\\
+\textbf{AI, ML \& Retrieval:} Codex, Claude Code, OpenAI API, Gemini API, ElevenLabs API, Featherless.AI, Llama 3.1, Qwen2.5-VL, Mistral AI, LangChain, RAG, prompt engineering, LLM inference, multimodal reasoning, automated LLM evaluation, HuggingFace, Sentence Transformers, embeddings, vector search, semantic retrieval, cosine similarity search, PyTorch, TensorFlow, Stable-Baselines3, reinforcement learning, PPO, DQN, Gym, TensorBoard, scikit-learn, NLP, review mining\\
+\textbf{Security \& Compliance-Aware Engineering:} SSO, JWT, RBAC, auth middleware, anti-CSRF tokens, audit logging, IP-aware logging, access-denied workflows, protected 404 workflows, data access controls, PII tokenization, hashlib, boto3, healthcare/compliance-aware workflows\\
+\textbf{Cybersecurity Education Tooling:} NICE Framework, CAE-CD curriculum mapping, CyberGuardian, Kali Linux, OSINT, Nmap/NSE, Metasploit, OpenVAS/Greenbone, Wireshark/tcpdump, Burp Suite, OWASP ZAP, OWASP Top 10, Shodan, theHarvester, Netcat/Ncat, Masscan, Snort, John the Ripper, Hydra, DVWA, Metasploitable2, Vulnserver, PentesterLab, SPF/DKIM/DMARC, PGP/GnuPG, phishing analysis, cryptography, PKI, secure key management
+
+\end{document}
