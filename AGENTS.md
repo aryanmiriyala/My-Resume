@@ -64,12 +64,12 @@ For every new job application:
 3. Add or update the role in `operations/application-tracker.md`.
 4. Review `profile/` for relevant experience, projects, skills, and reusable bullets.
 5. Apply `profile/ats-recruiter-resume-guide.md` and `profile/resume-targeting-guide.md` before proposing resume edits.
-6. Build a job keyword map before writing the resume: required skills, repeated terms, responsibilities, domain language, must-have tools, nice-to-have tools, and unsupported terms to avoid. Use this map to decide the resume angle, bullet selection, projects, technical skills, and cover-letter proof points.
+6. Build a job keyword map before writing the resume: exact posted role title, required skills, repeated terms, responsibilities, domain language, must-have tools, nice-to-have tools, and unsupported terms to avoid. Use this map to decide the Target Professional Title Clause, resume angle, bullet selection, projects, technical skills, and cover-letter proof points.
 7. Apply `profile/cover-letter-guide.md` before drafting any cover letter. Use known personal context from `profile/` and prior application notes. Ask Aryan cover-letter personalization questions only when the letter would be materially weaker or risky without the answer:
    - What genuinely interests you about this company?
    - Do you have any personal connection to the company, product, industry, mission, or team?
    - Is there anything specific you want the hiring manager to feel after reading the letter?
-8. Document the resume direction, cover-letter angle, strongest matching experience/projects, important keyword targets, unsupported keywords to avoid, and any blocking eligibility questions in `tailoring-notes.md`.
+8. Document the resume direction, Target Professional Title Clause, cover-letter angle, strongest matching experience/projects, important keyword targets, unsupported keywords to avoid, and any blocking eligibility questions in `tailoring-notes.md`.
 9. Create a tailored `resume.tex` from `master-documents/master-resume/resume.tex` or the latest successful one-page application resume pattern.
 10. Audit every experience and project bullet against the bullet rules before compiling. Rewrite any bullet that lacks a strong action verb, a specific contribution, truthful method or technology when relevant, scope/domain context, and impact/result.
 11. Generate `resume.pdf` locally from the tailored LaTeX source only when needed for submission.
@@ -148,6 +148,7 @@ Do not commit binary/generated artifacts unless Aryan explicitly asks. This incl
   | Helped build a Next.js onboarding tracker and added SSO authentication. | Architected a full-stack Next.js onboarding tracker with PostgreSQL, Drizzle ORM, SSO, and auth middleware to centralize HR workflows and protect sensitive employee data. |
 - **Section-by-Section Guidance**:
   - **Professional Summary**: Optional, not mandatory. Use it only when 2--3 grounded lines materially improve positioning for the specific role. Highlight verified experience, core domains, and a clear value proposition. Omit it when it merely repeats the skills or experience sections. Avoid generic buzzwords (e.g., "passionate," "fast learner").
+  - **Target Professional Title Clause**: When a specific job description is provided, extract the employer's exact posted role title and include that exact title once in visible resume text when Aryan can truthfully position toward it. Prefer the first phrase of the `Professional Summary`, using a non-misleading construction such as `<Exact Job Title>-aligned software engineer with...` or `Software engineer aligned with <Exact Job Title> responsibilities through...`. Do not rewrite Aryan's actual past job titles to match the posting, do not claim a seniority level he has not held, and do not add the title as hidden text, repeated text, a keyword block, or a disconnected label.
   - **Education**: Show degrees, GPA (e.g., GPA: 4.00/4.00), graduation dates, and university name. Ensure it is prominently displayed.
   - **Experience**: Place recent and most relevant experience in the top half. The first 1-2 bullets of relevant roles must align directly with the highest-priority responsibilities and keywords of the job description. Highlight systems thinking, architectural decisions, and working with constraints (e.g., scalability, reliability, security).
   - **Projects**: Use projects to support the primary resume angle and cover skill gaps not shown in the professional experience. Emphasize actual implementation details and files in the repository.
@@ -180,6 +181,7 @@ Treat ATS alignment as structured parsing plus human review, not as magic. A str
 - **Single-Column Layout**: Always use a clean, single-column layout. Multi-column formats cause parsers to scramble text, leading to misinterpretation of experience.
 - **No Complex Elements**: Do not use tables, LaTeX `tabular`/`tabular*` constructs, images, icons, text boxes, graphics, personal logos, or decorative formatting in application resumes. Do not place contact information in a PDF header or footer. These elements can hide, split, or reorder text for parsers. The PDF must be text-extractable in reading order with `pdftotext`.
 - **Exact Keyword Mirroring**: Use exact job-description language for critical terms when truthful. If the job description says `REST-based API development` or `AWS Glue`, use those exact phrases rather than synonyms.
+- **Exact Posted Title Match**: Treat the employer's exact posted role title as a high-priority keyword because recruiter filtering can search full resume text for job titles, skills, locations, and other keywords. The exact posted title should appear once in a truthful visible summary/title clause and should also be reflected through nearby evidence-bearing bullets. If the posted title includes unsupported seniority, specialization, clearance, or licensure language, include only a non-misleading aligned phrase and document the unsupported part in `tailoring-notes.md`.
 - **Context-Bound Keywords**: Put each high-priority keyword in evidence-bearing context (e.g., a role bullet or project line must show what was built, secured, or improved using that technology) instead of just dumping a list of tools.
 - **Standard Heading Titles**: Use standard titles for sections that are included: `Professional Summary`, `Education`, `Experience`, `Projects`, and `Technical Skills`. `Professional Summary` remains optional. Creative section names can confuse parser categorization.
 - **Relevance Placement**: Put recent and most relevant experience in the top half of the page so both parser scoring and human skim behavior see the match quickly.
@@ -200,6 +202,7 @@ Record the score in `tailoring-notes.md` with:
 
 - `Job Alignment & Evidence Score: X/100`
 - `Internal estimate only; not a predicted ATS score.`
+- `Exact posted title matched in visible summary/title clause`
 - `Strong matches`
 - `Gaps / intentionally omitted unsupported keywords`
 - `Recommended improvements`
@@ -260,6 +263,8 @@ The July 20, 2026 enforcement audit used Greenhouse Support, Lever Developer doc
 
 The July 20, 2026 supplemental evidence audit added Lever Help Center, Workday Resume REST API documentation, Oracle Taleo attachment documentation, SAP SuccessFactors Recruiting documentation, iCIMS developer documentation, University of Pennsylvania Career Services, MIT CAPD cover-letter guidance, UC Berkeley cover-letter guidance, and NACE Job Outlook 2026 guidance. The resulting hard rules require parseable text PDFs or employer-requested DOCX files, no image-based resumes, canonical source validation, no blank verification gates, no placeholder text, no weak bullet openers, and a conservative 5 MB final artifact size unless employer instructions override it.
 
+The July 22, 2026 title-keyword audit used Greenhouse Talent Filtering, Greenhouse resume parsing documentation, MIT CAPD resume guidance, and Yale Office of Career Strategy guidance to add the Target Professional Title Clause rule. The rule requires the employer's exact posted role title to appear once in truthful visible resume text, normally in the Professional Summary, while prohibiting fake past titles, hidden text, keyword stuffing, and unsupported seniority/title inflation.
+
 ## Job Search & Discovery Strategies (Getting Ahead of the Line)
 
 To maximize callback rates, Aryan needs to apply to roles extremely quickly—ideally within 24 to 48 hours of posting. The Job Discovery pipeline helps achieve this using a layered approach:
@@ -286,7 +291,8 @@ After approved resume changes:
 6. Render the resume beside at least two recent accepted application resumes and inspect border consistency, name/contact placement, section styling, bullet appearance, role/date hierarchy, density, bottom-page usage, clipping, and overlap. A visibly inconsistent or substantially underfilled layout fails this check.
 7. Run the resume-vs-job-description alignment pass and record the Job Alignment & Evidence Score and its internal-estimate disclaimer in `tailoring-notes.md`.
 8. Confirm mandatory qualifications and the highest-priority truthful keywords appear in evidence-bearing context; record unsupported requirements as gaps rather than adding them.
-9. Confirm `tailoring-notes.md` records `Pass` for `ATS source gate checked`, `Visual consistency gate checked`, `Cover-letter artifact checked`, and `Pass` or `Waived - <reason>` for `Page utilization gate checked`.
-10. Run `python3 automation/validate_application_package.py application-packages/<Company>/<Role>` and address any failures.
-11. Report changed files, verification results, validator result, and the Job Alignment & Evidence Score with the disclaimer that it is not a predicted ATS result.
-12. Remove generated LaTeX build artifacts. Keep submission PDFs only when Aryan asks for final application artifacts or when the application package needs a ready-to-submit PDF.
+9. Confirm the employer's exact posted role title appears once in visible resume text through a truthful Target Professional Title Clause, and that the title is supported by nearby experience or project evidence rather than repeated as a disconnected keyword.
+10. Confirm `tailoring-notes.md` records `Pass` for `ATS source gate checked`, `Visual consistency gate checked`, `Cover-letter artifact checked`, and `Pass` or `Waived - <reason>` for `Page utilization gate checked`.
+11. Run `python3 automation/validate_application_package.py application-packages/<Company>/<Role>` and address any failures.
+12. Report changed files, verification results, validator result, and the Job Alignment & Evidence Score with the disclaimer that it is not a predicted ATS result.
+13. Remove generated LaTeX build artifacts. Keep submission PDFs only when Aryan asks for final application artifacts or when the application package needs a ready-to-submit PDF.

@@ -16,8 +16,9 @@ Use this guide when tailoring resumes for applicant tracking systems, recruiter 
 
 ## Keyword Strategy
 
-- Extract exact job-description keywords before editing: languages, frameworks, cloud tools, data tools, AI/ML terms, security/auth terms, domain terms, role responsibilities, and repeated phrases.
+- Extract exact job-description keywords before editing: exact posted role title, languages, frameworks, cloud tools, data tools, AI/ML terms, security/auth terms, domain terms, role responsibilities, and repeated phrases.
 - Match exact wording where truthful. If the posting says `AWS Lambda`, use `AWS Lambda`, not only `serverless`.
+- Include the exact posted role title once in visible resume text when truthful, normally in the Professional Summary, because recruiter filters may search for job titles and other full-text keywords. Do not change Aryan's actual past job titles or add unsupported seniority/title claims.
 - Put the highest-value keywords in three places when supported: skills section, experience/project bullets, and project/role stack line.
 - Prefer keywords in context over keyword lists. A skill is stronger when attached to what was built, automated, secured, analyzed, or improved.
 - Avoid keyword stuffing. If a tool was only lightly used or is unrelated to the role, keep it out.
@@ -32,6 +33,7 @@ Rules:
 - Keep it to 2-3 lines maximum in the PDF.
 - Write it as a value proposition, not an objective. Avoid `seeking a role where...`.
 - Tailor it to the job description using truthful role keywords.
+- Start with a truthful Target Professional Title Clause when a specific job is provided, such as `<Exact Job Title>-aligned software engineer with...` or `Software engineer aligned with <Exact Job Title> responsibilities through...`.
 - Include the target angle, strongest technical domains, and one clear value theme.
 - Avoid generic traits such as `passionate`, `hard-working`, `fast learner`, or `team player` unless the line proves them through concrete context.
 - Do not repeat the Technical Skills section as a sentence. Mention only the highest-value stack or domain terms.
@@ -39,7 +41,7 @@ Rules:
 
 Default structure:
 
-`Software engineer / applied AI builder with experience in <top domains/tools>, focused on <job-relevant outcome>. Background includes <2-3 strongest proof areas>.`
+`<Exact Job Title>-aligned software engineer with experience in <top domains/tools>, focused on <job-relevant outcome>. Background includes <2-3 strongest proof areas>.`
 
 ## Bullet Formula
 
