@@ -30,13 +30,14 @@ Use a professional summary only when it helps a recruiter understand the target 
 
 Rules:
 
-- Keep it to 2-3 lines maximum in the PDF.
+- Keep it to two sentences maximum. Prefer one tight sentence when the role fit is already obvious.
+- Keep the language concise enough for a 30-60 second recruiter scan; do not write a paragraph or stack unrelated clauses.
 - Write it as a value proposition, not an objective. Avoid `seeking a role where...`.
 - Tailor it to the job description using truthful role keywords.
 - Start with a truthful Target Professional Title Clause when a specific job is provided, such as `<Exact Job Title>-aligned software engineer with...` or `Software engineer aligned with <Exact Job Title> responsibilities through...`.
 - Include the target angle, strongest technical domains, and one clear value theme.
 - Avoid generic traits such as `passionate`, `hard-working`, `fast learner`, or `team player` unless the line proves them through concrete context.
-- Do not repeat the Technical Skills section as a sentence. Mention only the highest-value stack or domain terms.
+- Do not repeat the Technical Skills section as a sentence. Mention only the 2-4 highest-value stack, domain, or responsibility terms from the job description that are proven by the bullets below.
 - If adding the summary makes the page crowded, trim the summary before shrinking the resume font.
 
 Default structure:

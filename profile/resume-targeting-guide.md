@@ -41,12 +41,14 @@ Use a summary when the job benefits from connecting multiple parts of Aryan's ba
 
 Rules:
 
-- Keep the summary to 2-3 lines maximum.
-- Make it role-specific and grounded in the job description.
+- Keep the summary to two sentences maximum. Prefer one tight sentence when the fit is obvious.
+- Keep each sentence concise enough to scan quickly; do not write paragraph-style summaries.
+- Make it role-specific and grounded in the job description's language.
 - Include the exact posted job title once in visible summary text when truthful, using a non-misleading clause such as `<Exact Job Title>-aligned software engineer with...` or `Software engineer aligned with <Exact Job Title> responsibilities through...`.
 - Lead with what Aryan brings: systems built, domains worked in, and technical strengths.
 - Do not write an objective statement.
 - Do not rewrite Aryan's actual past job titles, invent seniority, or repeat the posted title as a disconnected keyword.
+- Do not turn the summary into a skills dump. Use only the 2-4 strongest job-description terms that are supported by bullets below.
 - Do not use the summary to compensate for weak bullet alignment. The experience and project bullets still need to prove the fit.
 
 ## Step 4: Select Experience Bullets
@@ -110,6 +112,7 @@ After approval and edits:
 - Confirm the resume PDF is exactly one page.
 - Extract PDF text and inspect bullets.
 - Confirm the exact posted job title appears once in visible summary/title text and is supported by evidence-bearing experience or project bullets.
+- Confirm the Professional Summary is no more than two sentences, concise, and written in the job description's language without becoming a keyword list.
 - Confirm the PDF text preserves section order and important keywords.
 - Visually inspect the PDF for readability, spacing, cramped sections, canonical layout consistency, and bottom-page usage. A large unused bottom band fails this step when verified role-aligned evidence is still available.
 - If the resume is too long, first tighten wording, remove repetition, and prioritize stronger evidence. Keep the canonical application-resume geometry and 11-point typography unchanged rather than creating application-specific spacing.
