@@ -90,7 +90,7 @@ Secondary angle: Reliability-minded cloud/data and systems engineer who can part
 
 ## Resume Direction
 
-- Use a one-sentence Professional Summary because the HPE role combines software engineering, Python/C/C++, Linux, Docker, AI tooling, and networking concepts.
+- Use a one-sentence Professional Summary because the HPE role combines software engineering, Python/C/C++, Linux, Docker, AI tooling, and networking concepts. The final summary must render as no more than two PDF text lines.
 - Include the exact posted title once through the Target Professional Title Clause: `Software Engineer-aligned computer science graduate student...`
 - Lead SmartSolve with Docker/Linux-based development environment work and AI-assisted engineering because the posting asks for AI tools, Linux environments, containers, Git-style engineering, and adaptability.
 - Keep AAIS Data Engineering for Python, large-scale data workflows, validation, and production-minded problem solving.
@@ -122,10 +122,23 @@ The letter ties the Subscriber Services move from embedded architectures to AI-a
 - AAIS Software Engineering bullet 1: Action verb + Python/JSON SQL automation + MySQL/Oracle/PostgreSQL + 1,000+ tables/10+ insurance lines scope + repeatable delivery result.
 - AAIS Software Engineering bullet 2: Action verb + Python/Pandas/multiprocessing/fuzzy matching/hashing + large CSV inputs + standardized pipeline-input result.
 - AAIS Software Engineering bullet 3: Action verb + AWS Lambda validation + hashlib/boto3/S3 + PII-tokenization context + secure downstream processing result.
-- APKD bullet: Action verb + AWS-hosted Lucee/CFML healthcare platform + security/routing/data-entry/import/crash fixes + stabilization result.
+- APKD bullet 1: Action verb + AWS-hosted Lucee/CFML healthcare platform + security/routing/data-entry/import/crash fixes + stabilization result.
+- APKD bullet 2: Action verb + legacy HTML5/JavaScript/CSS modernization + reusable modal/tab patterns + internal clinical workflow context + maintainability result.
 - FalconGraph bullet: Action verb + RAG pipeline + C++/OpenMP crawler/Python/FAISS/FastAPI + source-traceable answer result.
 - Self-Adaptive bullets: Action verbs + C++/OpenMP runtime telemetry/UCB scheduling + Linux/Docker/Make context + benchmark outputs.
 - HealthTrend bullet: Action verb + Dockerized pipeline + NiFi/Kafka/HDFS/Spark/PySpark + patient/event data context + validation/analytics result.
+
+## Scoring Methodology
+
+This score used the repository's transparent internal rubric from `AGENTS.md`, not an employer ATS score and not a black-box prediction. The score was assigned from the saved job description, extracted resume text, keyword map, unsupported-gap list, and parser/visual verification results.
+
+Score breakdown:
+
+- Keyword coverage: 36/40 - exact posted title, Python, C/C++, Linux, Docker, Git, AI tools, container principles, data structures/algorithms, operating systems, and networking-adjacent terms are covered truthfully; direct HPE subscriber-management, embedded product ownership, Kubernetes, and high-availability telecom product ownership are not.
+- Experience relevance: 23/25 - four internship roles plus systems/networking-adjacent project and research evidence align well with an early-career software engineer role, though not with HPE's exact telecom subscriber-services domain.
+- Impact and evidence: 14/15 - bullets include concrete systems, technologies, scope, and verified metrics including 20+ TB, 700+ companies, 160+ tables, 25 domains, 1,000+ SQL tables, 10+ insurance lines, and 24-hour data latency.
+- Formatting and ATS parsing: 10/10 - one-page PDF, standard headings, extractable text, canonical source, no tables, no images, no icons, no text boxes, no generated build artifacts.
+- Risk and gap handling: 8/10 - unsupported claims are omitted and F-1/location/sponsorship confirmation is flagged; score is capped by unresolved work-authorization, onsite-location, and domain-specific gaps.
 
 ## Verification Gates
 

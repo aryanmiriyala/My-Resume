@@ -30,7 +30,7 @@ Use a professional summary only when it helps a recruiter understand the target 
 
 Rules:
 
-- Keep it to two sentences maximum. Prefer one tight sentence when the role fit is already obvious.
+- Keep it to two sentences maximum and no more than two rendered PDF lines total. If `pdftotext` extracts the summary as three visual lines, it fails and must be shortened or removed.
 - Keep the language concise enough for a 30-60 second recruiter scan; do not write a paragraph or stack unrelated clauses.
 - Write it as a value proposition, not an objective. Avoid `seeking a role where...`.
 - Tailor it to the job description using truthful role keywords.
@@ -48,7 +48,7 @@ Default structure:
 
 Use this default structure:
 
-There is no fixed bullet-count target per role or project. Bullet count should follow the amount of distinct, relevant evidence available. Do not shorten a strong role to an arbitrary maximum, and do not add filler to make entries visually symmetrical. Every retained bullet must pass the contribution, context, and result audit below.
+There is no fixed bullet-count maximum per role or project. Bullet count should follow the amount of distinct, relevant evidence available. For early-career application resumes, the Experience section should normally contain at least 11 strong bullets before project bullets consume meaningful space; fewer requires an `Experience Bullet Count Waiver` in `tailoring-notes.md`. Do not shorten a strong role to an arbitrary maximum, and do not add filler to make entries visually symmetrical. Every retained bullet must pass the contribution, context, and result audit below.
 
 `Action verb + what was built/changed + how/technology + scope/domain + impact/result`
 
@@ -99,6 +99,7 @@ Recruiters often scan quickly, so the resume must make relevance visible immedia
 - Keep the resume visually scannable in 30-60 seconds.
 - Treat visual density as a failure mode during PDF review, but do not confuse healthy white space with an underfilled resume. A small bottom margin is acceptable; a large blank band is not. If the final text stops well above the bottom of the page, first add stronger verified role-aligned evidence, deepen a thin project bullet, or restore a relevant experience detail before considering the package complete.
 - Preserve internship experience by default before project breadth. A weakly relevant internship may be compressed or omitted when it would displace substantially stronger evidence or force unreadable formatting; document that decision in `tailoring-notes.md`.
+- When space is tight, compress or remove lower-priority project detail before cutting strong, verified, role-aligned experience bullets.
 - Do not use aggressive negative spacing in Experience or Projects to satisfy the one-page rule. A full page should still have readable line spacing, clear section transitions, and enough breathing room for a recruiter scan.
 - Prefer fewer high-signal projects over a crowded project list when each project is reduced to a dense one-line block.
 - Do not compress Education into an awkward format unless Aryan approves it.

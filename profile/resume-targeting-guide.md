@@ -41,7 +41,7 @@ Use a summary when the job benefits from connecting multiple parts of Aryan's ba
 
 Rules:
 
-- Keep the summary to two sentences maximum. Prefer one tight sentence when the fit is obvious.
+- Keep the summary to two sentences maximum and no more than two rendered PDF lines total. Prefer one tight sentence when the fit is obvious.
 - Keep each sentence concise enough to scan quickly; do not write paragraph-style summaries.
 - Make it role-specific and grounded in the job description's language.
 - Include the exact posted job title once in visible summary text when truthful, using a non-misleading clause such as `<Exact Job Title>-aligned software engineer with...` or `Software engineer aligned with <Exact Job Title> responsibilities through...`.
@@ -62,6 +62,7 @@ Rules:
 - Use `Reusable Bullet Options` from `experience-master.md` when the application needs company/role-specific bullets.
 - Use `bullet-bank.md` when the application needs job-family bullets across multiple roles.
 - Prefer bullets matching the job's required stack.
+- Build experience depth before project breadth. The Experience section should normally contain at least 11 strong, role-aligned bullets on early-career one-page application resumes; fewer requires an `Experience Bullet Count Waiver` in `tailoring-notes.md`.
 - Put job keywords into bullets only when supported by real experience.
 - Preserve internship roles by default. A weakly relevant internship may be compressed or omitted when it would displace substantially stronger evidence or force unreadable formatting; record the decision in `tailoring-notes.md`.
 - Do not impose a fixed bullet maximum or require matching bullet counts across roles. Let the number of distinct, job-relevant accomplishments determine the count, subject to one-page readability.

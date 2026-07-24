@@ -48,6 +48,8 @@ Unsupported terms to avoid:
 
 Every experience and project bullet must satisfy: action verb + what changed + technology/method + scope/domain + impact/result.
 
+Experience bullet count:
+
 Experience bullets checked:
 
 - 
@@ -64,6 +66,18 @@ Weak bullets rewritten:
 
 - Resume:
 - Cover letter:
+
+## Scoring Methodology
+
+Scoring source:
+
+Score breakdown:
+
+- Keyword coverage: /40 -
+- Experience relevance: /25 -
+- Impact and evidence: /15 -
+- Formatting and ATS parsing: /10 -
+- Risk and gap handling: /10 -
 
 ## Alignment Pass
 
@@ -93,6 +107,8 @@ Recommended improvements:
 
 - LaTeX compiled:
 - PDF page count:
+- Professional Summary line count:
+- Experience bullet count gate:
 - PDF text checked:
 - ATS source gate checked: Pass -
 - Visual consistency gate checked: Pass -

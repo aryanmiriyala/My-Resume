@@ -122,8 +122,10 @@ Do not commit binary/generated artifacts unless Aryan explicitly asks. This incl
 - Maintain clear hierarchy while using the available page area efficiently. A finalized application resume should normally carry serious, readable content into the bottom portion of the page, consistent with the established application resumes. If a visible blank band remains, add stronger verified evidence or improve information density before finalizing.
 - The 11-point font is a readability floor for the canonical application layout. Do not shrink text to add content. Narrow canonical page borders are permitted only because the layout remains single-column, text-only, and visually verified; do not reduce them further on a one-off basis.
 - Use one consistent, ordinary solid bullet symbol throughout all application resumes. Do not mix solid bullets, hollow bullets, dashes, or decorative symbols.
-- There is no fixed or hard limit on the number of bullets for a role, project, or resume. Do not force every entry into an arbitrary two- or three-bullet pattern. Use as many bullets as are needed to present distinct, high-signal, role-aligned evidence while preserving the one-page and readability requirements.
+- There is no fixed or hard maximum on the number of bullets for a role, project, or resume. Do not force every entry into an arbitrary two- or three-bullet pattern. Use as many bullets as are needed to present distinct, high-signal, role-aligned evidence while preserving the one-page and readability requirements.
 - Bullet count is governed by evidence quality, not symmetry. Add a bullet only when it contributes a distinct accomplishment, system, decision, scope, or result; combine or remove bullets that repeat the same evidence. A role with five strong relevant bullets is preferable to a visually symmetrical role with three weaker bullets.
+- **Experience Evidence Floor**: For early-career one-page application resumes, the experience section must normally contain at least 11 strong experience bullets before project bullets are allowed to consume meaningful space. This is a floor, not a target or cap. If fewer than 11 experience bullets are used, `tailoring-notes.md` must include an `Experience Bullet Count Waiver` explaining why no additional verified role-aligned internship, work, research, teaching, or operational evidence should be added. Do not preserve a broad project bullet while omitting a stronger verified experience bullet.
+- **Experience-First Fit Rule**: When the page is tight, compress or remove lower-priority project detail before cutting truthful role-aligned experience evidence. Experience takes priority because it is dated, employer-backed evidence and usually carries more recruiter weight than standalone projects for early-career applications.
 - **Visual Consistency Gate**: Before compiling a new application resume, compare its LaTeX preamble and layout macros against the latest accepted application-resume pattern. Reuse the same document class, geometry, font, header structure, section styling, bullet label, role/date hierarchy, and skills formatting. Tailoring should change evidence and ordering, not visual identity.
 - **Side-by-Side Review Gate**: Render the new resume beside at least two recent accepted application resumes. Confirm that outer borders, name/contact placement, section rules, bullet size, role/date alignment, density, and bottom-page usage look like the same document family. Record this comparison in `tailoring-notes.md`.
 - **Page Utilization Gate**: A one-page early-career resume is not complete merely because it has one page. If the final line of meaningful content leaves a visibly large unused bottom band, first add or restore verified role-aligned evidence, deepen a thin project bullet with purpose/method/result, or add a truthful missing must-have keyword in context. Do not add filler, duplicate claims, broad soft-skill labels, unsupported technologies, or one-off spacing tricks to fill the page.
@@ -150,7 +152,7 @@ Do not commit binary/generated artifacts unless Aryan explicitly asks. This incl
   | Worked on database validation and loaded data into S3 using AWS Lambda. | Automated database validation with AWS Lambda triggers that tokenized PII using hashlib/boto3 and ingested structured JSON into S3, securing data movement and maintaining 24-hour data latency. |
   | Helped build a Next.js onboarding tracker and added SSO authentication. | Architected a full-stack Next.js onboarding tracker with PostgreSQL, Drizzle ORM, SSO, and auth middleware to centralize HR workflows and protect sensitive employee data. |
 - **Section-by-Section Guidance**:
-  - **Professional Summary**: Optional, not mandatory. Use it only when a concise, job-specific summary materially improves the first recruiter scan. It must be no more than two sentences and should normally be 1-2 PDF lines per sentence at most. Use the job description's exact language for the role, core stack, domain, and priority responsibilities only when the terms are truthful and supported by evidence below. Omit the summary when it merely repeats the skills section, becomes a keyword list, or uses generic buzzwords (e.g., "passionate," "fast learner").
+  - **Professional Summary**: Optional, not mandatory. Use it only when a concise, job-specific summary materially improves the first recruiter scan. It must be no more than two sentences and, more importantly, must render as no more than two total PDF text lines in the final compiled resume. This is a hard visual gate checked after `pdftotext`; a three-line summary fails even if it is only one sentence. Use the job description's exact language for the role, core stack, domain, and priority responsibilities only when the terms are truthful and supported by evidence below. Omit the summary when it merely repeats the skills section, becomes a keyword list, or uses generic buzzwords (e.g., "passionate," "fast learner").
   - **Target Professional Title Clause**: When a specific job description is provided, extract the employer's exact posted role title and include that exact title once in visible resume text when Aryan can truthfully position toward it. Prefer the first phrase of the `Professional Summary`, using a non-misleading construction such as `<Exact Job Title>-aligned software engineer with...` or `Software engineer aligned with <Exact Job Title> responsibilities through...`. Do not rewrite Aryan's actual past job titles to match the posting, do not claim a seniority level he has not held, and do not add the title as hidden text, repeated text, a keyword block, or a disconnected label. The rest of the summary must stay concise and prove the title alignment through 2-4 strongest JD-matched evidence themes, not broad self-praise.
   - **Education**: Show degrees, GPA (e.g., GPA: 4.00/4.00), graduation dates, and university name. Ensure it is prominently displayed.
   - **Experience**: Place recent and most relevant experience in the top half. The first 1-2 bullets of relevant roles must align directly with the highest-priority responsibilities and keywords of the job description. Highlight systems thinking, architectural decisions, and working with constraints (e.g., scalability, reliability, security).
@@ -193,7 +195,7 @@ Treat ATS alignment as structured parsing plus human review, not as magic. A str
 - **Adjacent Evidence**: Include adjacent truthful technologies only as supporting evidence, not as substitutes.
 - **After Compiling Verification**: Extract resume text with `pdftotext` and scan it as an ATS would: confirm exact role title, required languages, cloud/platform terms, and top responsibilities appear in readable order. When `pdftotext -bbox` is available, use it or the package validator to detect whether meaningful text stops too far above the bottom of the page.
 
-Use this scoring model only as the internal `Job Alignment & Evidence Score`, not as a guarantee or prediction of an employer's ATS result:
+Use this scoring model only as the internal `Job Alignment & Evidence Score`, not as a guarantee or prediction of an employer's ATS result. The score must be reproducible from a written breakdown; do not record only a naked number.
 
 - **Keyword coverage**: 40 points for truthful coverage of important job-title, skill, tool, platform, methodology, and domain keywords.
 - **Experience relevance**: 25 points for how strongly the selected experience/projects match the role's responsibilities and business context.
@@ -203,15 +205,17 @@ Use this scoring model only as the internal `Job Alignment & Evidence Score`, no
 
 Record the score in `tailoring-notes.md` with:
 
+- `## Scoring Methodology`
 - `Job Alignment & Evidence Score: X/100`
 - `Internal estimate only; not a predicted ATS score.`
+- `Score breakdown` with exact point allocations for keyword coverage, experience relevance, impact/evidence, formatting/ATS parsing, and risk/gap handling
 - `Exact posted title matched in visible summary/title clause`
 - `Strong matches`
 - `Gaps / intentionally omitted unsupported keywords`
 - `Recommended improvements`
 - `Sub-90 Readiness Waiver` when the score is below `90/100`
 
-Do not inflate the score by adding unsupported keywords. A lower truthful score is better than a higher score built on claims Aryan cannot defend.
+Do not inflate the score by adding unsupported keywords. A lower truthful score is better than a higher score built on claims Aryan cannot defend. If an external or open-source scorer is used, record the tool name, version or commit, configuration, extracted resume text input, job-description input, and score output. Do not call an external scorer an employer ATS result.
 
 ## Cover Letter Rules
 
@@ -270,6 +274,8 @@ The July 22, 2026 title-keyword audit used Greenhouse Talent Filtering, Greenhou
 
 The July 23, 2026 F-1 work-authorization audit used USCIS practical training guidance, DHS Study in the States STEM OPT/Form I-983 guidance, university employer guides for hiring international students, and sponsor-history database guidance to add the F-1 Work Authorization Gate. The gate prioritizes OPT/STEM OPT/E-Verify/sponsorship-compatible roles and prevents no-sponsorship or independent-work-authorization blocker postings from entering the strict shortlist.
 
+The July 24, 2026 scoring and layout enforcement audit used open-source/current scoring references including SkillVector, Resume Radar, Resume Matcher, OpenCATS, and `@pranavraut033/ats-checker`. The rule update added hard validator checks for Professional Summary visual line count, an experience-bullet floor, and point-by-point score methodology documentation. The current repo score remains an internal readiness score; future adoption of an open-source scorer should prefer deterministic, explainable tools with pinned versions, local inputs, recorded configuration, and no claims that the output predicts an employer ATS decision.
+
 ## Job Search & Discovery Strategies (Getting Ahead of the Line)
 
 To maximize callback rates, Aryan needs to apply to roles extremely quickly—ideally within 24 to 48 hours of posting. The Job Discovery pipeline helps achieve this using a layered approach:
@@ -294,10 +300,12 @@ After approved resume changes:
 4. Extract text with `pdftotext resume.pdf -` and confirm contact details, headings, dates, roles, and bullets appear in the intended reading order.
 5. If `pdftotext -bbox resume.pdf -` is available, confirm the bottom unused area is not a large blank band. A substantially underfilled page fails unless `tailoring-notes.md` explains that no additional verified role-aligned evidence should be added.
 6. Render the resume beside at least two recent accepted application resumes and inspect border consistency, name/contact placement, section styling, bullet appearance, role/date hierarchy, density, bottom-page usage, clipping, and overlap. A visibly inconsistent or substantially underfilled layout fails this check.
-7. Run the resume-vs-job-description alignment pass and record the Job Alignment & Evidence Score and its internal-estimate disclaimer in `tailoring-notes.md`.
+7. Run the resume-vs-job-description alignment pass and record the Job Alignment & Evidence Score, score methodology, point-by-point breakdown, and its internal-estimate disclaimer in `tailoring-notes.md`.
 8. Confirm mandatory qualifications and the highest-priority truthful keywords appear in evidence-bearing context; record unsupported requirements as gaps rather than adding them.
 9. Confirm the employer's exact posted role title appears once in visible resume text through a truthful Target Professional Title Clause, and that the title is supported by nearby experience or project evidence rather than repeated as a disconnected keyword.
-10. Confirm `tailoring-notes.md` records `Pass` for `ATS source gate checked`, `Visual consistency gate checked`, `Cover-letter artifact checked`, and `Pass` or `Waived - <reason>` for `Page utilization gate checked`.
-11. Run `python3 automation/validate_application_package.py application-packages/<Company>/<Role>` and address any failures.
-12. Report changed files, verification results, validator result, and the Job Alignment & Evidence Score with the disclaimer that it is not a predicted ATS result.
-13. Remove generated LaTeX build artifacts. Keep submission PDFs only when Aryan asks for final application artifacts or when the application package needs a ready-to-submit PDF.
+10. Confirm the Professional Summary, when used, renders as no more than two PDF text lines. Rewrite or omit it if it renders as three lines.
+11. Confirm the Experience section normally contains at least 11 strong bullets; if it does not, add verified role-aligned evidence or document an `Experience Bullet Count Waiver`.
+12. Confirm `tailoring-notes.md` records `Pass` for `ATS source gate checked`, `Visual consistency gate checked`, `Cover-letter artifact checked`, and `Pass` or `Waived - <reason>` for `Page utilization gate checked`.
+13. Run `python3 automation/validate_application_package.py application-packages/<Company>/<Role>` and address any failures.
+14. Report changed files, verification results, validator result, and the Job Alignment & Evidence Score with the disclaimer that it is not a predicted ATS result.
+15. Remove generated LaTeX build artifacts. Keep submission PDFs only when Aryan asks for final application artifacts or when the application package needs a ready-to-submit PDF.

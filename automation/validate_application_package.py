@@ -23,8 +23,10 @@ REQUIRED_FILES = [
 TAILORING_NOTE_MARKERS = [
     "## Job Keyword Map",
     "## Bullet Audit",
+    "## Scoring Methodology",
     "Job Alignment & Evidence Score:",
     "Internal estimate only; not a predicted ATS score.",
+    "Score breakdown",
     "Strong matches",
     "Gaps / intentionally omitted unsupported keywords",
     "Recommended improvements",
@@ -42,6 +44,9 @@ RESUME_TEXT_MARKERS = [
 BUILD_ARTIFACT_SUFFIXES = {".aux", ".log", ".out", ".toc", ".fls", ".fdb_latexmk", ".synctex.gz"}
 MIN_ALIGNMENT_SCORE = 90
 SUB_90_WAIVER_MARKER = "Sub-90 Readiness Waiver"
+MIN_EXPERIENCE_BULLETS = 11
+EXPERIENCE_BULLET_WAIVER_MARKER = "Experience Bullet Count Waiver"
+MAX_PROFESSIONAL_SUMMARY_LINES = 2
 MAX_UNUSED_BOTTOM_POINTS = 90.0
 WARN_UNUSED_BOTTOM_POINTS = 72.0
 MAX_SUBMISSION_ARTIFACT_BYTES = 5 * 1024 * 1024
@@ -182,6 +187,11 @@ def check_resume_source(app_dir: Path, errors: list[str]) -> None:
         return
 
     text = resume_tex.read_text(encoding="utf-8", errors="replace")
+    notes_text = ""
+    notes_path = app_dir / "tailoring-notes.md"
+    if notes_path.is_file():
+        notes_text = notes_path.read_text(encoding="utf-8", errors="replace")
+
     if contains_placeholder(text):
         errors.append("resume.tex contains placeholder text")
     for pattern, message in FORBIDDEN_RESUME_SOURCE_PATTERNS:
@@ -195,6 +205,19 @@ def check_resume_source(app_dir: Path, errors: list[str]) -> None:
             "resume.tex contains a bullet starting with a weak opener "
             "(Responsible for, Helped, Worked on, or Assisted)"
         )
+    experience_match = re.search(
+        r"\\resumesection\{Experience\}(.*?)\\resumesection\{Projects\}",
+        text,
+        re.DOTALL,
+    )
+    if experience_match:
+        experience_bullets = len(re.findall(r"\\item\b", experience_match.group(1)))
+        if experience_bullets < MIN_EXPERIENCE_BULLETS and EXPERIENCE_BULLET_WAIVER_MARKER not in notes_text:
+            errors.append(
+                "resume.tex has fewer than "
+                f"{MIN_EXPERIENCE_BULLETS} experience bullets; add verified role-aligned "
+                f"experience evidence or document `{EXPERIENCE_BULLET_WAIVER_MARKER}`"
+            )
 
 
 def local_name(tag: str) -> str:
@@ -255,6 +278,31 @@ def check_resume_page_utilization(app_dir: Path, errors: list[str], warnings: li
         )
 
 
+def check_professional_summary_lines(resume_text: str, errors: list[str]) -> None:
+    lines = [line.strip() for line in resume_text.splitlines()]
+    summary_start: int | None = None
+    for index, line in enumerate(lines):
+        if line == "Professional Summary":
+            summary_start = index + 1
+            break
+
+    if summary_start is None:
+        return
+
+    summary_lines: list[str] = []
+    for line in lines[summary_start:]:
+        if line == "Education":
+            break
+        if line:
+            summary_lines.append(line)
+
+    if len(summary_lines) > MAX_PROFESSIONAL_SUMMARY_LINES:
+        errors.append(
+            "Professional Summary renders/extracts as "
+            f"{len(summary_lines)} lines; maximum is {MAX_PROFESSIONAL_SUMMARY_LINES} PDF lines"
+        )
+
+
 def check_resume_pdf(app_dir: Path, errors: list[str], warnings: list[str]) -> None:
     resume_pdf = app_dir / "resume.pdf"
     if not resume_pdf.is_file():
@@ -278,6 +326,7 @@ def check_resume_pdf(app_dir: Path, errors: list[str], warnings: list[str]) -> N
         if code != 0:
             errors.append(f"pdftotext failed for resume.pdf: {stderr.strip()}")
         else:
+            check_professional_summary_lines(stdout, errors)
             for marker in RESUME_TEXT_MARKERS:
                 if marker not in stdout:
                     errors.append(f"resume.pdf text missing expected marker: {marker}")
