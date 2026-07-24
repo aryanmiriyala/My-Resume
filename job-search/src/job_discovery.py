@@ -17,6 +17,7 @@ import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlencode, urlparse
@@ -31,6 +32,7 @@ ROLE_BUCKETS_PATH = ROOT / "config" / "role-buckets.json"
 ATS_SOURCES_PATH = ROOT / "config" / "ats-sources.json"
 FILTERS_PATH = ROOT / "config" / "filters.json"
 DIRECT_ATS_TARGETS_PATH = ROOT / "config" / "direct-ats-targets.json"
+H1B_SPONSOR_WATCHLIST_PATH = ROOT / "config" / "h1b-sponsor-watchlist.json"
 BROAD_ATS_CACHE_DIR = ROOT / "cache" / "broad-ats-companies"
 URL_PATTERN = re.compile(r'https?://[^\s<>)\"\']+')
 
@@ -287,6 +289,57 @@ def location_policy(filters: dict[str, Any]) -> dict[str, list[str]]:
     return filters.get("location_policy") or {}
 
 
+def work_authorization_policy(filters: dict[str, Any]) -> dict[str, Any]:
+    return filters.get("work_authorization_policy") or {}
+
+
+@lru_cache(maxsize=4)
+def sponsor_watchlist_company_names(path: Path = H1B_SPONSOR_WATCHLIST_PATH) -> frozenset[str]:
+    if not path.exists():
+        return frozenset()
+    payload = load_json(path)
+    names: set[str] = set()
+    for company in payload.get("companies", []):
+        names.add(normalize_company_for_dedup(company.get("name")))
+        for alias in company.get("aliases", []):
+            names.add(normalize_company_for_dedup(alias))
+    return frozenset(name for name in names if name)
+
+
+def company_in_sponsor_watchlist(company: str, watchlist_names: set[str] | frozenset[str]) -> bool:
+    normalized = normalize_company_for_dedup(company)
+    if not normalized:
+        return False
+    return any(normalized == name or normalized.startswith(f"{name} ") or name.startswith(f"{normalized} ") for name in watchlist_names)
+
+
+def classify_work_authorization(
+    text: str,
+    company: str,
+    filters: dict[str, Any],
+    watchlist_names: set[str] | frozenset[str],
+) -> tuple[int, list[str]]:
+    policy = work_authorization_policy(filters)
+    score_delta = 0
+    flags: list[str] = []
+
+    for term in policy.get("sponsorship_blocker_terms", []):
+        if contains_term(text, term):
+            score_delta -= 35
+            flags.append("work_auth_blocker")
+            break
+
+    if company_in_sponsor_watchlist(company, watchlist_names):
+        score_delta += int(policy.get("h1b_watchlist_score_bonus", 0))
+        flags.append("h1b_watchlist")
+
+    if any(contains_term(text, term) for term in policy.get("sponsorship_available_terms", [])):
+        score_delta += 10
+        flags.append("sponsorship_signal")
+
+    return score_delta, flags
+
+
 def classify_location(location: str, filters: dict[str, Any]) -> tuple[str, list[str]]:
     text = normalize_text(location)
     policy = location_policy(filters)
@@ -327,9 +380,11 @@ def score_job(
     filters: dict[str, Any],
     ats_sources: dict[str, Any],
     explicit_bucket: str | None = None,
+    sponsor_watchlist: set[str] | frozenset[str] | None = None,
 ) -> ScoreResult:
     text = normalize_text(title, company, location, source, snippet)
     title_text = normalize_text(title)
+    watchlist_names = sponsor_watchlist if sponsor_watchlist is not None else sponsor_watchlist_company_names()
     score = 40
     flags: list[str] = []
 
@@ -366,6 +421,10 @@ def score_job(
 
     if source in ats_sources.get("preferred_sources", []):
         score += 5
+
+    work_auth_delta, work_auth_flags = classify_work_authorization(text, company, filters, watchlist_names)
+    score += work_auth_delta
+    flags.extend(work_auth_flags)
 
     for term in filters["negative_terms"]:
         if contains_term(text, term):
@@ -1341,6 +1400,7 @@ def render_broad_ats_summary(result: dict[str, Any], args: argparse.Namespace) -
         "Recency grouping: 0-6, 6-12, 12-24, and 24-48 hours.",
         f"Require early-career signal for shortlist: `{not args.include_no_early_career_in_shortlist}`",
         f"Write review candidates to CSV: `{args.write_review_to_inbox and not args.dry_run}`",
+        "Work authorization policy: prioritize sponsor-watchlist companies and explicit OPT/STEM OPT/E-Verify/sponsorship signals; keep no-sponsorship roles out of the shortlist inbox.",
         "",
         "## Scan History",
         "",
@@ -1518,6 +1578,7 @@ def render_pipeline_summary(result: dict[str, Any], args: argparse.Namespace) ->
         "- Other non-U.S./non-India roles are excluded by default.",
         "- Review-only matches stay in dated reports instead of `jobs-inbox.csv`.",
         "- Scan history preserves first-seen and last-seen timestamps across runs.",
+        "- F-1/OPT policy: sponsor-watchlist companies and explicit sponsorship signals are prioritized; no-sponsorship roles are not written to the shortlist inbox.",
         "",
         "## Pipeline Outputs",
         "",
@@ -1669,6 +1730,8 @@ def passes_shortlist_filters(record: dict[str, str], args: argparse.Namespace) -
     flags = flag_set(record)
     if not passes_review_filters(record, args):
         return False
+    if "work_auth_blocker" in flags:
+        return False
     if "location_foreign" in flags:
         return False
     if "location_india_review" in flags and not getattr(args, "include_india_in_shortlist", False):
@@ -1777,6 +1840,7 @@ def render_run_summary(result: dict[str, Any], args: argparse.Namespace) -> str:
         f"Review limit: `{args.review_limit}`",
         "Location policy: U.S. roles can enter the shortlist; India roles stay in review; other foreign roles are excluded by default.",
         "Recency grouping: 0-6, 6-12, 12-24, and 24-48 hours.",
+        "Work authorization policy: prioritize sponsor-watchlist companies and explicit OPT/STEM OPT/E-Verify/sponsorship signals; keep no-sponsorship roles out of the shortlist inbox.",
         "",
         "## Scan History",
         "",

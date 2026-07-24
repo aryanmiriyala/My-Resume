@@ -65,21 +65,22 @@ For every new job application:
 4. Review `profile/` for relevant experience, projects, skills, and reusable bullets.
 5. Apply `profile/ats-recruiter-resume-guide.md` and `profile/resume-targeting-guide.md` before proposing resume edits.
 6. Build a job keyword map before writing the resume: exact posted role title, required skills, repeated terms, responsibilities, domain language, must-have tools, nice-to-have tools, and unsupported terms to avoid. Use this map to decide the Target Professional Title Clause, resume angle, bullet selection, projects, technical skills, and cover-letter proof points.
-7. Apply `profile/cover-letter-guide.md` before drafting any cover letter. Use known personal context from `profile/` and prior application notes. Ask Aryan cover-letter personalization questions only when the letter would be materially weaker or risky without the answer:
+7. Run the **F-1 Work Authorization Gate** before drafting final artifacts. Identify whether the role is compatible with F-1 CPT/OPT/STEM OPT timing, E-Verify/STEM OPT needs, location constraints, and future employer sponsorship. If the posting states no visa/work-visa sponsorship, requires independent permanent work authorization, restricts eligibility to U.S. citizens/permanent residents, or otherwise conflicts with Aryan's F-1/OPT/STEM OPT path, flag it immediately and do not finalize the application package unless Aryan explicitly asks to proceed for archival, practice, or non-U.S. reasons.
+8. Apply `profile/cover-letter-guide.md` before drafting any cover letter. Use known personal context from `profile/` and prior application notes. Ask Aryan cover-letter personalization questions only when the letter would be materially weaker or risky without the answer:
    - What genuinely interests you about this company?
    - Do you have any personal connection to the company, product, industry, mission, or team?
    - Is there anything specific you want the hiring manager to feel after reading the letter?
-8. Document the resume direction, Target Professional Title Clause, cover-letter angle, strongest matching experience/projects, important keyword targets, unsupported keywords to avoid, and any blocking eligibility questions in `tailoring-notes.md`.
-9. Create a tailored `resume.tex` from `master-documents/master-resume/resume.tex` or the latest successful one-page application resume pattern.
-10. Audit every experience and project bullet against the bullet rules before compiling. Rewrite any bullet that lacks a strong action verb, a specific contribution, truthful method or technology when relevant, scope/domain context, and impact/result.
-11. Generate `resume.pdf` locally from the tailored LaTeX source only when needed for submission.
-12. Create `cover-letter.md` and, when submitting, generate a `cover-letter.pdf` or `cover-letter.docx`.
-13. Run a resume-vs-job-description alignment pass after generating the resume. Include a Job Alignment & Evidence Score, matched keywords, missing-but-truthful keyword opportunities, unsupported keywords intentionally omitted, and concrete next-step recommendations.
-14. Add `tailoring-notes.md` explaining which experience, projects, and keywords were emphasized, plus the bullet audit, ATS source gate, visual consistency gate, page utilization gate, alignment pass, and Job Alignment & Evidence Score.
-15. Run `python3 automation/validate_application_package.py application-packages/<Company>/<Role>` before marking the package ready. Fix failures instead of ignoring them. If a failure is intentional for a specific application, document the reason in `tailoring-notes.md` and the final response.
-16. Update `operations/application-tracker.md` when the application is ready, applied, rejected, interviewing, or archived.
+9. Document the resume direction, Target Professional Title Clause, F-1 Work Authorization Gate result, cover-letter angle, strongest matching experience/projects, important keyword targets, unsupported keywords to avoid, and any blocking eligibility questions in `tailoring-notes.md`.
+10. Create a tailored `resume.tex` from `master-documents/master-resume/resume.tex` or the latest successful one-page application resume pattern.
+11. Audit every experience and project bullet against the bullet rules before compiling. Rewrite any bullet that lacks a strong action verb, a specific contribution, truthful method or technology when relevant, scope/domain context, and impact/result.
+12. Generate `resume.pdf` locally from the tailored LaTeX source only when needed for submission.
+13. Create `cover-letter.md` and, when submitting, generate a `cover-letter.pdf` or `cover-letter.docx`.
+14. Run a resume-vs-job-description alignment pass after generating the resume. Include a Job Alignment & Evidence Score, matched keywords, missing-but-truthful keyword opportunities, unsupported keywords intentionally omitted, and concrete next-step recommendations.
+15. Add `tailoring-notes.md` explaining which experience, projects, and keywords were emphasized, plus the F-1 Work Authorization Gate, bullet audit, ATS source gate, visual consistency gate, page utilization gate, alignment pass, and Job Alignment & Evidence Score.
+16. Run `python3 automation/validate_application_package.py application-packages/<Company>/<Role>` before marking the package ready. Fix failures instead of ignoring them. If a failure is intentional for a specific application, document the reason in `tailoring-notes.md` and the final response.
+17. Update `operations/application-tracker.md` when the application is ready, applied, rejected, interviewing, or archived.
 
-If the job description includes an eligibility, location, sponsorship, clearance, degree, or schedule constraint, flag it during the intake response before spending effort on final artifacts. Continue with the proposal unless the constraint clearly makes the role impossible.
+If the job description includes an eligibility, location, sponsorship, clearance, degree, or schedule constraint, flag it during the intake response before spending effort on final artifacts. For Aryan's F-1 situation, no-sponsorship or independent-work-authorization wording is a serious blocker, not a routine gap; archive or pause unless Aryan explicitly asks to continue.
 
 ## Job Discovery Pipeline
 
@@ -97,6 +98,8 @@ The goal is breadth plus accuracy: search discovers new company boards, direct A
 Keep `job-search/jobs-inbox.csv` minimal. It should contain only `company`, `position`, `posted_at`, `pulled_at`, and `url`. Put scoring, source metadata, fit flags, notes, snippets, and other noisy/internal details in dated Markdown reports instead of the CSV.
 
 Maintain scan history separately in `job-search/data/scan-history.tsv`. The history file may store URL, normalized company-role identity, first-seen time, last-seen time, source, status, score, flags, and location for dedupe and run-quality tracking. Do not add those fields to `jobs-inbox.csv`.
+
+For F-1 job discovery, prioritize U.S. roles at companies with sponsor history in `job-search/config/h1b-sponsor-watchlist.json`, postings that mention OPT, STEM OPT, CPT, E-Verify, or visa sponsorship, and roles where the company has a realistic international-student hiring path. Postings with no-sponsorship, independent-work-authorization, U.S.-citizen-only, permanent-resident-only, clearance-only, or similar blocker language must not enter the strict shortlist inbox.
 
 ## Directory Conventions
 
@@ -264,6 +267,8 @@ The July 20, 2026 enforcement audit used Greenhouse Support, Lever Developer doc
 The July 20, 2026 supplemental evidence audit added Lever Help Center, Workday Resume REST API documentation, Oracle Taleo attachment documentation, SAP SuccessFactors Recruiting documentation, iCIMS developer documentation, University of Pennsylvania Career Services, MIT CAPD cover-letter guidance, UC Berkeley cover-letter guidance, and NACE Job Outlook 2026 guidance. The resulting hard rules require parseable text PDFs or employer-requested DOCX files, no image-based resumes, canonical source validation, no blank verification gates, no placeholder text, no weak bullet openers, and a conservative 5 MB final artifact size unless employer instructions override it.
 
 The July 22, 2026 title-keyword audit used Greenhouse Talent Filtering, Greenhouse resume parsing documentation, MIT CAPD resume guidance, Yale Office of Career Strategy guidance, University of Michigan Career Center guidance, and Harvard Mignone Center resume guidance to add the Target Professional Title Clause and two-sentence Professional Summary rules. The rules require the employer's exact posted role title to appear once in truthful visible resume text, normally in the Professional Summary, while keeping the summary concise, specific, job-description-aligned, and free of fake past titles, hidden text, keyword stuffing, generic buzzwords, and unsupported seniority/title inflation.
+
+The July 23, 2026 F-1 work-authorization audit used USCIS practical training guidance, DHS Study in the States STEM OPT/Form I-983 guidance, university employer guides for hiring international students, and sponsor-history database guidance to add the F-1 Work Authorization Gate. The gate prioritizes OPT/STEM OPT/E-Verify/sponsorship-compatible roles and prevents no-sponsorship or independent-work-authorization blocker postings from entering the strict shortlist.
 
 ## Job Search & Discovery Strategies (Getting Ahead of the Line)
 

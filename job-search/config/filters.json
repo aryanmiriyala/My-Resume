@@ -209,6 +209,44 @@
     "5+ years",
     "clearance required"
   ],
+  "work_authorization_policy": {
+    "profile": "F-1 international student seeking OPT/STEM OPT-eligible U.S. roles and long-term employer sponsorship where needed.",
+    "h1b_watchlist_score_bonus": 8,
+    "sponsorship_available_terms": [
+      "visa sponsorship available",
+      "sponsorship available",
+      "will sponsor",
+      "open to sponsorship",
+      "H-1B sponsorship",
+      "H1B sponsorship",
+      "OPT",
+      "STEM OPT",
+      "CPT",
+      "E-Verify"
+    ],
+    "sponsorship_blocker_terms": [
+      "does not sponsor",
+      "do not sponsor",
+      "will not sponsor",
+      "cannot sponsor",
+      "unable to sponsor",
+      "not eligible for sponsorship",
+      "not eligible for visa sponsorship",
+      "no visa sponsorship",
+      "no sponsorship",
+      "without sponsorship",
+      "will not now or in the future require sponsorship",
+      "must not require sponsorship",
+      "legally authorized to work for any employer in the United States without sponsorship",
+      "this position is not eligible for work visa sponsorship",
+      "this position is not eligible for work-visa sponsorship",
+      "independent work authorization",
+      "U.S. citizen",
+      "US citizen",
+      "green card",
+      "permanent resident"
+    ]
+  },
   "search_windows": {
     "0-6h": "qdr:h6",
     "0-12h": "qdr:h12",

@@ -12,6 +12,7 @@ The workflow is intentionally targeted and dependency-free:
 - Keeps `jobs-inbox.csv` as a minimal manually curated inbox when jobs are intentionally imported.
 - Maintains `data/scan-history.tsv` for first-seen/last-seen tracking, normalized company-role dedupe, and new-vs-seen run counts.
 - Scores jobs against Aryan's target profile.
+- Prioritizes F-1-friendly leads by boosting sponsor-watchlist companies and explicit OPT/STEM OPT/CPT/E-Verify/sponsorship signals while keeping no-sponsorship roles out of the strict inbox.
 - Writes dated run outputs under `results/YYYY-MM-DD/`.
 - Leaves final application decisions manual. Chosen jobs should then enter the main `AGENTS.md` resume and cover-letter pipeline.
 
@@ -39,7 +40,9 @@ Refresh cached broad ATS company directories when needed:
 python3 job-search/src/job_discovery.py run-pipeline --refresh-cache
 ```
 
-The standard pipeline covers Greenhouse, Lever, Ashby, and Workday where public company-directory data and no-auth endpoints are available. SmartRecruiters remains supported through configured direct ATS targets. By default, only roles with explicit early-career signals and U.S. location fit are eligible for the shortlist/CSV. India-based roles are allowed into review reports. Other non-U.S./non-India roles are excluded from standard review. Review-only matches stay in dated Markdown/CSV reports instead of being added to `jobs-inbox.csv`.
+The standard pipeline covers Greenhouse, Lever, Ashby, and Workday where public company-directory data and no-auth endpoints are available. SmartRecruiters remains supported through configured direct ATS targets. By default, only roles with explicit early-career signals, U.S. location fit, and no detected work-authorization blocker are eligible for the shortlist/CSV. India-based roles are allowed into review reports. Other non-U.S./non-India roles are excluded from standard review. Review-only matches stay in dated Markdown/CSV reports instead of being added to `jobs-inbox.csv`.
+
+For Aryan's F-1 profile, the pipeline treats work authorization as a first-class review signal. Companies in `config/h1b-sponsor-watchlist.json` receive a sponsor-history boost, postings that mention OPT/STEM OPT/CPT/E-Verify/sponsorship receive a positive signal, and postings with no-sponsorship or independent-work-authorization wording receive a `work_auth_blocker` flag and cannot enter `jobs-inbox.csv`.
 
 The standard run also updates `job-search/data/scan-history.tsv`. This file preserves first-seen and last-seen timestamps across runs and lets reports distinguish genuinely new jobs from previously seen jobs without adding noisy columns to `jobs-inbox.csv`.
 
@@ -156,7 +159,7 @@ Key source configs:
 
 - `config/role-buckets.json`: software, data, AI/ML, and analyst-adjacent role terms.
 - `config/ats-sources.json`: ATS domains and preferred sources.
-- `config/filters.json`: early-career terms, location terms, positive skill terms, exclusions, and report buckets.
+- `config/filters.json`: early-career terms, location terms, positive skill terms, work-authorization signals/blockers, exclusions, and report buckets.
 
 Default public, direct ATS, and broad ATS runs use `--max-age-hours 48` so reports focus on jobs posted in the last two days. Review reports bucket jobs into 0-6, 6-12, 12-24, and 24-48 hour windows when posted timestamps or relative posted strings are parseable. Default `run-public-search` thresholds are `--min-score 60` for the strict CSV shortlist and `--review-min-score 50` for broader review candidates.
 
